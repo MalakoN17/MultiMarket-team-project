@@ -1,4 +1,6 @@
-const OrderSchema = newSchema({
+const mongoose = required('mongoose');
+
+const OrderSchema = new mongoose.Schema({
   number: { type: String, unique: true },
   barcode: { type: String, unique: true },
   userId: { type: String, required: true },
@@ -8,16 +10,16 @@ const OrderSchema = newSchema({
     type: String,
     required: true,
     enum: [
-      "received",
-      "processing",
-      "ready",
-      "shipped",
-      "done",
-      "canceled",
-      "failed",
-      "hold",
+      'received',
+      'processing',
+      'ready',
+      'shipped',
+      'done',
+      'canceled',
+      'failed',
+      'hold',
     ],
-    default: "received",
+    default: 'received',
   },
   deliveryStatus: {
     type: String,
@@ -25,18 +27,18 @@ const OrderSchema = newSchema({
   isMain: {
     type: Boolean,
     default: false,
-    formType: "switch",
-    tableType: "boolean",
+    formType: 'switch',
+    tableType: 'boolean',
   },
   orderIds: {
     type: [String],
-    tableType: "tags",
-    formType: "text",
-    autocomplete: { collection: "order", multiple: true },
+    tableType: 'tags',
+    formType: 'text',
+    autocomplete: { collection: 'order', multiple: true },
   },
   mainOrderNumber: {
     type: String,
-    autocomplete: { collection: "order", multiple: true },
+    autocomplete: { collection: 'order', multiple: true },
   },
   firstName: {
     type: String,
@@ -77,8 +79,8 @@ const OrderSchema = newSchema({
     kind: {
       type: String,
       required: true,
-      enum: ["regular", "express", "pickup"],
-      default: "regular",
+      enum: ['regular', 'express', 'pickup'],
+      default: 'regular',
     },
   },
   paymentsNum: { type: Number, default: 1 },
@@ -104,13 +106,13 @@ const OrderSchema = newSchema({
     code: String,
     discountOf: {
       type: Object,
-      formType: "group",
+      formType: 'group',
       sum: Number,
       kind: {
         type: String,
         required: true,
-        enum: ["nis", "percents"],
-        default: "nis",
+        enum: ['nis', 'percents'],
+        default: 'nis',
       },
     },
   },
@@ -148,3 +150,5 @@ const OrderSchema = newSchema({
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: String, required: true, noSearch: true },
 });
+
+module.exports = new mongoose.model('order', OrderSchema);
