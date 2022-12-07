@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const ProductSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   barcode: {
     type: String,
     required: true,
