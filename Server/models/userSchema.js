@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   image: {
     type: String,
     noSearch: true,

@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const AdminStoreUserSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   userName: String,

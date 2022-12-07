@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const CouponSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   name: { type: String, required: true },
   code: { type: String, 'vd-type': 'coupon', required: true, unique: true },
   minimumCartSum: { type: Number, min: '0', required: true },
