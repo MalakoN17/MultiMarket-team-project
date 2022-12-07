@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const ShippingCertificateSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   number: { type: String, required: true, readonly: true },
   finalSum: { type: Number, required: true, min: '0', readonly: true },
   countProducts: {

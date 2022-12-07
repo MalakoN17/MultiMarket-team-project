@@ -1,7 +1,6 @@
 const mongoose = required('mongoose');
 
 const SectionSchema = new mongoose.Schema({
-  id: { type: String, required: true },
   name: {
     type: String,
     required: true,
