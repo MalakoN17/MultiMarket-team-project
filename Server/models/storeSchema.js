@@ -1,11 +1,6 @@
 const mongoose = required('mongoose');
 
 const StoreSchema = new mongoose.Schema({
-  id: {
-    type: String,
-    required: true,
-    readonly: true,
-  },
   bnNumber: {
     type: Number,
     unique: true,
