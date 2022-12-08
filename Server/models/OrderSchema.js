@@ -19,7 +19,6 @@ const OrderSchema = new mongoose.Schema({
       'failed',
       'hold',
     ],
-    default: 'received',
   },
   deliveryStatus: {
     type: String,
@@ -27,13 +26,9 @@ const OrderSchema = new mongoose.Schema({
   isMain: {
     type: Boolean,
     default: false,
-    formType: 'switch',
-    tableType: 'boolean',
   },
   orderIds: {
     type: [String],
-    tableType: 'tags',
-    formType: 'text',
     autocomplete: { collection: 'order', multiple: true },
   },
   mainOrderNumber: {
@@ -72,10 +67,7 @@ const OrderSchema = new mongoose.Schema({
   delivery: {
     cost: Number,
     start: Date,
-    end: {
-      type: Date,
-      default: newDate(+newDate() + 3 * 60 * 60 * 24 * 1000).toISOString(),
-    },
+    end: Date,
     kind: {
       type: String,
       required: true,
@@ -110,9 +102,7 @@ const OrderSchema = new mongoose.Schema({
       sum: Number,
       kind: {
         type: String,
-        required: true,
         enum: ['nis', 'percents'],
-        default: 'nis',
       },
     },
   },
