@@ -16,7 +16,7 @@ const AdminStoreUserSchema = new mongoose.Schema({
     default: 'store',
   },
   permission: { type: String, enum: ['read', 'write'], default: 'read' },
-  storeIds: { type: [mongoose.Types.ObjectId], required: true },
+  storeIds: { type: [mongoose.Types.ObjectId], ref: 'store', required: true },
   lastSeen: { type: Date, default: Date.now },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
