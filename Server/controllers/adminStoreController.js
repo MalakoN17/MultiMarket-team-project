@@ -1,5 +1,5 @@
 const adminStoreSchema = require('../models/adminStoreUserSchema');
-
+// GET all admin
 const getAllAdminStore = async (req, res, next) => {
   try {
     const adminsStores = await adminStoreSchema.find({})
@@ -8,6 +8,7 @@ const getAllAdminStore = async (req, res, next) => {
     next(error);
   }
 };
+// GET one admin by id
 const getOneAdminStore = async (req, res, next) =>{
     try {
         const id = req.params.id;
@@ -17,6 +18,7 @@ const getOneAdminStore = async (req, res, next) =>{
         next(error)
     }
 }
+// PUT update admin
 const updateAdminStore = async (req, res, next) =>{
     try {
         const updateAdminStore = await adminStoreSchema.findByIdAndUpdate(
@@ -31,6 +33,7 @@ const updateAdminStore = async (req, res, next) =>{
         next(error)
     }
 }
+// POST create admin 
 const createAdminStore = async (req, res, next) => {
   try {
     const obj = req.body;
@@ -41,6 +44,7 @@ const createAdminStore = async (req, res, next) => {
     next(error);
   }
 };
+// DELETE admin 
 const deleteAdminStore = async (req, res, next) =>{
     try {
         await adminStoreSchema.findByIdAndDelete(req.params.id);
