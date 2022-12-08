@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const SectionSchema = new mongoose.Schema({
   name: {
