@@ -16,7 +16,7 @@ const UserSchema = new mongoose.Schema({
     lowercase: true,
   },
   phone: { type: String, unique: true },
-  userId: { type: String, default: uniqid().slice(0, 6) },
+  userId: { type: String},
   loginCode: { type: String, select: false },
   phone2: { type: String },
   password: {
@@ -64,19 +64,19 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  takanon: {
-    type: Boolean,
-    default: true,
-  },
+  // takanon: {
+  //   type: Boolean,
+  //   default: true,
+  // },
   active: {
     type: Boolean,
     default: true,
   },
   cards: [
     {
-      id: { type: String, required: true, default: uniqid },
-      ownerId: { type: String, required: true },
-      id: { type: String, required: true, default: uniqid },
+      id: { type: String, required: true},
+      ownerId: { type: String, required: true},
+      id: { type: String, required: true},
       last4digits: { type: String, required: true },
       token: { type: String, required: true, select: false },
       company: String,
