@@ -46,12 +46,6 @@ const UserSchema = new mongoose.Schema({
     numberBranch: { type: String },
     bankName: { type: Number },
   },
-  // etradoBalance: {
-  //   type: Object,
-  //   balance: { type: Number, formType: "nis" },
-  //   income: { type: Number, formType: "nis" },
-  //   outcome: { type: Number, formType: "nis" },
-  // },
   userId: {
     type: String,
   },
@@ -70,10 +64,6 @@ const UserSchema = new mongoose.Schema({
     type: Boolean,
     default: true,
   },
-  // eTradoApproved: {
-  //   type: Boolean,
-  //   default: true,
-  // },
   takanon: {
     type: Boolean,
     default: true,
