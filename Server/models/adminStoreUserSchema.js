@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const AdminStoreUserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
@@ -20,7 +20,7 @@ const AdminStoreUserSchema = new mongoose.Schema({
   lastSeen: { type: Date, default: Date.now },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
-  createdBy: { type: String, required: true, noSearch: true },
+  createdBy: { type: String, required: true },
 });
 
 module.exports = new mongoose.model('adminStoreUser', AdminStoreUserSchema);

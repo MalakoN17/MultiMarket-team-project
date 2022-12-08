@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
   image: {

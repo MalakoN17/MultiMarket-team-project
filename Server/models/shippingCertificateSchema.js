@@ -1,4 +1,4 @@
-const mongoose = required('mongoose');
+const mongoose = require('mongoose');
 
 const ShippingCertificateSchema = new mongoose.Schema({
   number: { type: String, required: true, readonly: true },
