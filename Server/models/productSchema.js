@@ -116,6 +116,7 @@ const ProductSchema = new mongoose.Schema({
     type: Object,
     formStep: 4,
     contactNumber: { type: String },
+    contactName: { type: String },
   },
   expirationDate: {
     type: Date,
