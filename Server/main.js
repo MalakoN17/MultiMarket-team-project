@@ -8,11 +8,14 @@ app.use(cors());
 app.use(express.json());
 
 const storeRouter = require('./routers/storeRouter');
-app.use('/api/store', storeRouter);
+const couponRouter = require('./routers/couponRouter.js');
+const departmentRouter= require('./routers/departmentRouter.js')
 
-const couponRouter = require("./routers/couponRouter.js")
+app.use('/api/store', storeRouter);
+app.use('/api/coupon', couponRouter);
+app.use('/api/department',departmentRouter)
+
 let port = 8000;
 app.listen(port, () => {
   console.log(`server ren on ${port}`);
 });
-app.use('/api/coupon',couponRouter)
