@@ -1,4 +1,4 @@
-const storeSchema = require('../models/storeSchema');
+const storeSchema = require('../models/storeSchema.js');
 
 const createNewStore = async (req, res, next) => {
   try {
