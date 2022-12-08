@@ -21,7 +21,7 @@ const CouponSchema = new mongoose.Schema({
     },
   },
   userIds: { type: [String], select: false },
-  storeId: { type: String, required: true },
+  storeId: { type: [mongoose.Types.ObjectId], required: true },
   active: { type: Boolean, default: true },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
