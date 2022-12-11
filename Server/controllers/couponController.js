@@ -25,38 +25,37 @@ const updateCoupon = async (req, res, next) => {
   }
 };
 //Delete
-const deleteCoupon = async (req,res,next)=>{
-    try{
-        await couponModel.findByIdAndDelete(req.params.id);
-        res.status(200).json("Coupon Deleted")
-    }catch(err){
-        next(err)
-    }
-}
+const deleteCoupon = async (req, res, next) => {
+  try {
+    await couponModel.findByIdAndDelete(req.params.id);
+    res.status(200).json('Coupon Deleted');
+  } catch (err) {
+    next(err);
+  }
+};
 //Get
-const getCoupon = async(req,res,next)=>{
-    try{
-        const coupon = await couponModel.findById(req.params.id);
-        res.status(200).json(coupon);
-    }catch(err){
-        next(err)
-    }
-}
+const getCoupon = async (req, res, next) => {
+  try {
+    const coupon = await couponModel.findById(req.params.id);
+    res.status(200).json(coupon);
+  } catch (err) {
+    next(err);
+  }
+};
 //Get All
-const getAllCoupons = async (req,res,next)=>{
-    try{
-        const coupons = await couponModel.find({})
-        res.status(200).json(coupons)
-    }catch(err){
-        next(err)
-    }
+const getAllCoupons = async (req, res, next) => {
+  try {
+    const coupons = await couponModel.find({});
+    res.status(200).json(coupons);
+  } catch (err) {
+    next(err);
+  }
+};
 
-}
-
-
-module.exports.createNewCoupon = createNewCoupon;
-module.exports.updateCoupon = updateCoupon;
-module.exports.deleteCoupon = deleteCoupon;
-module.exports.getCoupon = getCoupon;
-module.exports.getAllCoupons = getAllCoupons;
-
+module.exports = {
+  createNewCoupon,
+  getAllCoupons,
+  getCoupon,
+  deleteCoupon,
+  updateCoupon,
+};
