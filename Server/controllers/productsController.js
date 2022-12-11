@@ -1,7 +1,7 @@
 const productsModel = require('../models/productSchema');
 
 // GET ALL PRODUCTS
-exports.getAllProducts = async (req, res, next) => {
+const getAllProducts = async (req, res, next) => {
   try {
     const products = await productsModel.find({});
     res.status(200).json(products);
@@ -11,7 +11,7 @@ exports.getAllProducts = async (req, res, next) => {
 };
 
 // GET PRODUCT
-exports.getProductById = async (req, res, next) => {
+const getProduct = async (req, res, next) => {
   try {
     const product = await productsModel.findById(req.params.id);
     res.status(200).json(product);
@@ -21,7 +21,7 @@ exports.getProductById = async (req, res, next) => {
 };
 
 // CREATE A NEW PRODUCT
-exports.createNewProduct = async (req, res, next) => {
+const createNewProduct = async (req, res, next) => {
   const newProduct = new productsModel(req.body);
   try {
     const saveProduct = await newProduct.save();
@@ -32,7 +32,7 @@ exports.createNewProduct = async (req, res, next) => {
 };
 
 // UPDATE A PRODUCT
-exports.updateProduct = async (req, res, next) => {
+const updateProduct = async (req, res, next) => {
   try {
     const updateProduct = await productsModel.findByIdAndUpdate(
       req.params.id,
@@ -48,7 +48,7 @@ exports.updateProduct = async (req, res, next) => {
 };
 
 // DELETE PRODUCT
-exports.deleteProduct = async (req, res, next) => {
+const deleteProduct = async (req, res, next) => {
   try {
     await productsModel.findByIdAndDelete(req.params.id);
     res.status(200).json('Product Deleted');
@@ -57,4 +57,10 @@ exports.deleteProduct = async (req, res, next) => {
   }
 };
 
-// module.exports = { getAllProducts };
+module.exports = {
+  getAllProducts,
+  getProduct,
+  createNewProduct,
+  updateProduct,
+  deleteProduct,
+};
