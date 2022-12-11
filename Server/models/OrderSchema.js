@@ -1,11 +1,9 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = new mongoose.Schema({
+const OrderStoreSchema = new mongoose.Schema({
   number: { type: String, unique: true },
-  barcode: { type: String, unique: true },
   userId: { type: String, required: true },
   userPaymentIdentity: { type: String },
-  userCustomerId: { type: String },
   status: {
     type: String,
     required: true,
@@ -22,18 +20,6 @@ const OrderSchema = new mongoose.Schema({
   },
   deliveryStatus: {
     type: String,
-  },
-  isMain: {
-    type: Boolean,
-    default: false,
-  },
-  orderIds: {
-    type: [String],
-    autocomplete: { collection: 'order', multiple: true },
-  },
-  mainOrderNumber: {
-    type: String,
-    autocomplete: { collection: 'order', multiple: true },
   },
   firstName: {
     type: String,
@@ -63,7 +49,6 @@ const OrderSchema = new mongoose.Schema({
     required: true,
   },
   finalSum: { type: Number, required: true },
-  // etradoPayment: { type: mongoose.Types.ObjectId, ref: "EtradoPayment" },
   delivery: {
     cost: Number,
     start: Date,
@@ -82,14 +67,13 @@ const OrderSchema = new mongoose.Schema({
   },
   surfacesWeight: { type: String, default: 1 },
   paymentType: { type: String },
-  baldarNumber: { type: Number },
   card: {
     id: { type: String },
     ownerId: {
       type: String,
     },
     last4digits: { type: String },
-    token: { type: String },
+    CVV: { type: String },
     company: String,
     exp: { type: String },
   },
@@ -98,7 +82,6 @@ const OrderSchema = new mongoose.Schema({
     code: String,
     discountOf: {
       type: Object,
-      formType: 'group',
       sum: Number,
       kind: {
         type: String,
@@ -115,7 +98,6 @@ const OrderSchema = new mongoose.Schema({
         finalAmount: Number,
         orderPrice: Number,
         finalPrice: Number,
-        replacedId: String,
       },
     ],
     select: false,
@@ -135,10 +117,18 @@ const OrderSchema = new mongoose.Schema({
     failed: Date,
     hold: Date,
   },
-  id: { type: String, required: true },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: String, required: true, noSearch: true },
 });
+
+const OrderSchema = new mongoose.Schema({
+  userId: {type:String, required:true},
+  ordersStores:[OrderStoreSchema],
+  finalSum: {type:Number, required:true},
+  finalSaving:Number,
+})
+
+
 
 module.exports = new mongoose.model('order', OrderSchema);

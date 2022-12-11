@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 
-const AdminStoreUserSchema = new mongoose.Schema({
+const OwnerStoreUserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
   userName: String,
@@ -8,7 +8,6 @@ const AdminStoreUserSchema = new mongoose.Schema({
   phone: { type: String, unique: true },
   password: { type: String, required: true },
   authToken: { type: String },
-  authTokenMobile: { type: String },
   loginCode: { type: String },
   role: {
     type: String,
@@ -23,4 +22,4 @@ const AdminStoreUserSchema = new mongoose.Schema({
   createdBy: { type: String, required: true },
 });
 
-module.exports = new mongoose.model('adminStoreUser', AdminStoreUserSchema);
+module.exports = new mongoose.model('ownerStoreUser', OwnerStoreUserSchema);
