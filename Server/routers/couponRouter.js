@@ -1,21 +1,15 @@
 const express = require('express');
-
-const {
-  createNewCoupon,
-  updateCoupon,
-  deleteCoupon,
-  getCoupon,
-  getAllCoupons,
-} = require('../controllers/couponController.js');
-
 const router = express.Router();
 
+const { createNewCoupon, updateCoupon, deleteCoupon, getCoupon, getAllCoupons, } = require('../controllers/couponController.js');
+const { couponProtect } = require('../middleware/couponMiddleware');
+
 //Create
-router.post('/', createNewCoupon);
+router.post('/', couponProtect, createNewCoupon);
 //Update
-router.put('/:id', updateCoupon);
+router.put('/:id', couponProtect, updateCoupon);
 //Deleted
-router.delete('/:id', deleteCoupon);
+router.delete('/:id', couponProtect, deleteCoupon);
 //Get
 router.get('/:id', getCoupon);
 
