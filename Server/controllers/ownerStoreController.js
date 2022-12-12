@@ -1,8 +1,8 @@
-const adminStoreSchema = require('../models/adminStoreUserSchema');
+const ownerStoreUserSchema = require('../models/ownerStoreUserSchema.js');
 // GET all admin
 const getAllAdminStore = async (req, res, next) => {
   try {
-    const adminsStores = await adminStoreSchema.find({});
+    const adminsStores = await ownerStoreUserSchema.find({});
     res.status(200).json(adminsStores);
   } catch (error) {
     next(error);
@@ -12,7 +12,7 @@ const getAllAdminStore = async (req, res, next) => {
 const getOneAdminStore = async (req, res, next) => {
   try {
     const id = req.params.id;
-    const adminStore = await adminStoreSchema.findById(req.params.id);
+    const adminStore = await ownerStoreUserSchema.findById(req.params.id);
     res.status(200).json(adminStore);
   } catch (error) {
     next(error);
@@ -21,7 +21,7 @@ const getOneAdminStore = async (req, res, next) => {
 // PUT update admin
 const updateAdminStore = async (req, res, next) => {
   try {
-    const updateAdminStore = await adminStoreSchema.findByIdAndUpdate(
+    const updateAdminStore = await ownerStoreUserSchema.findByIdAndUpdate(
       req.params.id,
       {
         $set: req.body,
@@ -37,7 +37,7 @@ const updateAdminStore = async (req, res, next) => {
 const createAdminStore = async (req, res, next) => {
   try {
     const obj = req.body;
-    const newAdminStore = adminStoreSchema(obj);
+    const newAdminStore = ownerStoreUserSchema(obj);
     await newAdminStore.save();
     res.status(200).json('create new admin');
   } catch (error) {
@@ -47,7 +47,7 @@ const createAdminStore = async (req, res, next) => {
 // DELETE admin
 const deleteAdminStore = async (req, res, next) => {
   try {
-    await adminStoreSchema.findByIdAndDelete(req.params.id);
+    await ownerStoreUserSchema.findByIdAndDelete(req.params.id);
     res.status(200).json('admin store Deleted');
   } catch (error) {
     next(error);

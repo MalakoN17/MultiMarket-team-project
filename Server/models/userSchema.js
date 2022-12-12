@@ -1,9 +1,8 @@
 const mongoose = require('mongoose');
 
 const UserSchema = new mongoose.Schema({
-  image: {
+  profileImage: {
     type: String,
-    noSearch: true,
   },
   firstName: { type: String },
   lastName: { type: String },
@@ -16,7 +15,6 @@ const UserSchema = new mongoose.Schema({
     lowercase: true,
   },
   phone: { type: String, unique: true },
-  userId: { type: String},
   loginCode: { type: String, select: false },
   phone2: { type: String },
   password: {
@@ -26,7 +24,6 @@ const UserSchema = new mongoose.Schema({
   },
   storeIds: {
     type: [String],
-    required: true,
     autocomplete: { collection: 'store', multiple: true },
   },
   address: {
@@ -41,15 +38,11 @@ const UserSchema = new mongoose.Schema({
   },
   paymentBillInfo: {
     type: Object,
-    acountOwner: { type: String },
-    numberAcount: { type: String },
+    accountOwner: { type: String },
+    numberAccount: { type: String },
     numberBranch: { type: String },
     bankName: { type: Number },
   },
-  userId: {
-    type: String,
-  },
-  userCustomerId: { type: String },
   registerType: {
     type: String,
     enum: ['email', 'facebook', 'google'],
@@ -60,14 +53,6 @@ const UserSchema = new mongoose.Schema({
   resetPassToken: { type: String, select: false },
   authToken: { type: String, select: false },
   resetPassExp: { type: Date, select: false },
-  marketingList: {
-    type: Boolean,
-    default: true,
-  },
-  // takanon: {
-  //   type: Boolean,
-  //   default: true,
-  // },
   active: {
     type: Boolean,
     default: true,
@@ -76,14 +61,13 @@ const UserSchema = new mongoose.Schema({
     {
       id: { type: String, required: true},
       ownerId: { type: String, required: true},
-      id: { type: String, required: true},
       last4digits: { type: String, required: true },
-      token: { type: String, required: true, select: false },
+      CVV: { type: String, required: true, select: false },
       company: String,
       exp: { type: String, required: true },
     },
   ],
-  buisnnesTypes: {
+  businessTypes: {
     type: [mongoose.Types.ObjectId],
     ref: 'section',
     autocomplete: { collection: 'section', multiple: true },

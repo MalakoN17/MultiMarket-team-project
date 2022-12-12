@@ -7,8 +7,7 @@ require('./config/database');
 app.use(cors());
 app.use(express.json());
 
-const storeRouter = require('./routers/storeRouter');
-app.use('/api/store', storeRouter);
+
 
 let port = 8000;
 app.listen(port, () => {
