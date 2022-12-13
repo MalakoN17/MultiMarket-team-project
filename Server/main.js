@@ -8,7 +8,12 @@ app.use(cors());
 app.use(express.json());
 
 const storeRouter = require('./routers/storeRouter');
+const userRouter = require('./routers/userRouter');
+const authRouter = require('./routers/authRouter');
 app.use('/api/store', storeRouter);
+app.use('/api/users', userRouter);
+app.use('/auth', authRouter);
+
 
 let port = 8000;
 app.listen(port, () => {
