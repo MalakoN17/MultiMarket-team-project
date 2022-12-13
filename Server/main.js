@@ -7,7 +7,7 @@ require('./config/database');
 app.use(cors());
 app.use(express.json());
 
-const storeRouter = require('./routers/storeRouter');
+const storeRouter = require('./routers/storeRouter.js');
 app.use('/api/store', storeRouter);
 
 let port = 8000;
