@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const OrderStoreSchema = new mongoose.Schema({
   number: { type: String, unique: true },
   userId: { type: String, required: true },
-  userPaymentIdentity: { type: String },
   status: {
     type: String,
     required: true,
@@ -17,6 +16,7 @@ const OrderStoreSchema = new mongoose.Schema({
       'failed',
       'hold',
     ],
+    default:'received'
   },
   deliveryStatus: {
     type: String,
@@ -60,23 +60,23 @@ const OrderStoreSchema = new mongoose.Schema({
       default: 'regular',
     },
   },
-  paymentsNum: { type: Number, default: 1 },
-  surfaces: {
-    type: Number,
-    default: 1,
-  },
-  surfacesWeight: { type: String, default: 1 },
-  paymentType: { type: String },
-  card: {
-    id: { type: String },
-    ownerId: {
-      type: String,
-    },
-    last4digits: { type: String },
-    CVV: { type: String },
-    company: String,
-    exp: { type: String },
-  },
+  // paymentsNum: { type: Number, default: 1 },
+  // surfaces: {
+  //   type: Number,
+  //   default: 1,
+  // },
+  // surfacesWeight: { type: String, default: 1 },
+  // paymentType: { type: String },
+  // card: {
+  //   id: { type: String },
+  //   ownerId: {
+  //     type: String,
+  //   },
+  //   last4digits: { type: String },
+  //   CVV: { type: String },
+  //   company: String,
+  //   exp: { type: String },
+  // },
   coupon: {
     name: String,
     code: String,
@@ -122,13 +122,16 @@ const OrderStoreSchema = new mongoose.Schema({
   createdBy: { type: String, required: true, noSearch: true },
 });
 
-const OrderSchema = new mongoose.Schema({
-  userId: {type:String, required:true},
-  ordersStores:[OrderStoreSchema],
-  finalSum: {type:Number, required:true},
-  finalSaving:Number,
-})
+// const OrderSchema = new mongoose.Schema({
+//   userId: {type:String, },
+//   ordersStores:[OrderStoreSchema],
+//   finalSum: {type:Number, },
+//   finalSaving:Number,
+//   lastUpdate: { type: Date, default: Date.now },
+//   createdAt: { type: Date, default: Date.now },
+//   createdBy: { type: String, required: true, noSearch: true }
+// })
 
 
 
-module.exports = new mongoose.model('order', OrderSchema);
+module.exports = new mongoose.model('order', OrderStoreSchema);
