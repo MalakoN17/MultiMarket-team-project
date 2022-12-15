@@ -20,6 +20,7 @@ const productSlice = createSlice({
     settingProduct: (state, action) => {
       const {name, image, price, priority, description, barcode}  = action.payload
       //  state = [...state, action.payload];
+      
       state.name = name
       state.barcode = barcode
       state.image = image
