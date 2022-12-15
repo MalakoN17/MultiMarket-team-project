@@ -9,6 +9,7 @@ const SectionSchema = new mongoose.Schema({
   departmentIds: {
     type: String,
     required: true,
+    ref: 'department',
     autocomplete: { collection: 'department' },
   },
   active: {
