@@ -1,0 +1,29 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .image-depart {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
+  .threeInRow {
+    display: grid;
+    grid-template-columns: repeat(1, minmax(0, 1fr));
+    row-gap: 2.5rem;
+    column-gap: 1.5rem;
+  }
+  .departmentImg {
+    width: 100%;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    background-color: #e5e7eb;
+  }
+  .departmentTitle {
+    margin-top: 1rem;
+    text-align: center;
+    color: #374151;
+  }
+}
