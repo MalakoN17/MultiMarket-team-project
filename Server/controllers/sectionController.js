@@ -8,6 +8,15 @@ const getAllSection = async (req, res, next) => {
     next(err);
   }
 };
+const getSection = async (req, res, next) => {
+  try {
+    const { sectionId } = req.params;
+    const section = await sectionSchema.findById(sectionId);
+    res.status(200).json(section);
+  } catch (err) {
+    next(err);
+  }
+};
 
 const createNewSection = async (req, res, next) => {
   try {
@@ -24,8 +33,8 @@ const updateSection = async (req, res, next) => {
   try {
     const updateSection = await sectionSchema.findByIdAndUpdate(
       req.params.id,
-      {$set: req.body,},
-      {new: true}
+      { $set: req.body },
+      { new: true }
     );
     res.status(200).json(updateSection);
   } catch (err) {
@@ -44,6 +53,7 @@ const deleteSection = async (req, res, next) => {
 
 module.exports = {
   getAllSection,
+  getSection,
   createNewSection,
   updateSection,
   deleteSection,
