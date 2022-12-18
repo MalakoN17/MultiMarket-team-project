@@ -5,6 +5,7 @@ import Home from "./pages/Home";
 import Main from "./pages/Main";
 import Store from "./pages/Store";
 import Error from "./pages/Error";
+import StoreList from "./compontes/main/StoreList";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="" element={<Home />} />
           <Route path="main" element={<Main />} />
           <Route path="store" element={<Store />} />
+          <Route path="StoreList" element={<StoreList />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
