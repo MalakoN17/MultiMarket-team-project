@@ -9,6 +9,7 @@ import AddingProducts from './compontes/products/AddingProducts';
 import FormProductOne from './compontes/products/FormProductOne';
 import FormProductTwo from './compontes/products/FormProductTwo';
 import FormProductThree from './compontes/products/FormProductThree';
+import Chat from './pages/Chat';
 
 function App() {
   return (
@@ -17,7 +18,8 @@ function App() {
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="main" element={<Main />} />
-          <Route path="store" element={<Store />} />
+          <Route path="store" element={<Store />} />            
+          <Route path="chat" element={<Chat/>} />
           <Route path="addproduct" element={<AddingProducts />}>
             <Route path="formproductone" element={<FormProductOne />} />
             <Route path="formproducttwo" element={<FormProductTwo />} />
