@@ -1,34 +1,65 @@
 const departmentModel = require('../models/departmentSchema.js');
+const cloudinary = require('../utils/cloudinary');
 
 //Create
 const createNewDepartment = async (req, res, next) => {
-  const newDepartment = new departmentModel(req.body);
+  const data = req.body;
   try {
-    const saveDepartment = await newDepartment.save();
-    res.status(200).json(saveDepartment);
+    if (data.image) {
+      const result = await cloudinary.uploader.upload(data.image, {
+        folder: 'department',
+      });
+      data.image = {
+        public_id: result.public_id,
+        url: result.secure_url,
+      };
+      const newDepartment = new departmentModel(data);
+      await newDepartment.save();
+      res.status(200).json('new department created');
+    }
   } catch (err) {
     next(err);
   }
 };
 //Update
 const updateDepartment = async (req, res, next) => {
+  const data = req.body;
+  const { departmentId } = req.params;
   try {
-    const updateDepartment = await departmentModel.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
-    res.status(200).json(updateDepartment);
+    const department = await departmentModel.findById(departmentId);
+    if (data.image) {
+      const remove = await cloudinary.uploader.destroy(
+        department.image.public_id
+      );
+      if (remove) {
+        const result = await cloudinary.uploader.upload(data.image, {
+          folder: 'department',
+        });
+        data.image = {
+          public_id: result.public_id,
+          url: result.secure_url,
+        };
+        const updateDepartment = await departmentModel.findByIdAndUpdate(
+          req.params.id,
+          {
+            $set: data,
+          },
+          { new: true }
+        );
+        res.status(200).json('update succuss');
+      }
+    }
   } catch (err) {
     next(err);
   }
 };
 //Delete
 const deleteDepartment = async (req, res, next) => {
+  const { departmentId } = req.params;
   try {
-    await departmentModel.findByIdAndDelete(req.params.id);
+    const department = await departmentModel.findById(departmentId);
+    const remove = await cloudinary.uploader.upload(department.image.public_id);
+    await departmentModel.findByIdAndDelete(departmentId);
     res.status(200).json('Department Deleted');
   } catch (err) {
     next(err);
