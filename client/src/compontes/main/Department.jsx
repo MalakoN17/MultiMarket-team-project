@@ -1,4 +1,5 @@
 import React from 'react'
+import "./department.css"
 
 export default function Department() {
   return (
@@ -24,64 +25,64 @@ export default function Department() {
             </div>
           </form>
         </div>
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+      <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Olive drab green insulated bottle with flared screw lid and flat top." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/1656666/pexels-photo-1656666.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Fruits and Vegetables" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">פירות וירקות</h3>
+          <h3 className="departmentTitle">פירות וירקות</h3>
         </a>
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/1200667/pexels-photo-1200667.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Olive drab green insulated bottle with flared screw lid and flat top." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/1200667/pexels-photo-1200667.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Delicatessen" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">מעדניות</h3>
+          <h3 className="departmentTitle">מעדניות</h3>
         </a>
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/1397292/pexels-photo-1397292.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Olive drab green insulated bottle with flared screw lid and flat top." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/1397292/pexels-photo-1397292.jpeg?auto=compress&cs=tinysrgb&w=600" alt="bakeries" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">מאפיות</h3>
-        </a>
-      </div>
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
-        <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/7852674/pexels-photo-7852674.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." className="h-full w-full object-cover object-center group-hover:opacity-75" />
-          </div>
-          <h3 className="mt-4 text-center text-gray-700">מוצרי פארם</h3>
-        </a>
-        <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Olive drab green insulated bottle with flared screw lid and flat top." className="h-full w-full object-cover object-center group-hover:opacity-75" />
-          </div>
-          <h3 className="mt-4 text-center text-gray-700">משקאות חריפים</h3>
-        </a>
-        <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Person using a pen to cross a task off a productivity paper card." className="h-full w-full object-cover object-center group-hover:opacity-75" />
-          </div>
-          <h3 className="mt-4 text-center text-gray-700">הכל לחיות</h3>
+          <h3 className="departmentTitle">מאפיות</h3>
         </a>
       </div>
-      <div className="grid grid-cols-1 gap-y-10 gap-x-6 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+      <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/5836992/pexels-photo-5836992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Tall slender porcelain bottle with natural clay textured body and cork stopper." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/7852674/pexels-photo-7852674.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Pharm stuff" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">אוכל מוכן לבית</h3>
+          <h3 className="departmentTitle">מוצרי פארם</h3>
         </a>
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/6192116/pexels-photo-6192116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Olive drab green insulated bottle with flared screw lid and flat top." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/1283219/pexels-photo-1283219.jpeg?auto=compress&cs=tinysrgb&w=600" alt="liquor" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">ציוד משרדי</h3>
+          <h3 className="departmentTitle">משקאות חריפים</h3>
         </a>
         <a href="#" className="group">
-          <div className="aspect-w-1 aspect-h-1 w-full overflow-hidden rounded-lg bg-gray-200 xl:aspect-w-7 xl:aspect-h-8">
-            <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Person using a pen to cross a task off a productivity paper card." className="h-full w-full object-cover object-center group-hover:opacity-75" />
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/3299905/pexels-photo-3299905.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Pets shop" className="image-depart group-hover:opacity-75" />
           </div>
-          <h3 className="mt-4 text-center text-gray-700">קצביות</h3>
+          <h3 className="departmentTitle">הכל לחיות</h3>
+        </a>
+      </div>
+      <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+        <a href="#" className="group">
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/5836992/pexels-photo-5836992.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Homemade food" className="image-depart group-hover:opacity-75" />
+          </div>
+          <h3 className="departmentTitle">אוכל מוכן לבית</h3>
+        </a>
+        <a href="#" className="group">
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/6192116/pexels-photo-6192116.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Office Supplies" className="image-depart group-hover:opacity-75" />
+          </div>
+          <h3 className="departmentTitle">ציוד משרדי</h3>
+        </a>
+        <a href="#" className="group">
+          <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
+            <img src="https://images.pexels.com/photos/769289/pexels-photo-769289.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="Rhythmicity" className="image-depart group-hover:opacity-75" />
+          </div>
+          <h3 className="departmentTitle">קצביות</h3>
         </a>
       </div>
     </div>
