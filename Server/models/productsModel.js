@@ -29,7 +29,7 @@ const ProductSchema = new mongoose.Schema({
   },
   kosherType: {
     type: String,
-    enum: [`בד"ץ`, 'רבנות', 'מהדרין'],
+    enum: ['בד"ץ', 'רבנות', 'מהדרין'],
   },
   productTag: {
     type: String,
@@ -42,12 +42,7 @@ const ProductSchema = new mongoose.Schema({
     ref: 'store',
     autocomplete: { collection: 'store' },
   },
-  subCategory: { type: String },
-  fields: { type: Object },
-  active: {
-    type: Boolean,
-    default: true,
-  },
+  subcategory: { type: String },
   weight: {
     type: Object,
     inWeight: { type: Boolean },
@@ -69,27 +64,15 @@ const ProductSchema = new mongoose.Schema({
     type: Object,
     unitsInCarton: { type: Number, min: '0', default: 1 },
     amount: { type: Number, default: 1, min: '0' },
-    minimumOrderCartonsCount: {
-      type: Number,
-      default: 1,
-      min: '0',
-    },
     measureUnits: {
       type: String,
-      enum: ['units', 'kgs', 'gr', 'liters', 'mls'],
+      enum: ['units', 'kg', 'g', 'liters', 'mls'],
       default: 'units',
       hide: true,
     },
   },
-  contactInfo: {
-    type: Object,
-    contactNumber: { type: String },
-    contactName: { type: String },
-  },
-  expirationDate: {
-    type: Date,
-    required: true,
-    default: Date.now,
+  contactNumber: {
+    type: String,
   },
   manufacturer: {
     type: String,

@@ -1,37 +1,58 @@
-import React from 'react'
-import { useState } from 'react'
-import {useNavigate} from 'react-router-dom'
-
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useDispatch, useSelector } from 'react-redux'
+import { settingProduct } from '../../features/product/produceSlice';
 
 export default function FormProductTwo() {
-    const [product, setProduct] = useState({kosherType:'', productTag:'',contactInfo:{contactNumber:'', contactName:''},expirationDate:'',  })
-    const navigate = useNavigate()
+  const item = useSelector((state) => state.product);
+  const dispatch = useDispatch();
+  const [product, setProduct] = useState({ measureUnits: '', weight: 0, manufacturer: '', subcategory: '' })
+  const [parallelImporter, setParallelImporter] = useState({ parallelImporter: false })
+  const { measureUnits, weight, manufacturer, subcategory } = product;
+  const navigate = useNavigate()
 
-
-
-    const handleInput = (e)=>{
-        const {name, value} = e.target
-        setProduct({...product, [name]:value})
-
+  useEffect(() => {
+    if (item) {
+      setProduct(item)
     }
-   const handleForm = (e)=>{
+  }, []);
+
+  const handleInput = (e) => {
+    const { name, value } = e.target;
+    setProduct({ ...product, [name]: value });
+  };
+
+  const handleChange = (event) => {
+    setParallelImporter({
+      ...parallelImporter,
+      [event.target.name]: event.target.checked,
+    });
+  };
+
+  const handleForm = (e) => {
     e.preventDefault()
-    
+    dispatch(settingProduct({ ...item, product, parallelImporter }))
     navigate('/addproduct/formproductthree')
-   }
+  };
+
   return (
-    <div> 
-     <form onSubmit={handleForm}>
-    <input onChange={handleInput} type='text' name='name' placeholder='name product' required/>
-    <input onChange={handleInput} type='file' name='image' placeholder='upload image' required/>
-    <input onChange={handleInput} type='number' name='price' placeholder='price' required/>
-    <input onChange={handleInput} type='text' name='barcode' placeholder='barcode' required/>
-    <input onChange={handleInput} type='number' name='priority' placeholder='priority' required min={0} max={5}/>
-    <select>
-        {}
-    </select>
-    <button type='submit'>page 3</button>
-</form>
-</div>
+    <div>
+
+      <div className="flex items-center justify-center p-12">
+        <div className="mx-auto w-full max-w-[550px] bg-white">
+
+          <form className="py-6 px-2" onSubmit={handleForm}>
+
+          
+            <div>
+              <button className="hover:shadow-form w-full mt-4 rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+                העלאת מוצר
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+
+    </div>
   )
 }
