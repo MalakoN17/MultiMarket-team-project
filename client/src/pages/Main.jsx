@@ -8,7 +8,7 @@ function Main() {
     return (
         <div>
             <DesktopNav />
-            <Departments />
+            {/* <Departments /> */}
             <Department />
             <Footer />
         </div>
