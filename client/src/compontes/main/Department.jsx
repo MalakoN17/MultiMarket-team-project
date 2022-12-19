@@ -1,16 +1,19 @@
+
+
+
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Departments from './Departments';
 import SearchInput from './searchInput';
 import './department.css';
-
+ 
 export default function Department() {
   const [departments, setDepartments] = useState([]);
-
+ 
   useEffect(() => {
     const getDepartments = async () => {
-      const res = await axios.get('http://localhost:8000/api/department');
+      const res = await axios.get('http://localhost:8000/department');
       console.log(res.data);
       setDepartments(res.data);
     };
@@ -42,3 +45,5 @@ export default function Department() {
     </div>
   );
 }
+ 
+

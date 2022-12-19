@@ -3,10 +3,13 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 require('./config/database');
+const departmentRoute = require("./routers/departmentRouter.js")
 
 app.use(cors());
 app.use(express.json({ limit: '30mb', extended: true }));
 app.use(express.urlencoded({ limit: '30mb', extended: true }));
+
+app.use('/department',departmentRoute)
 
 let port = 8000;
 app.listen(port, () => {
