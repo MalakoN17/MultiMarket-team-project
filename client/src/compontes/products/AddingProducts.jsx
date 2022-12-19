@@ -1,18 +1,47 @@
 import React from 'react'
 import { useState } from 'react'
+import axios from 'axios'
+import {Outlet} from 'react-router-dom'
 
 export default function AddingProducts() {
-    const [product, setProduct] = useState({barcode:'', image:'', name:'', price:0, priority:'', sectionId:'', kosherType:'', productTag:'', weight:{inWeight:'', avgWeightPerUnit:0, weightUnit:''}, units:{unitsInCarton:'',amount:'', minimumOrderCartonsCount:'', measureUnits:''},contactInfo:{contactNumber:'', contactName:''},expirationDate:'', manufacturer:'', parallelImporter:false, brand:'', salesQuantity:0, productStock:'', description:''})
+    const [product, setProduct] = useState({ contactInfo:{contactNumber:'', contactName:''},expirationDate:'', manufacturer:'', parallelImporter:false,})
+    const [productImg, setProductImg] = useState('')
 
-    const handleInput = (e)=>{
-        const {name, value} = e.target
-        setProduct({...product, [name]:value})
-    }
+    const handleProductImageUpload = (e) => {
+      const file = e.target.files[0];
+      TransformFileData(file);
+    };
+  
+    const TransformFileData = (file) => {
+      const reader = new FileReader();
+  
+      if (file) {
+        reader.readAsDataURL(file);
+        reader.onloadend = () => {
+          setProduct({...product, image:reader.result});
+        };
+      } else {
+        setProduct({...product, image:''});
+      }
+    };
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      try {
+        const response = await axios.post(`http://localhost:5000/api/product`, {
+          image: productImg,
+        });
+        console.log(response);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+
+
   return (
     <div>
-        <form>
-            
-        </form>
+      <h1 className='text-7xl'>add product</h1>
+      <Outlet/>
     </div>
   )
 }

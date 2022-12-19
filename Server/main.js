@@ -28,6 +28,9 @@ app.use('/api/section', sectionRouter);
 // app.use('/api/shippingCertificate', shippingCertificateRouter);
 app.use('/auth', authRouter);
 
+app.use(express.json({ limit: '30mb', extended: true }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
+
 let port = 8000;
 app.listen(port, () => {
   console.log(`server run on ${port}`);
