@@ -1,13 +1,39 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+
+import DesktopNav from "../navbar/DesktopNav"
+import MobileNav from "../navbar/MobileNav"
+import Store from './store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
+<<<<<<< HEAD:client/src/compontes/main/StoreList.jsx
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import Cart from './Cart';
 function StoreList() {
+=======
+import onion from '../../assets/images/products_images/onions.jpg';
+
+
+export default function Stores() {
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    const getStores = async () => {
+      const res = await axios.get('http://localhost:8000/api/store');
+      console.log(res.data);
+      setStores(res.data);
+    };
+    getStores();
+  }, [stores]);
+
+
+>>>>>>> f173a4a8ea837141f23dce36e5b009949bd88ec0:client/src/compontes/stores/stores.jsx
   return (
     <>
+    <DesktopNav />
+    <MobileNav />
       <div className="background-image w-full">
         <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
       </div>
@@ -67,6 +93,7 @@ function StoreList() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
+<<<<<<< HEAD:client/src/compontes/main/StoreList.jsx
             <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
               <img src={smallHome} alt="" />
               <div>
@@ -146,6 +173,15 @@ function StoreList() {
                 </div>
               </div>
               <button className="store-btn">קנה בחנות זו</button>
+=======
+            {stores.map((store,index)=>{
+              return(
+                <div key={index}><Store store={store} /></div>
+              )
+            })}
+            <div>
+              <button className="pul-btn text-gray-800">+</button>
+>>>>>>> f173a4a8ea837141f23dce36e5b009949bd88ec0:client/src/compontes/stores/stores.jsx
             </div>
           </div>
         </div>
@@ -157,7 +193,6 @@ function StoreList() {
         <ControlPointIcon className="open-store" />
       </div>
     </>
-  );
+  )
 }
 
-export default StoreList;

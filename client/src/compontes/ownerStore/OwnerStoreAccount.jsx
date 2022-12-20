@@ -12,11 +12,11 @@ export default function OwnerStoreAccount() {
   return (
     <div>
         
-      { store.bnNumber }
+      {/* { store.bnNumber }
        { store.name}
         {store.description}
         {store.lightlogo}
-        {store.darklogo}
+        {store.darklogo} */}
         {/* {coverImage}
         { address}
        { phone}
