@@ -3,6 +3,7 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 require('./config/database');
+const storeRoute= require("./routers/storeRouter.js")
 
 app.use(cors());
 app.use(express.json());
@@ -30,6 +31,7 @@ app.use('/auth', authRouter);
 
 app.use(express.json({ limit: '30mb', extended: true }));
 app.use(express.urlencoded({ limit: '30mb', extended: true }));
+app.use('/store',storeRoute)
 
 // const productRouter = require('./routers/productsRouter');
 // app.use('/api/product', productRouter);
