@@ -10,11 +10,16 @@ import AddingProducts from './compontes/products/AddingProducts';
 import FormProductOne from './compontes/products/FormProductOne';
 import FormProductTwo from './compontes/products/FormProductTwo';
 import FormProductThree from './compontes/products/FormProductThree';
+import StoreList from './compontes/main/StoreList';
 import Chat from './pages/Chat';
+import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
+import NavOwner from './compontes/ownerStore/NavOwner';
+import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 
 function App() {
   return (
     <>
+      <OwnerStoreAccount />
       <Router>
         <Routes>
           <Route path="" element={<Home />} />
