@@ -19,11 +19,11 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
 
     return (
 
-        <div>
-            <div className="owners-chat border-blue-500 border-4">
+        <div className='w-1/4 items-end'>
+            <div className="owners-chat rounded border-r-2">
                 {/* {currentUserImage && currentUserName && ( */}
-                <ul className="overflow-auto h-[32rem]">
-                    <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600">Chats</h2>
+                <ul className="overflow-auto h-[34rem]">
+                    <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] ">הודעות</h2>
                     {contacts.map((contact, index) => {
                         <li key={contact._id} className={` border-pink-500 border-4 contact overflow-hidden ${index === currentSelected ? 'selected' : ''
                     }`} onClick={() => changeCurrentChat(index, contact)}

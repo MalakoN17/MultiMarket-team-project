@@ -12,6 +12,7 @@ import FormProductTwo from './compontes/products/FormProductTwo';
 import FormProductThree from './compontes/products/FormProductThree';
 import StoreList from "./compontes/main/StoreList";
 import Chat from './pages/Chat';
+import Footer from './compontes/footer/Footer';
 
 function App() {
   return (
