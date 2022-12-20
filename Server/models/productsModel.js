@@ -44,32 +44,27 @@ const ProductSchema = new mongoose.Schema({
   },
   subcategory: { type: String },
   weight: {
-    type: Object,
-    inWeight: { type: Boolean },
-    avgWeightPerUnit: {
-      type: Number,
-      hide: true,
-      required: true,
-      min: 0,
-    },
-    weightUnit: {
-      type: String,
-      required: true,
-      enum: ['kgs', 'gr', 'liters', 'mls'],
-      default: 'kgs',
-      hide: true,
-    },
+    type: Number,
+    require: true
+  },
+  weightUnit: {
+    type: String,
+    required: true,
+    enum: ['kg', 'g', 'liters', 'mls'],
+    default: 'kg',
+    hide: true,
   },
   units: {
-    type: Object,
-    unitsInCarton: { type: Number, min: '0', default: 1 },
-    amount: { type: Number, default: 1, min: '0' },
-    measureUnits: {
-      type: String,
-      enum: ['units', 'kg', 'g', 'liters', 'mls'],
-      default: 'units',
-      hide: true,
-    },
+    type: Number,
+    require: true
+    // unitsInCarton: { type: Number, min: '0', default: 1 },
+    // amount: { type: Number, default: 1, min: '0' },
+    // measureUnits: {
+    //   type: String,
+    //   enum: ['units', 'kg', 'g', 'liters', 'mls'],
+    //   default: 'units',
+    //   hide: true,
+    // },
   },
   contactNumber: {
     type: String,
@@ -81,7 +76,7 @@ const ProductSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  brand: { type: String },
+  // brand: { type: String },
   salesQuantity: { type: Number, required: true, default: 0 },
   productStock: { type: Number, required: true, default: '' },
   lastUpdate: { type: Date, default: Date.now },
