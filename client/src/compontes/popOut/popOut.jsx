@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
+import {settingSelect} from "../../features/city/citySlice"
 
 export default function PopOut() {
-  // const {cityValue} = useSelector((state)=> state.city);
-  // const dispatch = useDispatch();
-  const {city,setCity} = useState("תל אביב")
+  const {cityValue} = useSelector((state)=> state.city);
+  const dispatch = useDispatch();
+  const [city,setCity] = useState("")
+
   const [show, setShow] = useState(true);
 
   const handleCitySelect = (e) => {
-    console.log(e.target.value);
     setCity(e.target.value);
+    
   };
+
+  const handleForm =(e)=>{
+    e.preventDefault()
+    dispatch(settingSelect(city))
+  }
   return (
     
     <div className={show ? 'block' : 'hidden'}>
@@ -58,12 +65,13 @@ export default function PopOut() {
                 </div>
               </div>
               <div className="bg-gray-50 px-4 py-3 items-center">
-                <button
+                <button onClick={handleForm}
                   type="button"
                   className="rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
                 >
                   התחל קנייה
                 </button>
+               
               </div>
             </div>
           </div>

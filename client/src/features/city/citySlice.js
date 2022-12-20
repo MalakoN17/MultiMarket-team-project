@@ -1,16 +1,18 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  cityValue: 'שוהם',
+  cityValue: '',
 };
 export const citySlice = createSlice({
   name: 'city',
   initialState,
   reducers: {
     clearSelect: (state) => {
+      console.log(initialState);
       state.cityValue = initialState;
     },
     settingSelect: (state, action) => {
-      state.cityValue = action.payload;
+      state.cityValue = action.payload
+
     },
   },
 });
