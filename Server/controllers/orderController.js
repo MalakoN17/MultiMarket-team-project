@@ -37,8 +37,11 @@ const deleteOrder = async (req, res, next) => {
 //Get
 const getOrder = async (req, res, next) => {
   try {
-    const order = await orderModel.findById(req.params.id);
-    res.status(200).json(order);
+    if(req.user._id == req.params.id){
+      const order = await orderModel.findById(req.params.id);
+      res.status(200).json(order);
+    }
+    res.status(401).json('user not authorized')
   } catch (err) {
     next(err);
   }
