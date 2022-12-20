@@ -9,18 +9,18 @@ export default function store(props) {
         <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
               <img src={props.smallHome} alt="" />
               <div>
-                <h4>חוות הבית</h4>
+                <h4>{props.store.name}</h4>
                 <p></p>
-                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
+                <p>{props.store.description}</p>
                 <div className="flex">
                   <img
                     className="business-liaison-logo"
-                    src={props.business}
+                    src={props.store.lightlogo}
                     alt=""
                   />
                   <div>
-                    <p>עמק זבולון 3,</p>
-                    <p>מודעין, אזור המרכז</p>
+                    <p>{props.store.address.city}</p>
+                    <p>{props.store.address.street}</p>
                   </div>
                 </div>
               </div>

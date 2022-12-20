@@ -1,4 +1,6 @@
-import React from 'react';
+import React,{useState,useEffect} from 'react';
+import axios from 'axios';
+
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
@@ -9,7 +11,19 @@ import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 
 
-export default function stores() {
+export default function Stores() {
+  const [stores, setStores] = useState([]);
+
+  useEffect(() => {
+    const getStores = async () => {
+      const res = await axios.get('http://localhost:8000/api/store');
+      console.log(res.data);
+      setStores(res.data);
+    };
+    getStores();
+  }, [stores]);
+
+
   return (
     <>
     <DesktopNav />
@@ -73,10 +87,11 @@ export default function stores() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            <Store smallHome={smallHome} business={businessLiaisonLogo} />
-            <Store smallHome={smallHome} business={businessLiaisonLogo} />
-            <Store smallHome={smallHome} business={businessLiaisonLogo} />
-            <Store smallHome={smallHome} business={businessLiaisonLogo} />
+            {stores.map((store,index)=>{
+              return(
+                <div key={index}><Store store={store} /></div>
+              )
+            })}
             <div>
               <button className="pul-btn text-gray-800">+</button>
             </div>
