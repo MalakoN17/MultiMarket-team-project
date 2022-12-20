@@ -1,4 +1,4 @@
-import Department from '../compontes/main/Department'
+import Departments from '../compontes/main/Departments'
 import MobileNav from '../compontes/navbar/MobileNav'
 import DesktopNav from '../compontes/navbar/DesktopNav'
 import FooterMobile from '../compontes/footer/footerMobile'
@@ -10,7 +10,7 @@ function Main() {
         <div>
             <MobileNav />
             <DesktopNav />
-            <Department />
+            <Departments />
             <FooterMobile />
             <Footer />
         </div>

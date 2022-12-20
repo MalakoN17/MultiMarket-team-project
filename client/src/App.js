@@ -4,13 +4,12 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 
 import Home from './pages/Home';
 import Main from './pages/Main';
-import Store from './pages/Store';
+import StorePage from './pages/StorePage';
 import Error from './pages/Error';
 import AddingProducts from './compontes/products/AddingProducts';
 import FormProductOne from './compontes/products/FormProductOne';
 import FormProductTwo from './compontes/products/FormProductTwo';
 import FormProductThree from './compontes/products/FormProductThree';
-import StoreList from "./compontes/main/StoreList";
 import Chat from './pages/Chat';
 
 function App() {
@@ -20,7 +19,7 @@ function App() {
         <Routes>
           <Route path="" element={<Home />} />
           <Route path="main" element={<Main />} />
-          <Route path="store" element={<Store />} />
+          <Route path="store" element={<StorePage />} />
           <Route path="addproduct" element={<AddingProducts />}>
             <Route path="formproductone" element={<FormProductOne />} />
             <Route path="formproducttwo" element={<FormProductTwo />} />
