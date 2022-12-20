@@ -1,43 +1,82 @@
 const jwt = require('jsonwebtoken');
 const usersSchema = require('../models/userSchema');
-const bcrypt = require('bcryptjs')
+const bcrypt = require('bcryptjs');
+const {createNewUser} = require('./userController')
 
-// const register = async (req, res)=>{
-//     const {email, password} = req.body
+// let refreshTokens = [];
 
-//     if(!email || !password){
-//         res.status(400);
-//         throw new Error('User is not exist')
-//     }
+// REFRESH TOKEN
+// const refreshToken = async (req, res, next) => {
+//   const refreshToken = req.body.token;
+//   if (refreshToken == null) return res.sendStatus(401);
+//   if (!refreshTokens.includes(refreshToken)) return res.sendStatus(403);
+//   jwt.verify(refreshToken, process.env.REFRESH_TOKEN_SECRET, (err, user) => {
+//     if (err) return res.sendStatus(403)
+//     const accessToken = generateAccessToken(user.id)
+//     res.json({ accessToken: accessToken })
+//   })
+// };
 
-//     const user = await usersSchema.findOne({ email });
-//     if(!user){
-//         res.status(400);
-//         throw new Error('User is not exist')
-//     }
+// REGISTER
+const register = async (req, res, next) => {
+  const { email, password } = req.body;
 
+  if (!email || !password) {
+    res.status(400);
+    throw new Error('User is not exist');
+  }
 
-//     const salt = await bcrypt.genSalt(10);
-//     const 
-
-
-
-// }
-const login = async (req, res, next) => {
-  const { email } = req.body;
   const user = await usersSchema.findOne({ email });
+  if (user) {
+    res.status(400);
+    throw new Error('User is exist');
+  }
+
+  // hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
   try {
-    const accessToken = generateAccessToken(user._id);
-    res.json(accessToken);
+    const data = req.body
+    data.password = hashedPassword
+    const newUser = usersSchema(data);
+    await newUser.save();
+    // createNewUser(data);
+    res.status(200).json('user created');
   } catch (error) {
     next(error);
   }
 };
 
-const generateAccessToken = (id) => {
-  return jwt.sign({ id }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30s',
+// LOGIN
+const login = async (req, res, next) => {
+  const { email, password } = req.body;
+  if (!email || !password) {
+    res.status(400);
+    throw new Error('User is not exist');
+  }
+
+  const user = await usersSchema.findOne({ email });
+
+  try {
+    if (user && (await bcrypt.compare(password, user.password))){
+    const accessToken = generateAccessToken(user);
+    res.json({ accessToken: accessToken});
+      }
+      else {
+        res.status(400);
+        throw new Error('User is not exist');
+      }
+  } catch (error) {
+    next(error);
+  }
+};
+
+// ACCESS TOKEN
+const generateAccessToken = (user) => {
+  return jwt.sign({...user._doc}, process.env.ACCESS_TOKEN_SECRET, {
+    expiresIn: '30m',
   });
 };
 
-module.exports = { login };
+module.exports = { login, register};
