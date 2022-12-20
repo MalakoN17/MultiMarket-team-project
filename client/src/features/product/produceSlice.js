@@ -1,4 +1,4 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
   barcode: '',
@@ -8,30 +8,28 @@ const initialState = {
   priority: 0,
   description: '',
   message: '',
-}
+};
 
 const productSlice = createSlice({
   name: 'product',
   initialState,
   reducers: {
     clearProduct: (state) => {
-      state = initialState
+      state = initialState;
     },
     settingProduct: (state, action) => {
-      const {name, image, price, priority, description, barcode}  = action.payload;
+      const { name, image, price, priority, description, barcode } =
+        action.payload;
       //  state = [...state, action.payload];
 
-      state.name = name
-      state.barcode = barcode
-      state.image = image
-      state.price = price
-      state.priority = priority
-      state.description = description
-    }
+      state.name = name;
+      state.barcode = barcode;
+      state.image = image;
+      state.price = price;
+      state.priority = priority;
+      state.description = description;
+    },
   },
-
-
-
 });
 
 // console.log(productSlice);
