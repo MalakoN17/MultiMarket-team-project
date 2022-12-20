@@ -1,9 +1,22 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getStoreApi, getStoreProductsApi } from './ownerStoreService';
 const initialState = {
-  nameStore: '',
-  image: '',
-  products: [],
+  bnNumber: '',
+  name: '',
+  description: '',
+  lightlogo: '',
+  darklogo: '',
+  coverImage: '',
+  phone: '',
+  email: '',
+  departmentIds: [],
+  address: {
+    city: '',
+    street: '',
+    building: '',
+    apartment: '',
+  },
+  // products: [],
 };
 
 export const getStores = createAsyncThunk(
@@ -36,11 +49,15 @@ const storeSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(getStores.pending, (state) => {});
-    builder.addCase(getStores.fulfilled, (state, action) => {
-      console.log(action.payload);
-    });
-    builder.addCase(getStores.rejected, (action) => {});
+    builder
+      .addCase(getStores.pending, (state) => {})
+      .addCase(getStores.fulfilled, (state, action) => {
+        state = action.payload;
+        console.log(state);
+      })
+      .addCase(getStores.rejected, (action) => {
+        console.log(action);
+      });
   },
 });
 

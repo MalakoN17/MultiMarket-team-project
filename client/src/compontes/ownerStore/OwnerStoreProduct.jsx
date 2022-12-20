@@ -9,7 +9,6 @@ export default function OwnerStoreProduct() {
     },[])
   return (
     <div>
-    כל המידע מגיע ב props
     <div>
         <img src={''} alt=''/>
     </div>

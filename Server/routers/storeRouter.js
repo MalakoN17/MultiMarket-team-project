@@ -9,10 +9,6 @@ const {
   getAllStoresByCityName,
   getStoreByDepartment,
   getStoreBySection,
-  getProductsInStore,
-  updateProduct,
-  addProductToStore,
-  deleteProductInStore,
 } = require('../controllers/storeController');
 //Create
 router.post('/', createNewStore);
