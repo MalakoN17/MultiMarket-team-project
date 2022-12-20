@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 export default function LoginDemo({
     // email,
     // password,
-    // loginFun,
+    loginFun,
     btnText,
     linkDisplay,
     // singInWithGoogle,
@@ -38,6 +38,7 @@ export default function LoginDemo({
           {/* button */}
           <button
             className="w-full py-3 bg-[#2d2d2d] hover:bg-[#aaa] relative text-[#fff]"
+            onClick={loginFun}
           >
             {btnText}
           </button>
