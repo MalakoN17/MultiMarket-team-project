@@ -1,18 +1,14 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-
+import Cart from '../main/Cart';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
-import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
-<<<<<<< HEAD:client/src/compontes/main/StoreList.jsx
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
-import Cart from './Cart';
-function StoreList() {
-=======
+import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 
 
@@ -22,14 +18,12 @@ export default function Stores() {
   useEffect(() => {
     const getStores = async () => {
       const res = await axios.get('http://localhost:8000/api/store');
-      console.log(res.data);
       setStores(res.data);
     };
     getStores();
   }, [stores]);
 
 
->>>>>>> f173a4a8ea837141f23dce36e5b009949bd88ec0:client/src/compontes/stores/stores.jsx
   return (
     <>
     <DesktopNav />
@@ -93,87 +87,6 @@ export default function Stores() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-<<<<<<< HEAD:client/src/compontes/main/StoreList.jsx
-            <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-              <img src={smallHome} alt="" />
-              <div>
-                <h4>חוות הבית</h4>
-                <p></p>
-                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                <div className="flex">
-                  <img
-                    className="business-liaison-logo"
-                    src={businessLiaisonLogo}
-                    alt=""
-                  />
-                  <div>
-                    <p>עמק זבולון 3,</p>
-                    <p>מודעין, אזור המרכז</p>
-                  </div>
-                </div>
-              </div>
-              <button className="store-btn">קנה בחנות זו</button>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-              <img src={smallHome} alt="" />
-              <div>
-                <h4>חוות הבית</h4>
-                <p></p>
-                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                <div className="flex">
-                  <img
-                    className="business-liaison-logo"
-                    src={businessLiaisonLogo}
-                    alt=""
-                  />
-                  <div>
-                    <p>עמק זבולון 3,</p>
-                    <p>מודעין, אזור המרכז</p>
-                  </div>
-                </div>
-              </div>
-              <button className="store-btn">קנה בחנות זו</button>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-              <img src={smallHome} alt="" />
-              <div>
-                <h4>חוות הבית</h4>
-                <p></p>
-                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                <div className="flex">
-                  <img
-                    className="business-liaison-logo"
-                    src={businessLiaisonLogo}
-                    alt=""
-                  />
-                  <div>
-                    <p>עמק זבולון 3,</p>
-                    <p>מודעין, אזור המרכז</p>
-                  </div>
-                </div>
-              </div>
-              <button className="store-btn">קנה בחנות זו</button>
-            </div>
-            <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-              <img src={smallHome} alt="" />
-              <div>
-                <h4>חוות הבית</h4>
-                <p></p>
-                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                <div className="flex">
-                  <img
-                    className="business-liaison-logo"
-                    src={businessLiaisonLogo}
-                    alt=""
-                  />
-                  <div>
-                    <p>עמק זבולון 3,</p>
-                    <p>מודעין, אזור המרכז</p>
-                  </div>
-                </div>
-              </div>
-              <button className="store-btn">קנה בחנות זו</button>
-=======
             {stores.map((store,index)=>{
               return(
                 <div key={index}><Store store={store} /></div>
@@ -181,7 +94,6 @@ export default function Stores() {
             })}
             <div>
               <button className="pul-btn text-gray-800">+</button>
->>>>>>> f173a4a8ea837141f23dce36e5b009949bd88ec0:client/src/compontes/stores/stores.jsx
             </div>
           </div>
         </div>

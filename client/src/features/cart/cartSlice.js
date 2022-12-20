@@ -25,18 +25,18 @@ const cartSlice = createSlice({
         removeItem:(state, action) =>{
             const id = action.payload;
             state.cartItems = state.cartItems.filter((item)=>{
-                item.id !== id;
+                return item.id !== id;
             })
         },
         increase: (state, action)=>{
             const crateItem = state.cartItems.find((item)=>{
-                item.id === action.payload.id
+                return item.id === action.payload.id
             })
             crateItem.amount = crateItem.amount + 1
         },
         decrease: (state, action)=>{
             const crateItem = state.cartItems.find((item)=>{
-                item.id === action.payload.id
+                return item.id === action.payload.id
             })
             crateItem.amount = crateItem.amount - 1
         },
