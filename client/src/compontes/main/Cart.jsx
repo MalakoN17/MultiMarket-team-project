@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { addProduct } from '../../features/cart/cartSlice';
+import { addProduct, increase, decrease } from '../../features/cart/cartSlice';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
@@ -10,10 +10,15 @@ import './cartStyle.css';
 function Cart() {
     const [order, setOrder] = useState([{id:1, storeName:'ירקות', products:[{id:12, name:'בצל', quantity:1, price:9.90}]},{id:1, storeName:'ירקות', products:[{id:12, name:'בצל', quantity:1, price:9.90}]}])
     const {amount} = useSelector((store) => store.cart)
+    const cart = useSelector((store) => store.cart)
+    // console.log(cart);
+
+    useEffect(()=>{
+      console.log(cart);
+    },[])
     const dispatch = useDispatch()
-    const hendle = ()=>{
-        // dispatch(addProduct({product, amount}))
-    }
+
+      
   return (
     <>
       <div className='h-full'>
@@ -45,9 +50,9 @@ function Cart() {
                                 </div>
                                 <div>
                                   <div className="flex gap-1">
-                                    <RemoveCircleOutlineIcon />
+                                    <RemoveCircleOutlineIcon onClick={()=>dispatch(decrease())}/>
                                     <p>{product.quantity}</p>
-                                    <ControlPointIcon />
+                                    <ControlPointIcon onClick={()=>dispatch(increase())}/>
                                   </div>
                                   <div>
                                     <p>{product.price} ש"ח</p>
@@ -57,19 +62,6 @@ function Cart() {
                             )
 
                         })}
-
-                      {/* <div className="flex items-center justify-around">
-                        <img src={onion} alt="" width="60px" />
-                        <div>
-                          <p className="product-name">שם מוצר</p>
-                          <p className="text-gray-400">שם החנות</p>
-                        </div>
-                        <div className="flex gap-1">
-                          <RemoveCircleOutlineIcon />
-                          <p>2</p>
-                          <ControlPointIcon />
-                        </div>
-                      </div> */}
                       <div className="flex justify-end">
                         <p className="store-sum">סה"כ: 4 ש"ח</p>
                       </div>
@@ -77,53 +69,6 @@ function Cart() {
                   </div>
                 )
             })}
-
-          <div>
-            <div className="bg-gray-100 flex gap-1 p-1">
-              <div className="store-img-cart-container">
-                <img
-                  className="store-img-cart"
-                  src={businessLiaisonLogo}
-                  alt=""
-                />
-              </div>
-              <p>שם החנות</p>
-            </div>
-            <div className="products-cart-container">
-              <div className="flex items-center justify-around">
-                <img src={onion} alt="" width="60px" />
-                <div>
-                  <p className="product-name">שם מוצר</p>
-                  <p className="text-gray-400">שם החנות</p>
-                </div>
-                <div>
-                  <div className="flex gap-1">
-                    <RemoveCircleOutlineIcon />
-                    <p>2</p>
-                    <ControlPointIcon />
-                  </div>
-                  <div>
-                    <p>9.90 ש"ח</p>
-                  </div>
-                </div>
-              </div>
-              <div className="flex items-center justify-around">
-                <img src={onion} alt="" width="60px" />
-                <div>
-                  <p className="product-name">שם מוצר</p>
-                  <p className="text-gray-400">שם החנות</p>
-                </div>
-                <div className="flex gap-1">
-                  <RemoveCircleOutlineIcon />
-                  <p>2</p>
-                  <ControlPointIcon />
-                </div>
-              </div>
-              <div className="flex justify-end">
-                <p className="store-sum">סה"כ: 4 ש"ח</p>
-              </div>
-            </div>
-          </div>
           <div className='sum-container'>
             <div className='p-3'>
             <div className="flex justify-between">
@@ -134,7 +79,6 @@ function Cart() {
               <p>בקניה זו חסכת</p>
               <p>8 ש"ח</p>
             </div>
-            <button>הסוף  מוצר</button>
             <div className="flex justify-between">
               <p>מספר מוצרים</p>
               <p>{amount}</p>
