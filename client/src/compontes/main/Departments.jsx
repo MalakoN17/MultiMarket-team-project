@@ -1,41 +1,47 @@
 import React from 'react';
-import './department.css';
-
 import axios from 'axios';
-import { useState } from 'react';
-
-export default function Departments(props) {
+import { useState, useEffect } from 'react';
+import Department from './Department';
+import SearchInput from './searchInput';
+import './department.css';
+ 
+export default function Departments() {
+  const [departments, setDepartments] = useState([]);
+ 
+  useEffect(() => {
+    const getDepartments = async () => {
+      const res = await axios.get('http://localhost:8000/api/department');
+      console.log(res.data);
+      setDepartments(res.data);
+    };
+    getDepartments();
+  }, [departments]);
   return (
-    // <div
-    //   className="image-depart h-50 group-hover:opacity-75"
-    //   // style={{
-    //   //   backgroundImage: 'url(' + props.department.coverImage + ')',
-    //   //   backgroundPosition: 'center',
-    //   //   backgroundSize: 'cover',
-    //   //   backgroundRepeat: 'no-repeat',
-    //   // }}
-    // >
-    //   <a href="#" className="group">
-    //     <div className="departmentImg aspect-w-1 aspect-h-1 xl:aspect-w-7 xl:aspect-h-8">
-    //       <img
-    //     src={props.department.coverImage}
-    //     alt={props.department.name}
-    //     className="image-depart group-hover:opacity-75"
-    //   />
-    //     </div>
-    //     <h3 className="departmentTitle">{props.department.name}</h3>
-    //   </a>
-    // </div>
-
-    <div class="max-w-sm rounded overflow-hidden shadow-lg">
-      <img
-        class="w-full"
-        src={props.department.coverImage}
-        alt="Sunset in the mountains"
-      />
-      <div class="px-6 py-4 bg-white text-right">
-        <div class="font-bold text-xl mb-2">{props.department.name}</div>
+    <div
+      style={{
+        backgroundImage:
+          'url(' +
+          'https://media.istockphoto.com/id/1225155638/photo/green-leaves-on-white.jpg?b=1&s=612x612&w=0&k=20&c=U-yuGVnwjAnib3tiSZEiUA4rjimL0Nlfdwrkr7lpwQM=' +
+          ')',
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+      }}
+      className=""
+    >
+      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+       <SearchInput />
+        <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
+          {departments.map((department,index) => {
+            return (
+              <div key={index}><Department department={department} /></div>
+            )
+          })}
+        </div>
       </div>
     </div>
   );
 }
+ 
+
+
