@@ -17,7 +17,7 @@ export default function Stores() {
   useEffect(() => {
     const getStores = async () => {
       const res = await axios.get('http://localhost:8000/api/store');
-      console.log(res.data);
+      // console.log(res.data);
       setStores(res.data);
     };
     getStores();

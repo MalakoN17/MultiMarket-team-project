@@ -1,15 +1,13 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import {useDispatch, useSelector} from "react-redux"
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
 
 export default function PopOut() {
-  const getInitialState = () => {
-    const value = '';
-    return value;
-  };
+  // const {cityValue} = useSelector((state)=> state.city);
+  // const dispatch = useDispatch();
+  const {city,setCity} = useState("תל אביב")
   const [show, setShow] = useState(true);
-  const [city, setCity] = useState(getInitialState);
 
   const handleCitySelect = (e) => {
     console.log(e.target.value);
@@ -45,10 +43,10 @@ export default function PopOut() {
                     </h3>
                     <div className="mt-2">
                       <select
+                      onChange={(e)=>handleCitySelect(e)}
                         value={city}
-                        onChange={handleCitySelect}
-                        name="cars"
-                        id="cars"
+                        name="cities"
+                        id="cities"
                       >
                         <option value="ירושלים">ירושלים </option>
                         <option value="תל אביב">תל אביב</option>
