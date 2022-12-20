@@ -11,7 +11,7 @@ function Cart() {
     const {amount} = useSelector((store) => store.cart)
     const dispatch = useDispatch()
     const hendle = ()=>{
-        dispatch(addProduct({amount}))
+        dispatch(addProduct(amount))
     }
   return (
     <>
