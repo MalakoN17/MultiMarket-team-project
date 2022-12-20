@@ -28,7 +28,7 @@ const StoreSchema = new mongoose.Schema({
     noSearch: true,
   },
   coverImage: {
-    required: true,
+    // required: true,
     public_id: String,
     url: String,
   },

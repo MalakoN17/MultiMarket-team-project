@@ -3,12 +3,12 @@ const mongoose = require('mongoose');
 const OwnerStoreUserSchema = new mongoose.Schema({
   firstName: { type: String, required: true },
   lastName: { type: String, required: true },
-  userName: String,
+  // userName: String,
   email: { type: String, required: true, unique: true, lowercase: true },
   phone: { type: String, unique: true },
   password: { type: String, required: true },
-  authToken: { type: String },
-  loginCode: { type: String },
+  // authToken: { type: String },
+  // loginCode: { type: String },
   role: {
     type: String,
     enum: ['store', 'admin', 'owner', 'delivery'],

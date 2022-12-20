@@ -93,7 +93,7 @@ const deleteProduct = async (req, res, next) => {
     if (result) {
       await productsModel.findByIdDelete(productId);
     }
-    res.status(200).json(products);
+    res.status(200).json(productsModel);
   } catch (error) {
     next(error);
   }

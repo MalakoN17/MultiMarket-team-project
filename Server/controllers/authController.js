@@ -1,8 +1,7 @@
 const jwt = require('jsonwebtoken');
 const usersSchema = require('../models/userSchema');
+const storeOwnersSchema = require('../models/ownerStoreUserSchema')
 const bcrypt = require('bcryptjs');
-const {createNewUser} = require('./userController')
-
 // let refreshTokens = [];
 
 // REFRESH TOKEN
@@ -23,7 +22,7 @@ const register = async (req, res, next) => {
 
   if (!email || !password) {
     res.status(400);
-    throw new Error('User is not exist');
+    throw new Error('Email and password required');
   }
 
   const user = await usersSchema.findOne({ email });
@@ -37,11 +36,10 @@ const register = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
-    const data = req.body
-    data.password = hashedPassword
+    const data = req.body;
+    data.password = hashedPassword;
     const newUser = usersSchema(data);
     await newUser.save();
-    // createNewUser(data);
     res.status(200).json('user created');
   } catch (error) {
     next(error);
@@ -57,16 +55,18 @@ const login = async (req, res, next) => {
   }
 
   const user = await usersSchema.findOne({ email });
+  const storeOwner = await storeOwnersSchema.findOne({ email });
 
   try {
-    if (user && (await bcrypt.compare(password, user.password))){
-    const accessToken = generateAccessToken(user);
-    res.json({ accessToken: accessToken});
-      }
-      else {
-        res.status(400);
-        throw new Error('User is not exist');
-      }
+    if (
+      user || storeOwner && (await bcrypt.compare(password, user?.password || storeOwner?.password)))
+     {
+      const accessToken = generateAccessToken(user || storeOwner);
+      res.json({ accessToken: accessToken });
+    } else {
+      res.status(400);
+      throw new Error('User is not exist');
+    }
   } catch (error) {
     next(error);
   }
@@ -74,9 +74,9 @@ const login = async (req, res, next) => {
 
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
-  return jwt.sign({...user._doc}, process.env.ACCESS_TOKEN_SECRET, {
+  return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
     expiresIn: '30m',
   });
 };
 
-module.exports = { login, register};
+module.exports = { login, register };
