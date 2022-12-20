@@ -11,7 +11,6 @@ export default function Departments() {
   useEffect(() => {
     const getDepartments = async () => {
       const res = await axios.get('http://localhost:8000/api/department');
-      console.log(res.data);
       setDepartments(res.data);
     };
     getDepartments();
