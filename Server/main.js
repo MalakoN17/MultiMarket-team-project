@@ -17,6 +17,7 @@ const orderRouter = require('./routers/orderRouter');
 const sectionRouter = require('./routers/sectionRouter');
 // const shippingCertificateRouter = require('./routers/shippingCertificateRouter');
 const authRouter = require('./routers/authRouter');
+const stripeRouter = require('./routers/stripeRouter')
 
 app.use('/api/store', storeRouter);
 app.use('/api/user', userRouter);
@@ -27,6 +28,7 @@ app.use('/api/order', orderRouter);
 app.use('/api/section', sectionRouter);
 // app.use('/api/shippingCertificate', shippingCertificateRouter);
 app.use('/auth', authRouter);
+app.use('/api/stripe', stripeRouter)
 
 app.use(express.json({ limit: '30mb', extended: true }));
 app.use(express.urlencoded({ limit: '30mb', extended: true }));
