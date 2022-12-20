@@ -1,0 +1,14 @@
+.MuiSvgIcon-root{
+    color: #A3D120;
+}
+.store-sum{
+    border-top: 1px solid rgb(150, 149, 149);
+}
+.sum-container{
+    border-top: 1px solid rgb(156, 156, 156);
+}
+.pay-btn{
+    color: white;
+    background-color: #A3D120;
+    height: 50px;
+}

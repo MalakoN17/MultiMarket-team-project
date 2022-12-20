@@ -1,12 +1,13 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-
+import Cart from '../main/Cart';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
+import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 
@@ -17,7 +18,6 @@ export default function Stores() {
   useEffect(() => {
     const getStores = async () => {
       const res = await axios.get('http://localhost:8000/api/store');
-      console.log(res.data);
       setStores(res.data);
     };
     getStores();
@@ -34,7 +34,7 @@ export default function Stores() {
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטגוריה </h1>
       </div>
-      <div className="container flex justify-center">
+      <div className="container  md:w-100% flex justify-center gap-2">
         <div className="container gap-3 w-[40%]">
           <div>
             <div className="flex gap-3">
@@ -43,10 +43,10 @@ export default function Stores() {
               <p className="text-blue-400 flex">בית קפה </p>
             </div>
           </div>
-          <div className="flex gap-2">
+          <div className="flex justify-between gap-2">
             <div>
               <h4>אזורים</h4>
-              <p>אזור מרכז</p>
+              <p className="text-blue-400">אזור מרכז</p>
               <p>אזור מרכז</p>
               <p>אזור מרכז</p>
               <p>אזור מרכז</p>
@@ -54,7 +54,7 @@ export default function Stores() {
             </div>
             <div>
               <h4>ישובים</h4>
-              <p>יבנה</p>
+              <p className="text-blue-400">יבנה</p>
               <p>יבנה</p>
               <p>יבנה</p>
               <p>יבנה</p>
@@ -63,7 +63,7 @@ export default function Stores() {
             </div>
             <div>
               <h4>סוגי חנויות</h4>
-              <p>ירקניה</p>
+              <p className="text-blue-400">ירקניה</p>
               <p>ירקניה</p>
               <p>ירקניה</p>
               <p>ירקניה</p>
@@ -72,7 +72,7 @@ export default function Stores() {
             </div>
             <div>
               <h4>סוגי מוצרים</h4>
-              <p>בשרי</p>
+              <p className="text-blue-400">בשרי</p>
               <p>בשרי</p>
               <p>בשרי</p>
               <p>בשרי</p>
@@ -98,35 +98,11 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          <div className="bg-gray-800 p-2 text-center">
-            <h3 className="text-white">עגלת קניות</h3>
-          </div>
-          <div>
-            <div className="bg-gray-100 flex gap-1 p-1">
-              <div className="store-img-cart-container">
-                <img
-                  className="store-img-cart"
-                  src={businessLiaisonLogo}
-                  alt=""
-                />
-              </div>
-              <p>שם החנות</p>
-            </div>
-            <div className="products-cart-container">
-              <div className='flex items-center justify-around'>
-                <img src={onion} alt="" width="60px"/>
-                <div>
-                    <p className='product-name'>שם מוצר</p>
-                    <p className='text-gray-400'>שם החנות</p>
-                </div>
-                <div className="flex gap-1">
-                  <p>2</p>
-                  <span className="add-btn">+</span>
-                </div>
-              </div>
-            </div>
-          </div>
+          <Cart />
         </div>
+      </div>
+      <div className="text-center relative left-[160px]">
+        <ControlPointIcon className="open-store" />
       </div>
     </>
   )
