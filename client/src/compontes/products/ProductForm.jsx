@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { settingProduct } from '../../features/product/produceSlice';
+import { settingProduct, uploadProduct } from '../../features/product/produceSlice';
 
 export default function ProductForm() {
   const item = useSelector((state) => state.product);
@@ -24,6 +24,7 @@ export default function ProductForm() {
     manufacturer: '',
     parallelImporter: false,
     importer: '',
+    createdBy:'test-destaw'
   });
   const {
     barcode,
@@ -51,8 +52,9 @@ export default function ProductForm() {
     if(name === 'image'){
       const file = e.target.files[0]
       TransformFileData(file)
+    }else{
+      setProduct({ ...product, [name]: value });
     }
-    setProduct({ ...product, [name]: value });
   };
 
   const TransformFileData = (file) => {
@@ -69,7 +71,9 @@ export default function ProductForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
-    dispatch(settingProduct({ product }));
+    product.storeId ='6390605ef3ee5834eff8fa0c'
+    dispatch(uploadProduct(product));
+    // dispatch(settingProduct({ product }));
     // navigate('/addproduct/formproducttwo')
   };
 
@@ -256,8 +260,8 @@ export default function ProductForm() {
                 className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
               >
                 <option>בחר סוג תוקף</option>
-                <option value="מוצר-מדף">מוצר מדף</option>
-                <option value="תוקף-קצר">תוקף קצר</option>
+                <option value="surfaces">מוצר מדף</option>
+                <option value="short-exp">תוקף קצר</option>
               </select>
             </div>
 

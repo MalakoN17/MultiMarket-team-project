@@ -22,7 +22,7 @@ function App() {
       {/* <Pr /> */}
       <Router>
         <Routes>
-          <Route path="" element={<UpdateStore />} />
+          <Route path="" element={<Main />} />
           <Route path="main" element={<Main />} />
 
           <Route path="storesroducts" element={<StoreProducts />} />

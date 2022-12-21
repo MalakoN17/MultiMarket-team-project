@@ -22,11 +22,11 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     enum: [1, 2, 3, 4, 5],
   },
-  sectionId: {
-    type: mongoose.Types.ObjectId,
-    ref: 'section',
-    autocomplete: { collection: 'section' },
-  },
+  // sectionId: {
+  //   type: mongoose.Types.ObjectId,
+  //   ref: 'section',
+  //   autocomplete: { collection: 'section' },
+  // },
   kosherType: {
     type: String,
     enum: ['בד"ץ', 'רבנות', 'מהדרין'],
@@ -43,17 +43,17 @@ const ProductSchema = new mongoose.Schema({
     autocomplete: { collection: 'store' },
   },
   subcategory: { type: String },
-  weight: {
-    type: Number,
-    require: true
-  },
-  weightUnit: {
-    type: String,
-    required: true,
-    enum: ['kg', 'g', 'liters', 'mls'],
-    default: 'kg',
-    hide: true,
-  },
+  // weight: {
+  //   type: Number,
+  //   require: true
+  // },
+  // weightUnit: {
+  //   type: String,
+  //   required: true,
+  //   enum: ['kg', 'g', 'liters', 'mls'],
+  //   default: 'kg',
+  //   hide: true,
+  // },
   units: {
     type: Number,
     require: true
@@ -78,7 +78,7 @@ const ProductSchema = new mongoose.Schema({
   },
   // brand: { type: String },
   salesQuantity: { type: Number, required: true, default: 0 },
-  productStock: { type: Number, required: true, default: '' },
+  // productStock: { type: Number, required: true, default: '' },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   description: {

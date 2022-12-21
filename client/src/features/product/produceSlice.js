@@ -1,4 +1,5 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
+import {createProductToStoreApi} from './productetService'
 
 const initialState = {
 
@@ -10,6 +11,18 @@ const initialState = {
   description: '',
   message: '',
 };
+
+export const uploadProduct = createAsyncThunk('product/uploadProduct', async (product,thunkAPI)=>{
+  try {
+    product.price = +product.price
+    product.priority = +product.priority
+    product.units = +product.units
+    const data = createProductToStoreApi(product)
+    return data
+  } catch (error) {
+    return thunkAPI.rejectWithValue(error.response.data);
+  }
+})
 
 const productSlice = createSlice({
   name: 'product',
@@ -31,6 +44,12 @@ const productSlice = createSlice({
       state.description = description;
     },
   },
+  extraReducers:(builder)=>{
+    builder
+    .addCase(uploadProduct.fulfilled,(state, action)=>{
+      console.log(action.payload);
+    })
+  }
 });
 
 export const { clearProduct, settingProduct } = productSlice.actions;

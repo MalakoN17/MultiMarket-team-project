@@ -44,6 +44,7 @@ const getProductsBySection = async (req, res, next) => {
 //Create Product
 const createProduct = async (req, res, next) => {
   const data = req.body;
+  console.log(data);
   try {
     if (data.image !== '') {
       const result = await cloudinary.uploader.upload(data.image, {
@@ -53,7 +54,7 @@ const createProduct = async (req, res, next) => {
         public_id: result.public_id,
         url: result.secure_url,
       };
-      const product = await productsModel(data);
+      const product =  productsModel(data);
       await product.save();
     }
     res.status(200).json('product create succuss');
