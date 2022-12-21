@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
+
   barcode: '',
   image: '',
   name: '',
@@ -18,10 +19,10 @@ const productSlice = createSlice({
       state = initialState;
     },
     settingProduct: (state, action) => {
+      state.addProduct = (action.payload);
       const { name, image, price, priority, description, barcode } =
         action.payload;
       //  state = [...state, action.payload];
-
       state.name = name;
       state.barcode = barcode;
       state.image = image;
@@ -32,7 +33,6 @@ const productSlice = createSlice({
   },
 });
 
-// console.log(productSlice);
 export const { clearProduct, settingProduct } = productSlice.actions;
 
 export default productSlice.reducer;
