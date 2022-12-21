@@ -16,13 +16,13 @@ const StoreSchema = new mongoose.Schema({
     type: String,
   },
   lightlogo: {
-    type: String,
+    type: Object,
     public_id: String,
     url: String,
     noSearch: true,
   },
   darklogo: {
-    type: String,
+    type: Object,
     public_id: String,
     url: String,
     noSearch: true,

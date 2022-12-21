@@ -48,9 +48,6 @@ const createProduct = async (req, res, next) => {
     if (data.image !== '') {
       const result = await cloudinary.uploader.upload(data.image, {
         folder: 'products',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       data.image = {
         public_id: result.public_id,

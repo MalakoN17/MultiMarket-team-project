@@ -1,4 +1,5 @@
 const storeModel = require('../models/storeSchema.js');
+const cloudinary = require('../utils/cloudinary')
 //Create Store
 const createNewStore = async (req, res, next) => {
   const data = req.body;
@@ -9,15 +10,9 @@ const createNewStore = async (req, res, next) => {
       });
       const lightlogo = await cloudinary.uploader.upload(data.lightlogo, {
         folder: 'store',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       const darklogo = await cloudinary.uploader.upload(data.darklogo, {
         folder: 'store',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       data.coverImage = {
         public_id: coverImage.public_id,
@@ -41,20 +36,50 @@ const createNewStore = async (req, res, next) => {
 };
 //Update Store
 const updateStore = async (req, res, next) => {
-  const data = await storeModel.findById(req.params.id);
+  const data = req.body
   try {
-    if (data.coverImage) {
+    const store = await storeModel.findById(req.params.id);
+    if(store.coverImage !== data.coverImage){
+      //  await cloudinary.uploader.destroy(store.coverImage.public_id);
+      const result = await cloudinary.uploader.upload(data.coverImage, {
+        folder: 'store',
+      });
+      data.coverImage = {
+        public_id: result.public_id,
+        url: result.secure_url
+      }
+    }
+    if(store.lightlogo !== data.lightlogo){
+      //  await cloudinary.uploader.destroy(data.lightlogo.public_id);
+      const lightlogo = await cloudinary.uploader.upload(data.lightlogo, {
+        folder: 'store',
+      });
+      data.lightlogo = {
+        public_id: lightlogo.public_id,
+        url: lightlogo.secure_url
+      }
+    }
+    if(store.darklogo !== data.darklogo){
+      // await cloudinary.uploader.destroy(data.darklogo.public_id);
+      const darklogo = await cloudinary.uploader.upload(data.darklogo, {
+        folder: 'store',
+      });
+      data.darklogo = {
+        public_id: darklogo.public_id,
+        url: darklogo.secure_url
+      }
+    }
       const updateStore = await storeModel.findByIdAndUpdate(
-        req.params.id,
+        data.id,
         {
-          $set: req.body,
+          $set: data,
         },
         { new: true }
-      );
+      )
       res.status(200).json(updateStore);
-    }
+   
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 };
 //Delete Store

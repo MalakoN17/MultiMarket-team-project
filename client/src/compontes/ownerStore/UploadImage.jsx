@@ -33,10 +33,11 @@ export default function UploadImage(state) {
             </p>
           </div>
           <input
+          onChange={state.funChange}
             id="dropzone-file"
-            name="image"
+            name={state.name}
             type="file"
-            className="hidden"
+            // className="hidden"
           />
         </label>
       </div>

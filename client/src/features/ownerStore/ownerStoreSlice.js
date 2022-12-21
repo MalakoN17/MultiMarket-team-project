@@ -36,6 +36,7 @@ export const updateStore = createAsyncThunk(
   'ownerStore/updateStore',
   async (store, thunkAPI) => {
     const {id} = store
+    // console.log(store);
     try {
       const data = updateStoreApi(id,store);
       return data;
@@ -48,7 +49,11 @@ export const updateStore = createAsyncThunk(
 const storeSlice = createSlice({
   name: 'ownerStore',
   initialState,
-  reducers: {},
+  reducers: {
+    updateStoreRdu:(state)=>{
+      console.log(state.store.name);
+    }
+  },
   extraReducers: (builder) => {
     builder
       .addCase(getStores.pending, (state) => {
@@ -77,9 +82,9 @@ const storeSlice = createSlice({
         state.isSuccuss = false
       })
       .addCase(updateStore.fulfilled, (state, action)=>{
-        console.log(action);
+        console.log(action.payload);
       })
   },
 });
-
+export const {updateStoreRdu} = storeSlice.actions
 export default storeSlice.reducer;

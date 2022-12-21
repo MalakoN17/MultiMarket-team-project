@@ -10,6 +10,7 @@ export const getStoreApi = async (storeId) => {
 };
 export const updateStoreApi = async (storeId, store) => {
   try {
+
     const { data } = await axiosMu.put(`/store/${storeId}`, store);
     return data;
   } catch (error) {
