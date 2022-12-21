@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-
+import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
@@ -9,19 +9,36 @@ import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.pn
 import smallHome from '../../assets/images/smallhome.png';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
-
+import { useParams } from 'react-router-dom';
 
 export default function Stores() {
+  const {id} = useParams()
+  const {cityValue} = useSelector((state)=> state.city);
+  
+ 
   const [stores, setStores] = useState([]);
-
+  const [department, setDepartment] = useState([]);
+  
   useEffect(() => {
+    console.log(id)
     const getStores = async () => {
-      const res = await axios.get('http://localhost:8000/api/store');
-      // console.log(res.data);
+      const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
+      console.log(res.data);
       setStores(res.data);
     };
+    const getDepartment = async ()=>{
+      const res = await axios.get(`http://localhost:8000/api/department/${id}`)
+      console.log(res.data)
+      setDepartment(res.data)
+
+    }
     getStores();
-  }, [stores]);
+    getDepartment();
+  }
+  
+  , []);
+
+   
 
 
   return (
@@ -32,7 +49,7 @@ export default function Stores() {
         <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
-        <h1 className="text-[30px]">רשימת חנויות בקטגוריה </h1>
+        <h1 className="text-[30px]">רשימת חנויות בקטגוריה +{cityValue}</h1>
       </div>
       <div className="container flex justify-center">
         <div className="container gap-3 w-[40%]">
@@ -87,7 +104,7 @@ export default function Stores() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            {stores.map((store,index)=>{
+            {stores.filter((store)=>store.address.city === cityValue).map((store,index)=>{
               return(
                 <div key={index}><Store store={store} /></div>
               )

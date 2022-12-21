@@ -33,7 +33,7 @@ export default function Departments() {
         <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {departments.map((department,index) => {
             return (
-              <div key={index}><Department department={department} /></div>
+              <div key={index}><Department department={department} departmentID={department._id} /></div>
             )
           })}
         </div>

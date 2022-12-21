@@ -11,6 +11,7 @@ export const citySlice = createSlice({
       state.cityValue = initialState;
     },
     settingSelect: (state, action) => {
+      console.log(state.cityValue = action.payload);
       state.cityValue = action.payload
 
     },

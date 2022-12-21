@@ -7,7 +7,7 @@ import {settingSelect} from "../../features/city/citySlice"
 export default function PopOut() {
   const {cityValue} = useSelector((state)=> state.city);
   const dispatch = useDispatch();
-  const [city,setCity] = useState("")
+  const [city,setCity] = useState("תל אביב")
 
   const [show, setShow] = useState(true);
 
@@ -19,6 +19,12 @@ export default function PopOut() {
   const handleForm =(e)=>{
     e.preventDefault()
     dispatch(settingSelect(city))
+    setShow(!show)
+  }
+  const exitForm = (e)=>{
+    e.preventDefault()
+    dispatch(settingSelect("תל אביב"))
+    setShow(!show)
   }
   return (
     
@@ -36,7 +42,7 @@ export default function PopOut() {
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
                   <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
-                    <button onClick={()=>setShow(!show)}>
+                    <button onClick={exitForm}>
                         <CloseIcon  />
                     </button>
                   </div>
@@ -59,6 +65,7 @@ export default function PopOut() {
                         <option value="תל אביב">תל אביב</option>
                         <option value="חיפה">חיפה</option>
                         <option value="נתניה">נתניה</option>
+                        <option value="שוהם">שוהם</option>
                       </select>
                     </div>
                   </div>
@@ -71,7 +78,6 @@ export default function PopOut() {
                 >
                   התחל קנייה
                 </button>
-               
               </div>
             </div>
           </div>
