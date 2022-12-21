@@ -1,6 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-import Cart from '../main/Cart';
+import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
@@ -10,37 +10,55 @@ import smallHome from '../../assets/images/smallhome.png';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
-
+import { useParams } from 'react-router-dom';
 
 export default function Stores() {
+  const {id} = useParams()
+  const {cityValue} = useSelector((state)=> state.city);
+  
+ 
   const [stores, setStores] = useState([]);
-
+  const [department, setDepartment] = useState([]);
+  
   useEffect(() => {
+    console.log(id)
     const getStores = async () => {
-      const res = await axios.get('http://localhost:8000/api/store');
+      const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
+      console.log(res.data);
       setStores(res.data);
     };
+    const getDepartment = async ()=>{
+      const res = await axios.get(`http://localhost:8000/api/department/${id}`)
+      console.log(res.data)
+      setDepartment(res.data)
+
+    }
     getStores();
-  }, [stores]);
+    getDepartment();
+  }
+  
+  , []);
+
+   
 
 
   return (
     <>
     <DesktopNav />
     <MobileNav />
-      <div className="background-image w-full">
-        <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
+      <div className="background-image w-full ">
+        <img src={department.topImage} alt=""  className="shadow-xl w-full h-96" />
       </div>
       <div className="text-center">
-        <h1 className="text-[30px]">רשימת חנויות בקטגוריה </h1>
+        <h1 className="text-[30px]">רשימת חנויות בקטוגריית , {department.name}</h1>
       </div>
       <div className="container  md:w-100% flex justify-center gap-2">
         <div className="container gap-3 w-[40%]">
           <div>
             <div className="flex gap-3">
               <h3>סנן לפי תוצאות:</h3>
-              <p className="text-blue-400 flex">מודעין </p>
-              <p className="text-blue-400 flex">בית קפה </p>
+              <p className="text-blue-400 flex">{cityValue} </p>
+              <p className="text-blue-400 flex">{department.name}</p>
             </div>
           </div>
           <div className="flex justify-between gap-2">
@@ -87,7 +105,7 @@ export default function Stores() {
             </p>
           </div>
           <div className="flex flex-col gap-1">
-            {stores.map((store,index)=>{
+            {stores.filter((store)=>store.address.city === cityValue).map((store,index)=>{
               return(
                 <div key={index}><Store store={store} /></div>
               )

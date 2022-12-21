@@ -9,7 +9,7 @@ import React from 'react'
 function Main() {
     return (
         <div>
-            {/* <PopOut /> */}
+            <PopOut />
             <MobileNav />
             <DesktopNav />
             <Departments />
