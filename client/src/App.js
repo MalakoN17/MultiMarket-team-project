@@ -9,6 +9,7 @@ import ProductForm from './compontes/products/ProductForm';
 import StoreProducts from './compontes/main/StoreProducts';
 
 import Chat from './pages/Chat';
+import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
@@ -20,11 +21,11 @@ function App() {
       {/* <Pr /> */}
       <Router>
         <Routes>
-          <Route path="" element={<Main />} />
+          <Route path="" element={<Home />} /> 
+          <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
-
-
           <Route path="storesroducts" element={<StoreProducts />} />
+          <Route path="/store/:id" element={<StorePage />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="addproduct" element={<AddingProducts />}></Route>
 

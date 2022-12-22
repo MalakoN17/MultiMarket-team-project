@@ -28,7 +28,6 @@ router.get('/getByCity', getAllStoresByCityName);
 router.get('/department/:departmentID', getStoreByDepartment);
 //Get by section
 router.get('/section/:sectionID',getStoreBySection)
-
 router.get('/section/:sectionID', getStoreBySection);
 
 module.exports = router;
