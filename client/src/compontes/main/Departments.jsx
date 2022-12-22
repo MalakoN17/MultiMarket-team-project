@@ -11,7 +11,6 @@ export default function Departments() {
   useEffect(() => {
     const getDepartments = async () => {
       const res = await axios.get('http://localhost:8000/api/department');
-      console.log(res.data);
       setDepartments(res.data);
     };
     getDepartments();
@@ -34,7 +33,7 @@ export default function Departments() {
         <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {departments.map((department,index) => {
             return (
-              <div key={index}><Department department={department} /></div>
+              <div key={index}><Department department={department} departmentID={department._id} /></div>
             )
           })}
         </div>

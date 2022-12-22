@@ -60,7 +60,7 @@ export default function Footer() {
                <EmailIcon />
             </a>
         </div>
-        <p class="mt-8 text-base leading-6 text-center text-gray-400">
+        <p className="mt-8 text-base leading-6 text-center text-gray-400">
             © 2022 Multi-Market, Inc. All rights reserved.
         </p>
     </div>

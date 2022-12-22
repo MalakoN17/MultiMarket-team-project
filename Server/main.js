@@ -3,7 +3,8 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 require('./config/database');
-const storeRoute= require("./routers/storeRouter.js")
+const socket = require('socket.io')
+
 
 app.use(cors());
 app.use(express.json({ limit: '30mb', extended: true }));
@@ -20,6 +21,12 @@ const sectionRouter = require('./routers/sectionRouter');
 // const shippingCertificateRouter = require('./routers/shippingCertificateRouter');
 const authRouter = require('./routers/authRouter');
 
+const adminStoreRouter = require('./routers/adminStoreRouter')
+const messageRouter = require('./routers/messageRouter')
+
+const stripeRouter = require('./routers/stripeRouter')
+
+
 app.use('/api/store', storeRouter);
 app.use('/api/user', userRouter);
 app.use('/api/department', departmentRouter);
@@ -29,13 +36,40 @@ app.use('/api/product', productRouter);
 app.use('/api/section', sectionRouter);
 // app.use('/api/shippingCertificate', shippingCertificateRouter);
 app.use('/auth', authRouter);
+app.use('/api/stripe', stripeRouter)
+app.use('/api/ownerStore', adminStoreRouter);
+app.use('/api/messages', messageRouter);
 
 
-app.use('/store',storeRoute)
 
 
+const port = 8000;
 
-let port = 8000;
-app.listen(port, () => {
+const server = app.listen(port, () => {
   console.log(`server run on ${port}`);
+});
+
+const io = socket(server, {
+  cors: {
+    origin: "http://localhost:3000",
+    credentials: true,
+  },
+});
+
+
+global.onlineUsers = new Map();
+io.on("connection", (socket) => {
+  global.chatSocket = socket;
+  socket.on("add-user", (userId) => {
+    onlineUsers.set(userId, socket.id);
+  });
+
+  
+  socket.on("send-msg", (data) => {
+    console.log('sendMsg', {data});
+    const sendUserSocket = onlineUsers.get(data.to);
+    if (sendUserSocket) {
+      socket.to(sendUserSocket).emit("msg-receive", data.message);
+    }
+  });
 });

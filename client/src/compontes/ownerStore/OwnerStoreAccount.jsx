@@ -7,6 +7,7 @@ export default function OwnerStoreAccount() {
     const {isLogin, isSuccuss, store} = storeD
     const [storeDe, setStore] = useState({})
     const dispatch = useDispatch()
+
     useEffect(()=>{
         dispatch(getStores('6391e77a46a83544c853314f'))
         
@@ -52,6 +53,7 @@ export default function OwnerStoreAccount() {
         <div>
             <h1>{storeDe.address?.apartment}</h1>
         </div>
-    </div>
+
+   
   )
 }

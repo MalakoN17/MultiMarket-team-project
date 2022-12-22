@@ -1,16 +1,12 @@
+
 import { createAsyncThunk, createSlice } from '@reduxjs/toolkit';
 import {createProductToStoreApi} from './productetService'
 
-const initialState = {
 
-  barcode: '',
-  image: '',
-  name: '',
-  price: 0,
-  priority: 0,
-  description: '',
-  message: '',
+const initialState = {
+  addProduct: {}
 };
+
 
 export const uploadProduct = createAsyncThunk('product/uploadProduct', async (product,thunkAPI)=>{
   try {
@@ -31,6 +27,8 @@ export const uploadProduct = createAsyncThunk('product/uploadProduct', async (pr
   }
 })
 
+
+
 const productSlice = createSlice({
   name: 'product',
   initialState,
@@ -40,22 +38,26 @@ const productSlice = createSlice({
     },
     settingProduct: (state, action) => {
       state.addProduct = (action.payload);
-      const { name, image, price, priority, description, barcode } =
-        action.payload;
-      //  state = [...state, action.payload];
-      state.name = name;
-      state.barcode = barcode;
-      state.image = image;
-      state.price = price;
-      state.priority = priority;
-      state.description = description;
     },
   },
-  extraReducers:(builder)=>{
+
+  extraReducers: (builder) => {
     builder
-    .addCase(uploadProduct.fulfilled,(state, action)=>{
-      console.log(action.payload);
-    })
+      // Create product
+      .addCase(uploadProduct.pending, (state) => {
+        state.isLoading = true
+      })
+      .addCase(uploadProduct.fulfilled, (state, action) => {
+        state.isLoading = false
+        state.isSuccess = true
+        state.addProduct = (action.payload);
+      })
+      .addCase(uploadProduct.rejected, (state, action) => {
+        state.isLoading = false
+        state.isError = true
+        state.message = action.payload
+      })
+
   }
 });
 

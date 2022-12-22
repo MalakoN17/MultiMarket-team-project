@@ -1,9 +1,14 @@
 import React from 'react'
+
 // import './style.css';
+
+
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
+import Cart from './Cart';
+import Product from '../products/Product'
 
 function StoreProducts() {
     return (
@@ -12,9 +17,8 @@ function StoreProducts() {
                 <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
             </div>
 
+            <div className='container pr-14'>
 
-            
-            <div className="container flex justify-center">
                 <div className="container gap-3 w-[40%]">
                     <h1 className="text-[30px]"> חוות הבית </h1>
                     <div className="flex ">
@@ -29,9 +33,7 @@ function StoreProducts() {
                         </div>
                     </div>
                 </div>
-            </div>
 
-            <div className="container flex justify-center">
                 <div className="container gap-3 w-[40%]">
 
                     <div className="flex items-center gap-1">
@@ -41,135 +43,30 @@ function StoreProducts() {
                         </p>
                     </div>
                 </div>
+
             </div>
 
-
             <div className="container flex justify-center">
-                <div className="container gap-3 w-[40%]">
-            
-                   
-                    <div className="flex items-center gap-1">
-                        <img src={smallHome} alt="" width="35px" />
-                        <p>
-                            נמצאו <span className="text-green-400">78</span> חנויות במודעין
-                        </p>
-                    </div>
 
-                    <div className="flex flex-col gap-1">
-                        <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-                            <img src={smallHome} alt="" />
-                            <div>
-                                <h4>חוות הבית</h4>
-                                <p></p>
-                                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                                <div className="flex">
-                                    <img
-                                        className="business-liaison-logo"
-                                        src={businessLiaisonLogo}
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>עמק זבולון 3,</p>
-                                        <p>מודעין, אזור המרכז</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button className="store-btn">קנה בחנות זו</button>
+                <div className="">
+
+                    <section className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-4 py-12">
+
+                        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+                            <Product />
+                            <Product />
+                            <Product />
+                            <Product />
+                            <Product />
+                            <Product />
                         </div>
-                        <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-                            <img src={smallHome} alt="" />
-                            <div>
-                                <h4>חוות הבית</h4>
-                                <p></p>
-                                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                                <div className="flex">
-                                    <img
-                                        className="business-liaison-logo"
-                                        src={businessLiaisonLogo}
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>עמק זבולון 3,</p>
-                                        <p>מודעין, אזור המרכז</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button className="store-btn">קנה בחנות זו</button>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-                            <img src={smallHome} alt="" />
-                            <div>
-                                <h4>חוות הבית</h4>
-                                <p></p>
-                                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                                <div className="flex">
-                                    <img
-                                        className="business-liaison-logo"
-                                        src={businessLiaisonLogo}
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>עמק זבולון 3,</p>
-                                        <p>מודעין, אזור המרכז</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button className="store-btn">קנה בחנות זו</button>
-                        </div>
-                        <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-                            <img src={smallHome} alt="" />
-                            <div>
-                                <h4>חוות הבית</h4>
-                                <p></p>
-                                <p>חנות ירקות חוות הבית במודעין-מכבים-רעות מגישה</p>
-                                <div className="flex">
-                                    <img
-                                        className="business-liaison-logo"
-                                        src={businessLiaisonLogo}
-                                        alt=""
-                                    />
-                                    <div>
-                                        <p>עמק זבולון 3,</p>
-                                        <p>מודעין, אזור המרכז</p>
-                                    </div>
-                                </div>
-                            </div>
-                            <button className="store-btn">קנה בחנות זו</button>
-                        </div>
-                        <div>
-                            <button className="pul-btn text-gray-800">+</button>
-                        </div>
-                    </div>
+
+                    </section>
+
                 </div>
-                <div className="w-[18%] sm:flex-none block border">
-                    <div className="bg-gray-800 p-2 text-center">
-                        <h3 className="text-white">עגלת קניות</h3>
-                    </div>
-                    <div>
-                        <div className="bg-gray-100 flex gap-1 p-1">
-                            <div className="store-img-cart-container">
-                                <img
-                                    className="store-img-cart"
-                                    src={businessLiaisonLogo}
-                                    alt=""
-                                />
-                            </div>
-                            <p>שם החנות</p>
-                        </div>
-                        <div className="products-cart-container">
-                            <div className='flex items-center justify-around'>
-                                <img src={onion} alt="" width="60px" />
-                                <div>
-                                    <p className='product-name'>שם מוצר</p>
-                                    <p className='text-gray-400'>שם החנות</p>
-                                </div>
-                                <div className="flex gap-1">
-                                    <p>2</p>
-                                    <span className="add-btn">+</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+
+                <div className="hidden md:block">
+                    <Cart />
                 </div>
             </div>
 

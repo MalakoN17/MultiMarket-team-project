@@ -2,9 +2,10 @@ import React from 'react'
 
 export default function Welcome({currentUser}) {
   return (
-    <div>
-       <h1>Welcome <span> {currentUser?.username}!</span></h1>
-       <h3>please select a chat to start Messaging</h3>
+    <div className='flex items-center justify-center w-full'>
+      <div className=''>
+       <h3 className='font-sans'>Please select a chat to start Messaging</h3>
+      </div>
     </div>
   )
 }
