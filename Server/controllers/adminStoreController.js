@@ -1,4 +1,6 @@
 const ownerStoreUserSchema = require('../models/ownerStoreUserSchema.js');
+const bcrypt = require('bcryptjs');
+
 // GET all admin
 const getAllAdminStore = async (req, res, next) => {
   try {
@@ -11,9 +13,12 @@ const getAllAdminStore = async (req, res, next) => {
 // GET one admin by id
 const getOneAdminStore = async (req, res, next) => {
   try {
-    const id = req.params.id;
-    const adminStore = await ownerStoreUserSchema.findById(req.params.id);
-    res.status(200).json(adminStore);
+    if (req.user._id === req.params.id) {
+      // console.log(req.user);
+      const adminStore = await ownerStoreUserSchema.findById(req.params.id);
+      res.status(200).json(adminStore);
+    }
+    res.status(401).json('user not authorized');
   } catch (error) {
     next(error);
   }
@@ -21,13 +26,16 @@ const getOneAdminStore = async (req, res, next) => {
 // PUT update admin
 const updateAdminStore = async (req, res, next) => {
   try {
-    const updateAdminStore = await ownerStoreUserSchema.findByIdAndUpdate(
-      req.params.id,
-      {
-        $set: req.body,
-      },
-      { new: true }
-    );
+    if (req.user._id === req.params.id) {
+      const updateAdminStore = await ownerStoreUserSchema.findByIdAndUpdate(
+        req.params.id,
+        {
+          $set: req.body,
+        },
+        { new: true }
+      );
+    }
+    res.status(401).json('user not authorized');
     res.status(200).json(updateAdminStore);
   } catch (error) {
     next(error);
@@ -35,8 +43,15 @@ const updateAdminStore = async (req, res, next) => {
 };
 // POST create admin
 const createAdminStore = async (req, res, next) => {
+  const { password } = req.body;
+
+  // hash password
+  const salt = await bcrypt.genSalt(10);
+  const hashedPassword = await bcrypt.hash(password, salt);
+
   try {
     const obj = req.body;
+    obj.password = hashedPassword;
     const newAdminStore = ownerStoreUserSchema(obj);
     await newAdminStore.save();
     res.status(200).json('create new admin');
