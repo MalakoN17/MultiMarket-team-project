@@ -12,6 +12,7 @@ export const getStoreProductApi = async (productId) => {
 
   export const createProductToStoreApi = async (product) => {
     try {
+      
       const { data } = await axiosMu.post(`/product`, product);
       console.log(data);
       return data;

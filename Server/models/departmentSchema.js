@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const DepartmentSchema = new mongoose.Schema({
   name: { type: String, required: true, unique: true },
   coverImage: {
-    type: String,
+    type: Object,
     public_id: String,
     url: String,
     required: true,

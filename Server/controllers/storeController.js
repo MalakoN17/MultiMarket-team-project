@@ -39,7 +39,7 @@ const updateStore = async (req, res, next) => {
   const data = req.body
   try {
     const store = await storeModel.findById(req.params.id);
-    if(store.coverImage !== data.coverImage){
+    if(store.coverImage !== data.coverImage.url){
       //  await cloudinary.uploader.destroy(store.coverImage.public_id);
       const result = await cloudinary.uploader.upload(data.coverImage, {
         folder: 'store',
@@ -49,7 +49,7 @@ const updateStore = async (req, res, next) => {
         url: result.secure_url
       }
     }
-    if(store.lightlogo !== data.lightlogo){
+    if(store.lightlogo !== data.lightlogo.url){
       //  await cloudinary.uploader.destroy(data.lightlogo.public_id);
       const lightlogo = await cloudinary.uploader.upload(data.lightlogo, {
         folder: 'store',
@@ -59,7 +59,7 @@ const updateStore = async (req, res, next) => {
         url: lightlogo.secure_url
       }
     }
-    if(store.darklogo !== data.darklogo){
+    if(store.darklogo !== data.darklogo.url){
       // await cloudinary.uploader.destroy(data.darklogo.public_id);
       const darklogo = await cloudinary.uploader.upload(data.darklogo, {
         folder: 'store',

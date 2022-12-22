@@ -17,6 +17,7 @@ export const uploadProduct = createAsyncThunk('product/uploadProduct', async (pr
     product.price = +product.price
     product.priority = +product.priority
     product.units = +product.units
+    product.productStock = +product.productStock
     const data = createProductToStoreApi(product)
     return data
   } catch (error) {
