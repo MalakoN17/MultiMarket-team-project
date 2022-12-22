@@ -33,6 +33,15 @@ export const updateStoreApi = async (storeId, store) => {
     return error;
   }
 };
+export const deleteStoreApi = async (storeId) => {
+  try {
+
+    const { data } = await axiosMu.delete(`/store/${storeId}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 
 export const getStoreProductApi = async (productId) => {
   try {
