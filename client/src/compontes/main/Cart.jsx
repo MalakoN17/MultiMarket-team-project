@@ -5,6 +5,7 @@ import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import { clearCart } from '../../features/cart/cartSlice';
 import './cartStyle.css';
 
 function Cart() {
@@ -80,6 +81,7 @@ function Cart() {
             <div className="flex justify-between">
               <p>בקניה זו חסכת</p>
               <p>8 ש"ח</p>
+              <button onClick={()=> dispatch(clearCart())}>נקה</button>
             </div>
             <div className="flex justify-between">
               <p>מספר מוצרים</p>

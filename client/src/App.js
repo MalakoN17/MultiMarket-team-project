@@ -8,7 +8,6 @@ import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
-import AddingProducts from './compontes/products/AddingProducts'
 import Chat from './pages/Chat';
 import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
@@ -24,7 +23,7 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path="" element={<Home />} /> 
+          <Route path="" element={<AddStore />} /> 
 
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />

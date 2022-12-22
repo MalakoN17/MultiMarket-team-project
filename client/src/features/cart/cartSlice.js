@@ -14,12 +14,16 @@ const cartSlice = createSlice({
     initialState,
     reducers: {
         addProduct:(state, action) =>{
-            state.amount += 1;
             state.cartItems.push(action.payload);
+            state.total += action.payload.price;
+            state.amount += action.payload.quantity
         },
         clearCart:(state)=>{
             state.cartItems = [];
             state.stores = [];
+            state.amount = 0;
+            state.total = 0;
+            state.savingsPurchase = 0;
         },
         removeItem:(state, action) =>{
             const id = action.payload;
