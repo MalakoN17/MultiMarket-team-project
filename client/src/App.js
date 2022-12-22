@@ -14,6 +14,7 @@ import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
+import AddStore from './compontes/addStore/AddStore';
 
 function App() {
   return (
@@ -21,8 +22,12 @@ function App() {
       {/* <Pr /> */}
       <Router>
         <Routes>
+<<<<<<< HEAD
+          <Route path="" element={<AddStore />} />
+=======
           <Route path="" element={<Home />} /> 
           <Route path="chat" element={<Chat />} /> 
+>>>>>>> dev
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
