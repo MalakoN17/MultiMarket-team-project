@@ -25,9 +25,8 @@ function DesktopNav() {
               <div className="relative ml-3">
               {/* <div className="hidden  sm:block"> */}
                 <div className="flex space-x-4">
-                  <a href="#" className="menuNav">צור קשר</a>
-                  <a href="#" className="menuNav">תנאי השימוש</a>
-                  <a href="#" className="menuNav">איכות הסביבה</a>
+                  <a href="/contactUs" className="menuNav">צור קשר</a>
+                  <a href="/question" className="menuNav"> שאלות נפוצות</a>
                   <a href="#" className="menuNav" onClick={()=> navigate("register")}>הרשמה</a>
                   <a href="#" className="menuNav" onClick={()=> navigate("login")}>כניסת משתמש</a>
                 </div>
