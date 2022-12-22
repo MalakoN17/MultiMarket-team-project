@@ -26,8 +26,8 @@ export default function Stores() {
     const getStores = async () => {
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
       console.log(res.data);
-      const res = await axios.get('http://localhost:8000/api/store');
-      setStores(res.data);
+      // const res = await axios.get('http://localhost:8000/api/store');
+      // setStores(res.data);
     };
     const getDepartment = async ()=>{
       const res = await axios.get(`http://localhost:8000/api/department/${id}`)

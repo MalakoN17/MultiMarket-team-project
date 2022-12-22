@@ -22,12 +22,8 @@ function App() {
       {/* <Pr /> */}
       <Router>
         <Routes>
-<<<<<<< HEAD
-          <Route path="" element={<AddStore />} />
-=======
           <Route path="" element={<Home />} /> 
           <Route path="chat" element={<Chat />} /> 
->>>>>>> dev
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
