@@ -29,14 +29,6 @@ router.get('/department/:departmentID', getStoreByDepartment);
 //Get by section
 router.get('/section/:sectionID',getStoreBySection)
 //Get all products in store
-// router.get('/:id/products',getProductsInStore)
-//Update Product
-// router.put('/:id/updateProduct',updateProduct)
-//Add product to Store
-// router.post('/:id/createProduct', addProductToStore)
-//Delete product in the store 
-// router.delete("/deleteProduct/:id",deleteProductInStore)
-
 
 router.get('/section/:sectionID', getStoreBySection);
 
