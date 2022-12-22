@@ -10,7 +10,7 @@ export default function store(props) {
         <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
               <img src={props.smallHome} alt="" />
               <div>
-                <h4>{props.store.name}</h4>
+                <h4><b>{props.store.name}</b></h4>
                 <p></p>
                 <p>{props.store.description}</p>
                 <div className="flex">
