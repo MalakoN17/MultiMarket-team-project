@@ -7,7 +7,8 @@ const socket = require('socket.io')
 
 
 app.use(cors());
-app.use(express.json());
+app.use(express.json({ limit: '30mb', extended: true }));
+app.use(express.urlencoded({ limit: '30mb', extended: true }));
 
 // ROUTERS
 const storeRouter = require('./routers/storeRouter');
@@ -40,8 +41,7 @@ app.use('/api/ownerStore', adminStoreRouter);
 app.use('/api/messages', messageRouter);
 
 
-app.use(express.json({ limit: '30mb', extended: true }));
-app.use(express.urlencoded({ limit: '30mb', extended: true }));
+
 
 const port = 8000;
 
