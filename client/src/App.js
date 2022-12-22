@@ -20,17 +20,16 @@ import AddStore from './compontes/addStore/AddStore';
 function App() {
   return (
     <>
-      {/* <Pr /> */}
       <Router>
         <Routes>
-          <Route path="" element={<AddStore />} /> 
+
+          <Route path="" element={<Home />} /> 
+
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="addproduct" element={<AddingProducts />}></Route>
-
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

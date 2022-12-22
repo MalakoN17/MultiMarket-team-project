@@ -1,12 +1,15 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+
 import {getStore} from '../../features/ownerStore/ownerStoreSlice'
 
+
 export default function OwnerStoreAccount() {
-    const  storeD = useSelector(state=> state.ownerStore)
-    const {isLogin, isSuccuss, store} = storeD
+    const storeD = useSelector(state => state.ownerStore)
+    const { isLogin, isSuccuss, store } = storeD
     const [storeDe, setStore] = useState({})
     const dispatch = useDispatch()
+
 
     useEffect(()=>{
         dispatch(getStore('6391e77a46a83544c853314f'))
