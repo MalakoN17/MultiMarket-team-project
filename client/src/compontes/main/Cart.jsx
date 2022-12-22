@@ -10,11 +10,13 @@ import './cartStyle.css';
 function Cart() {
     const [order, setOrder] = useState([{id:1, storeName:'ירקות', products:[{id:12, name:'בצל', quantity:1, price:9.90}]},{id:1, storeName:'ירקות', products:[{id:12, name:'בצל', quantity:1, price:9.90}]}])
     const {amount} = useSelector((store) => store.cart)
-    const cart = useSelector((store) => store.cart)
+    let {cartItems} = useSelector((store) => store.cart)
+    const products = order.map(product => product.products)
     // console.log(cart);
 
     useEffect(()=>{
-      console.log(cart);
+      cartItems = products;
+      console.log(cartItems);
     },[])
     const dispatch = useDispatch()
 
