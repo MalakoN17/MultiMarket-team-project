@@ -157,10 +157,5 @@ module.exports = {
   getAllStoresByCityName,
   getStoreByDepartment,
   getStoreBySection,
-  getProductsInStore,
-  updateProduct,
-  addProductToStore,
-  deleteProductInStore,
 };
 
-// {"_id":{"$oid":"63974d1f3f81a02254f08d1c"},"bnNumber":{"$numberInt":"5856589"},"name":"meet aviel","coverImage":"dasdasdasdasd","departmentIds":["6391e623e90d2f2246c0021a"],"products":[{"name":"רועי קפה","active":true,"parallelImporter":false,"salesQuantity":{"$numberInt":"0"},"productStock":null,"_id":{"$oid":"639896ee2042fce652f74058"},"expirationDate":{"$date":{"$numberLong":"1670944494688"}},"lastUpdate":{"$date":{"$numberLong":"1670944494688"}},"createdAt":{"$date":{"$numberLong":"1670944494688"}}},{"barcode":"85255","image":"https://w7.pngwing.com/pngs/895/199/png-transparent-spider-man-heroes-download-with-transparent-background-free-thumbnail.png","name":"יריכיים","price":{"$numberInt":"6"},"priority":{"$numberInt":"1"},"sectionId":{"$oid":"63974b0df3ee5834ef22439a"},"kosherType":"רבנות","productTag":"surfaces","subCategory":"chicken breast","active":true,"weight":{"inWeight":false,"avgWeightPerUnit":{"$numberInt":"200"},"weightUnit":"grams"},"units":{"unitsInCarton":{"$numberInt":"1"},"amount":{"$numberInt":"1"},"minimumOrderCartonCount":{"$numberInt":"1"},"measureUnits":"units"},"contactInfo":{"contactNumber":"000-333","contactName":"avishay"},"manufacturer":"vdafppppppppp","parallelImporter":true,"brand":"nike","salesQuantity":{"$numberInt":"1"},"productStock":{"$numberInt":"1"},"description":"nike chicken breast","createdBy":"avishay","_id":{"$oid":"639897272042fce652f7405a"},"expirationDate":{"$date":{"$numberLong":"1670944551854"}},"lastUpdate":{"$date":{"$numberLong":"1670944551854"}},"createdAt":{"$date":{"$numberLong":"1670944551854"}}}],"active":true,"createdBy":"roy mekonen","lastUpdate":{"$date":{"$numberLong":"1670860063920"}},"createdAt":{"$date":{"$numberLong":"1670860063920"}},"__v":{"$numberInt":"0"}}

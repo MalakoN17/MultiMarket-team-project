@@ -1,8 +1,13 @@
 import React from 'react'
 import onion from '../../assets/images/products_images/onions.jpg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-
+import { useDispatch } from 'react-redux';
+import { addProduct } from '../../features/cart/cartSlice';
 export default function Product() {
+    const dispatch = useDispatch()
+    const addToCart = () => {
+        dispatch(addProduct())
+    }
     return (
         <>
 
@@ -21,7 +26,7 @@ export default function Product() {
 
                         <div className="flex items-center justify-between">
                             <span className="text-3xl font-bold text-gray-900 dark:text-white">₪58</span>
-                            <button type="button" class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">הוסף מוצר לעגלה <ShoppingCartIcon/></button>
+                            <button type="button" onClick={addToCart} class="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2">הוסף מוצר לעגלה <ShoppingCartIcon/></button>
                         </div>
                     </div>
                     

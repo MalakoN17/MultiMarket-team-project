@@ -131,7 +131,7 @@ export default function ProductForm() {
               )}
             </div>
             <InputProduct funChange={handleInput} textLabel='ברקוד מוצר:' name='barcode' type='text' placeholder='הכנס ברקוד' />
-            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='number' placeholder='הכנס מחיר' min={1}/>
+            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='text' placeholder='הכנס מחיר' min={1}/>
             <InputProduct funChange={handleInput} textLabel='עדיפות מוצר:' name='priority' type='number' placeholder='הכנס עדיפות מוצר'  min={1} max={5}/>
             <InputProduct funChange={handleInput} textLabel='כמות המוצר' name='productStock' type='number' placeholder='הכנס כמות מוצר' min={1}/>
             <div>

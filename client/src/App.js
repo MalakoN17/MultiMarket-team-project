@@ -15,6 +15,7 @@ import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
 import AddStore from './compontes/addStore/AddStore';
+import CheckoutSuccess from './pages/CheckoutSuccess';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="addproduct" element={<AddingProducts />}></Route>
+          <Route path="CheckoutSuccess" element={<CheckoutSuccess />}/>
 
           <Route path="*" element={<Error />} />
         </Routes>
