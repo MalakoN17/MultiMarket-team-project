@@ -19,7 +19,6 @@ import AddStore from './compontes/addStore/AddStore';
 function App() {
   return (
     <>
-      {/* <Pr /> */}
       <Router>
         <Routes>
           <Route path="" element={<Home />} /> 
@@ -28,8 +27,6 @@ function App() {
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="addproduct" element={<AddingProducts />}></Route>
-
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

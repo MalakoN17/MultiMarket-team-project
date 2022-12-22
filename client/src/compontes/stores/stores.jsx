@@ -25,31 +25,24 @@ export default function Stores() {
     console.log(id)
     const getStores = async () => {
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
-      console.log(res.data);
-      // const res = await axios.get('http://localhost:8000/api/store');
-      // setStores(res.data);
+      setStores(res.data)
     };
     const getDepartment = async ()=>{
       const res = await axios.get(`http://localhost:8000/api/department/${id}`)
-      console.log(res.data)
       setDepartment(res.data)
-
     }
+
     getStores();
     getDepartment();
-  }
-  
+  }  
   , []);
-
-   
-
 
   return (
     <>
     <DesktopNav />
     <MobileNav />
       <div className="background-image w-full">
-        <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
+        <img src={department.topImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטגוריה +{cityValue}</h1>
