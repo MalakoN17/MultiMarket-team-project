@@ -15,8 +15,6 @@ import ownerStore from '../features/ownerStore/ownerStoreSlice';
 import produceReducer from '../features/product/produceSlice';
 import cityReducer from "../features/city/citySlice"
 
-import cityReducer from "../features/city/citySlice"
-
 
 const persistConfig = {
   key: 'root',

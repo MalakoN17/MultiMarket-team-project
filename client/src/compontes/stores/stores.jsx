@@ -61,7 +61,7 @@ export default function Stores() {
               <p className="text-blue-400 flex">{department.name}</p>
             </div>
           </div>
-          <div className="flex justify-between gap-2">
+          {/* <div className="flex justify-between gap-2">
             <div>
               <h4>אזורים</h4>
               <p className="text-blue-400">אזור מרכז</p>
@@ -97,11 +97,11 @@ export default function Stores() {
               <p>בשרי</p>
               <p>בשרי</p>
             </div>
-          </div>
+          </div> */}
           <div className="flex items-center gap-1">
             <img src={smallHome} alt="" width="35px" />
             <p>
-              נמצאו <span className="text-green-400">78</span> חנויות במודעין
+              נמצאו <span className="text-green-400">{stores.filter((store)=>store.address.city === cityValue).length}</span> חנויות ב{cityValue}
             </p>
           </div>
           <div className="flex flex-col gap-1">
@@ -116,7 +116,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          <Cart />
+          
         </div>
       </div>
       <div className="text-center relative left-[160px]">

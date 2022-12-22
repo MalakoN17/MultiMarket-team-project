@@ -16,7 +16,7 @@ export default function store(props) {
                 <div className="flex">
                   <img
                     className="business-liaison-logo"
-                    src={props.store.lightlogo}
+                    src={props.store.lightlogo.url}
                     alt=""
                   />
                   <div>
