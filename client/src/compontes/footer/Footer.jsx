@@ -5,15 +5,15 @@ import LinkedInIcon from '@mui/icons-material/LinkedIn';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import WindowIcon from '@mui/icons-material/Window';
 import EmailIcon from '@mui/icons-material/Email';
-
+ 
 import "./footer.css"
 //fb , in , linkdein,twiter , browser , messege
 export default function Footer() {
   return (
-    <div>
-     <footer className="bg-black">
-    <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
+    <div className='hidden sm:block'>
+     <footer class="bg-black">
+    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <nav class="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="footerMenu">
                 <a href="#" className="footerLinks">
                     צור קשר
@@ -40,8 +40,8 @@ export default function Footer() {
                 </a>
             </div>
         </nav>
-        <div className="flex justify-center mt-8 space-x-6">
-            <a href="#" className="socialMedia">
+        <div class="flex justify-center mt-8 space-x-6">
+            <a href="#" className="socialMedia pl-5">
                <FacebookIcon />
             </a>
             <a href="#" className="socialMedia">
@@ -65,7 +65,10 @@ export default function Footer() {
         </p>
     </div>
 </footer>
-      
+     
     </div>
   );
 }
+ 
+
+
