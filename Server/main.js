@@ -18,12 +18,9 @@ const couponRouter = require('./routers/couponRouter');
 const orderRouter = require('./routers/orderRouter');
 const productRouter = require('./routers/productsRouter');
 const sectionRouter = require('./routers/sectionRouter');
-// const shippingCertificateRouter = require('./routers/shippingCertificateRouter');
 const authRouter = require('./routers/authRouter');
-
 const adminStoreRouter = require('./routers/adminStoreRouter')
 const messageRouter = require('./routers/messageRouter')
-
 const stripeRouter = require('./routers/stripeRouter')
 
 
@@ -34,12 +31,10 @@ app.use('/api/coupon', couponRouter);
 app.use('/api/order', orderRouter);
 app.use('/api/product', productRouter);
 app.use('/api/section', sectionRouter);
-// app.use('/api/shippingCertificate', shippingCertificateRouter);
 app.use('/auth', authRouter);
 app.use('/api/stripe', stripeRouter)
 app.use('/api/ownerStore', adminStoreRouter);
 app.use('/api/messages', messageRouter);
-
 
 
 

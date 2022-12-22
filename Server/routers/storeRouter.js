@@ -1,24 +1,18 @@
 const express = require('express');
 const router = express.Router();
-const {
-  createNewStore,
-  updateStore,
-  deleteStore,
-  getStore,
-  getAllStores,
-  getAllStoresByCityName,
-  getStoreByDepartment,
-  getStoreBySection,
-} = require('../controllers/storeController');
+const { createNewStore, updateStore, deleteStore, getStore, getAllStores, getAllStoresByCityName, getStoreByDepartment, getStoreBySection} = require('../controllers/storeController');
+const { verifyToken } = require('../middleware/authenticateToken');
+
 //Create
 router.post('/', createNewStore);
 
 //Update
-router.put('/:id', updateStore);
+router.put('/:id', verifyToken,updateStore)
 //Delete
-router.delete('/:id', deleteStore);
-//Get
-router.get('/getByID/:id', getStore);
+router.delete('/:id',deleteStore)
+//Get 
+router.get('/getByID/:id',verifyToken,getStore)
+
 //Get All
 router.get('/', getAllStores);
 
@@ -28,6 +22,7 @@ router.get('/getByCity', getAllStoresByCityName);
 router.get('/department/:departmentID', getStoreByDepartment);
 //Get by section
 router.get('/section/:sectionID',getStoreBySection)
+
 router.get('/section/:sectionID', getStoreBySection);
 
 module.exports = router;
