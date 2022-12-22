@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
-import Store from './store';
+import Store from './Store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -16,12 +16,10 @@ export default function Stores() {
   const {id} = useParams()
   const {cityValue} = useSelector((state)=> state.city);
   
- 
   const [stores, setStores] = useState([]);
   const [department, setDepartment] = useState([]);
   
   useEffect(() => {
-    console.log(id)
     const getStores = async () => {
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
 
@@ -35,6 +33,7 @@ export default function Stores() {
 
     getStores();
     getDepartment();
+    console.log(stores);
   }  
   , []);
 
