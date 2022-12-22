@@ -9,7 +9,6 @@ export default function ChatInput({ handleSendMsg }) {
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);
     const [msg, setMsg] = useState('');
 
-
     const handleEmojiPickerHideShow = () => {
         setShowEmojiPicker(!showEmojiPicker);
     }
@@ -21,7 +20,7 @@ export default function ChatInput({ handleSendMsg }) {
     };
 
     const sendChat = (event) => {
-        // event.preventDefault();
+        event.preventDefault();
         if (msg.length > 0) {
             handleSendMsg(msg);
             setMsg('')

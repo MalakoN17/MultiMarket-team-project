@@ -5,6 +5,9 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     const [currentUserImage, setCurrentUserImage] = useState(undefined);
     const [currentSelected, setCurrentSelected] = useState(undefined);
 
+
+    console.log(currentUser);
+
     useEffect(() => {
         if (currentUser) {
             setCurrentUserImage(currentUser.profileImage);
@@ -17,32 +20,31 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
         changeChat(contact);
     };
 
+
     return (
 
-        <div className='w-1/4 items-end'>
-            <div className="owners-chat rounded border-r-2">
+        <div className='w-[20] items-end flex flex-col justify-between border-r-2 '>
+            <div className="owners-chat rounded">
                 {/* {currentUserImage && currentUserName && ( */}
-                <ul className="overflow-auto h-[34rem]">
-                    <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] ">הודעות</h2>
+                <ul className="overflow-auto h-[33rem] w-full">
+                    <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] font-semibold ">הודעות</h2>
                     {contacts.map((contact, index) => {
-                        <li key={contact._id} className={` border-pink-500 border-4 contact overflow-hidden ${index === currentSelected ? 'selected' : ''
-                    }`} onClick={() => changeCurrentChat(index, contact)}
-                        >
-                            <a
-                                className="flex items-center px-3 py-2 text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                                <img className="object-cover w-10 h-10 rounded-full" src={contact?.profileImage} alt="profile image" />
-                                <div className="w-full pb-2">
-                                    <div className="flex justify-between">
-                                        <span className="contact-name block ml-2 font-semibold text-gray-600">{contact.firstName}</span>
-                                        <span className="time-update block ml-2 text-sm text-gray-600">{}</span>
-                                    </div>
-                                    <span className="last-message block ml-2 text-sm text-gray-600">{}</span>
-                                </div>
-                            </a>
+                        return(
+                        <li key={contact._id} className='contact overflow-hidden' 
+                        onClick={() => changeCurrentChat(index, contact)}>
+                            <div className="flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                                <span className="contact-name block ml-2 font-semibold  text-gray-600">{contact.name}</span>
+                                <img className="object-cover w-12 h-12 rounded-full" src={contact.logo} alt="profile image" />
+                            </div>
                         </li>
+                        )
                     })}
                 </ul>
                 {/* )} */}
+            </div>
+            <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentUserName}</h2>
+                <img className="object-cover mt-2 w-12 h-12 rounded-full" src={currentUserImage} alt="avatar"/>
             </div>
         </div>
     );

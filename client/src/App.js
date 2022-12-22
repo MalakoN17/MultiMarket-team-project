@@ -1,7 +1,4 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
-
-// Pages
-
 import Home from './pages/Home';
 import Main from './pages/Main';
 import Store from './pages/Store';
@@ -19,7 +16,8 @@ function App() {
     <>
       <Router>
         <Routes>
-          <Route path="" element={<Home />} />
+          <Route path="" element={<Home />} /> 
+          <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
           <Route path="store" element={<Store />} />
           <Route path="addproduct" element={<AddingProducts />}>
