@@ -17,6 +17,7 @@ import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
 import AddStore from './compontes/addStore/AddStore';
+import NeedLogin from './chatComponents/NeedLogin';
 
 function App() {
   return (
@@ -32,6 +33,8 @@ function App() {
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="addproduct" element={<AddingProducts />}></Route>
           <Route path="checkout" element={<CheckOut/>}></Route>
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          
         
 
           <Route path="*" element={<Error />} />
