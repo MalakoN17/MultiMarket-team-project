@@ -1,10 +1,6 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
-<<<<<<< HEAD
-=======
-import Cart from '../main/Cart';
->>>>>>> b6dcd2fd3da227a7cf2d8bd754ebb9ef352abbd6
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
@@ -29,12 +25,7 @@ export default function Stores() {
     const getStores = async () => {
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
       console.log(res.data);
-<<<<<<< HEAD
       setStores(res.data);
-=======
-      // const res = await axios.get('http://localhost:8000/api/store');
-      // setStores(res.data);
->>>>>>> b6dcd2fd3da227a7cf2d8bd754ebb9ef352abbd6
     };
     const getDepartment = async ()=>{
       const res = await axios.get(`http://localhost:8000/api/department/${id}`)
@@ -125,6 +116,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
+          <Cart />
         </div>
       </div>
       <div className="text-center relative left-[160px]">
