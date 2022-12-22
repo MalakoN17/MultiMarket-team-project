@@ -21,7 +21,13 @@ export const uploadProduct = createAsyncThunk('product/uploadProduct', async (pr
     const data = createProductToStoreApi(product)
     return data
   } catch (error) {
-    return thunkAPI.rejectWithValue(error.response.data);
+    const message =
+    (error.response &&
+      error.response.data &&
+      error.response.data.message) ||
+    error.message ||
+    error.toString()
+  return thunkAPI.rejectWithValue(message)
   }
 })
 
