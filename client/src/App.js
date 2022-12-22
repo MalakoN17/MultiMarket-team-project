@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import StorePage from './pages/StorePage';
 import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
+import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
 import AddingProducts from './compontes/products/AddingProducts'
 import Chat from './pages/Chat';
@@ -20,10 +21,11 @@ import CheckoutSuccess from './pages/CheckoutSuccess';
 function App() {
   return (
     <>
-      {/* <Pr /> */}
       <Router>
         <Routes>
+
           <Route path="" element={<Home />} /> 
+
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />

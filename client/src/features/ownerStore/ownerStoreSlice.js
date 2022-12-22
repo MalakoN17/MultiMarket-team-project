@@ -1,18 +1,34 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getStoreApi, getStoreProductsApi, updateStoreApi } from './ownerStoreService';
+import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi } from './ownerStoreService';
 const initialState = {
   store: {},
   isLoading:false,
   isLogin: false,
   isSuccuss:false,
   products: [],
+  departmentIds:[]
 };
 
-export const getStores = createAsyncThunk(
+export const getStore = createAsyncThunk(
   'ownerStore/getStore',
   async (payload, thunkAPI) => {
     try {
-      const data = getStoreApi(payload);
+      const data = await getStoreApi(payload);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+export const createStore = createAsyncThunk(
+  'ownerStore/createStore',
+  async (payload, thunkAPI) => {
+    try {
+      payload.bnNumber = +payload.bnNumber
+      payload.building = +payload.building
+      payload.apartment = +payload.apartment
+      console.log(payload);
+      const data = await createStoreApi(payload);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -20,11 +36,12 @@ export const getStores = createAsyncThunk(
   }
 );
 
+
 export const getStoreProducts = createAsyncThunk(
   'ownerStore/getStoreProducts',
   async (storeId, thunkAPI) => {
     try {
-      const data = getStoreProductsApi(storeId);
+      const data = await getStoreProductsApi(storeId);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
@@ -36,15 +53,22 @@ export const updateStore = createAsyncThunk(
   'ownerStore/updateStore',
   async (store, thunkAPI) => {
     const {id} = store
-    // console.log(store);
     try {
-      const data = updateStoreApi(id,store);
+      const data = await updateStoreApi(id,store);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);
     }
   }
 );
+export const getDepartments = createAsyncThunk('ownerStore/getDepartments', async ()=>{
+  try {
+    const data = await getDepartmentsApi()
+    return data
+  } catch (error) {
+    return error
+  }
+});
 
 const storeSlice = createSlice({
   name: 'ownerStore',
@@ -56,18 +80,28 @@ const storeSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(getStores.pending, (state) => {
+      .addCase(getStore.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(getStores.fulfilled, (state, action) => {
-      
+      .addCase(getStore.fulfilled, (state, action) => {
         state.isLoading = false;
         state.isSuccuss = true
         state.store = (action.payload);
       })
-      .addCase(getStores.rejected, (state,action) => {
+      .addCase(getStore.rejected, (state,action) => {
         state.isLoading = false;
         state.isSuccuss = false;
+      })
+      .addCase(createStore.pending, (state, action)=>{
+        state.isLoading = true
+      })
+      .addCase(createStore.fulfilled, (state, action)=>{
+        state.isLoading = false
+        console.log(action.payload);
+      })
+      .addCase(createStore.rejected, (state, action)=>{
+        state.isLoading = false
+        console.log(action.payload);
       })
       .addCase(getStoreProducts.pending, (state)=>{
         state.isLoading = true
@@ -82,6 +116,13 @@ const storeSlice = createSlice({
         state.isSuccuss = false
       })
       .addCase(updateStore.fulfilled, (state, action)=>{
+        console.log(action.payload);
+      })
+      .addCase(getDepartments.fulfilled, (state, action)=>{
+        
+        state.departmentIds = action.payload
+      })
+      .addCase(getDepartments.rejected, (state, action)=>{
         console.log(action.payload);
       })
   },
