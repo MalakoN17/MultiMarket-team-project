@@ -5,11 +5,11 @@ import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
 import Store from './Store';
 import './style.css';
-import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
+// import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
-import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
-import onion from '../../assets/images/products_images/onions.jpg';
+// import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
+// import onion from '../../assets/images/products_images/onions.jpg';
 import { useParams } from 'react-router-dom';
 
 export default function Stores() {

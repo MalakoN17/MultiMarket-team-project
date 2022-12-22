@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi } from './ownerStoreService';
+import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi, getStoresApi } from './ownerStoreService';
 const initialState = {
   store: {},
   isLoading:false,
@@ -119,7 +119,7 @@ const storeSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(getDepartments.fulfilled, (state, action)=>{
-        
+        console.log(action.payload);
         state.departmentIds = action.payload
       })
       .addCase(getDepartments.rejected, (state, action)=>{

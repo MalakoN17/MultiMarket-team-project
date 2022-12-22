@@ -8,7 +8,7 @@ import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
-import Store from './compontes/stores/Store';
+// import Store from './compontes/stores/Store';
 import AddStore from './compontes/addStore/AddStore';
 
 import Chat from './pages/Chat';
@@ -30,9 +30,9 @@ function App() {
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
-          <Route path="/store" element={<Store />} />
+          {/* <Route path="/store" element={<Store />} /> */}
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="addstore" element={<AddStore />} />
+          <Route path="/addStore" element={<AddStore />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

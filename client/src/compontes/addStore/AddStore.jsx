@@ -4,6 +4,8 @@ import { useSelector, useDispatch } from 'react-redux';
 import InputOwner from '../ownerStore/InputOwner';
 import UploadImage from '../ownerStore/UploadImage';
 import {getDepartments, createStore} from '../../features/ownerStore/ownerStoreSlice'
+import axiosMu from '../../utils/axiosInterceptors';
+import axios from 'axios';
 
 export default function AddStore() {
   const state = useSelector(state=>state.ownerStore)
@@ -78,11 +80,15 @@ export default function AddStore() {
       setStoreDetails({ ...storeDetails, [name]: storeDetails[name] });
     }
   };
+  
   useEffect(()=>{
     dispatch(getDepartments())
+    
+    
   },[])
   useEffect(()=>{
     setDepartmentIds(state.departmentIds)
+    
   },[state.departmentIds])
   return (
     <div className="">
@@ -166,7 +172,7 @@ export default function AddStore() {
               />
             <div>
                <div className="flex items-center">
-               {departmentIds?.map(item=><> <input onChange={handleChange} type="checkbox" name="departmentIds" value={item._id}  className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> 
+               {departmentIds?.map(item=>{ return (<> <input onChange={handleChange} type="checkbox" name="departmentIds" value={item._id}  className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> 
                <label
                htmlFor="checked-checkbox"
                className="ml-2 mx-2 text-sm font-medium text-gray-900 dark:text-gray-500"
@@ -174,6 +180,7 @@ export default function AddStore() {
                {item.name}
              </label>
              </>
+             )}
                )}
              
               </div>
