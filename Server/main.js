@@ -3,7 +3,6 @@ const cors = require('cors');
 const app = express();
 require('dotenv').config();
 require('./config/database');
-const storeRoute= require("./routers/storeRouter.js")
 
 app.use(cors());
 app.use(express.json({ limit: '30mb', extended: true }));
@@ -19,6 +18,7 @@ const productRouter = require('./routers/productsRouter');
 const sectionRouter = require('./routers/sectionRouter');
 // const shippingCertificateRouter = require('./routers/shippingCertificateRouter');
 const authRouter = require('./routers/authRouter');
+const stripeRouter = require('./routers/stripeRouter')
 
 app.use('/api/store', storeRouter);
 app.use('/api/user', userRouter);
@@ -29,9 +29,7 @@ app.use('/api/product', productRouter);
 app.use('/api/section', sectionRouter);
 // app.use('/api/shippingCertificate', shippingCertificateRouter);
 app.use('/auth', authRouter);
-
-
-app.use('/store',storeRoute)
+app.use('/api/stripe', stripeRouter)
 
 
 

@@ -6,6 +6,7 @@ import './style.css';
 export default function store(props) {
   return (
     <div>
+      
         <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
               <img src={props.smallHome} alt="" />
               <div>

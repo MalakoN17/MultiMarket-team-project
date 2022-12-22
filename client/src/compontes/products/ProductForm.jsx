@@ -5,6 +5,7 @@ import { settingProduct, uploadProduct } from '../../features/product/produceSli
 import InputProduct from './InputProduct';
 
 export default function ProductForm() {
+
   const item = useSelector((state) => state.product);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -41,6 +42,8 @@ export default function ProductForm() {
       setProduct({ ...product, [name]: value });
     }
   };
+
+
 
   const TransformFileData = (file) => {
     const reader = new FileReader();
