@@ -4,56 +4,83 @@ import axios from 'axios'
 import Contacts from '../chatComponents/Contacts';
 import Welcome from '../chatComponents/Welcome';
 import ChatContainer from '../chatComponents/ChatContainer';
-import {io} from 'socket.io-client'
-
-
+import { io } from 'socket.io-client'
+import Footer from '../compontes/footer/Footer';
+import DesktopNav from '../compontes/navbar/DesktopNav';
 
 export default function Chat() {
   const socket = useRef()
   const navigate = useNavigate();
-  const [contacts,setContacts] = useState([]);
+  const [contacts, setContacts] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
 
-  const checkLocalStorage =  async () => {
-    if(!localStorage.getItem('chat-app-user')){
-      //component of login
-    }else{
+  console.log(currentChat);
+
+  const addItem = function () {    
+    const newItem = {
+        '_id' : "63a0a989bb72687b51129f3d",
+        'name': 'avishay',
+        'lastName': 'avraham',
+        'username': 'Avishay Avraham',
+        'profileImage' : 'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
+    };    
+    localStorage.setItem('chat-app-user', JSON.stringify(newItem));
+};
+
+useEffect(() => {
+  addItem()
+},[])
+
+const getContacts = async () => {
+  const data = await axios.get('http://localhost:8000/api/store')
+  setContacts(data.data)
+}
+
+useEffect(() => {
+  getContacts()
+},[])
+
+
+  const checkLocalStorage = async () => {
+    if (!localStorage.getItem('chat-app-user')) {
+      alert('you need to login')
+    } else {
       setCurrentUser(
         await JSON.parse(localStorage.getItem('chat-app-user')))
     }
   }
 
-  // useEffect(() => {
-  //   if(currentUser){
-  //     socket.current = io(host);
-  //     socket.current.emit('add-user', currentUser._id);
-  //   }
-  // },[currentUser])
+  useEffect(() => {
+    if(currentUser){
+      socket.current = io('http://localhost:8000');
+      socket.current.emit('add-user', currentUser._id);
+    }
+  },[currentUser])
 
-  //  useEffect(() =>{
-  //    backToAvatar()
-  //  },[currentUser])
-
-  //  useEffect(() =>{
-  //   checkLocalStorage()
-  // },[])
+   useEffect(() =>{
+    checkLocalStorage()
+  },[])
 
   const handleChatChange = (chat) => {
-        setCurrentChat(chat)
+    setCurrentChat(chat)
   }
 
   return (
-      <div className="container mx-auto">
-        <div className="min-w-full border rounded border-red-500 columns-2">
-            <Contacts contacts={contacts} currentUser={currentUser} changeChat={handleChatChange}/>
-           {/* {
+    <div className='w-full bg-green-50'>
+      <DesktopNav/>
+      <div className="w-3/4 mx-auto">
+        <div className="min-w-full border rounded my-12 bg-white shadow-2xl flex flex-row-reverse">
+          <Contacts contacts={contacts} currentUser={currentUser} changeChat={handleChatChange} />
+          {/* {
             currentChat === undefined ?  */}
-            {/* <Welcome currentUser={currentUser}/> : */}
-            <ChatContainer currentChat={currentChat} currentUser={currentUser} socket={socket} />
-            {/* }  */}
+           {/* <Welcome currentUser={currentUser}/> :  */}
+          <ChatContainer currentChat={currentChat} currentUser={currentUser} socket={socket} />
+           {/* }  */}
         </div>
       </div>
+      <Footer/>
+    </div>
   )
 }
 

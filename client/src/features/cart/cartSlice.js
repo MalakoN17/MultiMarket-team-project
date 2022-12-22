@@ -32,6 +32,7 @@ const cartSlice = createSlice({
             const crateItem = state.cartItems.find((item)=>{
                 return item.id === action.payload.id
             })
+            console.log(crateItem);
             state.amount += 1;
         },
         decrease: (state, action)=>{
