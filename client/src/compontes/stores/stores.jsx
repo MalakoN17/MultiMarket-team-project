@@ -116,7 +116,6 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          <Cart />
         </div>
       </div>
       <div className="text-center relative left-[160px]">
