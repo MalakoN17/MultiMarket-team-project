@@ -10,7 +10,6 @@ export default function ProductForm() {
     const [product, setProduct] = useState({ barcode: '', image: '', name: '', price: 0, priority: 1, description: '', storeId: '', manufacturer: '', kosherType: '', productTag: '', subcategory: '', weightUnit: '', units: 0, contactNumber: '', manufacturer: '', parallelImporter: false, importer: '' });
     const { barcode, image, name, price, priority, description, storeId, manufacturer, kosherType, productTag } = product;
     const navigate = useNavigate();
-    // const [parallelImporter, setParallelImporter] = useState({ parallelImporter: false })
 
     // useEffect(() => {
     //     if (item) {
@@ -25,8 +24,8 @@ export default function ProductForm() {
 
     const handleForm = (e) => {
         e.preventDefault()
-        dispatch(settingProduct({ product }))
-        // navigate('/addproduct/formproducttwo')
+        // dispatch(settingProduct(product))
+        // navigate('') Back to store
     };
 
     const handleChange = (event) => {
