@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getStores,updateStore,updateStoreRdu } from '../../features/ownerStore/ownerStoreSlice';
+import { getStore,updateStore,updateStoreRdu } from '../../features/ownerStore/ownerStoreSlice';
 import InputOwner from './InputOwner';
 import UploadImage from './UploadImage';
 
@@ -48,7 +48,7 @@ export default function UpdateStore() {
 
 
   useEffect(() => {
-    dispatch(getStores('6390605ef3ee5834eff8fa0c'));
+    dispatch(getStore('6390605ef3ee5834eff8fa0c'));
   }, []);
   useEffect(() => {
     const {bnNumber, name, description, lightlogo, darklogo, coverImage, phone, email, address, logo} = store;

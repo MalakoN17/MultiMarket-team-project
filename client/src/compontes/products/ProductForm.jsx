@@ -28,7 +28,7 @@ export default function ProductForm() {
     manufacturer: '',
     parallelImporter: false,
     importer: '',
-    createdBy:'test-destaw'
+    createdBy:''
   });
   
   const handleInput = (e) => {
@@ -61,8 +61,6 @@ export default function ProductForm() {
     e.preventDefault();
     product.storeId ='6390605ef3ee5834eff8fa0c'
     dispatch(uploadProduct(product));
-    // dispatch(settingProduct({ product }));
-    // navigate('/addproduct/formproducttwo')
   };
 
   const handleChange = (event) => {

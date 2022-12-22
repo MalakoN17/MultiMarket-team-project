@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import {getStores} from '../../features/ownerStore/ownerStoreSlice'
+import {getStore} from '../../features/ownerStore/ownerStoreSlice'
 
 export default function OwnerStoreAccount() {
     const  storeD = useSelector(state=> state.ownerStore)
@@ -9,7 +9,7 @@ export default function OwnerStoreAccount() {
     const dispatch = useDispatch()
 
     useEffect(()=>{
-        dispatch(getStores('6391e77a46a83544c853314f'))
+        dispatch(getStore('6391e77a46a83544c853314f'))
         
     },[])
     useEffect(()=>{
@@ -53,7 +53,6 @@ export default function OwnerStoreAccount() {
         <div>
             <h1>{storeDe.address?.apartment}</h1>
         </div>
-
-   
-  )
+   </div>
+  );
 }

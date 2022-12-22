@@ -21,7 +21,7 @@ const persistConfig = {
   version: 1,
   storage,
 }
-const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer})
+const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore})
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
 
