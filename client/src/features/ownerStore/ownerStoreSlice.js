@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi } from './ownerStoreService';
+import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi, deleteStoreApi } from './ownerStoreService';
 const initialState = {
   store: {},
   isLoading:false,
@@ -55,6 +55,17 @@ export const updateStore = createAsyncThunk(
     const {id} = store
     try {
       const data = await updateStoreApi(id,store);
+      return data;
+    } catch (error) {
+      return thunkAPI.rejectWithValue(error.response.data);
+    }
+  }
+);
+export const deleteStore = createAsyncThunk(
+  'ownerStore/deleteStore',
+  async (storeId, thunkAPI) => {
+    try {
+      const data = await deleteStoreApi(storeId);
       return data;
     } catch (error) {
       return thunkAPI.rejectWithValue(error.response.data);

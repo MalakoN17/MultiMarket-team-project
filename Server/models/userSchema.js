@@ -16,17 +16,17 @@ const UserSchema = new mongoose.Schema({
     lowercase: true,
   },
   phone: { type: String, unique: true },
-  loginCode: { type: String, select: false },
-  phone2: { type: String },
+  // loginCode: { type: String, select: false },
+  // phone2: { type: String },
   password: {
     type: String,
     required: true,
-    // select: false,
+    select: false,
   },
-  storeIds: {
-    type: [String],
-    autocomplete: { collection: 'store', multiple: true },
-  },
+  // storeIds: {
+  //   type: [String],
+  //   autocomplete: { collection: 'store', multiple: true },
+  // },
   address: {
     type: Object,
     city: { type: String },
