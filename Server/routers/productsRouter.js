@@ -6,10 +6,12 @@ const {
   createProduct,
   updateProduct,
   deleteProduct,
+  getAllProducts,
 } = require('../controllers/productsControllers');
 
-router.get('/', getAllProductsStore);
+router.get('/store/:storeId', getAllProductsStore);
 router.get('/:id', getProduct);
+router.get('/', getAllProducts);
 router.post('/', createProduct);
 router.put('/:id', updateProduct);
 router.delete('/:id', deleteProduct);

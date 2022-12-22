@@ -21,6 +21,8 @@
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.4.5",
     "react-scripts": "5.0.1",
+    "reactjs-popup": "^2.0.5",
+    "redux-persist": "^6.0.0",
     "socket.io-client": "^4.5.4",
     "styled-components": "^5.3.6",
     "uuid": "^9.0.0",

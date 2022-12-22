@@ -11,6 +11,15 @@ const getAllProductsStore = async (req, res, next) => {
   }
 };
 
+const getAllProducts = async (req, res, next) => {
+  try {
+    const products = await productsModel.find({});
+    res.status(200).json(products);
+  } catch (error) {
+    next(error);
+  }
+};
+
 const getProduct = async (req, res, next) => {
   const { productId } = req.params;
   try {
@@ -39,15 +48,12 @@ const createProduct = async (req, res, next) => {
     if (data.image !== '') {
       const result = await cloudinary.uploader.upload(data.image, {
         folder: 'products',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       data.image = {
         public_id: result.public_id,
         url: result.secure_url,
       };
-      const product = await productsModel(data);
+      const product =  productsModel(data);
       await product.save();
     }
     res.status(200).json('product create succuss');
@@ -63,8 +69,8 @@ const updateProduct = async (req, res, next) => {
   try {
     const product = await productsModel.findById(productId);
     const imageId = product.public_id;
-    if (data.image !== '') {
-      const deleteImage = await cloudinary.uploader.destroy(imageId);
+    if (data.image !== product.image.url) {
+      await cloudinary.uploader.destroy(imageId);
       const result = await cloudinary.uploader.upload(data.image, {
         folder: 'products',
       });
@@ -72,12 +78,12 @@ const updateProduct = async (req, res, next) => {
         public_id: result.public_id,
         url: result.secure_url,
       };
-      await productsModel.findByAndUpdate(
-        data,
-        { $set: { data } },
-        { new: true }
-      );
     }
+    await productsModel.findByAndUpdate(
+      data,
+      { $set: { data } },
+      { new: true }
+    );
     res.status(200).json('product create succuss');
   } catch (error) {
     next(error);
@@ -92,8 +98,8 @@ const deleteProduct = async (req, res, next) => {
     const result = cloudinary.uploader.destroy(product.public_id);
     if (result) {
       await productsModel.findByIdDelete(productId);
+      res.status(200).json('product deleted');
     }
-    res.status(200).json(productsModel);
   } catch (error) {
     next(error);
   }
@@ -105,4 +111,5 @@ module.exports = {
   createProduct,
   updateProduct,
   deleteProduct,
+  getAllProducts,
 };

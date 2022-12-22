@@ -1,5 +1,7 @@
 const storeModel = require('../models/storeSchema.js');
 const storeOwnerModel = require('../models/ownerStoreUserSchema')
+const cloudinary = require('../utils/cloudinary')
+
 //Create Store
 const createNewStore = async (req, res, next) => {
   const data = req.body;
@@ -10,15 +12,9 @@ const createNewStore = async (req, res, next) => {
       });
       const lightlogo = await cloudinary.uploader.upload(data.lightlogo, {
         folder: 'store',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       const darklogo = await cloudinary.uploader.upload(data.darklogo, {
         folder: 'store',
-        width: 300,
-        height: 100,
-        crop: 'fill',
       });
       data.coverImage = {
         public_id: coverImage.public_id,
@@ -42,20 +38,50 @@ const createNewStore = async (req, res, next) => {
 };
 //Update Store
 const updateStore = async (req, res, next) => {
-  const data = await storeModel.findById(req.params.id);
+  const data = req.body
   try {
-    if (data.coverImage) {
+    const store = await storeModel.findById(req.params.id);
+    if(store.coverImage !== data.coverImage.url){
+      //  await cloudinary.uploader.destroy(store.coverImage.public_id);
+      const result = await cloudinary.uploader.upload(data.coverImage, {
+        folder: 'store',
+      });
+      data.coverImage = {
+        public_id: result.public_id,
+        url: result.secure_url
+      }
+    }
+    if(store.lightlogo !== data.lightlogo.url){
+      //  await cloudinary.uploader.destroy(data.lightlogo.public_id);
+      const lightlogo = await cloudinary.uploader.upload(data.lightlogo, {
+        folder: 'store',
+      });
+      data.lightlogo = {
+        public_id: lightlogo.public_id,
+        url: lightlogo.secure_url
+      }
+    }
+    if(store.darklogo !== data.darklogo.url){
+      // await cloudinary.uploader.destroy(data.darklogo.public_id);
+      const darklogo = await cloudinary.uploader.upload(data.darklogo, {
+        folder: 'store',
+      });
+      data.darklogo = {
+        public_id: darklogo.public_id,
+        url: darklogo.secure_url
+      }
+    }
       const updateStore = await storeModel.findByIdAndUpdate(
-        req.params.id,
+        data.id,
         {
-          $set: req.body,
+          $set: data,
         },
         { new: true }
-      );
+      )
       res.status(200).json(updateStore);
-    }
+   
   } catch (err) {
-    next(err);
+    console.log(err);
   }
 };
 //Delete Store
@@ -142,10 +168,6 @@ module.exports = {
   getAllStoresByCityName,
   getStoreByDepartment,
   getStoreBySection,
-  // getProductsInStore,
-  // updateProduct,
-  // addProductToStore,
-  // deleteProductInStore,
 };
 
 // {"_id":{"$oid":"63974d1f3f81a02254f08d1c"},"bnNumber":{"$numberInt":"5856589"},"name":"meet aviel","coverImage":"dasdasdasdasd","departmentIds":["6391e623e90d2f2246c0021a"],"products":[{"name":"רועי קפה","active":true,"parallelImporter":false,"salesQuantity":{"$numberInt":"0"},"productStock":null,"_id":{"$oid":"639896ee2042fce652f74058"},"expirationDate":{"$date":{"$numberLong":"1670944494688"}},"lastUpdate":{"$date":{"$numberLong":"1670944494688"}},"createdAt":{"$date":{"$numberLong":"1670944494688"}}},{"barcode":"85255","image":"https://w7.pngwing.com/pngs/895/199/png-transparent-spider-man-heroes-download-with-transparent-background-free-thumbnail.png","name":"יריכיים","price":{"$numberInt":"6"},"priority":{"$numberInt":"1"},"sectionId":{"$oid":"63974b0df3ee5834ef22439a"},"kosherType":"רבנות","productTag":"surfaces","subCategory":"chicken breast","active":true,"weight":{"inWeight":false,"avgWeightPerUnit":{"$numberInt":"200"},"weightUnit":"grams"},"units":{"unitsInCarton":{"$numberInt":"1"},"amount":{"$numberInt":"1"},"minimumOrderCartonCount":{"$numberInt":"1"},"measureUnits":"units"},"contactInfo":{"contactNumber":"000-333","contactName":"avishay"},"manufacturer":"vdafppppppppp","parallelImporter":true,"brand":"nike","salesQuantity":{"$numberInt":"1"},"productStock":{"$numberInt":"1"},"description":"nike chicken breast","createdBy":"avishay","_id":{"$oid":"639897272042fce652f7405a"},"expirationDate":{"$date":{"$numberLong":"1670944551854"}},"lastUpdate":{"$date":{"$numberLong":"1670944551854"}},"createdAt":{"$date":{"$numberLong":"1670944551854"}}}],"active":true,"createdBy":"roy mekonen","lastUpdate":{"$date":{"$numberLong":"1670860063920"}},"createdAt":{"$date":{"$numberLong":"1670860063920"}},"__v":{"$numberInt":"0"}}
