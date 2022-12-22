@@ -1,9 +1,16 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom';
 
 import './style.css';
 
+export default function Store(props) {
+  const navigate = useNavigate()
 
-export default function store(props) {
+  const handleClick = () => {
+    console.log(props.store)
+    navigate(`/store/${props._id}`)
+  }
+
   return (
     <div>
       
