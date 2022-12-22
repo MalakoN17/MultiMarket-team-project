@@ -38,6 +38,7 @@ const register = async (req, res, next) => {
   try {
     const data = req.body;
     data.password = hashedPassword;
+    data.createdBy = `${email}`
     const newUser = usersSchema(data);
     await newUser.save();
     res.status(200).json('user created');
@@ -62,7 +63,7 @@ const login = async (req, res, next) => {
       user || storeOwner && (await bcrypt.compare(password, user?.password || storeOwner?.password)))
      {
       const accessToken = generateAccessToken(user || storeOwner);
-      res.json({ accessToken: accessToken });
+      res.json({ accessToken: accessToken, currentUser:user });
     } else {
       res.status(400);
       throw new Error('User is not exist');
@@ -75,7 +76,7 @@ const login = async (req, res, next) => {
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
   return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30m',
+    expiresIn: '30s',
   });
 };
 

@@ -3,9 +3,9 @@ import { FcGoogle } from "react-icons/fc";
 import { FaFacebookF } from "react-icons/fa";
 import { Link } from "react-router-dom";
 
-export default function LoginDemo({
-    // email,
-    // password,
+export default function Demo({
+    email,
+    password,
     loginFun,
     btnText,
     linkDisplay,
@@ -20,17 +20,20 @@ export default function LoginDemo({
           <h1 className="text-lg font-bold py-5 underline decoration-solid">
           </h1>
           <div className="flex  flex-col mb-4">
-            <label className="flex items-start">Username</label>
+            <label className="flex items-start">Email</label>
             {/* input for email */}
             <input
+              onChange={(e) => email(e.target.value)}
               className="border relative bg-gray-100 p-2"
               type="text"
+              id="default-search"
             />
           </div>
           <div className="flex flex-col mb-4">
             <label className="flex items-start">Password</label>
             {/* input for password */}
             <input
+              onChange={(e) => password(e.target.value)}
               className="border relative bg-gray-100 p-2"
               type="password"
             />
@@ -38,7 +41,7 @@ export default function LoginDemo({
           {/* button */}
           <button
             className="w-full py-3 bg-[#2d2d2d] hover:bg-[#aaa] relative text-[#fff]"
-            onClick={loginFun}
+            onClick={(e)=>loginFun(e)}
           >
             {btnText}
           </button>
