@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { settingProduct, uploadProduct } from '../../features/product/produceSlice';
-import InputProduct from './InputProduct';
+// import InputProduct from './InputProduct';
 
 export default function ProductForm() {
 

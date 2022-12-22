@@ -15,6 +15,7 @@ export default function OwnerStoreAccount() {
     useEffect(()=>{
         setStore(store)
     },[isSuccuss])
+
   return (
     <div className="border border-black flex flex-col justify-center items-center">
         <div>
@@ -53,7 +54,9 @@ export default function OwnerStoreAccount() {
         <div>
             <h1>{storeDe.address?.apartment}</h1>
         </div>
+        </div>
 
    
   )
 }
+
