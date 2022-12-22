@@ -8,6 +8,22 @@ export const getStoreApi = async (storeId) => {
     return error;
   }
 };
+export const createStoreApi = async (store) => {
+  try {
+    const { data } = await axiosMu.post(`/store`, store);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+export const getStoresApi = async () => {
+  try {
+    const { data } = await axiosMu.get(`/store`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 export const updateStoreApi = async (storeId, store) => {
   try {
 
@@ -30,6 +46,14 @@ export const getStoreProductApi = async (productId) => {
 export const getStoreProductsApi = async (storeId) => {
   try {
     const { data } = await axiosMu.get(`/product/store/${storeId}`);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
+export const getDepartmentsApi = async () => {
+  try {
+    const { data } = await axiosMu.get(`/department`);
     return data;
   } catch (error) {
     return error;

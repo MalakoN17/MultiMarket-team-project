@@ -6,6 +6,7 @@ import Main from './pages/Main';
 import StorePage from './pages/StorePage';
 import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
+import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
 
 import Chat from './pages/Chat';
@@ -21,7 +22,9 @@ function App() {
     <>
       <Router>
         <Routes>
+
           <Route path="" element={<Home />} /> 
+
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
