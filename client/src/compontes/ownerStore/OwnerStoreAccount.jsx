@@ -12,15 +12,16 @@ export default function OwnerStoreAccount() {
 
 
     useEffect(()=>{
-        dispatch(getStore('6391e77a46a83544c853314f'))
+        // dispatch(getStore('6391e77a46a83544c853314f'))
         
     },[])
     useEffect(()=>{
         setStore(store)
     },[isSuccuss])
   return (
-    <div className="border border-black flex flex-col justify-center items-center">
-        <div>
+    <div className="text-center">
+        פרטי חשבון
+        {/* <div>
             <h1>{storeDe.name}</h1>
         </div>
         <div>
@@ -55,7 +56,7 @@ export default function OwnerStoreAccount() {
         </div>
         <div>
             <h1>{storeDe.address?.apartment}</h1>
-        </div>
+        </div> */}
    </div>
   );
 }
