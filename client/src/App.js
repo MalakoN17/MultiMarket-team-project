@@ -7,6 +7,9 @@ import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
+import Store from './compontes/stores/store';
+import AddStore from './compontes/addStore/AddStore';
+
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Register from './pages/Register';
@@ -19,6 +22,9 @@ import AddStore from './compontes/addStore/AddStore';
 import CheckoutSuccess from './pages/CheckoutSuccess';
 import Store from './compontes/stores/Store';
 
+import OwnerStore from './pages/OwnerStore';
+
+
 function App() {
   return (
     <>
@@ -26,7 +32,7 @@ function App() {
       <Router>
         <Routes>
 
-          <Route path="" element={<AddStore />} /> 
+          <Route path="" element={<Main />} /> 
 
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
@@ -34,8 +40,16 @@ function App() {
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="addproduct" element={<AddingProducts />}></Route>
-          <Route path="CheckoutSuccess" element={<CheckoutSuccess />}/>
+
+      
+          <Route path='/ownerstore' element={<OwnerStore />}>
+            <Route path='addproduct' element={<AddingProducts/>}/>
+            <Route path='accountstore' element={<OwnerStoreAccount/>}/>
+          </Route>
+
+          <Route path="addstore" element={<AddStore />} />
+          <Route path="login" element={<Login/>}/>
+          <Route path="register" element={<Register/>}/>
 
           <Route path="*" element={<Error />} />
         </Routes>

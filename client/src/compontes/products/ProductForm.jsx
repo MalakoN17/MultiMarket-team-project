@@ -1,12 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { settingProduct, uploadProduct } from '../../features/product/produceSlice';
+import {  createProduct } from '../../features/product/produceSlice';
 import InputProduct from './InputProduct';
+import { createSections, getAllSections } from '../../features/section/sectionSlice';
 
 export default function ProductForm() {
 
   const item = useSelector((state) => state.product);
+  const sectionsState = useSelector((state) => state.sections);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState({
@@ -28,22 +30,42 @@ export default function ProductForm() {
     manufacturer: '',
     parallelImporter: false,
     importer: '',
-    createdBy:''
+    createdBy:'בדיקה',
+    sectionId:[]
   });
+
+  const [sections, setSections] = useState([])
+  const [show, setShow] = useState('hidden')
+  const [newSections, setNewSections] = useState({name:'', storeId:'63a48293b35d889218bf1120', createdBy:'destaw-test'})
   
   const handleInput = (e) => {
-    const { name, value } = e.target;
-    
+    const { name, value ,checked} = e.target;
     if(name === 'image'){
       const file = e.target.files[0]
       TransformFileData(file)
+    }else if(name === 'sectionId'){
+      if(checked === false){
+        setProduct({...product, sectionId:product.sectionId.filter(sec=> sec !== value)})
+      }else{
+        setProduct({...product, sectionId:[...product.sectionId, value]})
+      }
     }else{
-      console.log(name);
       setProduct({ ...product, [name]: value });
     }
   };
+  const handleInputSection = (e) => {
+    const { name, value } = e.target;
+    setNewSections({...newSections, [name]:value})
+  };
 
+  const createNewSection = (e) => {
+    dispatch(createSections(newSections))
+    setProduct({...product, sectionId:[...product.sectionId, sectionsState.newSection._id
+    ]})
+    console.log(sectionsState.newSection._id);
+  };
 
+ 
 
   const TransformFileData = (file) => {
     const reader = new FileReader();
@@ -59,8 +81,13 @@ export default function ProductForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
+<<<<<<< HEAD
     product.storeId ='63a443550cddb1c803fbbd61'
     dispatch(uploadProduct(product));
+=======
+    product.storeId ='6390605ef3ee5834eff8fa0c'
+    dispatch(createProduct(product));
+>>>>>>> 6952d4bc3d5adfd96a615103fcd32b8e69d6aca6
   };
 
   const handleChange = (event) => {
@@ -70,9 +97,12 @@ export default function ProductForm() {
     });
   };
 
+  useEffect(()=>{
+    dispatch(getAllSections('63a48293b35d889218bf1120'))
+  },[sectionsState.sections.length])
   return (
     <div>
-      <div className="flex items-center justify-center p-12">
+      <div className="flex items-center justify-center p-12 ">
         <div className="mx-auto w-full max-w-[550px] bg-white">
           <form className="py-6 px-2" onSubmit={handleForm}>
           <InputProduct funChange={handleInput} textLabel='שם המוצר' name='name' type='name' placeholder='לדוגמה: עגבניות שרי' />
@@ -186,28 +216,6 @@ export default function ProductForm() {
                 <option value="short-exp">תוקף קצר</option>
               </select>
             </div>
-
-            <div className="mb-5">
-              <label
-                htmlFor="subcategory"
-                className="mb-3 block text-base font-medium text-[#07074D] text-right"
-              >
-                קטגוריית מוצר:
-              </label>
-              <select
-                defaultValue={'בחר קטגוריית מוצר'}
-                onChange={handleInput}
-                name="subcategory"
-                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-              >
-                <option>בחר קטגוריית מוצר</option>
-                <option value="ירקות">ירקות</option>
-                <option value="פירות">פירות</option>
-                <option value="חלבי">חלבי</option>
-                <option value="בשרים">בשרים</option>
-              </select>
-            </div>
-
             <div className="mb-5">
               <label
                 htmlFor="weightUnit"
@@ -256,8 +264,24 @@ export default function ProductForm() {
             <InputProduct funChange={handleInput} textLabel=' יבואן המוצר:' name='importer' type='text' placeholder='הכנס שם יבואן' />
             <InputProduct funChange={handleInput} textLabel='יצרן:' name='manufacturer' type='text' placeholder='הכנס שם יצרן'  />
             <InputProduct funChange={handleInput} textLabel='פרטים ליצירת קשר:' name='contactNumber' type='text' placeholder='הכנס פרטים ליצרית קשר'  />
-          
-
+            <div className='flex'>
+            {sectionsState.sections?.map(item=><div key={item._id}> 
+            <input  onChange={handleInput} type="checkbox" name="sectionId" value={item._id}  className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> 
+               <label
+               htmlFor="checked-checkbox"
+               className="ml-2 mx-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+             >
+               {item.name}
+             </label>
+             </div>
+               )}
+            </div>
+           
+               <button type='button' onClick={()=>setShow('block')}>צור קטגוריה חדשה</button>
+               <div className={show}>
+            <InputProduct funChange={handleInputSection} textLabel='צור קטגוריה ' name='name' type='text' placeholder='הכנס קטגוריה חדשה' />
+            <button onClick={createNewSection} type='button'>צור קטגוריה</button>
+               </div>
             <div>
               <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                 העלאה מוצר
