@@ -2,21 +2,25 @@ import React, {useState, useEffect} from 'react'
 import axios from 'axios'
 import onion from '../../assets/images/products_images/onions.jpg';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../features/cart/cartSlice';
 export default function Product() {
 
     const [product, setProduct] = useState({storeId:1, productName:'עגבנייה', price:5, quantity:1, productId:2})
     const [store, setStore] = useState({})
-    const storeId = product.id 
-    const res = axios.get(`http://localhost:8000/api/store//getByID/${storeId}`)
+    const {cartItems, stores} = useSelector((state)=> state.cart)
+    // const storeId = product.id 
+    // const res = axios.get(`http://localhost:8000/api/store//getByID/${storeId}`)
 
     useEffect(()=>{
-        setStore(res.data)
+        // setStore(res.data)
+        console.log(cartItems);
+        console.log(stores);
     },[])
     console.log();
     const dispatch = useDispatch()
     const addToCart = () => {
+        console.log(product);
         dispatch(addProduct(product))
     }
     return (

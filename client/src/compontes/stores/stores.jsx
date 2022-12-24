@@ -43,7 +43,7 @@ export default function Stores() {
     <DesktopNav />
     <MobileNav />
       <div className="background-image w-full">
-        <img src={department.topImage} alt="" width="100%" className="shadow-xl" />
+        <img src={department?.topImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטגוריה +{cityValue}</h1>
