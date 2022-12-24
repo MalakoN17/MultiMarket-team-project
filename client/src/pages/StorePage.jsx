@@ -1,5 +1,5 @@
 import React from 'react'
-import Stores from '../compontes/stores/Stores'
+import Stores from '../compontes/stores/stores'
 
 export default function StorePage() {
   return (
