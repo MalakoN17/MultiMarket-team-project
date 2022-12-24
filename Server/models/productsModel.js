@@ -22,11 +22,11 @@ const ProductSchema = new mongoose.Schema({
     type: Number,
     enum: [1, 2, 3, 4, 5],
   },
-  // sectionId: {
-  //   type: mongoose.Types.ObjectId,
-  //   ref: 'section',
-  //   autocomplete: { collection: 'section' },
-  // },
+  sectionId: {
+    type: [String],
+    ref: 'section',
+    autocomplete: { collection: 'section' },
+  },
   kosherType: {
     type: String,
     enum: ['בד"ץ', 'רבנות', 'מהדרין'],

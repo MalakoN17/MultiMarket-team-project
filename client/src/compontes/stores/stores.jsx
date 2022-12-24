@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
-import Store from './Store';
+import Store from './store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
