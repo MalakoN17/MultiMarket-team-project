@@ -16,6 +16,7 @@ import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
 import AddStore from './compontes/addStore/AddStore';
+import OwnerStore from './pages/OwnerStore';
 
 function App() {
   return (
@@ -23,14 +24,17 @@ function App() {
       {/* <Pr /> */}
       <Router>
         <Routes>
-          <Route path="" element={<AddStore />} /> 
+          <Route path="" element={<Main />} /> 
           <Route path="chat" element={<Chat />} /> 
           <Route path="main" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="addproduct" element={<AddingProducts />}></Route>
-
+          <Route path='/ownerstore' element={<OwnerStore />}>
+            <Route path='addproduct' element={<AddingProducts/>}/>
+            <Route path='accountstore' element={<OwnerStoreAccount/>}/>
+          </Route>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
