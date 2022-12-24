@@ -14,8 +14,8 @@ import storage from 'redux-persist/lib/storage'
 import cartReducer from '../features/cart/cartSlice'
 import ownerStore from '../features/ownerStore/ownerStoreSlice';
 import produceReducer from '../features/product/produceSlice';
-import cityReducer from "../features/city/citySlice
-import sectionReducer from "../features/section/
+import cityReducer from "../features/city/citySlice";
+import sectionReducer from "../features/section/sectionSlice";
 import userSlice from '../features/user/userSlice'
 
 
@@ -26,9 +26,8 @@ const persistConfig = {
   storage,
 }
 
-const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore, sections:sectionReducer})
+const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore, sections:sectionReducer, user:userSlice})
 
-const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore, user:userSlice})
 
 
 const persistedReducer = persistReducer(persistConfig, rootReducer)
