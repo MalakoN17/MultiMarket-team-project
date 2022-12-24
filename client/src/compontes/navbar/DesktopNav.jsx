@@ -1,7 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
+import logo from "../../assets/multimarket-logo1.png"
 import "./destkopNav.css"
  
 function DesktopNav() {
+
+  const navigate = useNavigate();
+
   return (
     <div>
     {/* <div className="awesome" > */}
@@ -23,8 +28,8 @@ function DesktopNav() {
                   <a href="#" className="menuNav">צור קשר</a>
                   <a href="#" className="menuNav">תנאי השימוש</a>
                   <a href="#" className="menuNav">איכות הסביבה</a>
-                  <a href="#" className="menuNav">הרשמה</a>
-                  <a href="#" className="menuNav">כניסת משתמש</a>
+                  <a href="#" className="menuNav" onClick={()=> navigate("register")}>הרשמה</a>
+                  <a href="#" className="menuNav" onClick={()=> navigate("login")}>כניסת משתמש</a>
                 </div>
               {/* </div> */}
               </div>

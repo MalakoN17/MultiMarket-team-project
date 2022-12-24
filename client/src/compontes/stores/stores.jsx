@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import Cart from '../main/Cart';
 import DesktopNav from "../navbar/DesktopNav"
 import MobileNav from "../navbar/MobileNav"
-import Store from './store';
+import Store from './Store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -17,37 +17,33 @@ export default function Stores() {
   const {id} = useParams()
   const {cityValue} = useSelector((state)=> state.city);
   
- 
   const [stores, setStores] = useState([]);
   const [department, setDepartment] = useState([]);
   
   useEffect(() => {
-    console.log(id)
     const getStores = async () => {
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
-      console.log(res.data);
+
+      setStores(res.data)
+
     };
     const getDepartment = async ()=>{
       const res = await axios.get(`http://localhost:8000/api/department/${id}`)
-      console.log(res.data)
       setDepartment(res.data)
-
     }
+
     getStores();
     getDepartment();
-  }
-  
+    console.log(stores);
+  }  
   , []);
-
-   
-
 
   return (
     <>
     <DesktopNav />
     <MobileNav />
       <div className="background-image w-full">
-        <img src={vegetablesImage} alt="" width="100%" className="shadow-xl" />
+        <img src={department.topImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטגוריה +{cityValue}</h1>
