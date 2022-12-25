@@ -2,8 +2,9 @@ import React,{useState,useEffect} from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
+import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
-import Store from './Store';
+import Store from './store';
 import './style.css';
 // import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -40,6 +41,7 @@ export default function Stores() {
   return (
     <>
     <DesktopNav />
+    <LoginUserNavbar/>
     <MobileNav />
       <div className="background-image w-full">
         <img src={department.topImage} alt="" width="100%" className="shadow-xl" />
@@ -111,7 +113,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          
+          {/* <Cart /> */}
         </div>
       </div>
       <div className="text-center relative left-[160px]">

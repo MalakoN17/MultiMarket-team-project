@@ -8,8 +8,8 @@ const {
   getSection,
 } = require('../controllers/sectionController');
 
-router.get('/', getAllSection);
-router.get('/:sectionId', getSection);
+router.get('/:storeId', getAllSection);
+router.get('/section/:sectionId', getSection);
 router.post('/', createNewSection);
 router.put('/:sectionId', updateSection);
 router.delete('/:sectionId', deleteSection);

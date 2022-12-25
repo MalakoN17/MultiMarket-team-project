@@ -6,19 +6,18 @@ import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
 import FooterMobile from '../compontes/footer/footerMobile'
 import Footer from '../compontes/footer/Footer'
 import React from 'react'
-import { useSelector } from 'react-redux'
 
 function Main() {
-    const user = useSelector(state=> state.user)
-    console.log(user.currentUser);
+    
     return (
         <div>
             <PopOut />
             <MobileNav />
             <DesktopNav />
-            {/* <LoginUserNavbar/> */}
+
+            <LoginUserNavbar/>
+            {/* <Departments /> */}
             <Departments />
-            {/* <Department /> */}
             <FooterMobile />
             <Footer />
         </div>

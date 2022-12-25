@@ -25,7 +25,6 @@ export default function AddStore() {
       street: '',
       building: '',
       apartment: '',
-      logo: '',
     },
       departmentIds: [],
       createdBy:'test-destaw'
@@ -63,10 +62,8 @@ export default function AddStore() {
     const { name, checked, value } = e.target;
     if(checked === false){
       setStoreDetails({...storeDetails, departmentIds:storeDetails.departmentIds.filter(dap=> dap!== value)})
-      console.log(storeDetails);
     }else{
       setStoreDetails({ ...storeDetails, departmentIds:[...storeDetails.departmentIds, value] })
-      console.log(storeDetails);
     }
   };
   const TransformFileData = (file, name) => {
