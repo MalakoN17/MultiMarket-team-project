@@ -3,24 +3,24 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 const createCheckoutPay = async (req, res, next) => {
   try {
-    const line_items = req.body.item.map(item => {
+    const line_items = req.body.s.map((store) => {
       return {
-        price_data:{
-          currency:'ils',
-          product_data:{
-            name: item.storeName,
-            images:[item.img],
+        price_data: {
+          currency: 'ils',
+          product_data: {
+            name: store.storeName,
+            images: [store.img],
           },
-          unit_amount: item.totalPrice * 100,
+          unit_amount: store.totalPrice * 100,
         },
-        quantity: item.quantity
+        quantity: store.quantity,
       };
-});
-const session = await stripe.checkout.sessions.create({
-        payment_method_types:['card'],
-        line_items,
-        mode: 'payment',
-      success_url: 'http://localhost:8000/CheckoutSucsses',
+    });
+    const session = await stripe.checkout.sessions.create({
+      line_items,
+      payment_method_types: ['card'],
+      mode: 'payment',
+      success_url: 'http://localhost:8000/CheckoutSuccess',
       cancel_url: 'http://localhost:8000/cancel',
     });
     res.json({ url: session.url });
@@ -28,6 +28,5 @@ const session = await stripe.checkout.sessions.create({
     next(error);
   }
 };
-
 
 module.exports = { createCheckoutPay };
