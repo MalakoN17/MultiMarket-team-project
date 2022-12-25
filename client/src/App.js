@@ -7,6 +7,7 @@ import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
+import CheckOut from './pages/checkOut/CheckOut';
 import Store from './compontes/stores/store';
 import AddStore from './compontes/addStore/AddStore';
 
@@ -18,6 +19,7 @@ import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
+import NeedLogin from './chatComponents/NeedLogin';
 
 import OwnerStore from './pages/OwnerStore';
 
@@ -29,6 +31,7 @@ function App() {
       <Router>
         <Routes>
 
+
           <Route path="" element={<Main />} /> 
 
           <Route path="chat" element={<Chat />} /> 
@@ -37,6 +40,10 @@ function App() {
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
+          <Route path="checkout" element={<CheckOut/>}></Route>
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          
+        
 
       
           <Route path='/ownerstore' element={<OwnerStore />}>

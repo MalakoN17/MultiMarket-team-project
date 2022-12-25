@@ -21,6 +21,7 @@ export default function Stores() {
   
   useEffect(() => {
     const getStores = async () => {
+
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
 
       setStores(res.data)
