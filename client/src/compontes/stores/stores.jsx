@@ -3,6 +3,7 @@ import axios from 'axios';
 import { useSelector } from 'react-redux';
 import Cart from '../main/Cart';
 import DesktopNav from "../navbar/DesktopNav"
+import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
 import Store from './Store';
 import './style.css';
@@ -41,6 +42,7 @@ export default function Stores() {
   return (
     <>
     <DesktopNav />
+    <LoginUserNavbar/>
     <MobileNav />
       <div className="background-image w-full">
         <img src={department.topImage} alt="" width="100%" className="shadow-xl" />

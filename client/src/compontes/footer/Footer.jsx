@@ -11,9 +11,9 @@ import "./footer.css"
 export default function Footer() {
   return (
     <div className='hidden sm:block'>
-     <footer class="bg-black">
-    <div class="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
-        <nav class="flex flex-wrap justify-center -mx-5 -my-2">
+     <footer className="bg-black">
+    <div className="max-w-screen-xl px-4 py-12 mx-auto space-y-8 overflow-hidden sm:px-6 lg:px-8">
+        <nav className="flex flex-wrap justify-center -mx-5 -my-2">
             <div className="footerMenu">
                 <a href="#" className="footerLinks">
                     צור קשר
@@ -40,7 +40,7 @@ export default function Footer() {
                 </a>
             </div>
         </nav>
-        <div class="flex justify-center mt-8 space-x-6">
+        <div className="flex justify-center mt-8 space-x-6">
             <a href="#" className="socialMedia pl-5">
                <FacebookIcon />
             </a>

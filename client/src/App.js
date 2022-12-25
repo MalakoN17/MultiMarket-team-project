@@ -13,27 +13,33 @@ import AddStore from './compontes/addStore/AddStore';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterStoreOwner from './pages/RegisterStoreOwner';
+import LoginStoreOwner from './pages/LoginStoreOwner';
 import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
+import { useSelector } from 'react-redux';
+import { useEffect } from 'react';
 
 function App() {
   return (
     <>
-    {/* </> */}
+      {/* </> */}
       <Router>
         <Routes>
-          <Route path="chat" element={<Chat />} /> 
-          <Route path="main" element={<Main />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
-          <Route path="/store" element={<Store />} />
+          {/* <Route path="/store" element={<Store />} /> */}
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="addstore" element={<AddStore />} />
-          <Route path="login" element={<Login/>}/>
-          <Route path="register" element={<Register/>}/>
+          <Route path="login" element={<Login />} />
+          <Route path="ownerlogin" element={<LoginStoreOwner />} />
+          <Route path="register" element={<Register />} />
+          {/* <Route path="ownerregister" element={<RegisterStoreOwner />} /> */}
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
