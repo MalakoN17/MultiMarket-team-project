@@ -56,12 +56,7 @@ export default function OwnerStoreAccount() {
         </div>
         <div>
             <h1>{storeDe.address?.apartment}</h1>
-<<<<<<< HEAD
-        </div>
-</div> 
-=======
         </div> */}
    </div>
->>>>>>> 6952d4bc3d5adfd96a615103fcd32b8e69d6aca6
   );
 }

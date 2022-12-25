@@ -7,8 +7,8 @@ import Error from './pages/Error';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
-import Store from './compontes/stores/store';
-import AddStore from './compontes/addStore/AddStore';
+import Store from './compontes/stores/Store';
+// import AddStore from './compontes/addStore/AddStore';
 
 import Chat from './pages/Chat';
 import Login from './pages/Login';
@@ -20,8 +20,8 @@ import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
 import AddStore from './compontes/addStore/AddStore';
 import CheckoutSuccess from './pages/CheckoutSuccess';
-import Store from './compontes/stores/Store';
-
+// import Store from './compontes/stores/Store';
+import 'react-toastify/dist/ReactToastify.css';
 import OwnerStore from './pages/OwnerStore';
 
 

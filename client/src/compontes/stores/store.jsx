@@ -8,13 +8,13 @@ export default function Store(props) {
 
   const handleClick = () => {
     console.log(props.store)
-    navigate(`/store/${props._id}`)
+    navigate(`/store/${props.store._id}`)
   }
 
   return (
     <div>
       <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
-        <img src={props.smallHome} alt="" />
+        <img src={props.store.darklogo.url} alt="" width="100px"/>
         <div>
           <h4>{props.store.name}</h4>
           <p></p>
@@ -22,7 +22,7 @@ export default function Store(props) {
           <div className="flex">
             <img
               className="business-liaison-logo"
-              src={props.store.lightlogo}
+              src={props.store.lightlogo.url}
               alt=""
             />
             <div>
