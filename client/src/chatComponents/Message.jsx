@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 export default function Messages() {
   return (
-    <Container></Container>
+    <div className='h-[80%]'>
+    </div>
   )
 }
 
