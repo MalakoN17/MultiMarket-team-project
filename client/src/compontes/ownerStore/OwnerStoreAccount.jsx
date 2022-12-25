@@ -18,6 +18,7 @@ export default function OwnerStoreAccount() {
     useEffect(()=>{
         setStore(store)
     },[isSuccuss])
+
   return (
     <div className="text-center">
         פרטי חשבון
@@ -60,3 +61,4 @@ export default function OwnerStoreAccount() {
    </div>
   );
 }
+
