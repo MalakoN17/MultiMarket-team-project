@@ -24,14 +24,7 @@ import UpdateStore from './compontes/ownerStore/UpdateStore';
 import FQ from './pages/FQ';
 import ContactUS from './pages/ContactUS';
 import AboutUs from './pages/AboutUs';
-<<<<<<< HEAD
 import PersonalArea from './pages/PersonalArea';
-=======
-import NeedLogin from './chatComponents/NeedLogin';
-
-import OwnerStore from './pages/OwnerStore';
-
->>>>>>> dev
 
 function App() {
   return (
@@ -46,15 +39,15 @@ function App() {
           {/* <Route path="/store" element={<Store />} /> */}
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
-          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
           
         
 
       
-          <Route path='/ownerstore' element={<OwnerStore />}>
+          {/* <Route path='/ownerstore' element={<OwnerStore />}> */}
             <Route path='addproduct' element={<AddingProducts/>}/>
             <Route path='accountstore' element={<OwnerStoreAccount/>}/>
-          </Route>
+          {/* </Route> */}
 
           <Route path="addstore" element={<AddStore />} />
           <Route path="login" element={<Login />} />
