@@ -3,6 +3,7 @@ import ChatInput from './ChatInput';
 import axios from 'axios';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import Messages from './Message';
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [messages, setMessages] = useState([]);
@@ -18,17 +19,19 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
         'http://localhost:8000/api/messages/getMsg', {
         from: currentUser._id,
         to: currentChat._id,
-      }
-      );
+      });
       setMessages(response.data);
     }
   };
+
+  console.log(messages);
 
   useEffect(() => {
     getMessages();
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
+    console.log(msg);
     await axios.post('http://localhost:8000/api/messages/addMsg', {
       from: currentUser._id,
       to: currentChat._id,
@@ -39,27 +42,28 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
       from: currentUser._id,
       message: msg,
     });
-
-  const msgs = [...messages];
+    const msgs = [...messages];
+    console.log(msg);
     msgs.push({ fromSelf: true, message: msg });
     setMessages(msgs);
   };
 
   useEffect(() => {
-    if (socket.current) {
+    if(socket.current){
       socket.current.on('msg-receive', (msg) => {
-        setArrivalMessage({ fromSelf: false, message: msg });
-      });
+        setArrivalMessage({fromSelf: false, message: msg});
+      })
     }
-  }, []);
+  },[])
 
   useEffect(() => {
-    arrivalMessage && setMessages((prev) => [...prev, arrivalMessage]);
-  }, [arrivalMessage]);
+   arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])
+  },[arrivalMessage])
 
   useEffect(() => {
-    scrollRef.current?.scrollIntoView({ behavior: 'smooth' });
-  }, [messages]);
+    scrollRef.current?.scrollIntoView({behavior: "smooth"})
+  },[messages])
+
 
   return (
     <div className='chat-container flex-col w-full'>
@@ -70,19 +74,24 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
             src={currentChat?.logo}
             alt="username" />
         </div>
-        <div className="msg-container relative w-full overflow-y-auto flex flex-col justify-between h-[30rem]">
-          {messages.map((message) => {
-            return (
-              <div ref={scrollRef} key={uuidv4()}>
-                <div className={`message ${message.fromSelf ? 'sended' : 'received'}`}>
-                  <div className="content">
-                    <p>
-                      {message.message}
-                    </p>
+        <div className="msg-container relative w-full overflow-y-auto flex flex-col h-[30rem]">
+          {messages.map((message, index) => {
+            return(
+              message.fromSelf ? (
+                <div className='' ref={scrollRef} key={index}>
+                <div className='my-3 flex'>
+                  <span className='bg-lime-400 px-3 py-2 text-lg rounded-md'>{message.message}</span>
+                </div>
+                </div>
+              ) :
+                (
+                  <div ref={scrollRef} key={uuidv4}>
+                  <div className='bg-zinc-100 justify-end'>
+                    <p>{message.message}</p>
                   </div>
                 </div>
-              </div>
-            );
+                )
+            )
           })}
         </div>
         <div className="chat-input-container h-1/4" style={{ height: '10%' }}>
@@ -92,42 +101,3 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     </div>
   );
 }
-// <div
-//   className="chat-container d-flex flex-column mt-md-0 overflow-hidden"
-//   style={{ height: '100%' }}
-// >
-//   <div
-//     className="chat-header d-flex justify-content-between mt-md-0"
-//     style={{ height: '10%' }}
-//   >
-//     <div className="user-details">
-//       <div className="profileImage">
-//         <img className="ms-3 ms-md-3 rounded-3" src={``} alt="avatar" />
-//       </div>
-//       <div className="username">
-//         {/* <h3>{currentChat.firstName}</h3> */}
-//       </div>
-//     </div>
-//     <div className="logout d-none d-md-flex align-items-center"></div>
-//   </div>
-//   <div className="chat-messages" style={{ height: '80%' }}>
-//     {messages.map((message) => {
-//       return (
-//         <div ref={scrollRef} key={uuidv4()}>
-//           <div
-//             className={`message ${
-//               message.fromSelf ? 'sended' : 'received'
-//             }`}
-//           >
-//             <div className="content">
-//               <p>{message.message}</p>
-//             </div>
-//           </div>
-//         </div>
-//       );
-//     })}
-//   </div>
-//   <div className="chat-input-container" style={{ height: '10%' }}>
-//     <ChatInput handleSendMsg={handleSendMsg} />
-//   </div>
-// </div>

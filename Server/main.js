@@ -32,7 +32,7 @@ app.use('/api/order', orderRouter);
 app.use('/api/product', productRouter);
 app.use('/api/section', sectionRouter);
 app.use('/auth', authRouter);
-app.use('/api/stripe', stripeRouter)
+app.use('/api/stripe', stripeRouter)  
 app.use('/api/ownerStore', adminStoreRouter);
 app.use('/api/messages', messageRouter);
 
