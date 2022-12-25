@@ -1,5 +1,7 @@
 const storeModel = require('../models/storeSchema.js');
+const storeOwnerModel = require('../models/ownerStoreUserSchema')
 const cloudinary = require('../utils/cloudinary')
+
 //Create Store
 const createNewStore = async (req, res, next) => {
   const data = req.body;
@@ -84,18 +86,27 @@ const updateStore = async (req, res, next) => {
 };
 //Delete Store
 const deleteStore = async (req, res, next) => {
+  const storeOwner = await storeOwnerModel.findById(req.user._id);
   try {
+    if(storeOwner?.storeIds.includes(req.params.id)){
     await storeModel.findByIdAndDelete(req.params.id);
     res.status(200).json('Store Deleted');
+  }
+  res.status(401).json('user not authorized !');
   } catch (err) {
     next(err);
   }
 };
 //Get Store
 const getStore = async (req, res, next) => {
+  const storeOwner = await storeOwnerModel.findById(req.user._id);
+  // console.log(storeOwner);
   try {
+    if(storeOwner?.storeIds.includes(req.params.id)){
     const store = await storeModel.findById(req.params.id);
     res.status(200).json(store);
+    }
+    res.status(401).json('user not authorized !');
   } catch (err) {
     next(err);
   }
