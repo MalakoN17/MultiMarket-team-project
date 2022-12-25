@@ -15,6 +15,7 @@ export default function ProductForm() {
     barcode: '',
     image: '',
     name: '',
+    storeName:'',
     price: 0,
     priority: 1,
     productStock:0,
@@ -36,7 +37,7 @@ export default function ProductForm() {
 
   const [sections, setSections] = useState([])
   const [show, setShow] = useState('hidden')
-  const [newSections, setNewSections] = useState({name:'', storeId:'63a48293b35d889218bf1120', createdBy:'destaw-test'})
+  const [newSections, setNewSections] = useState({name:'', storeId:'63a8a7a96f0e23bb79c39a20', createdBy:'destaw-test'})
   
   const handleInput = (e) => {
     const { name, value ,checked} = e.target;
@@ -81,7 +82,7 @@ export default function ProductForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
-    product.storeId ='6390605ef3ee5834eff8fa0c'
+    product.storeId ='63a8a7a96f0e23bb79c39a20'
     dispatch(createProduct(product));
   };
 
@@ -93,7 +94,7 @@ export default function ProductForm() {
   };
 
   useEffect(()=>{
-    dispatch(getAllSections('63a48293b35d889218bf1120'))
+    dispatch(getAllSections('63a8a7a96f0e23bb79c39a20'))
   },[sectionsState.sections.length])
   return (
     <div>
@@ -101,6 +102,7 @@ export default function ProductForm() {
         <div className="mx-auto w-full max-w-[550px] bg-white">
           <form className="py-6 px-2" onSubmit={handleForm}>
           <InputProduct funChange={handleInput} textLabel='שם המוצר' name='name' type='name' placeholder='לדוגמה: עגבניות שרי' />
+          <InputProduct funChange={handleInput} textLabel='שם החנות' name='storeName' type='name' placeholder='לדוגמה: חוות החלומות' />
             <div className="mb-6 pt-4">
               <label className="mb-5 block text-xl font-semibold text-[#07074D] text-right">
                 תמונת המוצר:
@@ -154,7 +156,7 @@ export default function ProductForm() {
               )}
             </div>
             <InputProduct funChange={handleInput} textLabel='ברקוד מוצר:' name='barcode' type='text' placeholder='הכנס ברקוד' />
-            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='number' placeholder='הכנס מחיר' min={1}/>
+            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='text' placeholder='הכנס מחיר' min={1}/>
             <InputProduct funChange={handleInput} textLabel='עדיפות מוצר:' name='priority' type='number' placeholder='הכנס עדיפות מוצר'  min={1} max={5}/>
             <InputProduct funChange={handleInput} textLabel='כמות המוצר' name='productStock' type='number' placeholder='הכנס כמות מוצר' min={1}/>
             <div>

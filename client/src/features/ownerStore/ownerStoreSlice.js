@@ -75,6 +75,7 @@ export const deleteStore = createAsyncThunk(
 export const getDepartments = createAsyncThunk('ownerStore/getDepartments', async ()=>{
   try {
     const data = await getDepartmentsApi()
+    console.log(data);
     return data
   } catch (error) {
     return error
