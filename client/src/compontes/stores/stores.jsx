@@ -4,7 +4,7 @@ import { useSelector } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
-import Store from './Store';
+import Store from './store';
 import './style.css';
 // import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -12,6 +12,7 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 // import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 // import onion from '../../assets/images/products_images/onions.jpg';
 import { useParams } from 'react-router-dom';
+import Cart from '../main/Cart';
 
 export default function Stores() {
   const {id} = useParams()
@@ -36,7 +37,9 @@ export default function Stores() {
     getStores();
     getDepartment();
     console.log(stores);
+    console.log(department);
   }  
+  
   , []);
 
   return (
@@ -114,7 +117,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          
+          <Cart />
         </div>
       </div>
       <div className="text-center relative left-[160px]">

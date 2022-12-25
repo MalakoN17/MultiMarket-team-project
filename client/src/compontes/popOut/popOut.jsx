@@ -66,12 +66,25 @@ export default function PopOut() {
                         <option value="חיפה">חיפה</option>
                         <option value="נתניה">נתניה</option>
                         <option value="שוהם">שוהם</option>
+                        <option value="שוהם">יבנה</option>
+                        <option value="שוהם">רחובות</option>
+                        <option value="שוהם">אילת</option>
+                        <option value="שוהם">לוד</option>
+                        <option value="שוהם">רמלה</option>
+                        <option value="שוהם">ראשון לציון</option>
+                        <option value="שוהם">אשדוד</option>
+                        <option value="שוהם">פתח תקווה</option>
+                        <option value="שוהם">באר שבע</option>
+                        <option value="שוהם">בני ברק</option>
+                        <option value="שוהם">רמת גן</option>
+                        <option value="שוהם">אשקלון</option>
+                        <option value="שוהם">קרית שמונה</option>
                       </select>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 items-center">
+              <div className="bg-gray-50 px-4 py-3 flex justify-center items-center ">
                 <button onClick={handleForm}
                   type="button"
                   className="rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
