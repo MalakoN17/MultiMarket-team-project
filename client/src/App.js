@@ -14,6 +14,8 @@ import AddStore from './compontes/addStore/AddStore';
 import Chat from './pages/Chat';
 import Login from './pages/Login';
 import Register from './pages/Register';
+import RegisterStoreOwner from './pages/RegisterStoreOwner';
+import LoginStoreOwner from './pages/LoginStoreOwner';
 import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
@@ -30,15 +32,11 @@ import OwnerStore from './pages/OwnerStore';
 function App() {
   return (
     <>
-    {/* </> */}
+      {/* </> */}
       <Router>
         <Routes>
-
-
-          <Route path="" element={<Main />} /> 
-
-          <Route path="chat" element={<Chat />} /> 
-          <Route path="main" element={<Main />} />
+          <Route path="chat" element={<Chat />} />
+          <Route path="" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
           {/* <Route path="/store" element={<Store />} /> */}
@@ -55,7 +53,8 @@ function App() {
           </Route>
 
           <Route path="addstore" element={<AddStore />} />
-          <Route path="login" element={<Login/>}/>
+          <Route path="login" element={<Login />} />
+          <Route path="ownerlogin" element={<LoginStoreOwner />} />
           <Route path="register" element={<Register/>}/>
           <Route path="question" element={<FQ/>} />
           <Route path="contactUS" element={<ContactUS />} />
