@@ -21,7 +21,7 @@ const UserSchema = new mongoose.Schema({
   password: {
     type: String,
     required: true,
-    select: false,
+    // select: false,
   },
   // storeIds: {
   //   type: [String],
@@ -68,11 +68,11 @@ const UserSchema = new mongoose.Schema({
       exp: { type: String, required: true },
     },
   ],
-  businessTypes: {
-    type: [mongoose.Types.ObjectId],
-    ref: 'section',
-    autocomplete: { collection: 'section', multiple: true },
-  },
+  // businessTypes: {
+  //   type: [mongoose.Types.ObjectId],
+  //   ref: 'section',
+  //   autocomplete: { collection: 'section', multiple: true },
+  // },
   lastUpdate: { type: Date, default: Date.now },
   lastSeen: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
