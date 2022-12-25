@@ -1,5 +1,5 @@
 import PopOut from '../compontes/popOut/popOut'
-import Department from '../compontes/main/Departments'
+import Departments from '../compontes/main/Departments'
 import MobileNav from '../compontes/navbar/MobileNav'
 import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
