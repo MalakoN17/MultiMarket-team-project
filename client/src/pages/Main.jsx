@@ -18,7 +18,6 @@ function Main() {
             <DesktopNav />
             {/* <LoginUserNavbar/> */}
             <Departments />
-            {/* <Department /> */}
             <FooterMobile />
             <Footer />
         </div>

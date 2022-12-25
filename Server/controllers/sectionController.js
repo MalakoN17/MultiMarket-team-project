@@ -1,8 +1,9 @@
 const sectionSchema = require('../models/sectionSchema');
 
 const getAllSection = async (req, res, next) => {
+  const {storeId} = req.params
   try {
-    const sections = await sectionSchema.find({});
+    const sections = await sectionSchema.find({storeId});
     res.status(200).json(sections);
   } catch (err) {
     next(err);
@@ -21,9 +22,9 @@ const getSection = async (req, res, next) => {
 const createNewSection = async (req, res, next) => {
   try {
     const obj = req.body;
-    const newSection = sectionSchema(obj);
+    const newSection = await sectionSchema(obj);
     await newSection.save();
-    res.status(200).json('create section');
+    res.status(200).json(newSection);
   } catch (err) {
     next(err);
   }
