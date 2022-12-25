@@ -21,7 +21,6 @@ export default function Stores() {
   
   useEffect(() => {
     const getStores = async () => {
-
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
 
       setStores(res.data)
@@ -112,7 +111,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          <Cart />
+          {/* <Cart /> */}
         </div>
       </div>
       <div className="text-center relative left-[160px]">
