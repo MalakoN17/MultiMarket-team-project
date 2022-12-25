@@ -12,7 +12,7 @@ export default function ContactUS() {
             style={{
               backgroundPosition: '50%',
               backgroundImage:
-                'url("https://mdbootstrap.com/img/new/textures/full/284.jpg")',
+                'url("https://images.pexels.com/photos/851555/pexels-photo-851555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
               height: '300px',
             }}
           ></div>
