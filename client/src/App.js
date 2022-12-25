@@ -21,6 +21,7 @@ import UpdateStore from './compontes/ownerStore/UpdateStore';
 import FQ from './pages/FQ';
 import ContactUS from './pages/ContactUS';
 import AboutUs from './pages/AboutUs';
+import PersonalArea from './pages/PersonalArea';
 
 function App() {
   return (
@@ -40,6 +41,7 @@ function App() {
           <Route path="question" element={<FQ/>} />
           <Route path="contactUS" element={<ContactUS />} />
           <Route path="aboutUs" element={<AboutUs />} />
+          <Route path="personalArea" element={<PersonalArea />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
