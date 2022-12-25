@@ -6,7 +6,7 @@ export default function Product() {
 
   const getProductsStore = async () => {
     const res = await axios.get(
-      `http://localhost:8000/api/product/store/63a8a7a96f0e23bb79c39a20`
+      `http://localhost:8000/api/product/store/63a8ba6d70b0e1a406346db2`
     );
     console.log(res.data);
     setProducts(res.data);
