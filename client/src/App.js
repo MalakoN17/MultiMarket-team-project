@@ -53,7 +53,6 @@ function App() {
           <Route path="login" element={<Login />} />
           <Route path="ownerlogin" element={<LoginStoreOwner />} />
           <Route path="register" element={<Register />} />
-          {/* <Route path="ownerregister" element={<RegisterStoreOwner />} /> */}
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
