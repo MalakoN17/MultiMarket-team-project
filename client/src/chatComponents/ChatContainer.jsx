@@ -31,6 +31,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
+    console.log(msg);
     await axios.post('http://localhost:8000/api/messages/addMsg', {
       from: currentUser._id,
       to: currentChat._id,
@@ -73,19 +74,19 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
             src={currentChat?.logo}
             alt="username" />
         </div>
-        <div className="msg-container relative w-full overflow-y-auto flex flex-col justify-between h-[30rem]">
+        <div className="msg-container relative w-full overflow-y-auto flex flex-col h-[30rem]">
           {messages.map((message, index) => {
             return(
               message.fromSelf ? (
-                <div ref={scrollRef} key={index}>
-                <div className='bg-red-500' >
-                  <p>{message.message}</p>
+                <div className='' ref={scrollRef} key={index}>
+                <div className='my-3 flex'>
+                  <span className='bg-lime-400 px-3 py-2 text-lg rounded-md'>{message.message}</span>
                 </div>
                 </div>
               ) :
                 (
                   <div ref={scrollRef} key={uuidv4}>
-                  <div className='bg-green-500'>
+                  <div className='bg-zinc-100 justify-end'>
                     <p>{message.message}</p>
                   </div>
                 </div>
