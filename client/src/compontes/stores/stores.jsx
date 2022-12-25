@@ -5,7 +5,7 @@ import Cart from '../main/Cart';
 import DesktopNav from "../navbar/DesktopNav"
 import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
-import Store from './Store';
+import Store from './store';
 import './style.css';
 import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -23,6 +23,7 @@ export default function Stores() {
   
   useEffect(() => {
     const getStores = async () => {
+
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
 
       setStores(res.data)

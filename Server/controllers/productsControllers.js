@@ -55,8 +55,8 @@ const createProduct = async (req, res, next) => {
       };
       const product =  productsModel(data);
       await product.save();
+      res.status(200).json('product create succuss');
     }
-    res.status(200).json('product create succuss');
   } catch (error) {
     next(error);
   }

@@ -25,7 +25,7 @@ function DesktopNav() {
             </div> */}
             <div className="flex ">
               {/* <div className="flex flex-shrink-0 mx-60 items-center"> */}
-                <img className="h-8 w-auto" src={logo} alt="Your Company" />
+                {/* <img className="h-8 w-auto" src={logo} alt="Your Company" /> */}
                 <p>MULTI MARKET</p>
               {/* </div> */}
             </div>
