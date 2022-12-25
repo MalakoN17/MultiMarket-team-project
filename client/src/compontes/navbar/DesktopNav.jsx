@@ -28,8 +28,8 @@ function DesktopNav() {
                   <a href="#" className="menuNav">צור קשר</a>
                   <a href="#" className="menuNav">תנאי השימוש</a>
                   <a href="#" className="menuNav">איכות הסביבה</a>
-                  <a href="#" className="menuNav" onClick={()=> navigate("register")}>הרשמה</a>
-                  <a href="#" className="menuNav" onClick={()=> navigate("login")}>כניסת משתמש</a>
+                  <a href="#" className="menuNav" onClick={()=> navigate("/register")}>הרשמה</a>
+                  <a href="#" className="menuNav" onClick={()=> navigate("/login")}>כניסת משתמש</a>
                 </div>
               {/* </div> */}
               </div>

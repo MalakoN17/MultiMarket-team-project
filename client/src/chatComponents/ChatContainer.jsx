@@ -3,7 +3,6 @@ import ChatInput from './ChatInput';
 import axios from 'axios';
 import { useRef } from 'react';
 import { v4 as uuidv4 } from 'uuid';
-import Messages from './Message';
 
 export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [messages, setMessages] = useState([]);
@@ -23,8 +22,6 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
       setMessages(response.data);
     }
   };
-
-  console.log(messages);
 
   useEffect(() => {
     getMessages();
@@ -80,14 +77,14 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
               message.fromSelf ? (
                 <div className='' ref={scrollRef} key={index}>
                 <div className='my-3 flex'>
-                  <span className='bg-lime-400 px-3 py-2 text-lg rounded-md'>{message.message}</span>
+                  <span className='bg-lime-400 px-3 py-2 text-lg rounded-md mr-3'>{message.message}</span>
                 </div>
                 </div>
               ) :
                 (
                   <div ref={scrollRef} key={uuidv4}>
-                  <div className='bg-zinc-100 justify-end'>
-                    <p>{message.message}</p>
+                  <div className='bg-zinc-100 justify-end px-3 py-2 text-lg rounded-md ml-3'>
+                    <span>{message.message}</span>
                   </div>
                 </div>
                 )
