@@ -130,7 +130,7 @@ const storeSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(getDepartments.fulfilled, (state, action)=>{
-        
+        console.log(action.payload);
         state.departmentIds = action.payload
       })
       .addCase(getDepartments.rejected, (state, action)=>{

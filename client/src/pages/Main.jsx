@@ -17,7 +17,6 @@ function Main() {
             <MobileNav />
             <DesktopNav />
             {/* <LoginUserNavbar/> */}
-            {/* <Departments /> */}
             <Departments />
             <FooterMobile />
             <Footer />
