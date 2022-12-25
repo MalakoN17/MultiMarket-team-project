@@ -1,14 +1,18 @@
 import React, { useState, useEffect } from 'react';
 
 export default function Contacts({ contacts, currentUser, changeChat }) {
-    const [currentUserName, setCurrentUserName] = useState(undefined);
+    const [currentFirstName, setCurrentFirstName] = useState(undefined);
+    const [currentLastName, setCurrentLastName] = useState(undefined);
     const [currentUserImage, setCurrentUserImage] = useState(undefined);
     const [currentSelected, setCurrentSelected] = useState(undefined);
+    
+    console.log(currentUser);
     
     useEffect(() => {
         if (currentUser) {
             setCurrentUserImage(currentUser.profileImage);
-            setCurrentUserName(currentUser.username);
+            setCurrentFirstName(currentUser.firstName);
+            setCurrentLastName(currentUser.lastName);
         }
     }, [currentUser]);
 
@@ -40,7 +44,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                 {/* )} */}
             </div>
             <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentUserName}</h2>
+                <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentFirstName} {currentLastName}</h2>
                 <img className="object-cover mt-2 w-12 h-12 rounded-full" src={currentUserImage} alt="avatar"/>
             </div>
         </div>

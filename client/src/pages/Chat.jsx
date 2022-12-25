@@ -8,6 +8,7 @@ import { io } from 'socket.io-client'
 import Footer from '../compontes/footer/Footer';
 import DesktopNav from '../compontes/navbar/DesktopNav';
 import NeedLogin from '../chatComponents/NeedLogin';
+import { useSelector } from 'react-redux';
 
 export default function Chat() {
   const socket = useRef()
@@ -15,40 +16,50 @@ export default function Chat() {
   const [contacts, setContacts] = useState([]);
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
+  const [stores, setStores] = useState([]);
 
-  const addItem = function () {
-    const newItem = {
-      '_id': "63a0a989bb72687b51129f3d",
-      'name': 'avishay',
-      'lastName': 'avraham',
-      'username': 'Avishay Avraham',
-      'profileImage': 'https://t4.ftcdn.net/jpg/03/64/21/11/360_F_364211147_1qgLVxv1Tcq0Ohz3FawUfrtONzz8nq3e.jpg'
-    };
-    localStorage.setItem('chat-app-user', JSON.stringify(newItem));
-  };
 
+  const getStores = async () => {
+    const data = await axios.get('http://localhost:8000/api/store');
+    setStores(data.data)
+
+}
+
+useEffect(() => {
+getStores()
+},[])
+
+  const user = useSelector(state=> state.user)
   useEffect(() => {
-    addItem()
-  }, [])
+    setCurrentUser(user.currentUser)
+  },[])
 
-  const getContacts = async () => {
-    const data = await axios.get('http://localhost:8000/api/store')
-    setContacts(data.data)
-  }
+  const getContacts = () => {
+    let userStores = [];
+     stores.map((store) => { 
+      currentUser.storeIds.map((storeId) => {
+        if(storeId === store._id){
+          userStores.push(store)
+        }
+      })
+    })
+    setContacts(userStores);   
+   }
 
+  
   useEffect(() => {
+    // navigateToLogin()
     getContacts()
-  }, [])
+  }, [currentUser])
 
 
-  const checkLocalStorage = async () => {
-    if (!localStorage.getItem('chat-app-user')) {
-      navigate('/NeedLogin')
-    } else {
-      setCurrentUser(
-        await JSON.parse(localStorage.getItem('chat-app-user')))
-    }
-  }
+  // const navigateToLogin = async () => {
+  //   if(!currentUser){
+  //     navigate('/needLogin')
+  //   }
+  // }
+
+
 
   useEffect(() => {
     if (currentUser) {
@@ -56,10 +67,6 @@ export default function Chat() {
       socket.current.emit('add-user', currentUser._id);
     }
   }, [currentUser])
-
-  useEffect(() => {
-    checkLocalStorage()
-  }, [])
 
   const handleChatChange = (chat) => {
     setCurrentChat(chat)
