@@ -113,11 +113,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-<<<<<<< HEAD
           {/* <Cart /> */}
-=======
-          
->>>>>>> 0206bfdba90e4f8fc7b1c93734f4593bbfcf8f3a
         </div>
       </div>
       <div className="text-center relative left-[160px]">
