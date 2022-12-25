@@ -21,6 +21,9 @@ import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
+import FQ from './pages/FQ';
+import ContactUS from './pages/ContactUS';
+import AboutUs from './pages/AboutUs';
 import NeedLogin from './chatComponents/NeedLogin';
 
 import OwnerStore from './pages/OwnerStore';
@@ -52,8 +55,10 @@ function App() {
           <Route path="addstore" element={<AddStore />} />
           <Route path="login" element={<Login />} />
           <Route path="ownerlogin" element={<LoginStoreOwner />} />
-          <Route path="register" element={<Register />} />
-          {/* <Route path="ownerregister" element={<RegisterStoreOwner />} /> */}
+          <Route path="register" element={<Register/>}/>
+          <Route path="question" element={<FQ/>} />
+          <Route path="contactUS" element={<ContactUS />} />
+          <Route path="aboutUs" element={<AboutUs />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>
