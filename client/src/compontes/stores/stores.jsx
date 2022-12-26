@@ -1,10 +1,11 @@
 import React,{useState,useEffect} from 'react';
 import axios from 'axios';
-import { useSelector } from 'react-redux';
+import { useSelector,useDispatch } from 'react-redux';
 import DesktopNav from "../navbar/DesktopNav"
 import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
 import Store from './store';
+import {changeSelect} from "../../features/city/citySlice"
 import './style.css';
 // import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
@@ -13,10 +14,12 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 // import onion from '../../assets/images/products_images/onions.jpg';
 import { useParams } from 'react-router-dom';
 import Cart from '../main/Cart';
+import PopOut from '../popOut/popOut';
 
 export default function Stores() {
   const {id} = useParams()
-  const {cityValue} = useSelector((state)=> state.city);
+  const {cityValue,show} = useSelector((state)=> state.city);
+  const dispatch = useDispatch()
   
   const [stores, setStores] = useState([]);
   const [department, setDepartment] = useState([]);
@@ -40,6 +43,13 @@ export default function Stores() {
   }  
   
   , []);
+  const changeCity = () =>{
+    <PopOut />
+    dispatch(changeSelect())
+    
+
+  }
+
 
   return (
     <>
@@ -47,6 +57,7 @@ export default function Stores() {
     <LoginUserNavbar/>
     <MobileNav />
       <div className="background-image w-full">
+
         <img src={department?.topImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
@@ -55,6 +66,7 @@ export default function Stores() {
       <div className="container  md:w-100% flex justify-center gap-2">
         <div className="container gap-3 w-[40%]">
           <div>
+          <button onClick={changeCity}>שנה עיר</button>
             <div className="flex gap-3">
               <h3>סנן לפי תוצאות:</h3>
               <p className="text-blue-400 flex">{cityValue} </p>
