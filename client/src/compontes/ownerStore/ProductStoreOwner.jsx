@@ -6,7 +6,7 @@ export default function ProductStoreOwner() {
     const {products} = useSelector(state=>state.ownerStore)
     console.log(products);
   return (
-    <div className="flex justify-around">
+    <div className="flex justify-around h-screen">
     {products?.map((product)=>{
         return (
             <ProductCump product={product}/>

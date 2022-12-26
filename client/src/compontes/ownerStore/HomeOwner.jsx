@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux'
 import { useNavigate } from "react-router"
-import Footer from '../footer/Footer'
 
 export default function HomeOwner() {
     const navigate = useNavigate()

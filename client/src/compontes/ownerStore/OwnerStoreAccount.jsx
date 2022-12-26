@@ -6,32 +6,29 @@ import {getStore} from '../../features/ownerStore/ownerStoreSlice'
 
 
 export default function OwnerStoreAccount() {
-    const storeD = useSelector(state => state.ownerStore)
-    const user = useSelector(state => state.user)
-    const { isLogin, isSuccuss, store } = storeD
+    const {currentUser} = useSelector(state => state.user)
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const handleNavStoreDetails = ()=>{
-        navigate('storedetails')
+        navigate('ownerdet')
     }
     const handleNavReceipts = ()=>{
-        navigate('receipts')
+        navigate('updateownerdet')
     }
-    const handleNavUpdateStoreDetails = ()=>{
-        navigate('updatestorsetails')
-    }
-
-    useEffect(()=>{
-        dispatch(getStore('63a5b33f5fc28c9e324800c8'))
-        
-    },[])
-
   return (
-   <div className="">
-    <div>
-      
+    <div className="sm:flex justify-between sm:h-screen mt-10">
+   <div className="flex sm:flex-col ">
+    <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black sm:mb-5">
+      <h1 onClick={handleNavStoreDetails} className="text-xl">פירטי חשבון</h1>
     </div>
-
+    <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black">
+      <h1 onClick={handleNavReceipts} className="text-xl">עידכון חשבון</h1>
+    </div>
+    
+   </div>
+   <div className="sm:mx-auto">
+   <Outlet/>
+   </div>
    </div>
   );
 }
