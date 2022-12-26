@@ -2,7 +2,7 @@ export default function UploadImage(state) {
   return (
     <div>
       {state.nameImage}
-      <img src={state.Image} alt={`${state.nameImage} ${state.nameStore}`} />
+      
       <div >
         <label
           htmlFor="dropzone-file"
@@ -40,6 +40,7 @@ export default function UploadImage(state) {
             // className="hidden"
           />
         </label>
+        <img src={state.Image} alt={`${state.nameImage} ${state.nameStore}`} />
       </div>
     </div>
   );

@@ -34,8 +34,6 @@ export default function UpdateStore() {
     if (file) {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        console.log(name);
-        console.log(reader.result);
         setStoreDetails({...storeDetails, [name]:reader.result});
       };
     } else {
@@ -43,12 +41,8 @@ export default function UpdateStore() {
     }
   };
 
-
-
-
-
   useEffect(() => {
-    dispatch(getStore('6390605ef3ee5834eff8fa0c'));
+
   }, []);
   useEffect(() => {
     const {bnNumber, name, description, lightlogo, darklogo, coverImage, phone, email, address, logo} = store;
@@ -56,9 +50,9 @@ export default function UpdateStore() {
   }, [isSuccuss]);
   return (
     <div className="">
-      <h1 className='text-center text-lg'>עידכון מוצר</h1>
+      <h1 className='text-center text-2xl mb-5'>עידכון מוצר</h1>
       <div className="flex items-center justify-center ">
-        <div className="mx-auto w-full max-w-[550px] bg-white">
+        <div className="mx-auto w-full max-w-[550px] bg-white px-10 rounded">
           <form onSubmit={handleForm} className="py-6 px-2">
             <div className="mb-5">
             <InputOwner
@@ -66,7 +60,7 @@ export default function UpdateStore() {
             funChange={handleInput}
             type="name"
             name="name"
-            value={storeDetails.name}
+            value={store.name}
           />
             </div>
 
@@ -76,7 +70,7 @@ export default function UpdateStore() {
             description="bnNumber"
             type="text"
             name="bnNumber"
-            value={storeDetails.bnNumber}
+            value={store.bnNumber}
           />
             </div>
 
@@ -86,7 +80,7 @@ export default function UpdateStore() {
             description="טלפון"
             type="tel"
             name="phone"
-            value={storeDetails.phone}
+            value={store.phone}
           />
             </div>
 
@@ -96,7 +90,7 @@ export default function UpdateStore() {
             description="איימל"
             type="email"
             name="email"
-            value={storeDetails.email}
+            value={store.email}
           />
             </div>
 
@@ -106,7 +100,7 @@ export default function UpdateStore() {
             description="עיר"
             type="text"
             name="city"
-            value={storeDetails.address?.city}
+            value={store.address?.city}
           />
             </div>
 
@@ -116,7 +110,7 @@ export default function UpdateStore() {
             description="רחוב"
             type="text"
             name="street"
-            value={storeDetails.address?.street}
+            value={store.address?.street}
           />
             </div>
 
@@ -126,7 +120,7 @@ export default function UpdateStore() {
             description="בניין"
             type="text"
             name="building"
-            value={storeDetails.address?.building}
+            value={store.address?.building}
           />
             </div>
 
@@ -136,7 +130,7 @@ export default function UpdateStore() {
             description="דירה"
             type="text"
             name="apartment"
-            value={storeDetails.address?.apartment}
+            value={store.address?.apartment}
           />
             </div>
             <div>
@@ -147,7 +141,7 @@ export default function UpdateStore() {
             funChange={handleInput}
               nameImage="lightlogo"
               name='lightlogo'
-              Image={storeDetails.coverImage}
+              Image={store.coverImage.url}
             />
             <button type="button" >
               update light logo
@@ -158,7 +152,7 @@ export default function UpdateStore() {
               nameImage="coverImage"
               funChange={handleInput}
               name='coverImage'
-              Image={storeDetails.lightlogo}
+              Image={store.lightlogo.url}
             />
             <button type="button" >
               update cover Image
@@ -169,7 +163,7 @@ export default function UpdateStore() {
               nameImage="dark logo"
               funChange={handleInput}
               name='darklogo'
-              Image={storeDetails.darklogo}
+              Image={store.darklogo.url}
             />
             <button type="button" >
               update dark logo
