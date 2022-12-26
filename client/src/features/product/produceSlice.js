@@ -32,13 +32,15 @@ export const createProduct = createAsyncThunk('product/uploadProduct', async (pr
   return thunkAPI.rejectWithValue(message)
   }
 })
-export const updateProduct = createAsyncThunk('product/updateProduct', async (product,thunkAPI)=>{
+export const updateProductSlice = createAsyncThunk('product/updateProduct', async (product,thunkAPI)=>{
   try {
     product.price = +product.price
     product.priority = +product.priority
     product.units = +product.units
     product.productStock = +product.productStock
-    const data = updateProductToStoreApi(product)
+    console.log(product);
+    
+    const data = updateProductToStoreApi(product, product._id)
     return data
   } catch (error) {
     const message =
@@ -82,15 +84,15 @@ const productSlice = createSlice({
         state.isError = true
         state.message = action.payload
       })
-      .addCase(updateProduct.pending, (state) => {
+      .addCase(updateProductSlice.pending, (state) => {
         state.isLoading = true
       })
-      .addCase(updateProduct.fulfilled, (state, action) => {
+      .addCase(updateProductSlice.fulfilled, (state, action) => {
         state.isLoading = false
         state.isSuccess = true
         state.products.push(action.payload)
       })
-      .addCase(updateProduct.rejected, (state, action) => {
+      .addCase(updateProductSlice.rejected, (state, action) => {
         state.isLoading = false
         state.isError = true
         state.message = action.payload

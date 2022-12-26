@@ -68,8 +68,8 @@ const updateProduct = async (req, res, next) => {
   const data = req.body;
   try {
     const product = await productsModel.findById(productId);
-    const imageId = product.public_id;
-    if (data.image !== product.image.url) {
+    console.log(product);
+    if (data.image.url !== product.image.url) {
       await cloudinary.uploader.destroy(imageId);
       const result = await cloudinary.uploader.upload(data.image, {
         folder: 'products',
@@ -79,9 +79,9 @@ const updateProduct = async (req, res, next) => {
         url: result.secure_url,
       };
     }
-    await productsModel.findByAndUpdate(
+    await productsModel.findByIdAndUpdate(
       data,
-      { $set: { data } },
+      { $set:  data  },
       { new: true }
     );
     res.status(200).json('product create succuss');
