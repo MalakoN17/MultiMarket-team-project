@@ -31,6 +31,7 @@ import StoreDetails from './compontes/ownerStore/StoreDetails';
 import HomeOwner from './compontes/ownerStore/HomeOwner';
 import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
 import UpdateProduct from './compontes/ownerStore/UpdateProduct';
+import PersonalArea from './pages/PersonalArea';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
 
@@ -48,7 +49,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
-          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
           
         
 
@@ -75,6 +76,7 @@ function App() {
           <Route path="question" element={<FQ/>} />
           <Route path="contactUS" element={<ContactUS />} />
           <Route path="aboutUs" element={<AboutUs />} />
+          <Route path="personalArea" element={<PersonalArea />} />
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

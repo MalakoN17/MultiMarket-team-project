@@ -19,7 +19,6 @@ function Product({ product }) {
         }
     })
     const dispatch = useDispatch()
-
     return (
         <div className="max-w-2xl mx-auto">
             <div className="bg-white shadow-xl rounded-lg max-w-sm dark:border-gray-700 scale-90 transition duration-300 m-auto hover:scale-100 transform">

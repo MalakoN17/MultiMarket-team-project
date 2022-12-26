@@ -15,7 +15,7 @@ const UserSchema = new mongoose.Schema({
     default: '',
     lowercase: true,
   },
-  phone: { type: String, unique: true },
+  // phone: { type: String, unique: true },
   // loginCode: { type: String, select: false },
   // phone2: { type: String },
   password: {
