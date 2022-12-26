@@ -1,4 +1,9 @@
 import React from 'react';
+import MobileNav from '../compontes/navbar/MobileNav'
+import DesktopNav from '../compontes/navbar/DesktopNav'
+import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
+import FooterMobile from '../compontes/footer/footerMobile'
+import Footer from '../compontes/footer/Footer'
 import ShoppingBagIcon from '@mui/icons-material/ShoppingBag';
 import BadgeIcon from '@mui/icons-material/Badge';
 import LockResetIcon from '@mui/icons-material/LockReset';
@@ -8,6 +13,9 @@ import LogoutIcon from '@mui/icons-material/Logout';
 export default function PersonalArea() {
   return (
     <div>
+      <MobileNav />
+      <DesktopNav />
+      <LoginUserNavbar />
       <div className="grid grid-flow-row md:grid-flow-col ">
         <aside className="w-96" aria-label="Sidebar">
           <div
@@ -249,6 +257,8 @@ export default function PersonalArea() {
           </div>
         </div>
       </div>
+      <Footer />
+      <FooterMobile />
     </div>
   );
 }

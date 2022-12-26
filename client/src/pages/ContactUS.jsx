@@ -1,8 +1,16 @@
 import React from 'react';
+import MobileNav from '../compontes/navbar/MobileNav'
+import DesktopNav from '../compontes/navbar/DesktopNav'
+import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
+import FooterMobile from '../compontes/footer/footerMobile'
+import Footer from '../compontes/footer/Footer'
 
 export default function ContactUS() {
   return (
     <div>
+      <MobileNav />
+      <DesktopNav />
+      <LoginUserNavbar />
       {' '}
       <div className="container my-24 px-6 mx-auto">
         {/* Section: Design Block */}
@@ -256,6 +264,8 @@ export default function ContactUS() {
         </section>
         {/* Section: Design Block */}
       </div>
+      <Footer />
+      <FooterMobile />
     </div>
   );
 }

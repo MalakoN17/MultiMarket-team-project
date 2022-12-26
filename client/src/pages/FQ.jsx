@@ -1,8 +1,16 @@
 import React from 'react'
+import MobileNav from '../compontes/navbar/MobileNav'
+import DesktopNav from '../compontes/navbar/DesktopNav'
+import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
+import FooterMobile from '../compontes/footer/footerMobile'
+import Footer from '../compontes/footer/Footer'
 
 export default function FQ() {
   return (
     <div>
+      <MobileNav />
+      <DesktopNav />
+      <LoginUserNavbar />
        <section className="text-gray-700">
         <div className="container px-5 py-24 mx-auto">
           <div className="text-center mb-20">
@@ -17,70 +25,60 @@ export default function FQ() {
             <div className="w-full lg:w-1/2 px-4 py-2">
               <details className="mb-4">
                 <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How Long is this site live?
+                  תוך כמה זמן מוצרים חדשים עולים לאתר ?
                 </summary>
                 <span>
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                 המוצרים עולים לאתר בלייב, ברגע שבעל החנות מעדכן את האספקה שלו.
                 </span>
               </details>
               <details className="mb-4">
                 <summary className="font-semibold bg-gray-200 rounded-md py-2 px-4">
-                  Can I install/upload anything I want on there?
+                 האם התשלום באתר מאובטח ?
                 </summary>
                 <span>
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                 בוודאי, התשלום באתר מאובטח לכל הכרטיסים 
                 </span>
               </details>
               <details className="mb-4">
                 <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How can I migrate to another site?
+                  האם אתם עובדים עם כל החנויות בארץ
                 </summary>
                 <span>
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                  כרגע לא, אנחנו עובדים עם חלק מהחנויות בערי המרכזיות בארץ.
                 </span>
               </details>
             </div>
             <div className="w-full lg:w-1/2 px-4 py-2">
               <details className="mb-4">
                 <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  Can I change the domain you give me?
+                  האם ההתחברות לאתר בטוחה?
                 </summary>
                 <span className="px-4 py-2">
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                  בוודאי, ההתחברות מאובטחת ומוצפנת כך שלכל משתמש או בעל חנות יש גישה להרשאות שלו.
                 </span>
               </details>
               <details className="mb-4">
                 <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How many sites I can create at once?
+                  האם אפשר ליצור קשר לגבי סטטוס המזנה או כל דבר אחר ?
                 </summary>
                 <span className="px-4 py-2">
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                  כן כמובן, יש לנו שירות צ'אט בשביל הדברים האלה ?
                 </span>
               </details>
               <details className="mb-4">
                 <summary className="font-semibold  bg-gray-200 rounded-md py-2 px-4">
-                  How can I communicate with you?
+                  תוך כמה זמן מגיע המשלוח ?
                 </summary>
                 <span className="px-4 py-2">
-                  Laboris qui labore cillum culpa in sunt quis sint veniam.
-                  Dolore ex aute deserunt esse ipsum elit aliqua. Aute quis
-                  minim velit nostrud pariatur culpa magna in aute.
+                  המשלוח מגיע בהתאם לזמן השילוח שקובע הלקוח עצמו.
                 </span>
               </details>
             </div>
           </div>
         </div>
       </section>
+      <Footer />
+      <FooterMobile />
     </div>
   )
 }
