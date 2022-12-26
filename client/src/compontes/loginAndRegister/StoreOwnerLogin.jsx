@@ -22,10 +22,8 @@ export default function StoreOwnerLogin() {
     });
     dispatch(getUser(data));
 
-    const history = sessionStorage.getItem('history');
-    const url = history.split('').slice(21).join('');
-    console.log(data);
-    if (data) navigate(`${url}`);
+  
+    if (data) navigate(`/ownerstore`);
   };
   return (
     <div>
