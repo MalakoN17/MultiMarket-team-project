@@ -28,6 +28,7 @@ export default function NavOwner() {
                   <span onClick={handleNavAbut} className="menuNav">צור קשר</span>
                   <span onClick={handleNavHome} className="menuNav">דף הבית</span>
                   <span onClick={handleNavAccount} className="menuNav">חשבון</span>
+                  <span className="menuNav">התנתקות</span>
                 </div>
               </div>
             </div>
