@@ -37,7 +37,9 @@ export default function ProductForm() {
 
   const [sections, setSections] = useState([])
   const [show, setShow] = useState('hidden')
-  const [newSections, setNewSections] = useState({name:'', storeId:'63a8ba6d70b0e1a406346db2', createdBy:'destaw-test'})
+
+  const [newSections, setNewSections] = useState({name:'', storeId:'63a5b33f5fc28c9e324800c8', createdBy:'destaw-test'})
+
   
   const handleInput = (e) => {
     const { name, value ,checked} = e.target;
@@ -57,16 +59,14 @@ export default function ProductForm() {
   const handleInputSection = (e) => {
     const { name, value } = e.target;
     setNewSections({...newSections, [name]:value})
+
   };
 
   const createNewSection = (e) => {
     dispatch(createSections(newSections))
     setProduct({...product, sectionId:[...product.sectionId, sectionsState.newSection._id
     ]})
-    console.log(sectionsState.newSection._id);
   };
-
- 
 
   const TransformFileData = (file) => {
     const reader = new FileReader();
@@ -82,7 +82,9 @@ export default function ProductForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
-    product.storeId ='63a8ba6d70b0e1a406346db2'
+
+    product.storeId ='63a5b33f5fc28c9e324800c8'
+
     dispatch(createProduct(product));
   };
 
@@ -94,7 +96,9 @@ export default function ProductForm() {
   };
 
   useEffect(()=>{
-    dispatch(getAllSections('63a8ba6d70b0e1a406346db2'))
+
+    dispatch(getAllSections('63a5b33f5fc28c9e324800c8'))
+
   },[sectionsState.sections.length])
   return (
     <div>
@@ -275,7 +279,7 @@ export default function ProductForm() {
             </div>
            
                <button type='button' onClick={()=>setShow('block')}>צור קטגוריה חדשה</button>
-               <div className={show}>
+               <div className={ show}>
             <InputProduct funChange={handleInputSection} textLabel='צור קטגוריה ' name='name' type='text' placeholder='הכנס קטגוריה חדשה' />
             <button onClick={createNewSection} type='button'>צור קטגוריה</button>
                </div>

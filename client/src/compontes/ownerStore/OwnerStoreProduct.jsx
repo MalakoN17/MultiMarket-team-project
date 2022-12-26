@@ -1,11 +1,11 @@
 import { useEffect } from "react"
 import { useDispatch } from "react-redux"
-import {getStore} from '../../features/ownerStore/ownerStoreSlice'
+import {getStoreProducts} from '../../features/ownerStore/ownerStoreSlice'
 
 export default function OwnerStoreProduct() {
     const dispatch = useDispatch()
     useEffect(()=>{
-        dispatch(getStore())
+        dispatch(getStoreProducts())
     },[])
   return (
     <div>
