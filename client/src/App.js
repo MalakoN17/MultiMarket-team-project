@@ -8,7 +8,7 @@ import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
 import CheckOut from './pages/checkOut/CheckOut';
-import Store from './compontes/stores/store';
+import Store from './pages/Store';
 import AddStore from './compontes/addStore/AddStore';
 
 import Chat from './pages/Chat';
@@ -17,7 +17,6 @@ import Register from './pages/Register';
 import RegisterStoreOwner from './pages/RegisterStoreOwner';
 import LoginStoreOwner from './pages/LoginStoreOwner';
 import Footer from './compontes/footer/Footer';
-import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
@@ -33,6 +32,9 @@ import HomeOwner from './compontes/ownerStore/HomeOwner';
 import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
 import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import PersonalArea from './pages/PersonalArea';
+import OwnerDet from './compontes/ownerStore/OwnerDet';
+import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
+
 
 function App() {
   return (
@@ -44,7 +46,7 @@ function App() {
           <Route path="" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
           <Route path="/store/:id" element={<StorePage />} />
-          {/* <Route path="/store" element={<Store />} /> */}
+          <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
           {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
@@ -58,7 +60,10 @@ function App() {
             <Route path='updateproduct/:id' element={<UpdateProduct/>}/>
             <Route path='allproduct' element={<ProductStoreOwner/>}/>
             
-            <Route path='accountstore' element={<OwnerStoreAccount/>}/>
+            <Route path='accountstore' element={<OwnerStoreAccount/>}>
+              <Route path='ownerdet' element={<OwnerDet/>}/>
+              <Route path='updateownerdet' element={<UpdateOwnerDet/>}/>
+            </Route>
             <Route path='receipts' element={<ReceiptsOwnerStore/>}/>
             <Route path='storedetails' element={<StoreDetails/>}/>
             <Route path='updatestoredetails' element={<UpdateStore/>}/>
