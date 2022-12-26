@@ -76,7 +76,6 @@ const ProductSchema = new mongoose.Schema({
     type: Boolean,
     default: false,
   },
-  // brand: { type: String },
   salesQuantity: { type: Number, required: true, default: 0 },
   productStock: { type: Number, required: true, default: 0 },
   lastUpdate: { type: Date, default: Date.now },

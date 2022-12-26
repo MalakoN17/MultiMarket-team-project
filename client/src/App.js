@@ -20,6 +20,11 @@ import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
 
 import OwnerStore from './pages/OwnerStore';
+import ReceiptsOwnerStore from './compontes/ownerStore/ReceiptsOwnerStore';
+import StoreDetails from './compontes/ownerStore/StoreDetails';
+import HomeOwner from './compontes/ownerStore/HomeOwner';
+import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
+import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 
 
 function App() {
@@ -40,8 +45,15 @@ function App() {
 
       
           <Route path='/ownerstore' element={<OwnerStore />}>
+            <Route path='' element={<HomeOwner/>}/>
             <Route path='addproduct' element={<AddingProducts/>}/>
+            <Route path='updateproduct/:id' element={<UpdateProduct/>}/>
+            <Route path='allproduct' element={<ProductStoreOwner/>}/>
+            
             <Route path='accountstore' element={<OwnerStoreAccount/>}/>
+            <Route path='receipts' element={<ReceiptsOwnerStore/>}/>
+            <Route path='storedetails' element={<StoreDetails/>}/>
+            <Route path='updatestoredetails' element={<UpdateStore/>}/>
           </Route>
 
           <Route path="addstore" element={<AddStore />} />

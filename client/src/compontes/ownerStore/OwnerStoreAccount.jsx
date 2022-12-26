@@ -1,62 +1,35 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
+import { Outlet, useNavigate } from "react-router"
 
 import {getStore} from '../../features/ownerStore/ownerStoreSlice'
 
 
 export default function OwnerStoreAccount() {
     const storeD = useSelector(state => state.ownerStore)
+    const user = useSelector(state => state.user)
     const { isLogin, isSuccuss, store } = storeD
-    const [storeDe, setStore] = useState({})
     const dispatch = useDispatch()
-
+    const navigate = useNavigate()
+    const handleNavStoreDetails = ()=>{
+        navigate('storedetails')
+    }
+    const handleNavReceipts = ()=>{
+        navigate('receipts')
+    }
+    const handleNavUpdateStoreDetails = ()=>{
+        navigate('updatestorsetails')
+    }
 
     useEffect(()=>{
-        // dispatch(getStore('6391e77a46a83544c853314f'))
+        dispatch(getStore('63a5b33f5fc28c9e324800c8'))
         
     },[])
-    useEffect(()=>{
-        setStore(store)
-    },[isSuccuss])
   return (
-    <div className="text-center">
-        פרטי חשבון
-        {/* <div>
-            <h1>{storeDe.name}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.description}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.bnNumber}</h1>
-        </div>
-        <div>
-            <img src={storeDe.lightlogo} />
-        </div>
-        <div>
-            <img src={storeDe.darklogo}/>
-        </div>
-        <div>
-            <img src={storeDe.coverImage}/>
-        </div>
-        <div>
-            <h1>{storeDe.phone}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.email}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.address?.city}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.address?.street}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.address?.building}</h1>
-        </div>
-        <div>
-            <h1>{storeDe.address?.apartment}</h1>
-        </div> */}
+   <div className="">
+    <div>
+      
+    </div>
    </div>
   );
 }
