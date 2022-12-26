@@ -32,7 +32,7 @@ import StoreDetails from './compontes/ownerStore/StoreDetails';
 import HomeOwner from './compontes/ownerStore/HomeOwner';
 import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
 import UpdateProduct from './compontes/ownerStore/UpdateProduct';
-
+import PersonalArea from './pages/PersonalArea';
 
 function App() {
   return (
