@@ -16,8 +16,8 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterStoreOwner from './pages/RegisterStoreOwner';
 import LoginStoreOwner from './pages/LoginStoreOwner';
-import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
+import Footer from './compontes/footer/Footer';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
 import UpdateStore from './compontes/ownerStore/UpdateStore';
@@ -32,6 +32,9 @@ import StoreDetails from './compontes/ownerStore/StoreDetails';
 import HomeOwner from './compontes/ownerStore/HomeOwner';
 import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
 import UpdateProduct from './compontes/ownerStore/UpdateProduct';
+import PersonalArea from './pages/PersonalArea';
+import OwnerDet from './compontes/ownerStore/OwnerDet';
+import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
 
 
 function App() {
@@ -39,6 +42,7 @@ function App() {
     <>
       {/* </> */}
       <Router>
+       
         <Routes>
           <Route path="chat" element={<Chat />} />
           <Route path="" element={<Main />} />
@@ -47,7 +51,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
-          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
           
         
 
@@ -58,7 +62,10 @@ function App() {
             <Route path='updateproduct/:id' element={<UpdateProduct/>}/>
             <Route path='allproduct' element={<ProductStoreOwner/>}/>
             
-            <Route path='accountstore' element={<OwnerStoreAccount/>}/>
+            <Route path='accountstore' element={<OwnerStoreAccount/>}>
+              <Route path='ownerdet' element={<OwnerDet/>}/>
+              <Route path='updateownerdet' element={<UpdateOwnerDet/>}/>
+            </Route>
             <Route path='receipts' element={<ReceiptsOwnerStore/>}/>
             <Route path='storedetails' element={<StoreDetails/>}/>
             <Route path='updatestoredetails' element={<UpdateStore/>}/>
@@ -71,8 +78,10 @@ function App() {
           <Route path="question" element={<FQ/>} />
           <Route path="contactUS" element={<ContactUS />} />
           <Route path="aboutUs" element={<AboutUs />} />
+          <Route path="personalArea" element={<PersonalArea />} />
           <Route path="*" element={<Error />} />
         </Routes>
+       
       </Router>
     </>
   );

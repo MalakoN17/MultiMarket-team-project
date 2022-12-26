@@ -24,7 +24,6 @@ function Product({ product }) {
             barcode: product.barcode
         }
     })
-
     const handleClick = () => {
         setShow(!show)
     }
@@ -33,7 +32,7 @@ function Product({ product }) {
         e.preventDefault()
         setShow(!show)
     }
-
+    const dispatch = useDispatch()
     return (
         <>
             <div className="max-w-2xl mx-auto">

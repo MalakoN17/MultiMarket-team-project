@@ -1,12 +1,9 @@
 import React from 'react'
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png'
 import { useNavigate } from 'react-router-dom';
-
 import './style.css';
-
 export default function Store(props) {
   const navigate = useNavigate()
-
   const handleClick = () => {
     navigate(`/store`, {
       state:{
@@ -14,7 +11,6 @@ export default function Store(props) {
       },
     });
   }
-
   return (
     <div>
         <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
