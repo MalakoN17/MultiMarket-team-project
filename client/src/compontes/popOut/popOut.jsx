@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import {settingSelect} from "../../features/city/citySlice"
+import {clearSelect, settingSelect} from "../../features/city/citySlice"
 
 export default function PopOut() {
-  const {cityValue} = useSelector((state)=> state.city);
+  const {cityValue,show} = useSelector((state)=> state.city);
   const dispatch = useDispatch();
-  const [city,setCity] = useState("תל אביב")
+  const [city,setCity] = useState(" ")
 
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(true);
+
+// useEffect(()=>{
+//   dispatch(clearSelect())
+// },[])
 
   const handleCitySelect = (e) => {
     setCity(e.target.value);
@@ -19,16 +23,16 @@ export default function PopOut() {
   const handleForm =(e)=>{
     e.preventDefault()
     dispatch(settingSelect(city))
-    setShow(!show)
+    // setShow(!show)
   }
   const exitForm = (e)=>{
     e.preventDefault()
     dispatch(settingSelect("תל אביב"))
-    setShow(!show)
+    // setShow(!show)
   }
   return (
     
-    <div className={show ? 'block' : 'hidden'}>
+    <div className={show ? 'hidden' : 'block'}>
       <div
         className="relative z-10"
         aria-labelledby="modal-title"
@@ -65,6 +69,7 @@ export default function PopOut() {
                         <option value="תל אביב">תל אביב</option>
                         <option value="חיפה">חיפה</option>
                         <option value="נתניה">נתניה</option>
+                        <option value="אשקלון">אשקלון</option>
                         <option value="שוהם">שוהם</option>
                         <option value="פתח תקווה">פתח תקווה </option>
                         <option value="אשדוד">אשדוד</option>

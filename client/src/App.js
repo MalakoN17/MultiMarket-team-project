@@ -16,7 +16,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterStoreOwner from './pages/RegisterStoreOwner';
 import LoginStoreOwner from './pages/LoginStoreOwner';
-import Footer from './compontes/footer/Footer';
+// import Footer from './compontes/footer/Footer';
 import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
@@ -39,6 +39,7 @@ function App() {
     <>
       {/* </> */}
       <Router>
+       
         <Routes>
           <Route path="chat" element={<Chat />} />
           <Route path="" element={<Main />} />
@@ -74,6 +75,7 @@ function App() {
           <Route path="personalArea" element={<PersonalArea />} />
           <Route path="*" element={<Error />} />
         </Routes>
+       
       </Router>
     </>
   );
