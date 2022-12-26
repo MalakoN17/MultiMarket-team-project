@@ -77,6 +77,7 @@ const productSlice = createSlice({
         state.isLoading = false
         state.isSuccess = true
         state.addProduct = (action.payload);
+        console.log(action);
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.isLoading = false
@@ -95,6 +96,7 @@ const productSlice = createSlice({
         state.isLoading = false
         state.isError = true
         state.message = action.payload
+        console.log(action);
       })
 
   }

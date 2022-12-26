@@ -75,6 +75,7 @@ export const deleteStore = createAsyncThunk(
 export const getDepartments = createAsyncThunk('ownerStore/getDepartments', async ()=>{
   try {
     const data = await getDepartmentsApi()
+    console.log(data);
     return data
   } catch (error) {
     return error
@@ -130,7 +131,7 @@ const storeSlice = createSlice({
         console.log(action.payload);
       })
       .addCase(getDepartments.fulfilled, (state, action)=>{
-        
+        console.log(action.payload);
         state.departmentIds = action.payload
       })
       .addCase(getDepartments.rejected, (state, action)=>{

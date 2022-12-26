@@ -52,19 +52,31 @@ const login = async (req, res, next) => {
   const { email, password } = req.body;
   if (!email || !password) {
     res.status(400);
-    throw new Error('User is not exist');
+    throw new Error('Email and password required')
   }
 
   const user = await usersSchema.findOne({ email });
   const storeOwner = await storeOwnersSchema.findOne({ email });
+  // console.log({user, storeOwner});
+
+  // console.log(password);
+  // console.log(user);
 
   try {
-    if (
-      user || storeOwner && (await bcrypt.compare(password, user?.password || storeOwner?.password)))
-     {
-      const accessToken = generateAccessToken(user || storeOwner);
+    // const hashedPassword = await bcrypt.compare(password, user.password);
+    if (user && (await bcrypt.compare(password, user.password))) {
+      const accessToken = generateAccessToken(user );
       res.json({ accessToken: accessToken, currentUser:user });
-    } else {
+      // console.log(storeOwner);
+    } 
+
+     if(storeOwner && (await bcrypt.compare(password, user.password))){
+      const accessToken = generateAccessToken(storeOwner );
+      res.json({ accessToken: accessToken, currentUser:storeOwner });
+      // console.log(storeOwner);
+      } 
+
+      if(!user && !storeOwner) {
       res.status(400);
       throw new Error('User is not exist');
     }

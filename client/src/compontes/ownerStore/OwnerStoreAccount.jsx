@@ -25,11 +25,14 @@ export default function OwnerStoreAccount() {
         dispatch(getStore('63a5b33f5fc28c9e324800c8'))
         
     },[])
+
   return (
    <div className="">
     <div>
       
     </div>
+
    </div>
   );
 }
+

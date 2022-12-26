@@ -43,7 +43,12 @@ const updateAdminStore = async (req, res, next) => {
 };
 // POST create admin
 const createAdminStore = async (req, res, next) => {
-  const { password } = req.body;
+  const { email, password } = req.body;
+
+  if (!email || !password) {
+    res.status(400);
+    throw new Error('Email and password required')
+  }
 
   // hash password
   const salt = await bcrypt.genSalt(10);
