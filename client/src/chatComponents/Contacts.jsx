@@ -64,7 +64,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                                  <Dropdown.Divider />
                             </div>
                         )
-                    })}
+                    })}    
                      <Dropdown.Divider />
                     <Dropdown.Item>
                         <h3 onClick={() => {navigate('/')}}>Back to home page</h3>
