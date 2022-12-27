@@ -43,12 +43,7 @@ export default function Stores() {
   }  
   
   , []);
-  const changeCity = () =>{
-    <PopOut />
-    dispatch(changeSelect())
-    
 
-  }
 
 
   return (
@@ -56,9 +51,17 @@ export default function Stores() {
     <DesktopNav />
     <LoginUserNavbar/>
     <MobileNav />
-      <div className="background-image w-full">
+      <div className="h-96 w-full"
+      style={{
+        backgroundImage: "url(" + department?.topImage + ")",
+        backgroundPosition: 'center',
+        backgroundSize: 'cover',
+        
+      }}
+      >
 
-        <img src={department?.topImage} alt="" width="100%" className="shadow-xl" />
+        {/* <img src={department?.topImage} alt="" className="shadow-xl h-96 w-full" 
+        /> */}
       </div>
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטוגריית , {department.name}</h1>
@@ -66,7 +69,6 @@ export default function Stores() {
       <div className="container  md:w-100% flex justify-center gap-2">
         <div className="container gap-3 w-[40%]">
           <div>
-          <button onClick={changeCity}>שנה עיר</button>
             <div className="flex gap-3">
               <h3>סנן לפי תוצאות:</h3>
               <p className="text-blue-400 flex">{cityValue} </p>
@@ -127,8 +129,8 @@ export default function Stores() {
             </div>
           </div>
         </div>
-        <div className="w-[18%] sm:flex-none block border">
-          <Cart />
+        <div className="hidden md:block w-[18%] sm:flex-none  ">
+          <div className='border'><Cart  /></div>
         </div>
       </div>
       <div className="text-center relative left-[160px]">
