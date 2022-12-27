@@ -12,6 +12,7 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 // import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 // import onion from '../../assets/images/products_images/onions.jpg';
 import { useParams } from 'react-router-dom';
+import Cart from '../main/Cart';
 
 export default function Stores() {
   const {id} = useParams()
@@ -22,7 +23,6 @@ export default function Stores() {
   
   useEffect(() => {
     const getStores = async () => {
-
       const res = await axios.get(`http://localhost:8000/api/store/department/${id}`);
 
       setStores(res.data)
@@ -36,7 +36,9 @@ export default function Stores() {
     getStores();
     getDepartment();
     console.log(stores);
+    console.log(department);
   }  
+  
   , []);
 
   return (
@@ -45,7 +47,7 @@ export default function Stores() {
     <LoginUserNavbar/>
     <MobileNav />
       <div className="background-image w-full">
-        <img src={department.topImage} alt="" width="100%" className="shadow-xl" />
+        <img src={department?.topImage} alt="" width="100%" className="shadow-xl" />
       </div>
       <div className="text-center">
         <h1 className="text-[30px]">רשימת חנויות בקטוגריית , {department.name}</h1>
@@ -114,7 +116,7 @@ export default function Stores() {
           </div>
         </div>
         <div className="w-[18%] sm:flex-none block border">
-          
+          <Cart />
         </div>
       </div>
       <div className="text-center relative left-[160px]">

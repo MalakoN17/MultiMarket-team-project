@@ -1,7 +1,7 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {removeUser} from '../../features/user/userSlice'
-import logo from '../../assets/multimarket-logo1.png';
+import logo from '../../assets/atlaslogo.png';
 
 export default function LoginUserNavbar() {
 

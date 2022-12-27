@@ -1,8 +1,16 @@
 import React from 'react';
+import MobileNav from '../compontes/navbar/MobileNav'
+import DesktopNav from '../compontes/navbar/DesktopNav'
+import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
+import FooterMobile from '../compontes/footer/footerMobile'
+import Footer from '../compontes/footer/Footer'
 
 export default function ContactUS() {
   return (
     <div>
+      <MobileNav />
+      <DesktopNav />
+      <LoginUserNavbar />
       {' '}
       <div className="container my-24 px-6 mx-auto">
         {/* Section: Design Block */}  
@@ -12,7 +20,7 @@ export default function ContactUS() {
             style={{
               backgroundPosition: '50%',
               backgroundImage:
-                'url("https://mdbootstrap.com/img/new/textures/full/284.jpg")',
+                'url("https://images.pexels.com/photos/851555/pexels-photo-851555.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")',
               height: '300px',
             }}
           ></div>
@@ -256,6 +264,8 @@ export default function ContactUS() {
         </section>
         {/* Section: Design Block */}
       </div>
+      <Footer />
+      <FooterMobile />
     </div>
   );
 }

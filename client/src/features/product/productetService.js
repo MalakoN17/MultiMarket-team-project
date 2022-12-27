@@ -14,7 +14,6 @@ export const getStoreProductApi = async (productId) => {
     try {
       
       const { data } = await axiosMu.post(`/product`, product);
-      console.log(data);
       return data;
     } catch (error) {
       return error;
