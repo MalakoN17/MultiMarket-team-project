@@ -5,12 +5,14 @@ import './style.css';
 export default function Store(props) {
   const navigate = useNavigate()
   const handleClick = () => {
-    console.log(props.store)
-    
+    navigate(`/store`, {
+      state:{
+        store: props.store,
+      },
+    });
   }
   return (
     <div>
-      
         <div className="flex flex-col sm:flex-row items-center sm:items-end border w-full gap-4 p-2">
               <img className='p-4 w-52 h-36' src={props.store.lightlogo.url} alt={props.store.name} />
               <div>

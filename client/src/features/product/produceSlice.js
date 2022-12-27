@@ -38,8 +38,6 @@ export const updateProductSlice = createAsyncThunk('product/updateProduct', asyn
     product.priority = +product.priority
     product.units = +product.units
     product.productStock = +product.productStock
-    console.log(product);
-    
     const data = updateProductToStoreApi(product, product._id)
     return data
   } catch (error) {
@@ -77,7 +75,6 @@ const productSlice = createSlice({
         state.isLoading = false
         state.isSuccess = true
         state.addProduct = (action.payload);
-        console.log(action);
       })
       .addCase(createProduct.rejected, (state, action) => {
         state.isLoading = false

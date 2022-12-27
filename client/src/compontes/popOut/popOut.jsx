@@ -71,14 +71,19 @@ export default function PopOut() {
                         <option value="נתניה">נתניה</option>
                         <option value="אשקלון">אשקלון</option>
                         <option value="שוהם">שוהם</option>
-                        <option value="פתח תקווה">פתח תקווה </option>
-                        <option value="אשדוד">אשדוד</option>
-                        <option value="לוד">לוד</option>
-                        <option value="באר שבע">באר שבע</option>
-                        <option value="רמלה">רמלה</option>
                         <option value="יבנה">יבנה</option>
-                        <option value="ראשון לציון">ראשון לציון</option>
                         <option value="רחובות">רחובות</option>
+                        <option value="אילת">אילת</option>
+                        <option value="לוד">לוד</option>
+                        <option value="רמלה">רמלה</option>
+                        <option value="ראשון לציון">ראשון לציון</option>
+                        <option value="אשדוד">אשדוד</option>
+                        <option value="פתח תקווה">פתח תקווה</option>
+                        <option value="באר שבע">באר שבע</option>
+                        <option value="בני ברק">בני ברק</option>
+                        <option value="רמת גן">רמת גן</option>
+                        <option value="אשקלון">אשקלון</option>
+                        <option value="קרית שמונה">קרית שמונה</option>
                       </select>
                     </div>
                   </div>
