@@ -4,7 +4,6 @@ import { useState, useEffect } from 'react';
 import { useSelector , useDispatch } from 'react-redux';
 import Department from './Department';
 import {clearSelect, settingSelect,changeSelect} from "../../features/city/citySlice"
-// import SearchInput from './searchInput';
 import './department.css';
  
 export default function Departments() {
@@ -34,10 +33,9 @@ export default function Departments() {
       }}
       className=""
     >
-      <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-       {/* <SearchInput /> */}
-       <button onClick={()=>dispatch(changeSelect())}>שנה עיר</button>
-       <h1 className='text-center text-3xl'>ברוכים הבאים לאטלס מולטי-מרקט</h1>
+      <div className="mx-auto text-center max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
+       <h1 className='text-center text-5xl mb-5'>ברוכים הבאים לאטלס מולטי-מרקט</h1>
+       <div className={show ? 'block' : 'hidden'}><button className='text-white text-xl w-32 bg-lime-400 hover:bg-lime-500 focus:outline-none focus:ring-4 focus:ring-lime-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 mb-6 mt-4' onClick={()=>dispatch(changeSelect())}>שנה עיר</button></div>
         <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {departments.map((department,index) => {
             return (

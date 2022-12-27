@@ -21,8 +21,6 @@ export default function StoreOwnerLogin() {
       password: loginPassword,
     });
     dispatch(getUser(data));
-
-  
     if (data) navigate(`/ownerstore`);
   };
   return (
@@ -33,9 +31,9 @@ export default function StoreOwnerLogin() {
         loginFun={login}
         //   singInWithGoogle={singInWithGoogle}
         btnText={'Sing In'}
-        linkDisplay={"none"}
+        linkDisplay={'none'}
         ownerDisplay={'none'}
-        nameDisplay={"hidden"}
+        nameDisplay={'hidden'}
       />
     </div>
   );

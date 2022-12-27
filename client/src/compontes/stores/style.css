@@ -3,11 +3,7 @@
     background-repeat: no-repeat;
     background-size: cover;
 } */
-.store-btn{
-    background-color: #A3D120;
-    color: white;
-    padding: 5px;
-}
+
 .business-liaison-logo{
     width: 30px;
     height: 30px;
@@ -18,8 +14,7 @@
     border-radius: 100%;
 }
 .add-btn{
-    border:2px solid #A3D120;
-    border-radius: 100%;
+    background-color:  #A3D120;
 }
 .open-store{
     color: black !important;

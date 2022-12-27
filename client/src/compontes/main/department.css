@@ -14,12 +14,13 @@
     grid-template-columns: repeat(1, minmax(0, 1fr));
     row-gap: 2.5rem;
     column-gap: 1.5rem;
+    margin: 0px;
   }
   .departmentImg {
     width: 100%;
     overflow: hidden;
     border-radius: 0.5rem;
-    background-color: #e5e7eb;
+    /* background-color: #e5e7eb; */
   }
   .departmentTitle {
     margin-top: 1rem;
