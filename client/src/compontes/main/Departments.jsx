@@ -36,8 +36,8 @@ export default function Departments() {
     >
       <div className="mx-auto text-center max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
        {/* <SearchInput /> */}
-       <h1 className='text-center text-3xl'>ברוכים הבאים לאטלס מולטי-מרקט</h1>
-       <button className='text-gray-900 bg-gradient-to-r from-lime-200 via-lime-400 to-lime-500 hover:bg-gradient-to-br focus:ring-4 focus:outline-none focus:ring-lime-300 dark:focus:ring-lime-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2' onClick={()=>dispatch(changeSelect())}>שנה עיר</button>
+       <h1 className='text-center text-5xl'>ברוכים הבאים לאטלס מולטי-מרקט</h1>
+       <button className='text-white text-xl w-32 bg-lime-400 hover:bg-lime-500 focus:outline-none focus:ring-4 focus:ring-lime-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 mb-6 mt-4' onClick={()=>dispatch(changeSelect())}>שנה עיר</button>
         <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {departments.map((department,index) => {
             return (

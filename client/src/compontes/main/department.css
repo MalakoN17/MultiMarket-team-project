@@ -19,7 +19,7 @@
     width: 100%;
     overflow: hidden;
     border-radius: 0.5rem;
-    background-color: #e5e7eb;
+    /* background-color: #e5e7eb; */
   }
   .departmentTitle {
     margin-top: 1rem;
