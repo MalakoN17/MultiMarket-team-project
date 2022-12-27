@@ -4,8 +4,9 @@ import { updateOwnerStore } from '../../features/ownerStore/ownerStoreSlice'
 import InputOwner from './InputOwner'
 
 export default function UpdateOwnerDet() {
+
     const dispatch = useDispatch()
-    const {currentUser} = useSelector(state=>state.user)
+    const {user} = useSelector(state=>state.user)
     const [ownerDe, setOwnerDe] = useState(currentUser)
     const handleInput = (e)=>{
         const {name, value} = e.target
@@ -17,17 +18,22 @@ export default function UpdateOwnerDet() {
         dispatch(updateOwnerStore(ownerDe))
     }
     
+
   return (
     <div>
-        <h1 className='text-4xl'>עידכון משתמש</h1>
+        <h1 className='text-2xl text-center'>עידכון משתמש</h1>
     <div>
-        <form onSubmit={handleForm} className='py-10'>
-    <InputOwner type='name' name='firstName' funChange={handleInput} description='שם פרטי' value={ownerDe.firstName}/>
-    <InputOwner type='name' name='lastName' funChange={handleInput} description='שם משפחה' value={ownerDe.lastName}/>
-    <InputOwner type='email' name='email' funChange={handleInput} description='איימל' value={ownerDe.email}/>
-    <InputOwner funChange={handleInput} type='tal' name='phone' description='טלפון' value={ownerDe.phone}/>
-    <button type='submit' className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none'>עדכן</button>
+        <form>
+    <InputOwner type='name' description='שם פרטי' value={user.currentUser.firstName}/>
         </form>
+        <h1 className='text-3xl'>שם: {user.currentUser.firstName} {user.currentUser.lastName}</h1>
+    </div>
+    <br />
+    <div className='flex '>
+        <h1 className='text-3xl'>איימל: {user.currentUser.email}</h1>
+    </div>
+    <div className='flex '>
+        <h1 className='text-3xl'>טלפון: {user.currentUser.phone}</h1>
     </div>
 </div>
   )

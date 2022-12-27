@@ -16,8 +16,8 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     const userOrOwner = () => {
         if (currentUser?.role === 'owner') {
             console.log(currentUser);
-            setCurrentFirstName(store.name)
-            setCurrentUserImage(store.darklogo.url)
+            setCurrentFirstName(store.name)          
+            setCurrentUserImage(store.darklogo?.url)
             setCurrentLastName('')
         } else {
             console.log(currentUser);
@@ -41,23 +41,23 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     console.log(contacts);
     return (
         <div>
-            <div className='flex md:hidden w-full justify-center'>
-                <Dropdown className='w-full' label="חברים" style={{width:'320px'}}>
+            <div className='flex md:hidden w-full justify-center'>    
+                <Dropdown className='w-full overflow-auto h-screen' label="חברים" style={{width:'320px'}}>
                     <Dropdown.Header className='' style={{width:'320px'}}>
-                        <div className='flex h-[20px] items-center justify-between w-full'>
+                        <div className='flex h-[20px] items-center justify-between w-full mb-3'>
                             <div className=''>
                                 <h3 className="block text-sm">{currentFirstName} {currentLastName}</h3>
                             </div>
                             <div className='rounded-full'>
                                 <img className='rounded-full w-full object-cover w-12 h-12 rounded-full' src={currentUserImage} alt="" />
-                            </div>
-                        </div>
+                            </div>         
+                        </div>                
                     </Dropdown.Header>
                     {contacts.map((contact, index) => {
                         return (
-                            <div>
-                                <Dropdown.Item key={contact._id} onClick={() => changeCurrentChat(index, contact)}>
-                                    <div className="flex items-center px-4 py-2 justify-center text-sm transition duration-150 ease-in-out cursor-pointer hover:bg-gray-100 focus:outline-none">
+                            <div className=''>
+                                <Dropdown.Item className='' key={contact._id} onClick={() => changeCurrentChat(index, contact)}>
+                                    <div className="flex overflow-hidden items-center px-4 py-2 justify-center text-sm transition duration-150 ease-in-out cursor-pointer hover:bg-gray-100 focus:outline-none">
                                         <span className="contact-name block ml-2 font-semibold  p-4">{contact.name} {contact.firstName} {contact.lastName}</span>
                                     </div>
                                 </Dropdown.Item>
@@ -71,23 +71,27 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                     </Dropdown.Item>
                 </Dropdown>    
             </div>
-            <div className='hidden md:flex md:w-[235px] w-[0] items-end flex flex-col justify-between border-r-2 '>
-                <div className="owners-chat rounded">
-                    <ul className="overflow-auto h-[0] md:h-[33rem] w-full">
-                        <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] font-semibold ">הודעות</h2>
+            <div className='hidden md:flex items-end flex flex-col justify-between border-r-2 '>
+                <div className="owners-chat rounded">    
+                    <ul className="overflow-auto h-[0] md:h-[562px] w-full">
+                        <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[74px] font-semibold ">הודעות</h2>
                         {contacts.map((contact, index) => {
-                            return (
-                                <li key={contact._id} className='contact overflow-hidden' onClick={() => changeCurrentChat(index, contact)}>
-                                    <div className="flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                                        <span className="contact-name block ml-2 font-semibold  text-gray-600 p-4">{contact.name} {contact.firstName} {contact.lastName}</span>
-                                        {/* <img className="object-cover w-12 h-12 rounded-full" src={contact.profileImage} alt="profile image" /> */}
-                                    </div>
-                                </li>
+                            return (                 
+                                <div className='w-[250px]'>     
+                                    <li key={contact._id} className='contact ml-2 overflow-hidden cursor-pointer hover:bg-gray-100 focus:outline-none h-[60px]' onClick={() => changeCurrentChat(index, contact)}>
+                                        <div className="flex text-sm items-center justify-end transition duration-150 ease-in-out border-gray-300">
+                                            <span className="contact-name block ml-2 font-semibold  text-gray-600">{contact.name} {contact.firstName} {contact.lastName}</span>
+                                            <img className="object-cover w-12 h-12 rounded-full" src={contact.profileImage} alt="" />
+                                        </div>
+                                    </li>
+                               <Dropdown.Divider />
+                                </div>
+
                             )
-                        })}
+                        })}            
                     </ul>        
                 </div>
-                <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
                     <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentFirstName} {currentLastName}</h2>
                     <div className='object-cover mt-2 w-12 h-12 flex'>
                         <img className="w-full rounded-full" src={`${currentUserImage}`} alt="" />
@@ -96,5 +100,5 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
             </div>
         </div>
     );
-}
+}    
     

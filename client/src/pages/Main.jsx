@@ -1,5 +1,6 @@
 import PopOut from '../compontes/popOut/popOut'
 import Departments from '../compontes/main/Departments'
+import Department from '../compontes/main/Department'
 import MobileNav from '../compontes/navbar/MobileNav'
 import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
@@ -17,6 +18,7 @@ function Main() {
             <DesktopNav />
 
             <LoginUserNavbar/>
+            {/* <Departments /> */}
             <Departments />
             <FooterMobile />
             <Footer />
