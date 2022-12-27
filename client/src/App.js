@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from './features/user/userSlice';
+import axios from 'axios';
 
 // Pages ---
 import Main from './pages/Main';
@@ -36,20 +40,17 @@ import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 
 function App() {
-  const dispatch = useDispatch();
-  // const user = useSelector(state=> state.user);
+  const dispatch = useDispatch() 
+  const someFunction = async () => {
+    const res = await axios.get('http://localhost:8000/auth/login/success', {
+      withCredentials: true,
+    })
+    if (res.status === 200) dispatch(getUser(res.data))
+  }
 
-  const someFunction = async ()=>{
-      const res = await axios.get('http://localhost:8000/auth/login/success', {
-          withCredentials:true,
-      })
-      if(res.status === 200) dispatch(getUser(res.data))
-    }
-
-  useEffect(()=>{
-    // console.log(user);
+  useEffect(() => {
     someFunction()
-  },[])
+  }, [])
 
   return (
     <>
