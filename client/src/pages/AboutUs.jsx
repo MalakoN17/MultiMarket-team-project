@@ -4,6 +4,8 @@ import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
 import FooterMobile from '../compontes/footer/footerMobile'
 import Footer from '../compontes/footer/Footer'
+import teamPicture from "../assets/images/teampicture.jpeg"
+import royPicture from "../assets/images/roypic.JPG"
 
 export default function AboutUs() {
   return (
@@ -26,7 +28,7 @@ export default function AboutUs() {
           <div className="w-full lg:w-8/12">
             <img
               className="w-full h-full"
-              src="https://i.ibb.co/FhgPJt8/Rectangle-116.png"
+              src={teamPicture}
               alt="A group of People"
             />
           </div>
@@ -126,12 +128,12 @@ export default function AboutUs() {
               <div className="p-4 pb-6 flex justify-center flex-col items-center">
                 <img
                   className="md:block hidden"
-                  src="https://i.ibb.co/7nSJPXQ/Rectangle-121.png"
+                  src={royPicture}
                   alt="Elijah featured image"
                 />
                 <img
                   className="md:hidden block"
-                  src="https://i.ibb.co/ThZBWxH/Rectangle-121.png"
+                  src={royPicture}
                   alt="Elijah featured image"
                 />
                 <p className="font-medium text-xl leading-5 text-gray-800 dark:text-white mt-4">
