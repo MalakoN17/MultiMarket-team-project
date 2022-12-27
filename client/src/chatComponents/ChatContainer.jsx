@@ -33,7 +33,6 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
-    // console.log(msg);
     await axios.post('http://localhost:8000/api/messages/addMsg', {
       from: currentUser._id,
       to: currentChat._id,
@@ -63,22 +62,6 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
 
     }      
 }  
-
-
-//   const userOrOwner = () => {   
-//     if (currentUser?.role === 'owner') {
-//       setCurrentFirstName(store.name)
-//       setCurrentUserImage(store.darklogo.url)
-//     } else {
-//       console.log(currentUser);
-//     }
-//   }
-     
-
-    
-// useEffect(() => {
-//   userOrOwner()    
-// }, [])
 
 useEffect(() => {
   if (socket.current) {

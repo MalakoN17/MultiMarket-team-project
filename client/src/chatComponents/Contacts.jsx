@@ -17,8 +17,8 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     const userOrOwner = () => {
         if (currentUser?.role === 'owner') {
             console.log(currentUser);
-            setCurrentFirstName(store.name)
-            setCurrentUserImage(store.darklogo.url)
+            setCurrentFirstName(store.name)          
+            setCurrentUserImage(store.darklogo?.url)
             setCurrentLastName('')
         } else {
             console.log(currentUser);
@@ -28,8 +28,6 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
 
         }
     }
-
-    
 
     useEffect(() => {
         userOrOwner()
@@ -44,8 +42,8 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
     console.log(contacts);
     return (
         <div>
-            <div className='flex md:hidden w-full justify-center'>
-                <Dropdown className='w-full' label="חברים" style={{width:'320px'}}>
+            <div className='flex md:hidden w-full justify-center'>    
+                <Dropdown className='w-full overflow-auto h-screen' label="חברים" style={{width:'320px'}}>
                     <Dropdown.Header className='' style={{width:'320px'}}>
                         <div className='flex h-[20px] items-center justify-between w-full mb-3'>
                             <div className=''>
@@ -53,13 +51,13 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                             </div>
                             <div className='rounded-full'>
                                 <img className='rounded-full w-full object-cover w-12 h-12 rounded-full' src={currentUserImage} alt="" />
-                            </div>
-                        </div>
+                            </div>         
+                        </div>                
                     </Dropdown.Header>
                     {contacts.map((contact, index) => {
                         return (
                             <div className=''>
-                                <Dropdown.Item key={contact._id} onClick={() => changeCurrentChat(index, contact)}>
+                                <Dropdown.Item className='' key={contact._id} onClick={() => changeCurrentChat(index, contact)}>
                                     <div className="flex overflow-hidden items-center px-4 py-2 justify-center text-sm transition duration-150 ease-in-out cursor-pointer hover:bg-gray-100 focus:outline-none">
                                         <span className="contact-name block ml-2 font-semibold  p-4">{contact.name} {contact.firstName} {contact.lastName}</span>
                                     </div>

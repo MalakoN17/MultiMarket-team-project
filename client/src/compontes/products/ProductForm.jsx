@@ -101,7 +101,7 @@ export default function ProductForm() {
 
     dispatch(getAllSections('63a5b33f5fc28c9e324800c8'))
 
-  }, [sectionsState.sections.length])
+  }, [sectionsState.sections.length])    
   return (
     <div>
       <div className="flex items-center justify-center p-12 ">

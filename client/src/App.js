@@ -51,7 +51,7 @@ function App() {
   // const user = useSelector(state=> state.user);
 
   const someFunction = async ()=>{
-      const res = await axios.get('http://localhost:8000/auth/login/success', {
+      const res = await axios.get('http://localhost:8000/api/auth/login/success', {
           withCredentials:true,
       })
       if(res.status === 200) dispatch(getUser(res.data))

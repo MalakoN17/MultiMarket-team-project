@@ -9,7 +9,7 @@ import { useNavigate } from 'react-router';
 import DesktopNav from '../compontes/navbar/DesktopNav';
 import Footer from '../compontes/footer/Footer';
 import { useEffect } from 'react';
-import FooterMobile from '../compontes/footer/FooterMobile';
+import FooterMobile from '../compontes/footer/footerMobile';
 
 export default function CheckoutSuccess() {
 
