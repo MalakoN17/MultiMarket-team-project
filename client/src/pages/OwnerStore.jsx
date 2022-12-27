@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Outlet } from 'react-router'
+import { Outlet } from 'react-router-dom'
 import Footer from '../compontes/footer/Footer'
 import NavOwner from '../compontes/ownerStore/NavOwner'
 import { getStoreProducts } from '../features/ownerStore/ownerStoreSlice'
