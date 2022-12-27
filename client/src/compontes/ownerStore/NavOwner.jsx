@@ -1,7 +1,13 @@
+import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router"
+import { removeUser } from "../../features/user/userSlice"
 
 export default function NavOwner() {
+
     const navigate = useNavigate()
+    const dispatch = useDispatch()
+    const {user} = useSelector(state => state.user)
+
     const handleNavAccount = ()=>{
         navigate('accountstore')
     }
@@ -11,6 +17,10 @@ export default function NavOwner() {
     }
     const handleNavHome = ()=>{
         navigate('')
+    }
+
+    const handleLogout = () => {
+      dispatch(removeUser(user))
     }
   return (
     <div>
@@ -28,7 +38,7 @@ export default function NavOwner() {
                   <span onClick={handleNavAbut} className="menuNav">צור קשר</span>
                   <span onClick={handleNavHome} className="menuNav">דף הבית</span>
                   <span onClick={handleNavAccount} className="menuNav">חשבון</span>
-                  <span className="menuNav">התנתקות</span>
+                  <span onClick={handleLogout} className="menuNav">התנתקות</span>
                 </div>
               </div>
             </div>

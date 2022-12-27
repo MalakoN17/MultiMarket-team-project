@@ -3,7 +3,7 @@ import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import EmailIcon from '@mui/icons-material/Email';
 
-export default function footerMobile() {
+export default function FooterMobile() {
   return (
     <div className="block sm:hidden">
       <footer className="bg-black  ">
