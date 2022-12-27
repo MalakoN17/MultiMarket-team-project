@@ -6,10 +6,10 @@ import Cart from '../compontes/main/Cart';
 import DesktopNav from '../compontes/navbar/DesktopNav';
 import MobileNav from '../compontes/navbar/MobileNav';
 
-
 function Store() {
     const location = useLocation();
     const [products, setProducts] = useState([]);
+    
     useEffect(() => {
         const getProducts = async () => {
             const { data } = await axios.get(`http://localhost:8000/api/product/store/${location.state.store._id}`);
@@ -18,13 +18,11 @@ function Store() {
         getProducts()
     }, [])
 
-
     return (
         <>
-
             <DesktopNav />
-            <div className=''>
-                <img src={location.state.store.coverImage.url} alt="" />
+            <div className="">
+                <img className='background-image ' src={location.state.store.coverImage.url} alt="Store logo" />
             </div>
 
             <div className='flex py-2 backdrop-blur-xl pr-20 relative '>
@@ -74,7 +72,6 @@ function Store() {
                 </div>
             </div>
             <MobileNav />
-
         </>
     )
 }
