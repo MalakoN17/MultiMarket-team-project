@@ -9,12 +9,12 @@ export default function LoginUserNavbar() {
   const [whiteImg, setWhiteImage] = useState('https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQNxi_LSue-6sEnjrB1XMp_4hmhchFOWcEykGA51eC_RMQ_sYJHf_QaNVPnHk2zOaTHoZCgaLQok2o-5QF_XuVShzKMklKjlW2_9YqWV9O-ITeAa4Lht7v1cQ&usqp=CAc')
 
   const city = useSelector(state=> state.city.cityValue);
-  const user = useSelector(state=> state.user)
+  const {user} = useSelector(state=> state.user)
   const dispatch = useDispatch()
 
   const logout = async ()=>{
     dispatch(removeUser())
-   if(user.currentUser.registerType == "google" || "facebook") window.open("http://localhost:8000/auth/logout", "_self");
+   if(user.currentUser?.registerType == "google" || "facebook") window.open("http://localhost:8000/auth/logout", "_self");
   }
 
   return (
@@ -22,8 +22,8 @@ export default function LoginUserNavbar() {
         <div className="border border-black container flex flex-row justify-evenly items-center p-1">
      {/* user information */}
      <div className='flex items-center'>
-        <img src={user.currentUser?.profileImage == "" ? `${whiteImg}` : user.currentUser?.profileImage} alt="avatar" className='w-12 h-12 rounded-full'/>
-        <p className='mx-2'> שלום {user.currentUser?.firstName }</p>
+        <img src={user?.currentUser?.profileImage === "" ? `${whiteImg}` : user?.currentUser?.profileImage} alt="avatar" className='w-12 h-12 rounded-full'/>
+        <p className='mx-2'> שלום {user?.currentUser?.firstName }</p>
         <p className='flex items-center ml-2'> <ImLocation /> {city}</p>
         <p className='cursor-pointer' onClick={()=>logout()}>התנקות</p>
       </div>

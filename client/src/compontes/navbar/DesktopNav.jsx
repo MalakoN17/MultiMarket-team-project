@@ -13,12 +13,12 @@ function DesktopNav() {
     navigate("/login");
   }
 
-  const user = useSelector(state=> state.user)
+  const {user} = useSelector(state=> state.user)
 
   return (
     <div>
     {/* <div className="awesome" > */}
-      <nav className={user.currentUser ? "hidden" : "block"}>
+      <nav className={user?.currentUser ? "hidden" : "block"}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex flex-row-reverse  h-16 items-center justify-between">
             {/* <div className="absolute inset-y-0 left-0 flex items-center">
