@@ -40,13 +40,15 @@ import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 
 function App() {
-  const dispatch = useDispatch() 
-  const someFunction = async () => {
-    const res = await axios.get('http://localhost:8000/auth/login/success', {
-      withCredentials: true,
-    })
-    if (res.status === 200) dispatch(getUser(res.data))
-  }
+  const dispatch = useDispatch();
+  // const user = useSelector(state=> state.user);
+
+  const someFunction = async ()=>{
+      const res = await axios.get('http://localhost:8000/auth/login/success', {
+          withCredentials:true,
+      })
+      if(res.status === 200) dispatch(getUser(res.data))
+    }
 
   useEffect(() => {
     someFunction()
@@ -62,8 +64,12 @@ function App() {
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="checkout" element={<CheckOut />}></Route>
-          <Route path="NeedLogin" element={<NeedLogin />}></Route>
+          <Route path="checkout" element={<CheckOut/>}></Route>
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          
+        
+
+      
 
           <Route path='/ownerstore' element={<OwnerStore />}>
             <Route path='' element={<HomeOwner />} />

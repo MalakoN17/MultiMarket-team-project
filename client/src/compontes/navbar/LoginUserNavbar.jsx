@@ -38,7 +38,7 @@ export default function LoginUserNavbar() {
         <div 
         // className="p-5"
         >
-          <img className="h-8 w-auto" src={logo} alt="Your Company" />
+          {/* <img className="h-8 w-auto" src={logo} alt="Your Company" /> */}
         </div>
     </div>
     </div>

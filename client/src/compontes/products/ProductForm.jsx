@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import {  createProduct } from '../../features/product/produceSlice';
+import { createProduct } from '../../features/product/produceSlice';
 import InputProduct from './InputProduct';
 import { createSections, getAllSections } from '../../features/section/sectionSlice';
 
@@ -15,10 +15,10 @@ export default function ProductForm() {
     barcode: '',
     image: '',
     name: '',
-    storeName:'',
+    storeName: '',
     price: 0,
     priority: 1,
-    productStock:0,
+    productStock: 0,
     description: '',
     storeId: '',
     manufacturer: '',
@@ -31,41 +31,43 @@ export default function ProductForm() {
     manufacturer: '',
     parallelImporter: false,
     importer: '',
-    createdBy:'בדיקה',
-    sectionId:[]
+    createdBy: 'בדיקה',
+    sectionId: []
   });
 
   const [sections, setSections] = useState([])
   const [show, setShow] = useState('hidden')
 
-  const [newSections, setNewSections] = useState({name:'', storeId:'63a5b33f5fc28c9e324800c8', createdBy:'destaw-test'})
+  const [newSections, setNewSections] = useState({ name: '', storeId: '63a5b33f5fc28c9e324800c8', createdBy: 'destaw-test' })
 
-  
+
   const handleInput = (e) => {
-    const { name, value ,checked} = e.target;
-    if(name === 'image'){
+    const { name, value, checked } = e.target;
+    if (name === 'image') {
       const file = e.target.files[0]
       TransformFileData(file)
-    }else if(name === 'sectionId'){
-      if(checked === false){
-        setProduct({...product, sectionId:product.sectionId.filter(sec=> sec !== value)})
-      }else{
-        setProduct({...product, sectionId:[...product.sectionId, value]})
+    } else if (name === 'sectionId') {
+      if (checked === false) {
+        setProduct({ ...product, sectionId: product.sectionId.filter(sec => sec !== value) })
+      } else {
+        setProduct({ ...product, sectionId: [...product.sectionId, value] })
       }
-    }else{
+    } else {
       setProduct({ ...product, [name]: value });
     }
   };
   const handleInputSection = (e) => {
     const { name, value } = e.target;
-    setNewSections({...newSections, [name]:value})
+    setNewSections({ ...newSections, [name]: value })
 
   };
 
   const createNewSection = (e) => {
     dispatch(createSections(newSections))
-    setProduct({...product, sectionId:[...product.sectionId, sectionsState.newSection._id
-    ]})
+    setProduct({
+      ...product, sectionId: [...product.sectionId, sectionsState.newSection._id
+      ]
+    })
   };
 
   const TransformFileData = (file) => {
@@ -73,17 +75,17 @@ export default function ProductForm() {
     if (file) {
       reader.readAsDataURL(file);
       reader.onloadend = () => {
-        setProduct({ ...product, image:reader.result});
+        setProduct({ ...product, image: reader.result });
       };
     } else {
-      setProduct({ ...product, image:''});
+      setProduct({ ...product, image: '' });
     }
   };
 
   const handleForm = (e) => {
     e.preventDefault();
 
-    product.storeId ='63a5b33f5fc28c9e324800c8'
+    product.storeId = '63a5b33f5fc28c9e324800c8'
 
     dispatch(createProduct(product));
   };
@@ -95,18 +97,18 @@ export default function ProductForm() {
     });
   };
 
-  useEffect(()=>{
+  useEffect(() => {
 
     dispatch(getAllSections('63a5b33f5fc28c9e324800c8'))
 
-  },[sectionsState.sections.length])
+  }, [sectionsState.sections.length])    
   return (
     <div>
       <div className="flex items-center justify-center p-12 ">
-        <div className="mx-auto w-full max-w-[550px] bg-white">
+        <div className="w-full sm:w-3/4 bg-white p-10 rounded shadow-2xl">
           <form className="py-6 px-2" onSubmit={handleForm}>
-          <InputProduct funChange={handleInput} textLabel='שם המוצר' name='name' type='name' placeholder='לדוגמה: עגבניות שרי' />
-          <InputProduct funChange={handleInput} textLabel='שם החנות' name='storeName' type='name' placeholder='לדוגמה: חוות החלומות' />
+            <InputProduct funChange={handleInput} textLabel='שם המוצר' name='name' type='name' placeholder='לדוגמה: עגבניות שרי' />
+            <InputProduct funChange={handleInput} textLabel='שם החנות' name='storeName' type='name' placeholder='לדוגמה: חוות החלומות' />
             <div className="mb-6 pt-4">
               <label className="mb-5 block text-xl font-semibold text-[#07074D] text-right">
                 תמונת המוצר:
@@ -160,9 +162,9 @@ export default function ProductForm() {
               )}
             </div>
             <InputProduct funChange={handleInput} textLabel='ברקוד מוצר:' name='barcode' type='text' placeholder='הכנס ברקוד' />
-            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='text' placeholder='הכנס מחיר' min={1}/>
-            <InputProduct funChange={handleInput} textLabel='עדיפות מוצר:' name='priority' type='number' placeholder='הכנס עדיפות מוצר'  min={1} max={5}/>
-            <InputProduct funChange={handleInput} textLabel='כמות המוצר' name='productStock' type='number' placeholder='הכנס כמות מוצר' min={1}/>
+            <InputProduct funChange={handleInput} textLabel='מחיר מוצר' name='price' type='text' placeholder='הכנס מחיר' min={1} />
+            <InputProduct funChange={handleInput} textLabel='עדיפות מוצר:' name='priority' type='number' placeholder='הכנס עדיפות מוצר' min={1} max={5} />
+            <InputProduct funChange={handleInput} textLabel='כמות המוצר' name='productStock' type='number' placeholder='הכנס כמות מוצר' min={1} />
             <div>
               <label
                 htmlFor="description"
@@ -238,7 +240,7 @@ export default function ProductForm() {
             </div>
             <InputProduct funChange={handleInput} textLabel='משקל מוצר:' name='weight' type='number' placeholder='לדוגמר: 10' />
             <InputProduct funChange={handleInput} textLabel='יחידות מוצר:' name='units' type='number' placeholder='לדוגמר: 10' />
-           
+
             <div className="mb-5">
               <label
                 htmlFor="parallelImporter"
@@ -263,28 +265,27 @@ export default function ProductForm() {
             </div>
 
             <InputProduct funChange={handleInput} textLabel=' יבואן המוצר:' name='importer' type='text' placeholder='הכנס שם יבואן' />
-            <InputProduct funChange={handleInput} textLabel='יצרן:' name='manufacturer' type='text' placeholder='הכנס שם יצרן'  />
-            <InputProduct funChange={handleInput} textLabel='פרטים ליצירת קשר:' name='contactNumber' type='text' placeholder='הכנס פרטים ליצרית קשר'  />
+            <InputProduct funChange={handleInput} textLabel='יצרן:' name='manufacturer' type='text' placeholder='הכנס שם יצרן' />
+            <InputProduct funChange={handleInput} textLabel='פרטים ליצירת קשר:' name='contactNumber' type='text' placeholder='הכנס פרטים ליצרית קשר' />
             <div className='flex'>
-            {sectionsState.sections?.map(item=><div key={item._id}> 
-            <input  onChange={handleInput} type="checkbox" name="sectionId" value={item._id}  className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600"/> 
-               <label
-               htmlFor="checked-checkbox"
-               className="ml-2 mx-2 text-sm font-medium text-gray-900 dark:text-gray-500"
-             >
-               {item.name}
-             </label>
-             </div>
-               )}
+              {sectionsState.sections?.map(item => <div key={item._id}>
+                <input onChange={handleInput} type="checkbox" name="sectionId" value={item._id} className="w-4 h-4 text-blue-600 bg-gray-100 rounded border-gray-300 focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600" />
+                <label
+                  htmlFor="checked-checkbox"
+                  className="ml-2 mx-2 text-sm font-medium text-gray-900 dark:text-gray-500"
+                >
+                  {item.name}
+                </label>
+              </div>
+              )}
             </div>
-           
-               <button type='button' onClick={()=>setShow('block')}>צור קטגוריה חדשה</button>
-               <div className={ show}>
-            <InputProduct funChange={handleInputSection} textLabel='צור קטגוריה ' name='name' type='text' placeholder='הכנס קטגוריה חדשה' />
-            <button onClick={createNewSection} type='button'>צור קטגוריה</button>
-               </div>
+            <button type='button' onClick={() => setShow('block')}>צור קטגוריה חדשה</button>
+            <div className={show}>
+              <InputProduct funChange={handleInputSection} textLabel='' name='name' type='text' placeholder='הכנס קטגוריה חדשה' />
+              <button onClick={createNewSection} type='button'>צור קטגוריה</button>
+            </div>
             <div>
-              <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+              <button className="transition ease-in-out delay-150  hover:-translate-y-1 hover:bg-blue-700 bg-teal-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
                 העלאה מוצר
               </button>
             </div>
