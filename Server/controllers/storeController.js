@@ -81,7 +81,8 @@ const updateStore = async (req, res, next) => {
       res.status(200).json(updateStore);
    
   } catch (err) {
-    console.log(err);
+    next(err)
+    // console.log(err);
   }
 };
 //Delete Store
@@ -128,7 +129,7 @@ const getAllStoresByCityName = async (req, res, next) => {
 
     res.status(200).json(stores);
   } catch (err) {
-    console.log(err);
+    // console.log(err);
     next(err);
   }
 };
@@ -137,7 +138,7 @@ const getAllStoresByCityName = async (req, res, next) => {
 const getStoreByDepartment = async (req, res, next) => {
   try {
     const { departmentID } = req.params;
-    console.log(departmentID);
+    // console.log(departmentID);
     const stores = await storeModel.find({
       departmentIds: departmentID,
     });

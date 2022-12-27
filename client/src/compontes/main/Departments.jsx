@@ -1,11 +1,16 @@
 import React from 'react';
 import axios from 'axios';
 import { useState, useEffect } from 'react';
+import { useSelector , useDispatch } from 'react-redux';
 import Department from './Department';
-import SearchInput from './searchInput';
+import {clearSelect, settingSelect,changeSelect} from "../../features/city/citySlice"
+// import SearchInput from './searchInput';
 import './department.css';
  
 export default function Departments() {
+  const {cityValue,show} = useSelector((state)=> state.city);
+  const dispatch = useDispatch()
+
   const [departments, setDepartments] = useState([]);
  
   useEffect(() => {
@@ -15,6 +20,7 @@ export default function Departments() {
     };
     getDepartments();
   }, [departments]);
+
   return (
     <div
       style={{
@@ -29,7 +35,9 @@ export default function Departments() {
       className=""
     >
       <div className="mx-auto max-w-2xl py-16 px-4 sm:py-24 sm:px-6 lg:max-w-7xl lg:px-8">
-       <SearchInput />
+       {/* <SearchInput /> */}
+       <button onClick={()=>dispatch(changeSelect())}>שנה עיר</button>
+       <h1 className='text-center text-3xl'>ברוכים הבאים לאטלס מולטי-מרקט</h1>
         <div className="threeInRow sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-3 xl:gap-x-8">
           {departments.map((department,index) => {
             return (

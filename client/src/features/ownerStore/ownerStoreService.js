@@ -2,6 +2,7 @@ import axiosMu from '../../utils/axiosInterceptors';
 
 export const getStoreApi = async (storeId) => {
   try {
+    console.log(storeId);
     const { data } = await axiosMu.get(`/store/getByID/${storeId}`);
     return data;
   } catch (error) {

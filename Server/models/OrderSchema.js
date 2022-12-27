@@ -18,9 +18,7 @@ const OrderStoreSchema = new mongoose.Schema({
     ],
     default:'received'
   },
-  deliveryStatus: {
-    type: String,
-  },
+
   firstName: {
     type: String,
     required: true,
@@ -83,11 +81,9 @@ const OrderStoreSchema = new mongoose.Schema({
         finalPrice: Number,
       },
     ],
-    select: false,
   },
   storeId: {
     type: String,
-    select: false,
     required: true,
   },
   timeline: {
@@ -104,17 +100,5 @@ const OrderStoreSchema = new mongoose.Schema({
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: String, required: true, noSearch: true },
 });
-
-// const OrderSchema = new mongoose.Schema({
-//   userId: {type:String, },
-//   ordersStores:[OrderStoreSchema],
-//   finalSum: {type:Number, },
-//   finalSaving:Number,
-//   lastUpdate: { type: Date, default: Date.now },
-//   createdAt: { type: Date, default: Date.now },
-//   createdBy: { type: String, required: true, noSearch: true }
-// })
-
-
 
 module.exports = new mongoose.model('order', OrderStoreSchema);

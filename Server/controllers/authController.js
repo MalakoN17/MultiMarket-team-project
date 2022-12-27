@@ -18,9 +18,11 @@ const bcrypt = require('bcryptjs');
 
 // REGISTER
 const register = async (req, res, next) => {
+
   const data = req.body;
  
   if (!data.email || !data.password) {
+
     res.status(400);
     throw new Error('Email and password required');
   }
@@ -45,8 +47,9 @@ const register = async (req, res, next) => {
         url: result.secure_url,
       }
     }
+
     data.password = hashedPassword;
-    data.createdBy = `${email}`
+    data.createdBy = `${firstName}`;
     const newUser = usersSchema(data);
     await newUser.save();
     res.status(200).json('user created');
@@ -65,7 +68,8 @@ const login = async (req, res, next) => {
 
   const user = await usersSchema.findOne({ email });
   const storeOwner = await storeOwnersSchema.findOne({ email });
-  // console.log({user, storeOwner});
+  // console.log(user);
+  // console.log(storeOwner.password);
 
   // console.log(password);
   // console.log(user);
@@ -95,8 +99,10 @@ const login = async (req, res, next) => {
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
   return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
+
     expiresIn: '1000m',
+
   });
 };
 
-module.exports = { login, register };
+module.exports = { login, register, generateAccessToken };

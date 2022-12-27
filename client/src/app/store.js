@@ -17,6 +17,7 @@ import produceReducer from '../features/product/produceSlice';
 import cityReducer from "../features/city/citySlice";
 import sectionReducer from "../features/section/sectionSlice";
 import userSlice from '../features/user/userSlice'
+import addressSlice from '../features/address/address'
 
 
 
@@ -26,7 +27,7 @@ const persistConfig = {
   storage,
 }
 
-const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore, sections:sectionReducer, user:userSlice})
+const rootReducer = combineReducers({    product: produceReducer, cart: cartReducer , city: cityReducer, ownerStore:ownerStore, sections:sectionReducer, user:userSlice, address:addressSlice})
 
 
 
