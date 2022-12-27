@@ -18,16 +18,16 @@ export default function Login() {
   const login = async (e) => {
     // dispatch(loginStart())
     e.preventDefault();
-    const  {data}  = await axios.post('http://localhost:8000/auth/login', {
+    const  {data}  = await axios.post('http://localhost:8000/api/auth/login', {
       email: loginEmail,
       password: loginPassword,
     });
 
-    // const history = sessionStorage.getItem('history');
-    // const url = history.split('').slice(21).join('');
+     const history = sessionStorage.getItem('history');
+     const url = history.split('').slice(21).join('');
     if (data){
       dispatch(getUser(data));
-      navigate("/")
+      navigate(`${url}`)
       console.log("pass");
     }else{
       console.log('fail');
@@ -36,6 +36,24 @@ export default function Login() {
     
   };
 
+  // login with google
+  const singInWithGoogle = async ()=>{
+    window.open("http://localhost:8000/auth/google", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
+
+  // login with facebook
+  const singInWithFacebook = async ()=>{
+    window.open("http://localhost:8000/auth/facebook", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
+
   return (
     <div>
       <ToastContainer />
@@ -43,7 +61,8 @@ export default function Login() {
         email={setLoginEmail}
         password={setLoginPassword}
         loginFun={login}
-        //   singInWithGoogle={singInWithGoogle}
+        singInWithGoogle={singInWithGoogle}
+        singInWithFacebook={singInWithFacebook}
         btnText={'Sing In'}
         nameDisplay={"hidden"}
       />
