@@ -5,7 +5,7 @@ export default function ContactUS() {
     <div>
       {' '}
       <div className="container my-24 px-6 mx-auto">
-        {/* Section: Design Block */}
+        {/* Section: Design Block */}  
         <section className="mb-32 text-gray-800">
           <div
             className="relative overflow-hidden bg-no-repeat bg-cover"

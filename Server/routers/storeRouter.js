@@ -11,7 +11,7 @@ router.put('/:id', verifyToken,updateStore)
 //Delete
 router.delete('/:id',deleteStore)
 //Get 
-router.get('/getByID/:id',verifyToken,getStore)
+router.get('/getByID/:id',getStore)
 
 //Get All
 router.get('/', getAllStores);

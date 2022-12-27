@@ -1,91 +1,101 @@
 import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import { useSelector } from 'react-redux';
+import { Dropdown } from 'flowbite-react';
+import { useNavigate } from 'react-router-dom';
 
 export default function Contacts({ contacts, currentUser, changeChat }) {
-    const [currentFirstName, setCurrentFirstName] = useState(undefined);
-    const [currentLastName, setCurrentLastName] = useState(undefined);
-    const [currentUserImage, setCurrentUserImage] = useState(undefined);
+    const navigate = useNavigate()
+    const { store } = useSelector(state => state.ownerStore)
+    const [currentFirstName, setCurrentFirstName] = useState('');
+    const [currentLastName, setCurrentLastName] = useState('');
+    const [currentUserImage, setCurrentUserImage] = useState('https://encrypted-tbn3.gstatic.com/shopping?q=tbn:ANd9GcQNxi_LSue-6sEnjrB1XMp_4hmhchFOWcEykGA51eC_RMQ_sYJHf_QaNVPnHk2zOaTHoZCgaLQok2o-5QF_XuVShzKMklKjlW2_9YqWV9O-ITeAa4Lht7v1cQ&usqp=CAc');
     const [currentSelected, setCurrentSelected] = useState(undefined);
-    
-    console.log(currentUser);
-    
-    useEffect(() => {
-        if (currentUser) {
-            setCurrentUserImage(currentUser.profileImage);
-            setCurrentFirstName(currentUser.firstName);
-            setCurrentLastName(currentUser.lastName);
+
+    // console.log(currentUser);
+    console.log(store);
+    const userOrOwner = () => {
+        if (currentUser?.role === 'owner') {
+            console.log(currentUser);
+            setCurrentFirstName(store.name)
+            setCurrentUserImage(store.darklogo.url)
+            setCurrentLastName('')
+        } else {
+            console.log(currentUser);
+            setCurrentUserImage(currentUser?.profileImage);
+            setCurrentFirstName(currentUser?.firstName);
+            setCurrentLastName(currentUser?.lastName);
+
         }
-    }, [currentUser]);
+    }
+
+    useEffect(() => {
+        userOrOwner()
+    }, [currentUser])
+
 
     const changeCurrentChat = (index, contact) => {
         setCurrentSelected(index);
         changeChat(contact);
     };
 
-
+    console.log(contacts);
     return (
-
-        <div className='w-[20] items-end flex flex-col justify-between border-r-2 '>
-            <div className="owners-chat rounded">
-                {/* {currentUserImage && currentUserName && ( */}
-                <ul className="overflow-auto h-[33rem] w-full">
-                    <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] font-semibold ">הודעות</h2>
-                    {contacts.map((contact, index) => {
-                        return(
-                        <li key={contact._id} className='contact overflow-hidden' 
-                        onClick={() => changeCurrentChat(index, contact)}>
-                            <div className="flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                                <span className="contact-name block ml-2 font-semibold  text-gray-600">{contact.name}</span>
-                                <img className="object-cover w-12 h-12 rounded-full" src={contact.logo} alt="profile image" />
+        <div>
+            <div className='flex md:hidden w-full justify-center'>
+                <Dropdown className='w-full' label="חברים" style={{width:'320px'}}>
+                    <Dropdown.Header className='' style={{width:'320px'}}>
+                        <div className='flex h-[20px] items-center justify-between w-full'>
+                            <div className=''>
+                                <h3 className="block text-sm">{currentFirstName} {currentLastName}</h3>
                             </div>
-                        </li>
+                            <div className='rounded-full'>
+                                <img className='rounded-full w-full object-cover w-12 h-12 rounded-full' src={currentUserImage} alt="" />
+                            </div>
+                        </div>
+                    </Dropdown.Header>
+                    {contacts.map((contact, index) => {
+                        return (
+                            <div>
+                                <Dropdown.Item key={contact._id} onClick={() => changeCurrentChat(index, contact)}>
+                                    <div className="flex items-center px-4 py-2 justify-center text-sm transition duration-150 ease-in-out cursor-pointer hover:bg-gray-100 focus:outline-none">
+                                        <span className="contact-name block ml-2 font-semibold  p-4">{contact.name} {contact.firstName} {contact.lastName}</span>
+                                    </div>
+                                </Dropdown.Item>
+                                 <Dropdown.Divider />
+                            </div>
                         )
                     })}
-                </ul>
-                {/* )} */}
+                     <Dropdown.Divider />
+                    <Dropdown.Item>
+                        <h3 onClick={() => {navigate('/')}}>Back to home page</h3>
+                    </Dropdown.Item>
+                </Dropdown>    
             </div>
-            <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
-                <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentFirstName} {currentLastName}</h2>
-                <img className="object-cover mt-2 w-12 h-12 rounded-full" src={currentUserImage} alt="avatar"/>
+            <div className='hidden md:flex md:w-[235px] w-[0] items-end flex flex-col justify-between border-r-2 '>
+                <div className="owners-chat rounded">
+                    <ul className="overflow-auto h-[0] md:h-[33rem] w-full">
+                        <h2 className="my-2 mb-2 ml-2 text-lg text-gray-600 text-center border-b-2 h-[11%] font-semibold ">הודעות</h2>
+                        {contacts.map((contact, index) => {
+                            return (
+                                <li key={contact._id} className='contact overflow-hidden' onClick={() => changeCurrentChat(index, contact)}>
+                                    <div className="flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                                        <span className="contact-name block ml-2 font-semibold  text-gray-600 p-4">{contact.name} {contact.firstName} {contact.lastName}</span>
+                                        {/* <img className="object-cover w-12 h-12 rounded-full" src={contact.profileImage} alt="profile image" /> */}
+                                    </div>
+                                </li>
+                            )
+                        })}
+                    </ul>        
+                </div>
+                <div className="current-user border-t w-full flex items-center px-4 py-2 justify-end text-sm transition duration-150 ease-in-out border-b border-gray-300 cursor-pointer hover:bg-gray-100 focus:outline-none">
+                    <h2 className='contact-name block ml-2 font-semibold  text-gray-600'>{currentFirstName} {currentLastName}</h2>
+                    <div className='object-cover mt-2 w-12 h-12 flex'>
+                        <img className="w-full rounded-full" src={`${currentUserImage}`} alt="" />
+                    </div>
+                </div>
             </div>
         </div>
     );
 }
-{/* <div className="d-none d-md-flex">
-    {currentUserImage && currentUserName && (
-        <div>
-            <div className="contacts">
-                {contacts.map((contact, index) => {
-                    return (
-                        <div
-                            key={contact._id}
-                            className={`contact overflow-hidden ${index === currentSelected ? 'selected' : ''
-                                }`}
-                            onClick={() => changeCurrentChat(index, contact)}
-                        >
-                            <div className="avatar">
-                                <img
-                                    src={`data:image/svg+xml;base64,${contact.avatarImage}`}
-                                    alt=""
-                                />
-                            </div>
-                            <div className="username">
-                                <h3 className="">{contact.username}</h3>
-                            </div>
-                        </div>
-                    );
-                })}
-            </div>
-            <div className="current-user">
-                <div className="avatar">
-                    <img
-                        src={`data:image/svg+xml;base64,${currentUserImage}`}
-                        alt="avatar"
-                    />
-                </div>
-                <div className="username">
-                    <h2>{currentUserName}</h2>
-                </div>
-            </div>
-        </div>
-    )}
-</div> */}
+    

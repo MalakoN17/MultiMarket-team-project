@@ -23,9 +23,9 @@ export default function Login() {
     console.log(data);
     dispatch(getUser(data));
 
-    const history = sessionStorage.getItem('history');
+    // const history = sessionStorage.getItem('history');
     // const url = history.split('').slice(21).join('');
-    if (data) navigate('/');
+    if (data) navigate("/");
   };
 
   return (

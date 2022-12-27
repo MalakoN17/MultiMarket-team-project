@@ -99,14 +99,14 @@ const deleteStore = async (req, res, next) => {
 };
 //Get Store
 const getStore = async (req, res, next) => {
-  const storeOwner = await storeOwnerModel.findById(req.user._id);
+  // const storeOwner = await storeOwnerModel.findById(req.user._id);
   // console.log(storeOwner);
   try {
-    if(storeOwner?.storeIds.includes(req.params.id)){
+    // if(storeOwner?.storeIds.includes(req.params.id)){
     const store = await storeModel.findById(req.params.id);
     res.status(200).json(store);
-    }
-    res.status(401).json('user not authorized !');
+    // }
+    // res.status(401).json('user not authorized !');
   } catch (err) {
     next(err);
   }

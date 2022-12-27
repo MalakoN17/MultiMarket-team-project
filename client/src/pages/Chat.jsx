@@ -6,92 +6,80 @@ import Welcome from '../chatComponents/Welcome';
 import ChatContainer from '../chatComponents/ChatContainer';
 import { io } from 'socket.io-client';
 import Footer from '../compontes/footer/Footer';
-import DesktopNav from '../compontes/navbar/DesktopNav';
-import { useSelector } from 'react-redux';
+import DesktopNav from '../compontes/navbar/DesktopNav';       
+import { useSelector } from 'react-redux';   
 
-export default function Chat() {
+export default function Chat() {    
   const socket = useRef();
   const navigate = useNavigate();
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState([]);       
   const [currentUser, setCurrentUser] = useState(undefined);
   const [currentChat, setCurrentChat] = useState(undefined);
-  const [stores, setStores] = useState([]);
+  const [storeOwners, setStoreOwners] = useState([]);
+  const [users, setUsers] = useState([]);
 
+  const user = useSelector((state) => state.user);
+  useEffect(() => {       
+    setCurrentUser(user.currentUser);
+  }, []);
 
-  const getStores = async () => {
-    const data = await axios.get('http://localhost:8000/api/store');
-    setStores(data.data)
+  const getStoreOwners = async () => {
+    const data = await axios.get('http://localhost:8000/api/ownerStore');
+    setStoreOwners(data.data);
+  };
 
-}
-
-useEffect(() => {
-getStores()
-},[])
-
-  const user = useSelector(state=> state.user)
-  useEffect(() => {
-    setCurrentUser(user.currentUser)
-  },[])
-
+  const getUsers = async () => {
+    const data = await axios.get('http://localhost:8000/api/user');
+    setUsers(data.data);
+  };                    
+                          
   const getContacts = () => {
-    let userStores = [];
-     stores.map((store) => { 
-      currentUser.storeIds.map((storeId) => {
-        if(storeId === store._id){
-          userStores.push(store)
-        }
-      })
-    })
-    setContacts(userStores);   
-   }
-
-  
-  useEffect(() => {
-    // navigateToLogin()
-    getContacts()
-  }, [currentUser])
-
-
-  // const navigateToLogin = async () => {
-  //   if(!currentUser){
-  //     navigate('/needLogin')
-  //   }
-  // }
-
-
+    if (currentUser?.role === 'owner') {
+      setContacts(users);
+    } else {
+      setContacts(storeOwners)     
+    }          
+  }        
 
   useEffect(() => {
     if (currentUser) {
       socket.current = io('http://localhost:8000');
       socket.current.emit('add-user', currentUser._id);
     }
-  }, [currentUser])
-
+  }, [currentUser]);
+   
   const handleChatChange = (chat) => {
     setCurrentChat(chat);
-  };
+  };     
+
+
+  useEffect(() => {
+    getContacts();         
+    getUsers();
+    getStoreOwners();
+  }, [currentUser]);    
 
   return (
     <div className="">
       <DesktopNav />
       <div className="bg-neutral-100 w-full p-10 ">
-        <div className="w-3/4 mx-auto">
-          <div className="min-w-full border rounded bg-white shadow-2xl flex flex-row-reverse">
+        <div className="w-full md:w-3/4 mx-auto">
+          <div className="md:flex flex-col min-w-full border rounded bg-white shadow-2xl md:flex-row-reverse">
             <Contacts
               contacts={contacts}
               currentUser={currentUser}
               changeChat={handleChatChange}
             />
-            {currentChat === undefined ? (
+            {currentChat === undefined ? (            
               <Welcome currentUser={currentUser} />
             ) : (
               <ChatContainer
                 currentChat={currentChat}
                 currentUser={currentUser}
                 socket={socket}
-              />
+              />    
             )}
-          </div>
+          </div>     
         </div>
       </div>
       <Footer />
