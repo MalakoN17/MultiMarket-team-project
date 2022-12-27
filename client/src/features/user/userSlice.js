@@ -4,7 +4,7 @@ import { toast } from 'react-toastify';
 const initialState = {
   loading: false,
   error: false,
-  user: null,
+  user: {},
 };
 const userSlice = createSlice({
   name: 'user',
@@ -12,28 +12,29 @@ const userSlice = createSlice({
   reducers: {
     loginStart: (state) => {
       state.loading = true;
+      state.error = false;
+      state.user = null;
     },
     loginFailure: (state) => {
         console.log(state.loading, state.error);
-      state.loading = false;
-      state.error = true;
-      if(state.error)toast.error('משהו השתבש אנא נסה שנית',{
-        position: toast.POSITION.BOTTOM_CENTER
-    })
+        state.error = true;
+        if(state.error)toast.error('משהו השתבש אנא נסה שנית',{
+            position: toast.POSITION.BOTTOM_CENTER
+        })
+        state.loading = false;
     },
     getUser: (state, action) => {
-        console.log(state.user, action.payload);
-      state.user = action.payload;
-      state.loading = false;
-      if(state.loading)toast.success('ברוך הבא',{
-        position: toast.POSITION.BOTTOM_CENTER
-    })
-      return state.user;
+        state.user = action.payload;
+        state.loading = false;
+        if(state.loading)toast.success('ברוך הבא',{
+            position: toast.POSITION.BOTTOM_CENTER
+        })
+        // return state.user;
     },
     removeUser: (state) => {
-      state.user = null;
+      state.user = {};
       state.loading = false;
-      state.error = true;
+      state.error = false;
     },
   },
 });

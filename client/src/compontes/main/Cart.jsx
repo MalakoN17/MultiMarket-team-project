@@ -10,7 +10,8 @@ import './cartStyle.css';
 import CartItems from './CartItems';
 import { ToastContainer } from 'react-toastify';
 import { useNavigate } from 'react-router-dom';
-function Cart() {
+
+export default function Cart() {
   const { cartItems, total, amount } = useSelector((state) => state.cart);
   const {user} = useSelector(state => state)
   const navigate = useNavigate()
@@ -156,5 +157,3 @@ function Cart() {
     </>
   );
 }
-
-export default Cart;

@@ -4,7 +4,7 @@ import { addProduct, increase, decrease, removeItem, clearCart, calculateTotals 
 import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
-function CartItems({products}) {
+export default function CartItems({products}) {
   console.log(products);
     const dispatch = useDispatch();
   return (
@@ -53,4 +53,3 @@ function CartItems({products}) {
   )
 }
 
-export default CartItems

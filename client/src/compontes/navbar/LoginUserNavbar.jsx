@@ -5,7 +5,7 @@ import logo from '../../assets/atlaslogo.png';
 
 export default function LoginUserNavbar() {
 
-  const user = useSelector(state=> state.user)
+  const {user} = useSelector(state=> state.user)
   const dispatch = useDispatch()
 
   return (

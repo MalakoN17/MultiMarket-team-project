@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from "../../assets/atlaslogo.png"
 import "./destkopNav.css"
  
-function DesktopNav() {
+export default function DesktopNav() {
 
   const navigate = useNavigate();
 
@@ -13,7 +13,7 @@ function DesktopNav() {
     navigate("/login");
   }
 
-  const user = useSelector(state=> state.user)
+  const {user} = useSelector(state=> state.user)
   const {show} = useSelector((state)=> state.city);
 
 
@@ -53,4 +53,3 @@ function DesktopNav() {
   )
 }
  
-export default DesktopNav
