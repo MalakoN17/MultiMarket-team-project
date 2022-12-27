@@ -2,7 +2,7 @@ import React from 'react';
 import MobileNav from '../compontes/navbar/MobileNav'
 import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
-import FooterMobile from '../compontes/footer/footerMobile'
+import FooterMobile from '../compontes/footer/FooterMobile'
 import Footer from '../compontes/footer/Footer'
 
 export default function ContactUS() {

@@ -16,7 +16,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterStoreOwner from './pages/RegisterStoreOwner';
 import LoginStoreOwner from './pages/LoginStoreOwner';
-import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
+import OwnerStoreProduct from './compontes/ownerStore/ProductStoreOwner';
 import Footer from './compontes/footer/Footer';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';
@@ -53,9 +53,8 @@ function App() {
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
           <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          <Route path="checkOutSuccuss" element={<CheckoutSuccess/>}></Route>
           
-        
-
       
           <Route path='/ownerstore' element={<OwnerStore />}>
             <Route path='' element={<HomeOwner/>}/>

@@ -41,6 +41,11 @@ export default function Chat() {
     }          
   }        
 
+  const needToLogin = () => {
+    if(!user){        
+      navigate('/needLogin')    
+    }
+  }
   useEffect(() => {
     if (currentUser) {
       socket.current = io('http://localhost:8000');
@@ -56,9 +61,10 @@ export default function Chat() {
   useEffect(() => {
     getContacts();         
     getUsers();
-    getStoreOwners();
+    needToLogin()
+    getStoreOwners();    
   }, [currentUser]);    
-
+     
   return (
     <div className="">
       <DesktopNav />
@@ -66,7 +72,7 @@ export default function Chat() {
         <div className="w-full md:w-3/4 mx-auto">
           <div className="md:flex flex-col min-w-full border rounded bg-white shadow-2xl md:flex-row-reverse">
             <Contacts
-              contacts={contacts}
+              contacts={contacts}               
               currentUser={currentUser}
               changeChat={handleChatChange}
             />

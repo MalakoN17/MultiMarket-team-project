@@ -7,9 +7,9 @@ export default function ProductCump({product}) {
         navigate(`/ownerstore/updateproduct/${product._id}`)
     }
   return (
-   <div class="flex justify-center">
-  <div class="rounded-lg shadow-lg bg-white max-w-sm">
-      <img class="rounded-t-lg h-52" src={product.image.url} alt={product.name}/>
+   <div class="flex justify-center md:w-1/4 w-full my-3">
+  <div class="rounded-lg shadow-lg bg-white max-w-sm p-2">
+      <img class="rounded-t-lg h-52 w-[21rem] " src={product.image.url} alt={product.name}/>
     
     <div class="p-6">
       <h5 class="text-gray-900 text-xl font-medium mb-2">{product.name}</h5>

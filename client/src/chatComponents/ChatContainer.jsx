@@ -14,7 +14,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [currentLastName, setCurrentLastName] = useState(null);
 
   const scrollRef = useRef();
-
+   
   const {store} = useSelector(state=>state.ownerStore)   
 
   const getMessages = async () => {
@@ -73,7 +73,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
 //       console.log(currentUser);
 //     }
 //   }
-
+     
 
     
 // useEffect(() => {
@@ -84,18 +84,18 @@ useEffect(() => {
   if (socket.current) {
     socket.current.on('msg-receive', (msg) => {
       setArrivalMessage({ fromSelf: false, message: msg });
-    })   
+    })           
   }
 }, [])
-
+    
 useEffect(() => {
   arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])
-}, [arrivalMessage])
+}, [arrivalMessage])              
                
-useEffect(() => {
+useEffect(() => {      
   scrollRef.current?.scrollIntoView({ behavior: "smooth" })
 }, [messages])
-
+    
 
 return (
   <div className='chat-container flex-col w-full'>
@@ -106,7 +106,7 @@ return (
         <img className="object-cover w-10 h-10 rounded-full w-full"    
           src={`${currentUserImage}`}
           alt="" />
-          </div>
+          </div>      
       </div>
       <div className="msg-container relative w-full overflow-y-auto flex flex-col h-[30rem]">
         {messages.map((message, index) => {
