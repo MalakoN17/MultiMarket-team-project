@@ -1,15 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState,useEffect } from 'react';
 import {useDispatch, useSelector} from "react-redux"
 import CloseIcon from '@mui/icons-material/Close';
 import LocationOnIcon from '@mui/icons-material/LocationOn';
-import {settingSelect} from "../../features/city/citySlice"
+import {clearSelect, settingSelect} from "../../features/city/citySlice"
 
 export default function PopOut() {
-  const {cityValue} = useSelector((state)=> state.city);
+  const {cityValue,show} = useSelector((state)=> state.city);
   const dispatch = useDispatch();
-  const [city,setCity] = useState("תל אביב")
+  const [city,setCity] = useState(" ")
 
-  const [show, setShow] = useState(true);
+  // const [show, setShow] = useState(true);
+
+// useEffect(()=>{
+//   dispatch(clearSelect())
+// },[])
 
   const handleCitySelect = (e) => {
     setCity(e.target.value);
@@ -19,16 +23,16 @@ export default function PopOut() {
   const handleForm =(e)=>{
     e.preventDefault()
     dispatch(settingSelect(city))
-    setShow(!show)
+    // setShow(!show)
   }
   const exitForm = (e)=>{
     e.preventDefault()
     dispatch(settingSelect("תל אביב"))
-    setShow(!show)
+    // setShow(!show)
   }
   return (
     
-    <div className={show ? 'block' : 'hidden'}>
+    <div className={show ? 'hidden' : 'block'}>
       <div
         className="relative z-10"
         aria-labelledby="modal-title"
@@ -65,13 +69,27 @@ export default function PopOut() {
                         <option value="תל אביב">תל אביב</option>
                         <option value="חיפה">חיפה</option>
                         <option value="נתניה">נתניה</option>
+                        <option value="אשקלון">אשקלון</option>
                         <option value="שוהם">שוהם</option>
+                        <option value="יבנה">יבנה</option>
+                        <option value="רחובות">רחובות</option>
+                        <option value="אילת">אילת</option>
+                        <option value="לוד">לוד</option>
+                        <option value="רמלה">רמלה</option>
+                        <option value="ראשון לציון">ראשון לציון</option>
+                        <option value="אשדוד">אשדוד</option>
+                        <option value="פתח תקווה">פתח תקווה</option>
+                        <option value="באר שבע">באר שבע</option>
+                        <option value="בני ברק">בני ברק</option>
+                        <option value="רמת גן">רמת גן</option>
+                        <option value="אשקלון">אשקלון</option>
+                        <option value="קרית שמונה">קרית שמונה</option>
                       </select>
                     </div>
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 items-center">
+              <div className="bg-gray-50 px-4 py-3 flex justify-center items-center ">
                 <button onClick={handleForm}
                   type="button"
                   className="rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"

@@ -1,26 +1,25 @@
-import React from 'react'
-
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
+import Product from '../products/Product';
 export default function Products() {
-  return (
-    <div>
-        כל המידע מגיע ב props
-        <div>
-            <img src={''} alt=''/>
-        </div>
-        <div>
-            <h5>שם המוצר</h5>
-            <h6>קצת על מוצר <button>בעת בלחיצה על הנקודות ... יפתח הסבר מפורט יותר על המוצר</button></h6>
-        </div>
-        <div>
-            <button> בעת לחיצה אפשר להוריד כמות מהמוצר -</button>
-            <span> </span>
-            <button> בעת הלחיצה מוסיף לכמות של המוצר  +</button>
-        </div>
-        <div>
-            <span>סהכ</span>
-            <span>כמה היה אמור לעלות</span>
+  const [products, setProducts] = useState([]);
 
-        </div>
-    </div>
-  )
+  const getProductsStore = async () => {
+    const res = await axios.get(
+      `http://localhost:8000/api/product/store/63a8a7a96f0e23bb79c39a20`
+    );
+    setProducts(res.data);
+  };
+
+  useEffect(() => {
+    getProductsStore();
+  }, []);
+
+  return (
+    <>
+      {products.map((product, index) => {
+        return <Product product={product} />;
+      })}
+    </>
+  );
 }

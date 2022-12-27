@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 const initialState = {
-  cityValue: '',
+  cityValue:' ',
+  show:false
 };
 export const citySlice = createSlice({
   name: 'city',
@@ -9,14 +10,20 @@ export const citySlice = createSlice({
     clearSelect: (state) => {
       console.log(initialState);
       state.cityValue = initialState;
+      state.show = false
     },
     settingSelect: (state, action) => {
       console.log(state.cityValue = action.payload);
       state.cityValue = action.payload
-
+      state.show = true
     },
+    changeSelect:(state)=>{
+      state.show = !state.show
+    }
+  
+
   },
 });
-export const { clearSelect, settingSelect } = citySlice.actions;
+export const { clearSelect, settingSelect,changeSelect } = citySlice.actions;
 
 export default citySlice.reducer;

@@ -8,7 +8,7 @@ import smallHome from '../../assets/images/smallhome.png';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 import Cart from './Cart';
-import Product from '../products/Product'
+import Product from '../products/Products'
 
 function StoreProducts() {
     return (
@@ -54,11 +54,11 @@ function StoreProducts() {
 
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             <Product />
+                            {/* <Product />
                             <Product />
                             <Product />
                             <Product />
-                            <Product />
-                            <Product />
+                            <Product /> */}
                         </div>
 
                     </section>
