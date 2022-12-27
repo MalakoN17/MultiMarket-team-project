@@ -27,17 +27,17 @@ export default function CartItems({products}) {
                 <RemoveCircleOutlineIcon
                   onClick={() =>{
                     if(item.quantity === 1){
-                      dispatch(removeItem(item.id))
+                      dispatch(removeItem(item))
                       return;
                     }
-                    dispatch(decrease(item.id))
+                    dispatch(removeItem(item))
                   }
                   }
                 />
                 <p>{item.quantity}</p>
                 <ControlPointIcon
                   onClick={() =>
-                    dispatch(increase(item.id))
+                    dispatch(addProduct(item))
                   }
                 />
               </div>

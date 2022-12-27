@@ -10,7 +10,6 @@ const initialState = {
   total: 0,
   isLoading: true,
 };
-
 const cartSlice = createSlice({
   name: 'cart',
   initialState,
@@ -79,7 +78,6 @@ const cartSlice = createSlice({
           return product.id === action.payload.product.id;
         })
         state.cartItems[cartIndex].products[index].quantity += 1;
-
     },
     decrease: (state, action) => {
       const cartIndex = state.cartItems.findIndex((item) => {
