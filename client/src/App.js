@@ -27,6 +27,7 @@ import AboutUs from './pages/AboutUs';
 import NeedLogin from './chatComponents/NeedLogin';
 
 import OwnerStore from './pages/OwnerStore';
+import CheckoutSuccess from './pages/CheckoutSuccess';
 
 
 function App() {
@@ -43,7 +44,7 @@ function App() {
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
           <Route path="NeedLogin" element={<NeedLogin/>}></Route>
-          
+          <Route path='checkoutSuccess' element={<CheckoutSuccess />}/>
         
 
       

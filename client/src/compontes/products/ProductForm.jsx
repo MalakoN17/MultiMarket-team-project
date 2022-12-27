@@ -37,7 +37,7 @@ export default function ProductForm() {
 
   const [sections, setSections] = useState([])
   const [show, setShow] = useState('hidden')
-  const [newSections, setNewSections] = useState({name:'', storeId:'63a8a7a96f0e23bb79c39a20', createdBy:'destaw-test'})
+  const [newSections, setNewSections] = useState({name:'', storeId:'63a8082f5f8178fa27b0aa03', createdBy:'destaw-test'})
   
   const handleInput = (e) => {
     const { name, value ,checked} = e.target;
@@ -82,7 +82,7 @@ export default function ProductForm() {
 
   const handleForm = (e) => {
     e.preventDefault();
-    product.storeId ='63a8a7a96f0e23bb79c39a20'
+    product.storeId ='63a8082f5f8178fa27b0aa03'
     dispatch(createProduct(product));
   };
 
@@ -94,7 +94,7 @@ export default function ProductForm() {
   };
 
   useEffect(()=>{
-    dispatch(getAllSections('63a8a7a96f0e23bb79c39a20'))
+    dispatch(getAllSections('63a8082f5f8178fa27b0aa03'))
   },[sectionsState.sections.length])
   return (
     <div>

@@ -19,7 +19,7 @@ export default function Product() {
   return (
     <>
       {products.map((product, index) => {
-        return <TestProduct product={product} />;
+        return <TestProduct key={index} product={product} />;
       })}
     </>
   );

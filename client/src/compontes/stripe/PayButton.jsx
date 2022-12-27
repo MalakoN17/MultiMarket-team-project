@@ -4,17 +4,16 @@ import { useSelector, useDispatch } from 'react-redux';
 
 function PayButton() {
 
-  const {stores} = useSelector((state)=> state.cart)
-  const [store, setStores] = useState([])
+  const {stripe} = useSelector((state)=> state.cart)
+  // const products = cartItems.map(product => product.products)
   useEffect(()=>{
-    setStores(stores)
+    console.log(stripe);
   },[])
   const handleCheckout = ()=>{
       const res = axios.post(`http://localhost:8000/api/stripe/create-checkout-session`, {
-        store
+        stripe
       }).then((res) => {
         if (res.data.url) {
-          console.log(res);
           window.location.href = res.data.url;
         }
       })
@@ -23,7 +22,7 @@ function PayButton() {
   }
   return (
     <>
-    <button onClick={()=> handleCheckout()}>לתשלום</button>
+    <button className='p-3 border-solid rounded-md border-2 border-[#0899A5] text-[#0899A5] hover:bg-[#0899A5] hover:text-white' onClick={()=> handleCheckout()}>לתשלום</button>
     </>
   )
 }
