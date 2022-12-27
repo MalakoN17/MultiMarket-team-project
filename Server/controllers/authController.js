@@ -18,7 +18,7 @@ const bcrypt = require('bcryptjs');
 
 // REGISTER
 const register = async (req, res, next) => {
-  const { email, password } = req.body;
+  const {firstName, lastName, email, password } = req.body;
 
   if (!email || !password) {
     res.status(400);
@@ -37,8 +37,10 @@ const register = async (req, res, next) => {
 
   try {
     const data = req.body;
+    // data.firstName = firstName;
+    // data.lastName = lastName;
     data.password = hashedPassword;
-    data.createdBy = `${email}`
+    data.createdBy = `${firstName}`;
     const newUser = usersSchema(data);
     await newUser.save();
     res.status(200).json('user created');
@@ -57,7 +59,8 @@ const login = async (req, res, next) => {
 
   const user = await usersSchema.findOne({ email });
   const storeOwner = await storeOwnersSchema.findOne({ email });
-  // console.log({user, storeOwner});
+  // console.log(user);
+  // console.log(storeOwner.password);
 
   // console.log(password);
   // console.log(user);
@@ -70,7 +73,7 @@ const login = async (req, res, next) => {
       // console.log(storeOwner);
     } 
 
-     if(storeOwner && (await bcrypt.compare(password, user.password))){
+     if(storeOwner && (await bcrypt.compare(password, storeOwner.password))){
       const accessToken = generateAccessToken(storeOwner );
       res.json({ accessToken: accessToken, currentUser:storeOwner });
       // console.log(storeOwner);
@@ -88,8 +91,8 @@ const login = async (req, res, next) => {
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
   return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30s',
+    expiresIn: '30m',
   });
 };
 
-module.exports = { login, register };
+module.exports = { login, register, generateAccessToken };

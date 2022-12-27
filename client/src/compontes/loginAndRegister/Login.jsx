@@ -16,11 +16,10 @@ export default function Login() {
   // login function
   const login = async (e) => {
     e.preventDefault();
-    const  {data}  = await axios.post('http://localhost:8000/auth/login', {
+    const  {data}  = await axios.post('http://localhost:8000/api/auth/login', {
       email: loginEmail,
       password: loginPassword,
     });
-    console.log(data);
     dispatch(getUser(data));
 
     const history = sessionStorage.getItem('history');
@@ -28,13 +27,32 @@ export default function Login() {
     if (data) navigate(`${url}`);
   };
 
+  // login with google
+  const singInWithGoogle = async ()=>{
+    window.open("http://localhost:8000/auth/google", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
+
+  // login with facebook
+  const singInWithFacebook = async ()=>{
+    window.open("http://localhost:8000/auth/facebook", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
+
   return (
     <div>
       <Demo
         email={setLoginEmail}
         password={setLoginPassword}
         loginFun={login}
-        //   singInWithGoogle={singInWithGoogle}
+        singInWithGoogle={singInWithGoogle}
+        singInWithFacebook={singInWithFacebook}
         btnText={'Sing In'}
         nameDisplay={"hidden"}
       />

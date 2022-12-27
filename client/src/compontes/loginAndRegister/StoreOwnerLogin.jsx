@@ -25,7 +25,7 @@ export default function StoreOwnerLogin() {
     const history = sessionStorage.getItem('history');
     const url = history.split('').slice(21).join('');
     console.log(data);
-    if (data) navigate(`${url}`);
+    if (data) navigate(`/ownerstore/${data.currentUser._id}`);
   };
   return (
     <div>
@@ -35,9 +35,9 @@ export default function StoreOwnerLogin() {
         loginFun={login}
         //   singInWithGoogle={singInWithGoogle}
         btnText={'Sing In'}
-        linkDisplay={"none"}
+        linkDisplay={'none'}
         ownerDisplay={'none'}
-        nameDisplay={"hidden"}
+        nameDisplay={'hidden'}
       />
     </div>
   );

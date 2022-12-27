@@ -5,7 +5,6 @@ import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
 import FooterMobile from '../compontes/footer/footerMobile'
 import Footer from '../compontes/footer/Footer'
-import React from 'react'
 
 function Main() {
     
@@ -16,7 +15,7 @@ function Main() {
             <DesktopNav />
             <LoginUserNavbar/>
             {/* <Departments /> */}
-            <Departments />
+            <Department />
             <FooterMobile />
             <Footer />
         </div>

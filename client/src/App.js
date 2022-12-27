@@ -24,9 +24,31 @@ import UpdateStore from './compontes/ownerStore/UpdateStore';
 import NeedLogin from './chatComponents/NeedLogin';
 
 import OwnerStore from './pages/OwnerStore';
+//////////////////////////
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from './features/user/userSlice';
+
+
 
 
 function App() {
+  const dispatch = useDispatch();
+  // const user = useSelector(state=> state.user);
+
+  const someFunction = async ()=>{
+      const res = await axios.get('http://localhost:8000/auth/login/success', {
+          withCredentials:true,
+      })
+      if(res.status === 200) dispatch(getUser(res.data))
+    }
+
+  useEffect(()=>{
+    // console.log(user);
+    someFunction()
+  },[])
+
   return (
     <>
       {/* </> */}
@@ -44,7 +66,7 @@ function App() {
         
 
       
-          <Route path='/ownerstore' element={<OwnerStore />}>
+          <Route path='/ownerstore/:id' element={<OwnerStore />}>
             <Route path='addproduct' element={<AddingProducts/>}/>
             <Route path='accountstore' element={<OwnerStoreAccount/>}/>
           </Route>
