@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { toast } from 'react-toastify';
 import {
   clearCart,
   calculateTotals,
@@ -8,9 +9,10 @@ import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import './cartStyle.css';
 import CartItems from './CartItems';
 import { ToastContainer } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 function Cart() {
-
   const { cartItems, total, amount } = useSelector((store) => store.cart);
+  const navigate = useNavigate()
 
   useEffect(() => {
     dispatch(calculateTotals());
@@ -19,7 +21,7 @@ function Cart() {
 
   return (
     <>
-      <div className="h-full">
+      <div className="h-full flex-block md:flex-none">
         <div className="bg-gray-800 p-2 text-center">
           <h3 className="text-white">עגלת קניות</h3>
           <ToastContainer />
@@ -44,7 +46,7 @@ function Cart() {
                 <CartItems products={product.products} />
                 <div className="flex justify-end">
                   <p className="store-sum">
-                    סה"כ: {product.price * product.quantity} ש"ח
+                    סה"כ: {product.sum} ש"ח
                   </p>
                 </div>
               </>
@@ -66,7 +68,15 @@ function Cart() {
               </div>
               <button onClick={() => dispatch(clearCart())}>נקה</button>
             </div>
-            <button className="pay-btn w-full">
+            <button onClick={()=>{
+              if(total === 0){
+                toast.warning('העגלה שלך ריקה', {
+                  position: toast.POSITION.BOTTOM_RIGHT,
+                });
+              }else{
+                navigate('/checkout')
+              }
+            }}  className="pay-btn w-full">
               לתשלום <span>{total}</span> ש"ח
             </button>
           </div>

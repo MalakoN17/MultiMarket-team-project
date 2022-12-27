@@ -5,6 +5,7 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 
 function CartItems({products}) {
+  console.log(products);
     const dispatch = useDispatch();
   return (
     <>

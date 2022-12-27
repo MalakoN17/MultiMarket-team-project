@@ -35,6 +35,7 @@ import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import PersonalArea from './pages/PersonalArea';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
+import CheckoutSuccess from './pages/CheckoutSuccess';
 
 
 function App() {
@@ -51,7 +52,7 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
-          {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
           
         
 

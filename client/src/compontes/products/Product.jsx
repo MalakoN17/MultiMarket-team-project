@@ -32,7 +32,6 @@ function Product({ product }) {
         e.preventDefault()
         setShow(!show)
     }
-    const dispatch = useDispatch()
     return (
         <>
             <div className="max-w-2xl mx-auto">
