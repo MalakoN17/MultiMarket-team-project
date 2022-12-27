@@ -89,7 +89,7 @@ const login = async (req, res, next) => {
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
   return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30s',
+    expiresIn: '30m',
   });
 };
 

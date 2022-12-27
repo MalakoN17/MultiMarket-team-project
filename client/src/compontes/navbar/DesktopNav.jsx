@@ -40,7 +40,7 @@ function DesktopNav() {
                   <a href="/question" className="menuNav"> שאלות נפוצות</a>
                   <a href="/chat" className="menuNav">צ'אט עם נציג</a>
                   <a href="#" className="menuNav" onClick={()=> navigate("register")}>הרשמה</a>
-                  <a href="#" className="menuNav" onClick={()=> navigate("login")}>כניסת משתמש</a>
+                  <a href="#" className="menuNav" onClick={()=> navigate("/login")}>כניסת משתמש</a>
                 </div>
               {/* </div> */}
               </div>

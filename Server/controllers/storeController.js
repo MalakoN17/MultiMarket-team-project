@@ -101,6 +101,10 @@ const deleteStore = async (req, res, next) => {
 //Get Store
 const getStore = async (req, res, next) => {
   // const storeOwner = await storeOwnerModel.findById(req.user._id);
+<<<<<<< HEAD
+  // console.log(storeOwner);
+=======
+>>>>>>> dev
   try {
     // if(storeOwner?.storeIds.includes(req.params.id)){
     const store = await storeModel.findById(req.params.id);
