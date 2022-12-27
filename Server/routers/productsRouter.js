@@ -13,7 +13,7 @@ router.get('/store/:storeId', getAllProductsStore);
 router.get('/:id', getProduct);
 router.get('/', getAllProducts);
 router.post('/', createProduct);
-router.put('/:id', updateProduct);
+router.put('/:productId', updateProduct);
 router.delete('/:id', deleteProduct);
 
 module.exports = router;

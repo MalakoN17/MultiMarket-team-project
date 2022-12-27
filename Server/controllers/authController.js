@@ -75,8 +75,9 @@ const login = async (req, res, next) => {
 
      if(storeOwner && (await bcrypt.compare(password, storeOwner.password))){
       const accessToken = generateAccessToken(storeOwner );
-      res.json({ accessToken: accessToken, currentUser:storeOwner });
+      res.status(200).json({ accessToken: accessToken, currentUser:storeOwner });
       // console.log(storeOwner);
+      return 
       } 
 
       if(!user && !storeOwner) {

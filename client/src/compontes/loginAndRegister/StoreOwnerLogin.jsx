@@ -21,11 +21,7 @@ export default function StoreOwnerLogin() {
       password: loginPassword,
     });
     dispatch(getUser(data));
-
-    const history = sessionStorage.getItem('history');
-    const url = history.split('').slice(21).join('');
-    console.log(data);
-    if (data) navigate(`/ownerstore/${data.currentUser._id}`);
+    if (data) navigate(`/ownerstore`);
   };
   return (
     <div>

@@ -43,6 +43,7 @@ const sectionSlice = createSlice({
         })
         .addCase(createSections.fulfilled, (state, action)=>{
             state.newSection = action.payload
+            console.log('hey');
         })
     }
 }) 
