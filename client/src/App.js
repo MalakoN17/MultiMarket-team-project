@@ -16,7 +16,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import RegisterStoreOwner from './pages/RegisterStoreOwner';
 import LoginStoreOwner from './pages/LoginStoreOwner';
-import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
+// import OwnerStoreProduct from './compontes/ownerStore/OwnerStoreProduct';
 import Footer from './compontes/footer/Footer';
 import NavOwner from './compontes/ownerStore/NavOwner';
 import OwnerStoreAccount from './compontes/ownerStore/OwnerStoreAccount';

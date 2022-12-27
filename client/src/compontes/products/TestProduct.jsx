@@ -4,8 +4,10 @@ import ControlPointIcon from '@mui/icons-material/ControlPoint';
 import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
 import { useDispatch, useSelector } from 'react-redux';
 import { addProduct } from '../../features/cart/cartSlice';
+import { toast, ToastContainer } from 'react-toastify';
 
 function TestProduct({ product }) {
+  const {user} = useSelector(state => state)
   const [quantity, setQuantity] = useState(1);
   const [item, setItem] = useState({
     storeId: product.storeId,
@@ -48,6 +50,7 @@ function TestProduct({ product }) {
             <p className="font-thin text-md tracking-tight dark:text-gray-400">
               {product.description}
             </p>
+            <ToastContainer />
             <ControlPointIcon
               onClick={() =>{
                 setQuantity((prevue) => {
@@ -76,7 +79,15 @@ function TestProduct({ product }) {
             </span>
             <button
               type="button"
-              onClick={handleBtnToCart}
+              onClick={()=>{
+                if(user){
+                  toast.success('מוצר נוסף בהצלחה', {
+                    position: toast.POSITION.BOTTOM_RIGHT,
+                  });
+                }else{
+                  handleBtnToCart
+                }
+              }}
               className="text-white bg-gradient-to-r from-cyan-500 to-blue-500 hover:bg-gradient-to-bl focus:ring-4 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2"
             >
               הוסף מוצר לעגלה <ShoppingCartIcon />
