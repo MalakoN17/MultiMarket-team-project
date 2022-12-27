@@ -8,7 +8,7 @@ import smallHome from '../../assets/images/smallhome.png';
 import businessLiaisonLogo from '../../assets/images/businessLiaisonLogo.png';
 import onion from '../../assets/images/products_images/onions.jpg';
 import Cart from './Cart';
-import Product from '../products/Product'
+import Product from '../products/Products'
 
 function StoreProducts() {
     return (

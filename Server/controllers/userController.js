@@ -27,7 +27,7 @@ const updateUser = async (req, res, next) => {
   // hash password
   const salt = await bcrypt.genSalt(10);
   const hashedPassword = await bcrypt.hash(req.body.password, salt);
-
+  
   try {
     if (req.user._id === req.params.id) {
       const updatedUser = req.body;
