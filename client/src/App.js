@@ -3,7 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Pages
 import Main from './pages/Main';
 import StorePage from './pages/StorePage';
-import Error from './pages/Error';
+import Error from './pages/ErrorPage';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
@@ -31,7 +31,7 @@ import OwnerStore from './pages/OwnerStore';
 import { useEffect } from 'react';
 import axios from 'axios';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUser } from './features/user/userSlice';
+import { getUser, removeUser } from './features/user/userSlice';
 
 
 
@@ -53,7 +53,7 @@ import { ToastContainer } from 'react-toastify';
 
 function App() {
   const dispatch = useDispatch();
-  // const user = useSelector(state=> state.user);
+  const user = useSelector(state=> state.user);
 
   const someFunction = async ()=>{
       const res = await axios.get('http://localhost:8000/auth/login/success', {
@@ -61,7 +61,10 @@ function App() {
       })
       if(res.status === 200) dispatch(getUser(res.data))
     }
-
+    window.onunload = (event) => {
+      localStorage.removeItem('test')
+      dispatch(removeUser(user))
+  };
   useEffect(()=>{
     // console.log(user);
     someFunction()

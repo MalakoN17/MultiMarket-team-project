@@ -33,7 +33,6 @@ export const createStore = createAsyncThunk(
       payload.bnNumber = +payload.bnNumber
       payload.building = +payload.building
       payload.apartment = +payload.apartment
-      console.log(payload);
       const data = await createStoreApi(payload);
       return data;
     } catch (error) {
@@ -72,7 +71,6 @@ export const updateStore = createAsyncThunk(
   async (store, thunkAPI) => {
     const {id} = store
     try {
-      console.log(store);
       const data = await updateStoreApi(id,store);
       return data;
     } catch (error) {
@@ -158,11 +156,9 @@ const storeSlice = createSlice({
       })
       .addCase(createStore.fulfilled, (state, action)=>{
         state.isLoading = false
-        console.log(action.payload);
       })
       .addCase(createStore.rejected, (state, action)=>{
         state.isLoading = false
-        console.log(action.payload);
       })
       .addCase(getStoreProducts.pending, (state)=>{
         state.isLoading = true
