@@ -36,13 +36,14 @@ import PersonalArea from './pages/PersonalArea';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
 import CheckoutSuccess from './pages/CheckoutSuccess';
-
+import { ToastContainer } from 'react-toastify';
 
 function App() {
   return (
     <>
       {/* </> */}
       <Router>
+      <ToastContainer />
        
         <Routes>
           <Route path="chat" element={<Chat />} />

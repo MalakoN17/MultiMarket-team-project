@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUser, loginFailure, loginStart } from '../../features/user/userSlice';
+import { getUser, loginFailure, loginStart, removeUser } from '../../features/user/userSlice';
 import { ToastContainer } from 'react-toastify';
 import Demo from './Demo';
 
@@ -16,22 +16,24 @@ export default function Login() {
 
   // login function
   const login = async (e) => {
-    e.preventDefault();
     // dispatch(loginStart())
+    e.preventDefault();
     const  {data}  = await axios.post('http://localhost:8000/auth/login', {
       email: loginEmail,
       password: loginPassword,
     });
-    console.log(data);
-    dispatch(getUser(data));
 
     // const history = sessionStorage.getItem('history');
     // const url = history.split('').slice(21).join('');
     if (data){
+      dispatch(getUser(data));
       navigate("/")
+      console.log("pass");
     }else{
+      console.log('fail');
       dispatch(loginFailure())
     }
+    
   };
 
   return (
@@ -45,6 +47,7 @@ export default function Login() {
         btnText={'Sing In'}
         nameDisplay={"hidden"}
       />
+      
     </div>
   );
 }

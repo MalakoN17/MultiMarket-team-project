@@ -1,4 +1,3 @@
-
 import React from 'react'
 // menu , search , cart, store,chat
 import ListIcon from '@mui/icons-material/List';
@@ -7,7 +6,8 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import StoreIcon from '@mui/icons-material/Store';
 import ChatIcon from '@mui/icons-material/Chat';
 import Example from './MenuMobile';
-function MobileNav() {
+
+export default function MobileNav() {
  
   return (
     <div className='block  sm:hidden'>
@@ -39,7 +39,7 @@ function MobileNav() {
   )
 }
  
-export default MobileNav
+
 
 
 
