@@ -36,6 +36,21 @@ import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 
 function App() {
+  const dispatch = useDispatch();
+  // const user = useSelector(state=> state.user);
+
+  const someFunction = async ()=>{
+      const res = await axios.get('http://localhost:8000/auth/login/success', {
+          withCredentials:true,
+      })
+      if(res.status === 200) dispatch(getUser(res.data))
+    }
+
+  useEffect(()=>{
+    // console.log(user);
+    someFunction()
+  },[])
+
   return (
     <>
       <Router>

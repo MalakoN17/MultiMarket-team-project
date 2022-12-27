@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 export default function Demo({
   firstName,
   lastName,
+  phoneNumber,
   email,
   password,
   loginFun,
@@ -13,7 +14,8 @@ export default function Demo({
   linkDisplay,
   nameDisplay,
   ownerDisplay,
-  // singInWithGoogle,
+  singInWithGoogle,
+  singInWithFacebook,
 }) {
   return (
     <div className="relative w-full h-screen bg-[#eee] ">
@@ -39,6 +41,16 @@ export default function Demo({
             <label className="flex items-start">Last Name</label>
             <input
               onChange={(e) => lastName(e.target.value)}
+              className="border relative bg-gray-100 p-2"
+              type="text"
+              id="default-search"
+            />
+          </div>
+          {/* input for phone number */}
+          <div className={nameDisplay}>
+            <label className="flex items-start">Phone Number</label>
+            <input
+              onChange={(e) => phoneNumber(e.target.value)}
               className="border relative bg-gray-100 p-2"
               type="text"
               id="default-search"
@@ -82,13 +94,13 @@ export default function Demo({
             className="flex justify-center mt-5 p-4"
           >
             <p
-              // onClick={singInWithGoogle}
-              className="border border-[#2d2d2d] shadow-lg hover:shadow-xl px-14 py-3 ml-2 relative flex items-center"
+              onClick={singInWithGoogle}
+              className="border border-[#2d2d2d] shadow-lg hover:shadow-xl px-14 py-3 ml-2 relative flex items-center cursor-pointer"
             >
               <FcGoogle />
             </p>
             <p
-              // onClick={singInWithGoogle}
+              onClick={singInWithFacebook}
               className="border border-[#2d2d2d] shadow-lg hover:shadow-xl px-14 py-3 relative flex items-center"
             >
               <FaFacebookF />

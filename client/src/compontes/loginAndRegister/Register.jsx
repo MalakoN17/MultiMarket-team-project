@@ -9,6 +9,7 @@ export default function Register() {
   // states for email and password inputs
   const [registerFirstName, setRegisterFirstName] = useState('');
   const [registerLastName, setRegisterLastName] = useState('');
+  const [registerNumber, setRegisterNumber] = useState('');
   const [registerEmail, setRegisterEmail] = useState('');
   const [registerPassword, setRegisterPassword] = useState('');
 
@@ -18,6 +19,7 @@ export default function Register() {
     const user = await axios.post('http://localhost:8000/auth/register', {
       firstName:registerFirstName,
       lastName:registerLastName,
+      phone:registerNumber,
       email: registerEmail,
       password: registerPassword,
     });
@@ -30,6 +32,7 @@ export default function Register() {
       <Demo
         firstName={setRegisterFirstName}
         lastName={setRegisterLastName}
+        phoneNumber={setRegisterNumber}
         email={setRegisterEmail}
         password={setRegisterPassword}
         loginFun={singIn}
