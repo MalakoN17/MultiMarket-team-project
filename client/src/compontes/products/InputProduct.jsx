@@ -2,7 +2,7 @@
 
 export default function InputProduct(state) {
   return (
-    <div className="mb-5">
+    <>
     <label
       htmlFor={state.name}
       className="mb-3 block text-base font-medium text-[#07074D] text-right"
@@ -19,6 +19,6 @@ export default function InputProduct(state) {
       min={state.min}
       value={state.value}
     />
-  </div>
+    </>
   )
 }

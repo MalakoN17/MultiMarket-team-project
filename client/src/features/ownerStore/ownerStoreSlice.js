@@ -1,5 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
-import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi, deleteStoreApi } from './ownerStoreService';
+import { getStoreApi, getStoreProductsApi, updateStoreApi, getDepartmentsApi,createStoreApi, deleteStoreApi, updateOwnerStoreApi } from './ownerStoreService';
 const initialState = {
   store: {},
   isLoading:false,
@@ -16,7 +16,13 @@ export const getStore = createAsyncThunk(
       const data = await getStoreApi(payload);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
     }
   }
 );
@@ -31,7 +37,13 @@ export const createStore = createAsyncThunk(
       const data = await createStoreApi(payload);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
     }
   }
 );
@@ -44,7 +56,13 @@ export const getStoreProducts = createAsyncThunk(
       const data = await getStoreProductsApi(storeId);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
     }
   }
 );
@@ -54,10 +72,17 @@ export const updateStore = createAsyncThunk(
   async (store, thunkAPI) => {
     const {id} = store
     try {
+      console.log(store);
       const data = await updateStoreApi(id,store);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
     }
   }
 );
@@ -68,27 +93,52 @@ export const deleteStore = createAsyncThunk(
       const data = await deleteStoreApi(storeId);
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.response.data);
+      const message =
+      (error.response &&
+        error.response.data &&
+        error.response.data.message) ||
+      error.message ||
+      error.toString()
+    return thunkAPI.rejectWithValue(message)
     }
   }
 );
-export const getDepartments = createAsyncThunk('ownerStore/getDepartments', async ()=>{
+export const getDepartments = createAsyncThunk('ownerStore/getDepartments', async (thunkAPI)=>{
   try {
     const data = await getDepartmentsApi()
     return data
   } catch (error) {
-    return error
+    const message =
+    (error.response &&
+      error.response.data &&
+      error.response.data.message) ||
+    error.message ||
+    error.toString()
+  return thunkAPI.rejectWithValue(message)
   }
 });
+
+export const updateOwnerStore = createAsyncThunk('ownerStore/updateOwnerStore', async(owner, thunkAPI)=>{
+  try {
+    console.log(owner._id);
+    const id = owner._id
+    const date = await updateOwnerStoreApi(id, owner)
+    return date
+  } catch (error) {
+    const message =
+    (error.response &&
+      error.response.data &&
+      error.response.data.message) ||
+    error.message ||
+    error.toString()
+  return thunkAPI.rejectWithValue(message)
+  }
+})
 
 const storeSlice = createSlice({
   name: 'ownerStore',
   initialState,
-  reducers: {
-    updateStoreRdu:(state)=>{
-      console.log(state.store.name);
-    }
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(getStore.pending, (state) => {
@@ -127,10 +177,15 @@ const storeSlice = createSlice({
         state.isSuccuss = false
       })
       .addCase(updateStore.fulfilled, (state, action)=>{
+        state.store = (action.payload)
+      })
+      .addCase(updateOwnerStore.fulfilled, (state, action)=>{
+        console.log(action.payload);
+      })
+      .addCase(updateOwnerStore.rejected, (state, action)=>{
         console.log(action.payload);
       })
       .addCase(getDepartments.fulfilled, (state, action)=>{
-        console.log(action.payload);
         state.departmentIds = action.payload
       })
       .addCase(getDepartments.rejected, (state, action)=>{

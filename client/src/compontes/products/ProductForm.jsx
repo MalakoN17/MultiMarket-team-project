@@ -8,7 +8,9 @@ import { createSections, getAllSections } from '../../features/section/sectionSl
 export default function ProductForm() {
 
   const item = useSelector((state) => state.product);
+  const {store} = useSelector((state) => state.ownerStore);
   const sectionsState = useSelector((state) => state.sections);
+  const {currentUser} = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [product, setProduct] = useState({
@@ -83,7 +85,7 @@ export default function ProductForm() {
   const handleForm = (e) => {
     e.preventDefault();
 
-    product.storeId ='63a5b33f5fc28c9e324800c8'
+    product.storeId = store._id
 
     dispatch(createProduct(product));
   };
@@ -97,13 +99,13 @@ export default function ProductForm() {
 
   useEffect(()=>{
 
-    dispatch(getAllSections('63a5b33f5fc28c9e324800c8'))
+    dispatch(getAllSections(store._id))
 
   },[sectionsState.sections.length])
   return (
     <div>
       <div className="flex items-center justify-center p-12 ">
-        <div className="mx-auto w-full max-w-[550px] bg-white">
+        <div className=" w-full sm:w-8/12  bg-white">
           <form className="py-6 px-2" onSubmit={handleForm}>
           <InputProduct funChange={handleInput} textLabel='שם המוצר' name='name' type='name' placeholder='לדוגמה: עגבניות שרי' />
           <InputProduct funChange={handleInput} textLabel='שם החנות' name='storeName' type='name' placeholder='לדוגמה: חוות החלומות' />

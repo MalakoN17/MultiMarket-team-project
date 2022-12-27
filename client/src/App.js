@@ -9,7 +9,7 @@ import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
 import CheckOut from './pages/checkOut/CheckOut';
 import Store from './pages/Store';
-import AddStore from './compontes/addStore/AddStore';
+import AddStore from './compontes/admin/AddStore';
 
 import Chat from './pages/Chat';
 import Login from './pages/Login';
@@ -33,12 +33,12 @@ import ProductStoreOwner from './compontes/ownerStore/ProductStoreOwner';
 import UpdateProduct from './compontes/ownerStore/UpdateProduct';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
+import DesktopNav from './compontes/navbar/DesktopNav';
 
 
 function App() {
   return (
     <>
-      {/* </> */}
       <Router>
         <Routes>
           <Route path="chat" element={<Chat />} />

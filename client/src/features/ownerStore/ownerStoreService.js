@@ -33,6 +33,15 @@ export const updateStoreApi = async (storeId, store) => {
     return error;
   }
 };
+export const updateOwnerStoreApi = async (ownerId, owner) => {
+  try {
+
+    const { data } = await axiosMu.put(`/ownerStore/${ownerId}`, owner);
+    return data;
+  } catch (error) {
+    return error;
+  }
+};
 export const deleteStoreApi = async (storeId) => {
   try {
 

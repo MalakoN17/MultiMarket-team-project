@@ -60,23 +60,6 @@ const OrderStoreSchema = new mongoose.Schema({
       default: 'regular',
     },
   },
-  // paymentsNum: { type: Number, default: 1 },
-  // surfaces: {
-  //   type: Number,
-  //   default: 1,
-  // },
-  // surfacesWeight: { type: String, default: 1 },
-  // paymentType: { type: String },
-  // card: {
-  //   id: { type: String },
-  //   ownerId: {
-  //     type: String,
-  //   },
-  //   last4digits: { type: String },
-  //   CVV: { type: String },
-  //   company: String,
-  //   exp: { type: String },
-  // },
   coupon: {
     name: String,
     code: String,

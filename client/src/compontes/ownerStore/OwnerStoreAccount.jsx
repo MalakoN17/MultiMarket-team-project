@@ -21,8 +21,12 @@ export default function OwnerStoreAccount() {
     <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black sm:mb-5">
       <h1 onClick={handleNavStoreDetails} className="text-xl">פירטי חשבון</h1>
     </div>
-    <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black">
+    <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black sm:mb-5">
       <h1 onClick={handleNavReceipts} className="text-xl">עידכון חשבון</h1>
+    </div>
+    
+    <div className="sm:h-52 sm:w-72 rounded-md flex justify-center items-center  sm:border sm:border-black">
+      <h1 onClick={handleNavReceipts} className="text-xl">החלפת סיסמא</h1>
     </div>
     
    </div>

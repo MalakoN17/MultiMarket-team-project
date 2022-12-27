@@ -68,7 +68,6 @@ const updateProduct = async (req, res, next) => {
   const data = req.body;
   try {
     const product = await productsModel.findById(productId);
-    console.log(product);
     if (data.image.url !== product.image.url) {
       await cloudinary.uploader.destroy(imageId);
       const result = await cloudinary.uploader.upload(data.image, {

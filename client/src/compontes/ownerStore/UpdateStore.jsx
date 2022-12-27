@@ -13,7 +13,7 @@ export default function UpdateStore() {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      storeDetails.id = '6390605ef3ee5834eff8fa0c'
+      storeDetails.id = store._id
       dispatch(updateStore(storeDetails))
     } catch (error) {}
   };
@@ -25,7 +25,11 @@ export default function UpdateStore() {
       setStoreDetails({...storeDetails, address:{...storeDetails.address,[name]:value}})
     }else if(name === 'coverImage' || name === 'lightlogo' || name === 'darklogo'){
       const file = e.target.files[0]
-      TransformFileData(file, name)
+      setStoreDetails({...storeDetails, [name]:file})
+      // TransformFileData(file, name)
+    }else{
+      console.log('df');
+      setStoreDetails({...storeDetails, [name]:value})
     }
   };
 
@@ -52,7 +56,7 @@ export default function UpdateStore() {
     <div className="">
       <h1 className='text-center text-2xl mb-5'>עידכון מוצר</h1>
       <div className="flex items-center justify-center ">
-        <div className="mx-auto w-full max-w-[550px] bg-white px-10 rounded">
+        <div className="   bg-white px-10 rounded">
           <form onSubmit={handleForm} className="py-6 px-2">
             <div className="mb-5">
             <InputOwner
@@ -60,7 +64,7 @@ export default function UpdateStore() {
             funChange={handleInput}
             type="name"
             name="name"
-            value={store.name}
+            value={storeDetails.name}
           />
             </div>
 
@@ -70,7 +74,7 @@ export default function UpdateStore() {
             description="bnNumber"
             type="text"
             name="bnNumber"
-            value={store.bnNumber}
+            value={storeDetails.bnNumber}
           />
             </div>
 
@@ -80,7 +84,7 @@ export default function UpdateStore() {
             description="טלפון"
             type="tel"
             name="phone"
-            value={store.phone}
+            value={storeDetails.phone}
           />
             </div>
 
@@ -90,7 +94,7 @@ export default function UpdateStore() {
             description="איימל"
             type="email"
             name="email"
-            value={store.email}
+            value={storeDetails.email}
           />
             </div>
 
@@ -100,7 +104,7 @@ export default function UpdateStore() {
             description="עיר"
             type="text"
             name="city"
-            value={store.address?.city}
+            value={storeDetails.address?.city}
           />
             </div>
 
@@ -110,7 +114,7 @@ export default function UpdateStore() {
             description="רחוב"
             type="text"
             name="street"
-            value={store.address?.street}
+            value={storeDetails.address?.street}
           />
             </div>
 
@@ -120,7 +124,7 @@ export default function UpdateStore() {
             description="בניין"
             type="text"
             name="building"
-            value={store.address?.building}
+            value={storeDetails.address?.building}
           />
             </div>
 
@@ -130,20 +134,17 @@ export default function UpdateStore() {
             description="דירה"
             type="text"
             name="apartment"
-            value={store.address?.apartment}
+            value={storeDetails.address?.apartment}
           />
             </div>
-            <div>
-            </div>
-            <div className="  justify-around ">
           <div>
             <UploadImage
             funChange={handleInput}
               nameImage="lightlogo"
               name='lightlogo'
-              Image={store.coverImage.url}
+              Image={storeDetails.coverImage.url}
             />
-            <button type="button" >
+            <button type="button" className='transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none'>
               update light logo
             </button>
           </div>
@@ -152,7 +153,7 @@ export default function UpdateStore() {
               nameImage="coverImage"
               funChange={handleInput}
               name='coverImage'
-              Image={store.lightlogo.url}
+              Image={storeDetails.lightlogo.url}
             />
             <button type="button" >
               update cover Image
@@ -163,13 +164,12 @@ export default function UpdateStore() {
               nameImage="dark logo"
               funChange={handleInput}
               name='darklogo'
-              Image={store.darklogo.url}
+              Image={storeDetails.darklogo.url}
             />
             <button type="button" >
               update dark logo
             </button>
           </div>
-        </div>
         <button className="transition ease-in-out delay-150 bg-blue-500 hover:-translate-y-1 hover:scale-110 hover:bg-indigo-500 duration-300 hover:shadow-form w-full rounded-md mt-4 bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
               עידכון חנות
               </button>

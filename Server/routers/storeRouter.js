@@ -7,7 +7,7 @@ const { verifyToken } = require('../middleware/authenticateToken');
 router.post('/', createNewStore);
 
 //Update
-router.put('/:id', verifyToken,updateStore)
+router.put('/:id',updateStore)
 //Delete
 router.delete('/:id',deleteStore)
 //Get 
