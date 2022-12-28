@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import Picker from 'emoji-picker-react';
 import MoodIcon from '@mui/icons-material/Mood';
 import SendIcon from '@mui/icons-material/Send';
-
+   
 export default function ChatInput({ handleSendMsg }) {
 
     const [showEmojiPicker, setShowEmojiPicker] = useState(false);

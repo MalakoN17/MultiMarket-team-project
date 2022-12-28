@@ -34,9 +34,9 @@ const updateAdminStore = async (req, res, next) => {
         },
         { new: true }
       );
+      res.status(200).json(updateAdminStore);
     }
     res.status(401).json('user not authorized');
-    res.status(200).json(updateAdminStore);
   } catch (error) {
     next(error);
   }
