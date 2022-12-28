@@ -1,9 +1,16 @@
 # Atlas - Multi-Market Application
 Atlas is a multi-market application designed to support a variety of markets and provide a seamless user experience for users in each market.
+</br>
+![Screenshot 2022-12-28 111224](https://user-images.githubusercontent.com/105584146/209788404-74e8d826-ae07-405c-8959-e9f29c247a11.png)
+![Screenshot 2022-12-28 111316](https://user-images.githubusercontent.com/105584146/209788446-39dd037a-eb27-4521-b1d4-5d40dbc8727b.png)
+![Screenshot 2022-12-28 111533](https://user-images.githubusercontent.com/105584146/209788612-39e8002a-6eb5-4435-9106-58039a6b9b44.png)
+![Screenshot 2022-12-28 111637](https://user-images.githubusercontent.com/105584146/209788740-6171746a-ab71-4661-ab59-ff8bce570077.png)
+
 ## Features
 - Supports multiple markets
 - Customized for each market
 - User-friendly interface
+</br>
 ## Technologies
 - Client-side: React.js, Redux-Persist, Redux-Toolkit, Tailwind css,React-Toastify, Stripe, Socket.IO
 - Server-side: Node.js, Mongoose, Cloudinary, Socket.IO, Stripe, JWT, Passport.js, Bcrypt.js
