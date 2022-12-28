@@ -5,7 +5,7 @@ export default function HomeOwner() {
     const navigate = useNavigate()
 
     const { user } = useSelector(state => state.user)
-    
+    console.log(user);
     const handleUploadProduct = () => {
         navigate('addproduct')
     }

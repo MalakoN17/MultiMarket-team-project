@@ -38,7 +38,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
       to: currentChat._id,
       message: msg,
     });
-    socket.current.emit('send-msg', {
+    socket.current.emit('send-msg', {      
       to: currentChat._id,
       from: currentUser._id,
       message: msg,
