@@ -18,9 +18,11 @@ const bcrypt = require('bcryptjs');
 
 // REGISTER
 const register = async (req, res, next) => {
-  const {firstName, lastName, email, password } = req.body;
 
-  if (!email || !password) {
+  const data = req.body;
+ 
+  if (!data.email || !data.password) {
+
     res.status(400);
     throw new Error('Email and password required');
   }
@@ -36,9 +38,16 @@ const register = async (req, res, next) => {
   const hashedPassword = await bcrypt.hash(password, salt);
 
   try {
-    const data = req.body;
-    // data.firstName = firstName;
-    // data.lastName = lastName;
+    if(data.profileImg){
+      const result = await cloudinary.uploader.upload(data.profileImg, {
+        folder: 'user',
+      });
+      data.profileImg = {
+        public_id: result.public_id,
+        url: result.secure_url,
+      }
+    }
+
     data.password = hashedPassword;
     data.createdBy = `${firstName}`;
     const newUser = usersSchema(data);
@@ -66,11 +75,9 @@ const login = async (req, res, next) => {
   // console.log(user);
 
   try {
-    // const hashedPassword = await bcrypt.compare(password, user.password);
     if (user && (await bcrypt.compare(password, user.password))) {
       const accessToken = generateAccessToken(user );
       res.json({ accessToken: accessToken, currentUser:user });
-      // console.log(storeOwner);
     } 
 
      if(storeOwner && (await bcrypt.compare(password, storeOwner.password))){
@@ -92,7 +99,9 @@ const login = async (req, res, next) => {
 // ACCESS TOKEN
 const generateAccessToken = (user) => {
   return jwt.sign({ ...user._doc }, process.env.ACCESS_TOKEN_SECRET, {
-    expiresIn: '30m',
+
+    expiresIn: '1000m',
+
   });
 };
 

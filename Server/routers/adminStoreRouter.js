@@ -6,7 +6,7 @@ const { createAdminStore, getAllAdminStore, getOneAdminStore, updateAdminStore, 
 router.get('/', getAllAdminStore);
 router.get('/:id', verifyToken, getOneAdminStore);
 router.post('/', createAdminStore);
-router.put('/:id', updateAdminStore);
+router.put('/:id',verifyToken, updateAdminStore);
 router.delete('/:id', deleteAdminStore)
 
 module.exports = router;

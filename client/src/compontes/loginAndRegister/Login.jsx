@@ -23,13 +23,12 @@ export default function Login() {
       password: loginPassword,
     });
 
-    //  const history = sessionStorage.getItem('history');
-    //  const url = history.split('').slice(21).join('');
-    //  console.log(url);
+     const history = sessionStorage.getItem('history');
+     const url = history.split('').slice(21).join('');
     if (data){
       dispatch(getUser(data));
-      navigate('/')
-      // console.log("pass");
+      navigate(`${url}`)
+      console.log("pass");
     }else{
       console.log('fail');
       dispatch(loginFailure())
