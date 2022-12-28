@@ -18,22 +18,24 @@ export default function OwnerStoreAccount() {
     navigate('updateownerdet')
   }
   return (
+    <>
     <div className="h-screen">
-      <div className="md:flex flex-col justify-center p-12 w-full h-screen">
-        <div className="flex flex-col md:flex-row mt-10 w-full justify-evenly">
-          <div onClick={handleNavStoreDetails} className="rounded-md  bg-black text-white hover:bg-lime-600 h-[110px] w-[300px] justify-center items-center flex p-2 mb-10">
+      <div className="flex  justify-around   h-screen">
+        <div className="flex flex-col justify-around  mt-10  ">
+          <div onClick={handleNavStoreDetails} className="rounded-md  bg-black text-white hover:bg-lime-600 h-[110px] w-[300px] justify-center items-center flex p-2 ">
             <h1 className="text-xl">פירטי חשבון</h1>
           </div>
-          <div onClick={handleNavReceipts} className="rounded-md  bg-black text-white hover:bg-lime-600 h-[110px] w-[300px] justify-center items-center flex p-2 mb-10">
+          <div onClick={handleNavReceipts} className="rounded-md  bg-black text-white hover:bg-lime-600 h-[110px] w-[300px] justify-center items-center flex p-2 ">
             <h1 className="text-xl">עידכון חשבון</h1>
           </div>
         </div>
-        <div className="sm:mx-auto p-10 rounded-2xl w-[300px] ">
+        <div className="rounded-2xl w-[300px] ">
           <Outlet />
         </div>
       </div>
       <FooterMobile />
     </div>
+    </>
   );
 }
 

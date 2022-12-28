@@ -13,7 +13,7 @@ export default function UpdateStore() {
   const handleForm = async (e) => {
     e.preventDefault();
     try {
-      storeDetails.id = '6390605ef3ee5834eff8fa0c'
+      storeDetails.id = store._id
       dispatch(updateStore(storeDetails))
     } catch (error) { }
   };
@@ -25,7 +25,11 @@ export default function UpdateStore() {
       setStoreDetails({ ...storeDetails, address: { ...storeDetails.address, [name]: value } })
     } else if (name === 'coverImage' || name === 'lightlogo' || name === 'darklogo') {
       const file = e.target.files[0]
-      TransformFileData(file, name)
+      setStoreDetails({...storeDetails, [name]:file})
+      // TransformFileData(file, name)
+    }else{
+      console.log('df');
+      setStoreDetails({...storeDetails, [name]:value})
     }
   };
 

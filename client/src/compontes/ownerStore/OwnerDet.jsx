@@ -5,8 +5,7 @@ export default function OwnerDet() {
     const {user} = useSelector(state=>state.user)
 
   return (
-    <div>
-        
+    <div className='sm:h-screen'>
         <div>
             <h1 className='text-3xl'>שם: {user.currentUser.firstName} {user.currentUser.lastName}</h1>
         </div>
@@ -14,6 +13,7 @@ export default function OwnerDet() {
         <div className='flex '>
             <h1 className='text-3xl'>איימל: {user.currentUser.email}</h1>
         </div>
+        <br />
         <div className='flex '>
             <h1 className='text-3xl'>טלפון {user.currentUser.phone}</h1>
         </div>

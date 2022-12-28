@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 import { useSelector } from 'react-redux';
 import { Dropdown } from 'flowbite-react';
 import { useNavigate } from 'react-router-dom';
@@ -65,7 +64,7 @@ export default function Contacts({ contacts, currentUser, changeChat }) {
                                  <Dropdown.Divider />
                             </div>
                         )
-                    })}
+                    })}    
                      <Dropdown.Divider />
                     <Dropdown.Item>
                         <h3 onClick={() => {navigate('/')}}>Back to home page</h3>

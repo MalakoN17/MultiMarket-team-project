@@ -1,9 +1,7 @@
 export default function UploadImage(state) {
   return (
     <div>
-      {state.nameImage}
-      
-      <div >
+       {state.nameImage}
         <label
           htmlFor="dropzone-file"
           className="flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer bg-gray-50 dark:hover:bg-bray-800 dark:bg-gray-700 hover:bg-gray-100 dark:border-gray-600 dark:hover:border-gray-500 dark:hover:bg-gray-600"
@@ -24,7 +22,9 @@ export default function UploadImage(state) {
                 d="M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12"
               ></path>
             </svg>
+            <p> תמונות  רוחב בלבד</p>
             <p className="mb-2 text-sm text-gray-500 dark:text-gray-400">
+              
               <span className="font-semibold"> לחץ להעלאת תמונה </span>או גרור
               קובץ לכאן{' '}
             </p>
@@ -37,11 +37,9 @@ export default function UploadImage(state) {
             id="dropzone-file"
             name={state.name}
             type="file"
-            // className="hidden"
           />
         </label>
-        <img src={state.Image} alt={`${state.nameImage} ${state.nameStore}`} />
-      </div>
+        <img className="mt-2" src={state.Image} alt={`${state.nameImage} ${state.nameStore}`} />
     </div>
   );
 }
