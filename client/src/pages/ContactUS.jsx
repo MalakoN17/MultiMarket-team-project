@@ -4,6 +4,7 @@ import DesktopNav from '../compontes/navbar/DesktopNav';
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar';
 import FooterMobile from '../compontes/footer/footerMobile';
 import Footer from '../compontes/footer/Footer';
+import {toast, ToastContainer} from 'react-toastify'
 import emailjs from 'emailjs-com'
 
 export default function ContactUS() {
@@ -16,7 +17,9 @@ export default function ContactUS() {
       "CF1E9Ctlahma83eeB"
     ).then(resp =>{
         console.log(resp);
-        alert("Thank you your massage send to us")
+        toast.success('הודעה נשלחה תודה רבה',{
+          position: toast.POSITION.BOTTOM_RIGHT,
+        })
         e.target.reset()
     }).catch(error => console.log(error));
   }
@@ -25,6 +28,7 @@ export default function ContactUS() {
       <MobileNav />
       <DesktopNav />
       <LoginUserNavbar />{' '}
+      <ToastContainer />
       <div className="container my-24 px-6 mx-auto">
         {/* Section: Design Block */}
         <section className="mb-32 text-gray-800">

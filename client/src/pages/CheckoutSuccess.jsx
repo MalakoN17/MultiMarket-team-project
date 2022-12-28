@@ -23,9 +23,10 @@ function CheckoutSuccess() {
       finalSum: cart.total,
       delivery: address.delivery,
       products: cartItems,
-      storeId: cartItems,
+      storeId: cartItems[0].storeId,
       createdBy: user.firstName
     })
+    console.log(data);
   }
   return (
     <>

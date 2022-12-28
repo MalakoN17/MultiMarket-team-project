@@ -6,7 +6,7 @@ export default function Department(props) {
   // const navigate = useNavigate()
   return (
     <div>
-      <Link to={`/store/${props.department._id}`}><div className="departmentImg group aspect-w-1 aspect-h-1 bg-white xl:aspect-w-7 xl:aspect-h-8">
+      <Link to={`/stores/${props.department._id}`}><div className="departmentImg group aspect-w-1 aspect-h-1 bg-white xl:aspect-w-7 xl:aspect-h-8">
         {/* <a href="#" className="group"> */}
           <img
             src={props.department.coverImage}

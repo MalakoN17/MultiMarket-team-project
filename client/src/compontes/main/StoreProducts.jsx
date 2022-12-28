@@ -60,7 +60,7 @@ export default function StoreProducts() {
 
                 </div>
 
-                <div className="hidden md:block">
+                <div className="hidden md:block w-[40%]">
                     <Cart />
                 </div>
             </div>

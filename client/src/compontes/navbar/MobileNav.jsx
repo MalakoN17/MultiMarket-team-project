@@ -11,7 +11,7 @@ export default function MobileNav() {
  
   return (
     <div className='block  sm:hidden'>
-            <nav className="fixed bottom-0 inset-x-0 bg-white flex justify-between text-sm text-black">
+            <nav className="fixed z-10 bottom-0 inset-x-0 bg-white flex justify-between text-sm text-black">
           <a href="#" className="w-full block py-5 px-3 text-center hover:bg-lime-600 hover:text-white">
            <ListIcon />
            <p>תפריט</p>

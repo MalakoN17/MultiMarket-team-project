@@ -47,7 +47,7 @@ function App() {
     })
     if (res.status === 200) dispatch(getUser(res.data))
   }
-
+  
   useEffect(() => {
     someFunction()
   }, [])
@@ -59,7 +59,7 @@ function App() {
           <Route path="chat" element={<Chat />} />
           <Route path="" element={<Main />} />
           <Route path="storesroducts" element={<StoreProducts />} />
-          <Route path="/store/:id" element={<StorePage />} />
+          <Route path="/stores/:id" element={<StorePage />} />
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut />}></Route>
@@ -88,6 +88,7 @@ function App() {
           <Route path="contactUS" element={<ContactUS />} />
           <Route path="aboutUs" element={<AboutUs />} />
           <Route path="personalArea" element={<PersonalArea />} />
+          <Route path='CheckoutSuccess' element={<CheckoutSuccess />}/>
           <Route path="*" element={<Error />} />
         </Routes>
       </Router>

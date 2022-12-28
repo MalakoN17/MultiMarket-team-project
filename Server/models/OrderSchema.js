@@ -40,8 +40,8 @@ const OrderStoreSchema = new mongoose.Schema({
     lowercase: true,
     required: true,
   },
-  phone: { type: String, required: true },
-  phone2: { type: String },
+  // phone: { type: String, required: true },
+  // phone2: { type: String },
   sum: {
     type: Number,
     required: true,

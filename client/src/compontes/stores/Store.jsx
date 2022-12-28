@@ -31,7 +31,7 @@ export default function Store(props) {
                     <p>{props.store.address.street}, {props.store.address.building}</p>
                   </div>
                 </div>
-                 <button className="add-btn hover:bg-green-500 text-white font-bold py-2 px-4 border rounded scale-90 transition duration-300 hover:scale-100 transform" onClick={()=> handleClick(navigate(`/store/${props.store._id}`))}>קנה בחנות זו</button>
+                 <button className="add-btn hover:bg-green-500 text-white font-bold py-2 px-4 border rounded scale-90 transition duration-300 hover:scale-100 transform" onClick={handleClick}>קנה בחנות זו</button>
                 </div>
               </div>
             </div>
