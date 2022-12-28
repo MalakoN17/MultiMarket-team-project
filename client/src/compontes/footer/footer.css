@@ -1,0 +1,27 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .footerLinks {
+    color: #6b7280;
+    font-size: 1rem;
+    line-height: 1.5rem;
+    line-height: 1.5rem;
+  }
+  .footerLinks:hover {
+    color: #f3f4f6;
+  }
+  .footerMenu {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+  .socialMedia {
+    color: #9ca3af;
+  }
+  .socialMedia:hover {
+    color: #6b7280;
+  }
+}

@@ -1,0 +1,22 @@
+/* .background-image{
+    background-image: url("https://images.pexels.com/photos/1656663/pexels-photo-1656663.jpeg?auto=compress&cs=tinysrgb&w=600");
+    background-repeat: no-repeat;
+    background-size: cover;
+} */
+
+.business-liaison-logo{
+    width: 30px;
+    height: 30px;
+    padding: 2px;
+}
+.store-img-cart{
+    border: 1px solid rgb(170, 169, 169);
+    border-radius: 100%;
+}
+.add-btn{
+    background-color:  #A3D120;
+}
+.open-store{
+    color: black !important;
+    font-size: 45px;
+}

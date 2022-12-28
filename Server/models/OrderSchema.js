@@ -1,11 +1,8 @@
 const mongoose = require('mongoose');
 
-const OrderSchema = new mongoose.Schema({
+const OrderStoreSchema = new mongoose.Schema({
   number: { type: String, unique: true },
-  barcode: { type: String, unique: true },
   userId: { type: String, required: true },
-  userPaymentIdentity: { type: String },
-  userCustomerId: { type: String },
   status: {
     type: String,
     required: true,
@@ -19,27 +16,9 @@ const OrderSchema = new mongoose.Schema({
       'failed',
       'hold',
     ],
-    default: 'received',
+    default:'received'
   },
-  deliveryStatus: {
-    type: String,
-  },
-  isMain: {
-    type: Boolean,
-    default: false,
-    formType: 'switch',
-    tableType: 'boolean',
-  },
-  orderIds: {
-    type: [String],
-    tableType: 'tags',
-    formType: 'text',
-    autocomplete: { collection: 'order', multiple: true },
-  },
-  mainOrderNumber: {
-    type: String,
-    autocomplete: { collection: 'order', multiple: true },
-  },
+
   firstName: {
     type: String,
     required: true,
@@ -68,14 +47,10 @@ const OrderSchema = new mongoose.Schema({
     required: true,
   },
   finalSum: { type: Number, required: true },
-  // etradoPayment: { type: mongoose.Types.ObjectId, ref: "EtradoPayment" },
   delivery: {
     cost: Number,
     start: Date,
-    end: {
-      type: Date,
-      default: newDate(+newDate() + 3 * 60 * 60 * 24 * 1000).toISOString(),
-    },
+    end: Date,
     kind: {
       type: String,
       required: true,
@@ -83,36 +58,15 @@ const OrderSchema = new mongoose.Schema({
       default: 'regular',
     },
   },
-  paymentsNum: { type: Number, default: 1 },
-  surfaces: {
-    type: Number,
-    default: 1,
-  },
-  surfacesWeight: { type: String, default: 1 },
-  paymentType: { type: String },
-  baldarNumber: { type: Number },
-  card: {
-    id: { type: String },
-    ownerId: {
-      type: String,
-    },
-    last4digits: { type: String },
-    token: { type: String },
-    company: String,
-    exp: { type: String },
-  },
   coupon: {
     name: String,
     code: String,
     discountOf: {
       type: Object,
-      formType: 'group',
       sum: Number,
       kind: {
         type: String,
-        required: true,
         enum: ['nis', 'percents'],
-        default: 'nis',
       },
     },
   },
@@ -125,14 +79,11 @@ const OrderSchema = new mongoose.Schema({
         finalAmount: Number,
         orderPrice: Number,
         finalPrice: Number,
-        replacedId: String,
       },
     ],
-    select: false,
   },
   storeId: {
     type: String,
-    select: false,
     required: true,
   },
   timeline: {
@@ -145,10 +96,9 @@ const OrderSchema = new mongoose.Schema({
     failed: Date,
     hold: Date,
   },
-  id: { type: String, required: true },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: String, required: true, noSearch: true },
 });
 
-module.exports = new mongoose.model('order', OrderSchema);
+module.exports = new mongoose.model('order', OrderStoreSchema);

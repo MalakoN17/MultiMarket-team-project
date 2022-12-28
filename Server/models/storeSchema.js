@@ -14,27 +14,23 @@ const StoreSchema = new mongoose.Schema({
   },
   description: {
     type: String,
-    noSearch: true,
-  },
-  logo: {
-    type: String,
-    noSearch: true,
   },
   lightlogo: {
-    type: String,
+    type: Object,
+    public_id: String,
+    url: String,
     noSearch: true,
   },
   darklogo: {
-    type: String,
+    type: Object,
+    public_id: String,
+    url: String,
     noSearch: true,
   },
   coverImage: {
-    type: String,
-    required: true,
-    noSearch: true,
-    width: 1000,
-    ratio: 2.5,
-    format: 'jpg',
+    // required: true,
+    public_id: String,
+    url: String,
   },
   phone: {
     type: String,

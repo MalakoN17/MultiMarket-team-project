@@ -13,14 +13,10 @@ const ShippingCertificateSchema = new mongoose.Schema({
     type: Date,
     required: true,
     default: Date.now,
-    max: oneYearFromNow,
   },
   lastUpdate: { type: Date, default: Date.now },
   createdAt: { type: Date, default: Date.now },
   createdBy: { type: String, required: true, noSearch: true },
 });
 
-module.exports = new mongoose.model(
-  'ShippingCertificate',
-  ShippingCertificateSchema
-);
+module.exports = new mongoose.model('shippingCertificate', ShippingCertificateSchema);
