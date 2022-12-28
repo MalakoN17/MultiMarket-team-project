@@ -10,7 +10,6 @@ Atlas is a multi-market application designed to support a variety of markets and
 - Supports multiple markets
 - Customized for each market
 - User-friendly interface
-</br>
 ## Technologies
 - Client-side: React.js, Redux-Persist, Redux-Toolkit, Tailwind css,React-Toastify, Stripe, Socket.IO
 - Server-side: Node.js, Mongoose, Cloudinary, Socket.IO, Stripe, JWT, Passport.js, Bcrypt.js
