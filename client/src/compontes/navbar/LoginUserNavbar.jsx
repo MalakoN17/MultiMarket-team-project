@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import {removeUser} from '../../features/user/userSlice'
-import logo from '../../assets/multimarket-logo1.png';
+import logo from '../../assets/atlaslogo.png';
 import {ImLocation} from "react-icons/im"
 
 export default function LoginUserNavbar() {
@@ -38,7 +38,7 @@ export default function LoginUserNavbar() {
         <div 
         // className="p-5"
         >
-          <img className="h-8 w-auto" src={logo} alt="Your Company" />
+          {/* <img className="h-8 w-auto" src={logo} alt="Your Company" /> */}
         </div>
     </div>
     </div>

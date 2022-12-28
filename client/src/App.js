@@ -1,4 +1,8 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser } from './features/user/userSlice';
+import axios from 'axios';
 
 // Pages ---
 import Main from './pages/Main';
@@ -46,10 +50,9 @@ function App() {
       if(res.status === 200) dispatch(getUser(res.data))
     }
 
-  useEffect(()=>{
-    // console.log(user);
+  useEffect(() => {
     someFunction()
-  },[])
+  }, [])
 
   return (
     <>
@@ -61,8 +64,12 @@ function App() {
           <Route path="/store/:id" element={<StorePage />} />
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
-          <Route path="checkout" element={<CheckOut />}></Route>
-          <Route path="NeedLogin" element={<NeedLogin />}></Route>
+          <Route path="checkout" element={<CheckOut/>}></Route>
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
+          
+        
+
+      
 
           <Route path='/ownerstore' element={<OwnerStore />}>
             <Route path='' element={<HomeOwner />} />
