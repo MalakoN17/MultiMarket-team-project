@@ -52,7 +52,7 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   // const user = useSelector(state=> state.user);
 
   const someFunction = async ()=>{

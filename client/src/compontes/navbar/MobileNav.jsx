@@ -1,5 +1,8 @@
 import React from 'react'
 // menu , search , cart, store,chat
+import { useDispatch,useSelector } from 'react-redux';
+import { removeUser } from '../../features/user/userSlice';
+
 import ListIcon from '@mui/icons-material/List';
 import SearchIcon from '@mui/icons-material/Search';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
@@ -11,6 +14,7 @@ export default function MobileNav() {
  
   return (
     <div className='block  sm:hidden'>
+      {console.log(user)}
             <nav className="fixed bottom-0 inset-x-0 bg-white flex justify-between text-sm text-black">
           <a href="#" className="w-full block py-5 px-3 text-center hover:bg-lime-600 hover:text-white">
            <ListIcon />
