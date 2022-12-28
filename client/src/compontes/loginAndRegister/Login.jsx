@@ -27,6 +27,7 @@ export default function Login() {
      const url = history.split('').slice(21).join('');
     if (data){
       dispatch(getUser(data));
+      console.log("hey");
       navigate(`${url}`)
       console.log("pass");
     }else{

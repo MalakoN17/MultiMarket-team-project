@@ -52,6 +52,8 @@ import { ToastContainer } from 'react-toastify';
 
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector(state=> state.user);
 
   const someFunction = async ()=>{
       const res = await axios.get('http://localhost:8000/auth/login/success', {
