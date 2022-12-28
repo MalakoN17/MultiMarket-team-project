@@ -67,7 +67,7 @@ export default function Stores() {
         /> */}
       </div>
       <div className="text-center">
-        <h1 className="text-[30px]">רשימת חנויות בקטוגריית , {department.name}</h1>
+        <h1 className="text-[30px]">רשימת חנויות בקטוגריית , {department?.name}</h1>
       </div>
       <div className="container  md:w-100% flex justify-center gap-2">
         <div className="container gap-3 w-[60%]">
@@ -75,7 +75,7 @@ export default function Stores() {
             <div className="flex gap-3">
               <h3>סנן לפי תוצאות:</h3>
               <p className="text-blue-400 flex">{cityValue} </p>
-              <p className="text-blue-400 flex">{department.name}</p>
+              <p className="text-blue-400 flex">{department?.name}</p>
             </div>
           </div>
           <div className="flex items-center gap-1">
