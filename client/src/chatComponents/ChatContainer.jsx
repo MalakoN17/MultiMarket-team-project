@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import ChatInput from './ChatInput';
 import axios from 'axios';
 import { useRef } from 'react';         
-import { v4 as uuidv4 } from 'uuid';
+import { v4 as uuidv4 } from 'uuid';       
 import { useSelector } from 'react-redux';
 import { Dropdown } from 'flowbite-react';
 
@@ -14,7 +14,7 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   const [currentLastName, setCurrentLastName] = useState(null);
 
   const scrollRef = useRef();
-
+   
   const {store} = useSelector(state=>state.ownerStore)   
 
   const getMessages = async () => {
@@ -33,7 +33,6 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
   }, [currentChat]);
 
   const handleSendMsg = async (msg) => {
-    // console.log(msg);
     await axios.post('http://localhost:8000/api/messages/addMsg', {
       from: currentUser._id,
       to: currentChat._id,
@@ -64,38 +63,22 @@ export default function ChatContainer({ currentChat, currentUser, socket }) {
     }      
 }  
 
-
-//   const userOrOwner = () => {   
-//     if (currentUser?.role === 'owner') {
-//       setCurrentFirstName(store.name)
-//       setCurrentUserImage(store.darklogo.url)
-//     } else {
-//       console.log(currentUser);
-//     }
-//   }
-
-
-    
-// useEffect(() => {
-//   userOrOwner()    
-// }, [])
-
 useEffect(() => {
   if (socket.current) {
     socket.current.on('msg-receive', (msg) => {
       setArrivalMessage({ fromSelf: false, message: msg });
-    })   
+    })           
   }
 }, [])
-
+    
 useEffect(() => {
   arrivalMessage && setMessages((prev) => [...prev, arrivalMessage])
-}, [arrivalMessage])
+}, [arrivalMessage])              
                
-useEffect(() => {
+useEffect(() => {      
   scrollRef.current?.scrollIntoView({ behavior: "smooth" })
 }, [messages])
-
+    
 
 return (
   <div className='chat-container flex-col w-full'>
@@ -106,7 +89,7 @@ return (
         <img className="object-cover w-10 h-10 rounded-full w-full"    
           src={`${currentUserImage}`}
           alt="" />
-          </div>
+          </div>      
       </div>
       <div className="msg-container relative w-full overflow-y-auto flex flex-col h-[30rem]">
         {messages.map((message, index) => {

@@ -187,7 +187,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Technical support</p>
-                          <p className="text-gray-500">support@example.com</p>
+                          <p className="text-gray-500">supportttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -215,7 +215,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Sales questions</p>
-                          <p className="text-gray-500">sales@example.com</p>
+                          <p className="text-gray-500">salesttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -243,7 +243,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Press</p>
-                          <p className="text-gray-500">press@example.com</p>
+                          <p className="text-gray-500">pressttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -271,8 +271,8 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Bug report</p>
-                          <p className="text-gray-500">bugs@example.com</p>
-                          <p className="text-gray-500">+1 234-567-89</p>
+                          <p className="text-gray-500">ttqq2023@gmail.com</p>
+                          <p className="text-gray-500">0502475908</p>
                         </div>
                       </div>
                     </div>

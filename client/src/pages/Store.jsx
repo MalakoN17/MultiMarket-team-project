@@ -9,7 +9,7 @@ import MobileNav from '../compontes/navbar/MobileNav';
 function Store() {
     const location = useLocation();
     const [products, setProducts] = useState([]);
-    
+
     useEffect(() => {
         const getProducts = async () => {
             const { data } = await axios.get(`http://localhost:8000/api/product/store/${location.state.store._id}`);
@@ -22,8 +22,14 @@ function Store() {
     return (
         <>
             <DesktopNav />
-            <div className="">
-                <img className='background-image ' src={location.state.store.coverImage.url} alt="Store logo" />
+            <div className="sm:h-96 h-40 w-full"
+                style={{
+                    backgroundImage: "url(" + location.state.store.coverImage.url + ")",
+                    backgroundPosition: "center",
+                    backgroundRepeat: "no-repeat",
+                    backgroundSize: "cover",
+                }}
+            >
             </div>
 
             <div className='flex py-2 backdrop-blur-xl pr-20 relative '>

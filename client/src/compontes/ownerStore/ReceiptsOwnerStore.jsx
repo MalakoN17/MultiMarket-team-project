@@ -1,8 +1,10 @@
 import React from 'react'
 
 export default function ReceiptsOwnerStore() {
+
+ 
   return (
-    <div>
+    <div className='h-screen'>
         קבלות
     </div>
   )

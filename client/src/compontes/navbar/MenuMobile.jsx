@@ -1,5 +1,7 @@
 import { Fragment } from 'react';
 import { Menu, Transition } from '@headlessui/react';
+import ListIcon from '@mui/icons-material/List';
+
 
 function classNames(...classes) {
   return classes.filter(Boolean).join(' ');
@@ -9,7 +11,8 @@ export default function Example() {
   return (
     <Menu as="div" className="relative text-right h-full">
       <div>
-        <Menu.Button className="inline-flex w-8 justify-center rounded-md border border-gray-300 bg-white px-4 py-2 text-sm font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-offset-2 focus:ring-offset-gray-100">
+        <Menu.Button>
+          <ListIcon/>
         </Menu.Button>
       </div>
       <Transition
@@ -21,7 +24,7 @@ export default function Example() {
         leaveFrom="transform opacity-100 scale-100"
         leaveTo="transform opacity-0 scale-95"
       >
-        <Menu.Items className="absolute bottom-20 right-0 z-10 mt-2 w-56 transform origin-y-top rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+        <Menu.Items className="absolute bottom-10 right-0 z-10 mt-2 w-56 transform origin-y-top rounded-md bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
           <div className="py-1">
             <Menu.Item>
               {({ active }) => (

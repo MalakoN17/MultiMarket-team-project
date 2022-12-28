@@ -6,7 +6,7 @@ export default function Store(props) {
   const navigate = useNavigate()
   const handleClick = () => {
     navigate(`/store`, {
-      state:{
+      state: {
         store: props.store,
       },
     });

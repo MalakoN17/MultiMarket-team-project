@@ -68,7 +68,6 @@ const updateProduct = async (req, res, next) => {
   const data = req.body;
   try {
     const product = await productsModel.findById(productId);
-    console.log(product);
     if (data.image.url !== product.image.url) {
       await cloudinary.uploader.destroy(imageId);
       const result = await cloudinary.uploader.upload(data.image, {
@@ -95,9 +94,9 @@ const deleteProduct = async (req, res, next) => {
   const { productId } = req.params;
   try {
     const product = await productsModel.findById(productId);
-    const result = cloudinary.uploader.destroy(product.public_id);
+    const result = cloudinary.uploader.destroy(product.image.public_id);
     if (result) {
-      await productsModel.findByIdDelete(productId);
+      await productsModel.findByIdAndDelete(productId);
       res.status(200).json('product deleted');
     }
   } catch (error) {
