@@ -50,14 +50,14 @@ function Product(props) {
             <div className="max-w-2xl mx-auto">
                 <div className="bg-white shadow-xl rounded-lg max-w-sm dark:border-gray-700 scale-90 transition duration-300 m-auto hover:scale-100 transform">
 
-                    <div onClick={() => { handleClick() }}>
+                    <div className='' onClick={() => { handleClick() }}>
                         <div className="rounded p-4">
                             <img className="h-36 rounded-md scale-90 transition duration-300 m-auto hover:scale-100 transform" src={props.product.image.url} alt="product image" />
                         </div>
 
                     </div>
                     <div className='px-4 pb-5'>
-                        <h3 className="text-gray-900 font-semibold text-2xl tracking-tight dark:text-dark mb-2">{props.product.name}</h3>
+                        <h3 className="text-gray-900 font-semibold text-xl tracking-tight dark:text-dark mb-2">{props.product.name}</h3>
                         <p className="truncate font-thin text-md tracking-tight dark:text-gray-900 my-2">{props.product.description}</p>
                         <div className='flex justify-center px-20'>
                             <ControlPointIcon className='scale-90 transition duration-300 m-auto hover:scale-110 transform' onClick={() => setQuantity((prevue) => { return prevue + 1 })} />

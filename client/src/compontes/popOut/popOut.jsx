@@ -9,12 +9,6 @@ export default function PopOut() {
   const dispatch = useDispatch();
   const [city,setCity] = useState(" ")
 
-  // const [show, setShow] = useState(true);
-
-// useEffect(()=>{
-//   dispatch(clearSelect())
-// },[])
-
   const handleCitySelect = (e) => {
     setCity(e.target.value);
     
@@ -23,13 +17,13 @@ export default function PopOut() {
   const handleForm =(e)=>{
     e.preventDefault()
     dispatch(settingSelect(city))
-    // setShow(!show)
   }
+
   const exitForm = (e)=>{
     e.preventDefault()
     dispatch(settingSelect("תל אביב"))
-    // setShow(!show)
   }
+
   return (
     
     <div className={show ? 'hidden' : 'block'}>
@@ -41,29 +35,29 @@ export default function PopOut() {
       >
         <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
         <div className="fixed inset-0 z-10 overflow-y-auto">
-          <div className="flex min-h-full items-end justify-center p-4 text-center sm:items-center sm:p-0">
+          <div className="flex min-h-full items-center justify-center p-4 text-center  sm:p-0">
             <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg">
               <div className="bg-white px-4 pt-5 pb-4 sm:p-6 sm:pb-4">
                 <div className="sm:flex sm:items-start">
-                  <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                  <div className="flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-sky-100 sm:mx-0 sm:h-10 sm:w-10">
                     <button onClick={exitForm}>
                         <CloseIcon  />
                     </button>
                   </div>
                   <div className="mt-3 mx-10 text-center items-center sm:mt-0 sm:ml-4 sm:text-center">
-                    <LocationOnIcon />
                     <h3
                       className="text-lg font-medium leading-6 text-gray-900"
                       id="modal-title"
                     >
-                      אנא ידע אותנו לגבי מיקומך
+                      אנא ידע אותנו לגבי מיקומך <LocationOnIcon />
                     </h3>
-                    <div className="mt-2">
+                    <div className="mt-3">
                       <select
                       onChange={(e)=>handleCitySelect(e)}
                         value={city}
                         name="cities"
                         id="cities"
+                        className='rounded-lg'
                       >
                         <option value="ירושלים">ירושלים </option>
                         <option value="תל אביב">תל אביב</option>
@@ -89,10 +83,10 @@ export default function PopOut() {
                   </div>
                 </div>
               </div>
-              <div className="bg-gray-50 px-4 py-3 flex justify-center items-center ">
+              <div className="flex justify-center items-center ">
                 <button onClick={handleForm}
                   type="button"
-                  className="rounded-md border border-transparent bg-green-600 px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-red-700 focus:outline-none focus:ring-2 focus:ring-red-500 focus:ring-offset-2 sm:ml-3 sm:w-auto sm:text-sm"
+                  className='text-white text-xl bg-lime-400 hover:bg-lime-500 focus:outline-none focus:ring-4 focus:ring-lime-300 font-medium rounded-full text-sm px-5 py-2.5 text-center mr-2 mb-2 dark:bg-lime-600 dark:hover:bg-lime-700 dark:focus:ring-lime-800 mb-6 mt-4'
                 >
                   התחל קנייה
                 </button>
