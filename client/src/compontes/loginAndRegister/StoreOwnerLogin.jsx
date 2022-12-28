@@ -2,7 +2,7 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUser } from '../../features/user/userSlice';
+import { getUser, loginFailure } from '../../features/user/userSlice';
 import Demo from './Demo';
 
 export default function StoreOwnerLogin() {
@@ -16,13 +16,20 @@ export default function StoreOwnerLogin() {
   // login function
   const login = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post('http://localhost:8000/auth/login', {
+    const { data } = await axios.post('http://localhost:8000/api/auth/login', {
       email: loginEmail,
       password: loginPassword,
     });
-    dispatch(getUser(data));
-    if (data) navigate(`/ownerstore`);
+    if (data){
+      dispatch(getUser(data));
+      navigate('/ownerstore')
+      console.log("pass");
+    }else{
+      console.log('fail');
+      dispatch(loginFailure())
+    }
   };
+
   return (
     <div>
       <Demo

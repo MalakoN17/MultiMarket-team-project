@@ -6,8 +6,8 @@ import LoginUserNavbar from '../navbar/LoginUserNavbar';
 import MobileNav from "../navbar/MobileNav"
 import Footer from '../footer/Footer';
 import FooterMobile from '../footer/footerMobile';
-import Store from './store';
-import { changeSelect } from "../../features/city/citySlice"
+import Store from './Store';
+import {changeSelect} from "../../features/city/citySlice"
 import './style.css';
 // import vegetablesImage from '../../assets/images/Screenshot 2022-12-14 232104.png';
 import smallHome from '../../assets/images/smallhome.png';
