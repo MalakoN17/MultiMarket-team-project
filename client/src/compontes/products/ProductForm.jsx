@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { createProduct } from '../../features/product/produceSlice';
+import { createProduct } from '../../features/ownerStore/ownerStoreSlice';
 import InputProduct from './InputProduct';
 import { createSections, getAllSections } from '../../features/section/sectionSlice';
 

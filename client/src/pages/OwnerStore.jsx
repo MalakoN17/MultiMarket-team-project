@@ -5,22 +5,22 @@ import Footer from '../compontes/footer/Footer'
 import MobileNavOwner from '../compontes/ownerStore/MobileNavOwner'
 import NavOwner from '../compontes/ownerStore/NavOwner'
 import ErrorPage from '../pages/ErrorPage'
-import { getStore, getStore, getStoreProducts } from '../features/ownerStore/ownerStoreSlice'
+import { getStore,  getStoreProducts } from '../features/ownerStore/ownerStoreSlice'
 
 export default function OwnerStore() {
   const {user}=useSelector(state=>state.user)
   const dispatch = useDispatch()
   useEffect(()=>{
-    dispatch(getStoreProducts(currentUser.storeIds[0]))
+    dispatch(getStoreProducts(user.currentUser.storeIds[0]))
   },[])
   return (
     <div className='bg-zinc-100'>
-      {currentUser && <NavOwner/>}
-      {currentUser && <Outlet/>}
-      {currentUser && <MobileNavOwner/>}
-      {currentUser && <Footer/>}
+      {user.currentUser && <NavOwner/>}
+      {user.currentUser && <Outlet/>}
+      {user.currentUser && <MobileNavOwner/>}
+      {user.currentUser && <Footer/>}
       
-      {!currentUser&&<ErrorPage/>}
+      {!user.currentUser&&<ErrorPage/>}
       
     </div>
   )

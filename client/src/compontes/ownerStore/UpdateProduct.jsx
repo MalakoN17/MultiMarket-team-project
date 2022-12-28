@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { useParams } from 'react-router-dom'
 import { createSections } from '../../features/section/sectionSlice'
-import { updateProductSlice } from '../../features/product/produceSlice'
+import { updateProductSlice } from '../../features/ownerStore/ownerStoreSlice'
 import InputProduct from '../products/InputProduct'
 
 export default function UpdateProduct() {

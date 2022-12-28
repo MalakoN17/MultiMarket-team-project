@@ -6,7 +6,7 @@ export default function ProductStoreOwner() {
   const { products } = useSelector((state) => state.ownerStore);
   return (
 
-    <div className="flex flex-wrap justify-around p-10">
+    <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 ">
     {products?.map((product)=>{
         return (
             <ProductCump product={product}/>

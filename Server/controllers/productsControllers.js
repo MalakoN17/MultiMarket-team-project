@@ -94,9 +94,9 @@ const deleteProduct = async (req, res, next) => {
   const { productId } = req.params;
   try {
     const product = await productsModel.findById(productId);
-    const result = cloudinary.uploader.destroy(product.public_id);
+    const result = cloudinary.uploader.destroy(product.image.public_id);
     if (result) {
-      await productsModel.findByIdDelete(productId);
+      await productsModel.findByIdAndDelete(productId);
       res.status(200).json('product deleted');
     }
   } catch (error) {
