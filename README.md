@@ -1,41 +1,24 @@
-# Atlas Multimarke 
-## Multimarket application 
-Project Description:
-
-
-Technologies Used:
-*React
-*Node.js
-*MongoDB
-*Express
-Prerequisites:
-Before installing and running the project, make sure you have the following dependencies installed on your system:
-
-Node.js
-MongoDB
-Installation Instructions:
-Clone the repository to your local machine: git clone https://github.com/username/recipe-book.git
-Navigate to the project directory: cd recipe-book
-Install the necessary packages: npm install
-Start the development server: npm start
-The application should now be running on http://localhost:3000.
-Usage Instructions:
-To add a new recipe, click the "Add Recipe" button on the homepage.
-Fill out the form with the recipe details, including the title, ingredients, and instructions.
-Select a category for the recipe from the dropdown menu.
-Click the "Submit" button to add the recipe to your personal recipe book.
-To view or edit an existing recipe, click on the recipe title in the list on the homepage.
-Contributing:
-We welcome contributions to the project! If you would like to contribute, please follow these guidelines:
-
-Fork the repository and create a new branch for your changes.
-Make sure your code follows the project's coding style and standards.
-Test your code thoroughly before submitting a pull request.
-License:
-This project is licensed under the MIT License. See the LICENSE file for details.
-
-Credits:
-React
-Node.js
-MongoDB
-Express
+# Atlas - Multi-Market Application
+Atlas is a multi-market application designed to support a variety of markets and provide a seamless user experience for users in each market.
+## Features
+- Supports multiple markets
+- Customized for each market
+- User-friendly interface
+## Technologies
+Client-side: React.js, Redux-Persist, Redux-Toolkit, Tailwind css,React-Toastify, Stripe, Socket.IO
+Server-side: Node.js, Mongoose, Cloudinary, Socket.IO, Stripe, JWT, Passport.js, Bcrypt.js
+- Database: MongoDB Atlas
+## Getting Started
+To get started with Atlas, follow these steps:
+1. Clone the repository: `ggit clone --single-branch --branch dev https://github.com/MalakoN17/MultiMarket-team-project.git`
+2. Install the dependencies: `npm install` or `yarn install`
+3. Set up your MongoDB Atlas cluster and configure the connection string in the `.env` file
+4. Start the development server: `npm start` or `yarn start`
+## Contribution Guidelines
+If you would like to contribute to this project, please read our contribution guidelines before submitting a pull request.
+## State Mengment 
+we manage our state in redux tolikt 
+## Challenges
+1.Github - understanding how to use branches and pull requests. After learning more about best practices, We was able to effectively use them to imporve the team work.
+2.Team Work - Conflict in team work can occur when team members have different goals, values, or approaches to problem solving.
+3.New Technology - In a project is that it may require team members to learn new skills or adapt to new processes, which can take time and effort. Additionally, there may be compatibility issues or technical problems that need to be addressed in order to effectively utilize the new technology.
