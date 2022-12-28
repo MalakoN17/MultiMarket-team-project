@@ -19,6 +19,6 @@ If you would like to contribute to this project, please read our contribution gu
 ## State Mengment 
 we manage our state in redux tolikt 
 ## Challenges
--Github - understanding how to use branches and pull requests. After learning more about best practices, We was able to effectively use them to imporve the team work.
--Team Work - Conflict in team work can occur when team members have different goals, values, or approaches to problem solving.
--New Technology - In a project is that it may require team members to learn new skills or adapt to new processes, which can take time and effort. Additionally, there may be compatibility issues or technical problems that need to be addressed in order to effectively utilize the new technology.
+- Github - understanding how to use branches and pull requests. After learning more about best practices, We was able to effectively use them to imporve the team work.
+- Team Work - Conflict in team work can occur when team members have different goals, values, or approaches to problem solving.
+- New Technology - In a project is that it may require team members to learn new skills or adapt to new processes, which can take time and effort. Additionally, there may be compatibility issues or technical problems that need to be addressed in order to effectively utilize the new technology.
