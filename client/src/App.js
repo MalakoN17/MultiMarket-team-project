@@ -3,13 +3,13 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 // Pages
 import Main from './pages/Main';
 import StorePage from './pages/StorePage';
-import Error from './pages/Error';
+import Error from './pages/ErrorPage';
 import ProductForm from './compontes/products/ProductForm';
 import AddingProducts from './compontes/products/AddingProducts';
 import StoreProducts from './compontes/main/StoreProducts';
 import CheckOut from './pages/checkOut/CheckOut';
 import Store from './pages/Store';
-import AddStore from './compontes/addStore/AddStore';
+import AddStore from './compontes/admin/AddStore';
 
 import Chat from './pages/Chat';
 import Login from './pages/Login';
@@ -27,6 +27,14 @@ import AboutUs from './pages/AboutUs';
 import NeedLogin from './chatComponents/NeedLogin';
 
 import OwnerStore from './pages/OwnerStore';
+//////////////////////////
+import { useEffect } from 'react';
+import axios from 'axios';
+import { useSelector, useDispatch } from 'react-redux';
+import { getUser, removeUser } from './features/user/userSlice';
+
+
+
 import ReceiptsOwnerStore from './compontes/ownerStore/ReceiptsOwnerStore';
 import StoreDetails from './compontes/ownerStore/StoreDetails';
 import HomeOwner from './compontes/ownerStore/HomeOwner';
@@ -36,12 +44,32 @@ import PersonalArea from './pages/PersonalArea';
 import OwnerDet from './compontes/ownerStore/OwnerDet';
 import UpdateOwnerDet from './compontes/ownerStore/UpdateOwnerDet';
 
+import DesktopNav from './compontes/navbar/DesktopNav';
+
+
+import CheckoutSuccess from './pages/CheckoutSuccess';
+import { ToastContainer } from 'react-toastify';
+
 
 function App() {
+  // const dispatch = useDispatch();
+  // const user = useSelector(state=> state.user);
+
+  const someFunction = async ()=>{
+      const res = await axios.get('http://localhost:8000/auth/login/success', {
+          withCredentials:true,
+      })
+      if(res.status === 200) dispatch(getUser(res.data))
+    }
+
+  useEffect(() => {
+    someFunction()
+  },[])
+
   return (
     <>
-      {/* </> */}
       <Router>
+      <ToastContainer />
        
         <Routes>
           <Route path="chat" element={<Chat />} />
@@ -51,11 +79,12 @@ function App() {
           <Route path="/store" element={<Store />} />
           <Route path="addproduct" element={<ProductForm />} />
           <Route path="checkout" element={<CheckOut/>}></Route>
-          {/* <Route path="NeedLogin" element={<NeedLogin/>}></Route> */}
+          <Route path="NeedLogin" element={<NeedLogin/>}></Route>
           
         
 
       
+
           <Route path='/ownerstore' element={<OwnerStore />}>
             <Route path='' element={<HomeOwner/>}/>
             <Route path='addproduct' element={<AddingProducts/>}/>
@@ -74,6 +103,7 @@ function App() {
           <Route path="addstore" element={<AddStore />} />
           <Route path="login" element={<Login />} />
           <Route path="ownerlogin" element={<LoginStoreOwner />} />
+
           <Route path="register" element={<Register/>}/>
           <Route path="question" element={<FQ/>} />
           <Route path="contactUS" element={<ContactUS />} />

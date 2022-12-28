@@ -10,7 +10,7 @@ import onion from '../../assets/images/products_images/onions.jpg';
 import Cart from './Cart';
 import Product from '../products/Products'
 
-function StoreProducts() {
+export default function StoreProducts() {
     return (
         <>
             <div className="background-image w-full">
@@ -54,11 +54,6 @@ function StoreProducts() {
 
                         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
                             <Product />
-                            {/* <Product />
-                            <Product />
-                            <Product />
-                            <Product />
-                            <Product /> */}
                         </div>
 
                     </section>
@@ -73,5 +68,3 @@ function StoreProducts() {
         </>
     )
 }
-
-export default StoreProducts

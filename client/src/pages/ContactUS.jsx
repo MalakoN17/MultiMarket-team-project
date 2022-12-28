@@ -2,7 +2,7 @@ import React from 'react';
 import MobileNav from '../compontes/navbar/MobileNav'
 import DesktopNav from '../compontes/navbar/DesktopNav'
 import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
-import FooterMobile from '../compontes/footer/footerMobile'
+import FooterMobile from '../compontes/footer/footerMobile'   
 import Footer from '../compontes/footer/Footer'
 
 export default function ContactUS() {
@@ -13,7 +13,7 @@ export default function ContactUS() {
       <LoginUserNavbar />
       {' '}
       <div className="container my-24 px-6 mx-auto">
-        {/* Section: Design Block */}
+        {/* Section: Design Block */}  
         <section className="mb-32 text-gray-800">
           <div
             className="relative overflow-hidden bg-no-repeat bg-cover"
@@ -167,7 +167,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Technical support</p>
-                          <p className="text-gray-500">support@example.com</p>
+                          <p className="text-gray-500">supportttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -195,7 +195,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Sales questions</p>
-                          <p className="text-gray-500">sales@example.com</p>
+                          <p className="text-gray-500">salesttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -223,7 +223,7 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Press</p>
-                          <p className="text-gray-500">press@example.com</p>
+                          <p className="text-gray-500">pressttqq2023@gmail.com</p>
                           <p className="text-gray-500">+1 234-567-89</p>
                         </div>
                       </div>
@@ -251,8 +251,8 @@ export default function ContactUS() {
                         </div>
                         <div className="grow ml-6">
                           <p className="font-bold mb-1">Bug report</p>
-                          <p className="text-gray-500">bugs@example.com</p>
-                          <p className="text-gray-500">+1 234-567-89</p>
+                          <p className="text-gray-500">ttqq2023@gmail.com</p>
+                          <p className="text-gray-500">0502475908</p>
                         </div>
                       </div>
                     </div>

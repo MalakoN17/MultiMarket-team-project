@@ -3,19 +3,20 @@ const stripe = Stripe(process.env.STRIPE_KEY);
 
 const createCheckoutPay = async (req, res, next) => {
   try {
-    const line_items = req.body.s.map((store) => {
-      return {
-        price_data: {
-          currency: 'ils',
-          product_data: {
-            name: store.storeName,
-            images: [store.img],
+    const line_items = req.body.stripe.map((product) => {
+        return {
+          price_data: {
+            currency: 'ils',
+            product_data: {
+              name: product.name,
+              images: [product.image],
+            },
+            unit_amount: product.price * 100,
           },
-          unit_amount: store.totalPrice * 100,
-        },
-        quantity: store.quantity,
-      };
-    });
+          quantity: product.quantity,
+        };
+      })
+
     const session = await stripe.checkout.sessions.create({
       line_items,
       payment_method_types: ['card'],

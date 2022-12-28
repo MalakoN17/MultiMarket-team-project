@@ -2,7 +2,8 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
-import { getUser } from '../../features/user/userSlice';
+import { getUser, loginFailure, loginStart, removeUser } from '../../features/user/userSlice';
+import { ToastContainer } from 'react-toastify';
 import Demo from './Demo';
 
 export default function Login() {
@@ -15,29 +16,57 @@ export default function Login() {
 
   // login function
   const login = async (e) => {
+    // dispatch(loginStart())
     e.preventDefault();
-    const  {data}  = await axios.post('http://localhost:8000/auth/login', {
+    const  {data}  = await axios.post('http://localhost:8000/api/auth/login', {
       email: loginEmail,
       password: loginPassword,
     });
-    console.log(data);
-    dispatch(getUser(data));
 
-    const history = sessionStorage.getItem('history');
-    const url = history.split('').slice(21).join('');
-    if (data) navigate(`${url}`);
+     const history = sessionStorage.getItem('history');
+     const url = history.split('').slice(21).join('');
+    if (data){
+      dispatch(getUser(data));
+      navigate(`${url}`)
+      console.log("pass");
+    }else{
+      console.log('fail');
+      dispatch(loginFailure())
+    }
+    
   };
+
+  // login with google
+  const singInWithGoogle = async ()=>{
+    window.open("http://localhost:8000/auth/google", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
+
+  // login with facebook
+  const singInWithFacebook = async ()=>{
+    window.open("http://localhost:8000/auth/facebook", "_self");
+    // const {data} = await axios.get('http://localhost:8000/auth/login/success', {
+    //       withCredentials:true,
+    //   })
+    //   dispatch(getUser(data))
+  }
 
   return (
     <div>
+      <ToastContainer />
       <Demo
         email={setLoginEmail}
         password={setLoginPassword}
         loginFun={login}
-        //   singInWithGoogle={singInWithGoogle}
+        singInWithGoogle={singInWithGoogle}
+        singInWithFacebook={singInWithFacebook}
         btnText={'Sing In'}
         nameDisplay={"hidden"}
       />
+      
     </div>
   );
 }

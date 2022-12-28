@@ -4,7 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import logo from "../../assets/atlaslogo.png"
 import "./destkopNav.css"
  
-function DesktopNav() {
+export default function DesktopNav() {
 
   const navigate = useNavigate();
 
@@ -13,14 +13,13 @@ function DesktopNav() {
     navigate("/login");
   }
 
-  const user = useSelector(state=> state.user)
+  const {user} = useSelector(state=> state.user)
   const {show} = useSelector((state)=> state.city);
-
 
   return (
     <div>
     {/* <div className="awesome" > */}
-      <nav className={user.currentUser ? "hidden" : "block"}>
+      <nav className={user?.currentUser ? "hidden" : "block"}>
         <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
           <div className="relative flex flex-row-reverse  h-16 items-center justify-between">
             {/* <div className="absolute inset-y-0 left-0 flex items-center">
@@ -40,7 +39,7 @@ function DesktopNav() {
                   <a href="/question" className="menuNav"> שאלות נפוצות</a>
                   <a href="/chat" className="menuNav">צ'אט עם נציג</a>
                   <a href="#" className="menuNav" onClick={()=> navigate("register")}>הרשמה</a>
-                  <a href="#" className="menuNav" onClick={()=> navigate("login")}>כניסת משתמש</a>
+                  <a href="#" className="menuNav" onClick={()=> loginEvent()}>כניסת משתמש</a>
                 </div>
               {/* </div> */}
               </div>
@@ -53,4 +52,3 @@ function DesktopNav() {
   )
 }
  
-export default DesktopNav
