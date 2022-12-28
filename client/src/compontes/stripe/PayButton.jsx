@@ -14,6 +14,7 @@ function PayButton() {
         stripe
       }).then((res) => {
         if (res.data.url) {
+          console.log("hey");
           window.location.href = res.data.url;
         }
       })

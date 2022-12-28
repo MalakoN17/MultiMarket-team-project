@@ -1,19 +1,36 @@
 import React from 'react';
-import MobileNav from '../compontes/navbar/MobileNav'
-import DesktopNav from '../compontes/navbar/DesktopNav'
-import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar'
-import FooterMobile from '../compontes/footer/footerMobile'   
-import Footer from '../compontes/footer/Footer'
+import MobileNav from '../compontes/navbar/MobileNav';
+import DesktopNav from '../compontes/navbar/DesktopNav';
+import LoginUserNavbar from '../compontes/navbar/LoginUserNavbar';
+import FooterMobile from '../compontes/footer/footerMobile';
+import Footer from '../compontes/footer/Footer';
+import {toast, ToastContainer} from 'react-toastify'
+import emailjs from 'emailjs-com'
 
 export default function ContactUS() {
+  const handleForm = (e)=>{
+    e.preventDefault();
+    emailjs.sendForm(
+      'service_ahknpyi',
+      "template_goongxj",
+      e.target,
+      "CF1E9Ctlahma83eeB"
+    ).then(resp =>{
+        console.log(resp);
+        toast.success('הודעה נשלחה תודה רבה',{
+          position: toast.POSITION.BOTTOM_RIGHT,
+        })
+        e.target.reset()
+    }).catch(error => console.log(error));
+  }
   return (
     <div>
       <MobileNav />
       <DesktopNav />
-      <LoginUserNavbar />
-      {' '}
+      <LoginUserNavbar />{' '}
+      <ToastContainer />
       <div className="container my-24 px-6 mx-auto">
-        {/* Section: Design Block */}  
+        {/* Section: Design Block */}
         <section className="mb-32 text-gray-800">
           <div
             className="relative overflow-hidden bg-no-repeat bg-cover"
@@ -35,7 +52,7 @@ export default function ContactUS() {
             >
               <div className="flex flex-wrap">
                 <div className="grow-0 shrink-0 basis-auto w-full xl:w-5/12 px-3 lg:px-6 mb-12 xl:mb-0">
-                  <form>
+                  <form onSubmit={handleForm}>
                     <div className="form-group mb-6">
                       <input
                         type="text"
@@ -55,6 +72,7 @@ export default function ContactUS() {
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         id="exampleInput7"
                         placeholder="Name"
+                        name='name'
                       />
                     </div>
                     <div className="form-group mb-6">
@@ -76,6 +94,7 @@ export default function ContactUS() {
             focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         id="exampleInput8"
                         placeholder="Email address"
+                        name='email'
                       />
                     </div>
                     <div className="form-group mb-6">
@@ -99,6 +118,7 @@ export default function ContactUS() {
           "
                         id="exampleFormControlTextarea13"
                         rows={3}
+                        name='message'
                         placeholder="Message"
                         defaultValue={''}
                       />

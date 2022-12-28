@@ -2,7 +2,6 @@ import React, { useEffect } from 'react'
 import { useSelector } from 'react-redux';
 
 // menu , search , cart, store,chat
-import { useDispatch,useSelector } from 'react-redux';
 import { removeUser } from '../../features/user/userSlice';
 import ListIcon from '@mui/icons-material/List';
 import SearchIcon from '@mui/icons-material/Search';

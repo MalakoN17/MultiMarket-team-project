@@ -15,6 +15,7 @@ function Store() {
             const { data } = await axios.get(`http://localhost:8000/api/product/store/${location.state.store._id}`);
             setProducts(data)
         }
+        
         getProducts()
     }, [])
 
@@ -61,7 +62,7 @@ function Store() {
             </div>
 
             <div className="container flex justify-center">
-                <section className="px-1 sm:px-6 lg:px-4 pt-6 pb-28">
+                <section className="px-1 sm:px-6 lg:px-4 pt-6 pb-28 w-[60%]">
                     <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 gap-1">
                         {products.map((product) => {
                             return (
@@ -73,7 +74,7 @@ function Store() {
                     </div>
                 </section>
 
-                <div className='hidden md:block'>
+                <div className='hidden md:block w-[20%]'>
                     <Cart />
                 </div>
             </div>

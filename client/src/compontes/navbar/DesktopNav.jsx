@@ -26,8 +26,8 @@ export default function DesktopNav() {
             </div> */}
             <div className="flex flex-row-reverse	">
               {/* <div className="flex flex-shrink-0 mx-60 items-center"> */}
-                <img onClick={()=>navigate("/")} className="h-10 w-10" src={logo} alt="Your Company" />
-                <p>MULTI MARKET</p>
+                <img onClick={()=>navigate("/")} className="h-10 w-10" src={logo} alt="Your Company" width='80px' height='60px'/>
+                {/* <p>MULTI MARKET</p> */}
               {/* </div> */}
             </div>
             <div className="hidden  sm:block absolute inset-y-0 right-0 flex items-center pr-2 sm:static sm:inset-auto sm:ml-6 sm:pr-0">

@@ -21,8 +21,8 @@ const createCheckoutPay = async (req, res, next) => {
       line_items,
       payment_method_types: ['card'],
       mode: 'payment',
-      success_url: 'http://localhost:8000/CheckoutSuccess',
-      cancel_url: 'http://localhost:8000/cancel',
+      success_url: 'http://localhost:3000/CheckoutSuccess',
+      cancel_url: 'http://localhost:3000/cancel',
     });
     res.json({ url: session.url });
   } catch (error) {

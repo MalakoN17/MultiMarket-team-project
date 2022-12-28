@@ -32,7 +32,7 @@ export default function Cart() {
           <ToastContainer />
         </div>
         <div className="flex flex-col h-[95%]">
-          {/* {cartItems.map( product => {
+          {cartItems.map( product => {
             return (
               <>
                 <div key={product.id}>
@@ -56,12 +56,12 @@ export default function Cart() {
                 </div>
               </>
             );
-          })} */}
+          })}
           <div className="sum-container">
             <div className="p-3">
               <div className="flex justify-between">
                 <p>סה"כ</p>
-                <p>0 ש"ח</p>
+                <p><span>{total}</span> ש"ח</p>
               </div>
               <div className="flex justify-between">
                 <p>בקניה זו חסכת</p>
@@ -82,7 +82,7 @@ export default function Cart() {
                 navigate('/checkout')
               }
             }}  className="pay-btn w-full">
-              לתשלום <span>0</span> ש"ח
+              לתשלום <span>{total}</span> ש"ח
             </button>
           </div>
         </div>

@@ -12,7 +12,7 @@ export default function CartItems({products}) {
     {products.map(item =>{
         return(
             <div
-            className="flex items-center justify-around"
+            className="flex items-center justify-between gap-3"
             key={item.id}
           >
             <img src={item.image} alt="" width="60px" />
@@ -24,22 +24,22 @@ export default function CartItems({products}) {
             </div>
             <div>
               <div className="flex gap-1">
-                <RemoveCircleOutlineIcon
+                {/* <RemoveCircleOutlineIcon
                   onClick={() =>{
                     if(item.quantity === 1){
-                      dispatch(removeItem(item.id))
+                      dispatch(removeItem(item))
                       return;
                     }
-                    dispatch(decrease(item.id))
+                    dispatch(removeItem(item))
                   }
                   }
-                />
-                <p>{item.quantity}</p>
-                <ControlPointIcon
+                /> */}
+                <p>כמות: {item.quantity} </p>
+                {/* <ControlPointIcon
                   onClick={() =>
-                    dispatch(increase(item.id))
+                    dispatch(addProduct(item))
                   }
-                />
+                /> */}
               </div>
               <div>
                 <p>{item.price} ש"ח</p>
