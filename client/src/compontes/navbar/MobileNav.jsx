@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react'
-import { useSelector } from 'react-redux';
-
 // menu , search , cart, store,chat
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { removeUser } from '../../features/user/userSlice';
 import ListIcon from '@mui/icons-material/List';
 import SearchIcon from '@mui/icons-material/Search';
@@ -27,7 +25,7 @@ export default function MobileNav() {
         ) : (
           <>
             <div className="w-full flex flex-col items-center  py-5 px-3 text-center hover:bg-lime-600 hover:text-white">
-              <Example  />
+              <Example />
               <p>תפריט</p>
             </div>
 

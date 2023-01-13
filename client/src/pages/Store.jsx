@@ -1,6 +1,6 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useLocation } from 'react-router-dom';
+import axios from 'axios';
 import Product from '../compontes/products/Product'
 import Cart from '../compontes/main/Cart';
 import DesktopNav from '../compontes/navbar/DesktopNav';

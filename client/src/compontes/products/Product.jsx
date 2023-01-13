@@ -28,7 +28,6 @@ function Product(props) {
     const handleBtnToCart = () => {
         item.product.quantity = quantity
         item.sum = item.product.price * quantity
-        console.log(item);
         dispatch(addProduct(item))
     }
 

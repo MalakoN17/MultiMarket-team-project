@@ -61,14 +61,6 @@ const ProductSchema = new mongoose.Schema({
   units: {
     type: Number,
     require: true
-    // unitsInCarton: { type: Number, min: '0', default: 1 },
-    // amount: { type: Number, default: 1, min: '0' },
-    // measureUnits: {
-    //   type: String,
-    //   enum: ['units', 'kg', 'g', 'liters', 'mls'],
-    //   default: 'units',
-    //   hide: true,
-    // },
   },
   contactNumber: {
     type: String,

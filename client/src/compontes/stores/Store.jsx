@@ -35,7 +35,6 @@ export default function Store(props) {
                 </div>
               </div>
             </div>
-            
     </div>
   )
 }
